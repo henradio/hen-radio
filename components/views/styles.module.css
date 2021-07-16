@@ -1,0 +1,93 @@
+.walletIdEntry {
+    padding: 16px 0 0 0;
+}
+
+.walletInput {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 6px 4px;
+    border: 1px solid #E5E5E5;
+}
+
+.selectPlaylist {
+    margin-left: auto;
+    align-self: flex-start;
+    padding: 6px 4px;
+    border: 1px solid #E5E5E5;
+}
+
+
+.button_getObjktData {
+    padding: 4px 3px;
+}
+
+.errorText {
+    color: #cd0117;
+    font-size: 11px;
+}
+
+.walletTitle {
+    font-size: 16px;
+}
+
+.walletRow {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    padding: 6px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.walletRow_alias {
+    font-size: 14px;
+}
+
+.walletRow_button {
+}
+
+.walletRow_avatar {
+    width: 26px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 13px;
+    flex-shrink: 0;
+}
+
+.createPlaylist_label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .walletInput {
+        max-width: 320px;
+    }
+
+    .walletRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #E5E5E5;
+    }
+
+    .walletRow_alias {
+        margin-left: 16px;
+    }
+
+    .walletRow_avatar {
+        margin: 0 0 0 auto;
+    }
+
+    .button_getObjktData {
+        margin-left: 8px;
+        padding: 4px 3px;
+    }
+
+    .errorText {
+        color: #cd0117;
+        font-size: 14px;
+    }
+}
