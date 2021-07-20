@@ -1,8 +1,8 @@
-import Layout from '../components/layout/layout';
-import WalletView from '../components/views/wallet-view';
+import Layout from '../../components/layout/layout';
+import WalletView from '../../components/views/wallet-view';
 import Head from 'next/head';
-import Metadata from '../components/head/metadata';
-import getWalletsWithAudio from '../api/get-wallets-with-audio';
+import Metadata from '../../components/head/metadata';
+import getWalletsWithAudio from '../../api/get-wallets-with-audio';
 
 export const getServerSideProps = async({params}) => {
     const wallets = await getWalletsWithAudio();

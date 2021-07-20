@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/get-all-tracks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/head/metadata.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/get-wallets-with-audio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/tz/[tz].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/views/all-tracks-view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/views/all-tracks-view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/views/wallet-view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/views/wallet-view.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/playlists/[slug].js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/objkt/[objkt].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/tz.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript&#10;JSON" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/playlists" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/tz" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -59,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/tz" />
       <recent name="$PROJECT_DIR$/pages/playlists" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

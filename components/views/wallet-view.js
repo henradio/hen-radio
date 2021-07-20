@@ -1,30 +1,16 @@
 import { useEffect, useState } from 'react';
-import { gql, request } from 'graphql-request';
 import { useRouter } from 'next/router';
 import WalletTrackList from '../track-lists/wallet-track-list';
 import styles from './styles.module.css';
 import useWallet from '../../hooks/use-wallet';
 import getUserMetadataByWalletId from '../../api/get-user-metadata-by-wallet-id';
 
-const query = gql`
-    query AudioObjktData {
-        hic_et_nunc_token(where: {
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
-            token_holders: {
-                quantity: {_gt: "0"},
-                holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
-            }
-        }, order_by: {creator_id: asc}) {
-            creator_id
-        }
-    }
-`;
-
-const WalletView = () => {
+const WalletView = ({wallets}) => {
     const router = useRouter();
     const {tz} = router.query;
     const {walletId, setWalletId, objkts, isLoading, setIsLoading, error} = useWallet();
     const [walletsWithAudio, setWalletsWithAudio] = useState([]);
+
     useEffect(() => {
         if(!tz || tz === walletId) return;
         setWalletId(tz);
@@ -33,10 +19,8 @@ const WalletView = () => {
 
     useEffect(() => {
         (async() => {
-            const data = await request('https://api.hicdex.com/v1/graphql', query);
-            const uniqueWalletsSet = new Set(data?.hic_et_nunc_token?.map(o => o.creator_id));
-            const nextCreatorMetadata = (await Promise.allSettled(
-                [...uniqueWalletsSet]
+            const walletsWithMetadata = (await Promise.allSettled(
+                [...wallets]
                     .map(id => getUserMetadataByWalletId(id)),
             ))
                 .filter(res => res.status === 'fulfilled')
@@ -44,9 +28,10 @@ const WalletView = () => {
                     ...res.value.data,
                     walletId: res.value.config.url.split('/')[5],
                 }));
-            setWalletsWithAudio(nextCreatorMetadata);
+
+            setWalletsWithAudio(walletsWithMetadata);
         })();
-    }, []);
+    }, [wallets]);
 
     const [walletIdInput, setWalletIdInput] = useState('');
 

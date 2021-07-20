@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Metadata from '../../components/head/metadata';
 import getUserMetadataByWalletId from '../../api/get-user-metadata-by-wallet-id';
 
-export async function getServerSideProps({params}) {
+export const getServerSideProps = async({params}) => {
     const {objkt} = params;
     const tracks = await getAllTracks();
     const currentTrack = tracks.find(t => t.id === Number(objkt)) || null;
@@ -16,7 +16,7 @@ export async function getServerSideProps({params}) {
     }
 
     return {props: {objkt, tracks, currentTrack, creator}};
-}
+};
 
 const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
     const byName = creator?.twitter

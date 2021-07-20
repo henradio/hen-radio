@@ -4,11 +4,11 @@ import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
 import Metadata from '../components/head/metadata';
 
-export async function getServerSideProps() {
+export const getServerSideProps = async() => {
     const tracks = await getAllTracks();
 
     return {props: {tracks}};
-}
+};
 
 const AllTracksPage = ({tracks}) =>
     <>
