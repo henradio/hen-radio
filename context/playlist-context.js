@@ -1,8 +1,6 @@
-import { createContext, useEffect, useState } from 'react';
+import {createContext, useEffect, useState} from 'react';
 import getUserMetadataByWalletId from '../api/get-user-metadata-by-wallet-id';
-import { gql, request } from 'graphql-request';
-import { ipfsUrls } from '../constants';
-
+import {gql} from 'graphql-request';
 
 const query = gql`
     query AudioObjktData {
@@ -46,7 +44,7 @@ const PlaylistProvider = ({children}) => {
             const uniqueCreatorWalletIds = new Set(tracks.map(t => t.creator));
             const nextCreatorMetadata = (await Promise.allSettled(
                 [...uniqueCreatorWalletIds]
-                    .map(id => getUserMetadataByWalletId(id)),
+                    .map(id => getUserMetadataByWalletId(id))
             ))
                 .filter(res => res.status === 'fulfilled')
                 .reduce((obj, res) => {
@@ -68,7 +66,7 @@ const PlaylistProvider = ({children}) => {
             value={{
                 tracks,
                 setTracks,
-                creatorMetadata,
+                creatorMetadata
             }}
         >
             {children}

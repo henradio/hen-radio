@@ -4,8 +4,8 @@ import Providers from './providers';
 const View = ({children}) => {
     return (
         <Providers>
-            <div className={styles.radioView}>
-                {typeof window !== 'undefined' ? children : null}
+            <div className={styles.radioView} suppressHydrationWarning={true}>
+                {typeof window !== 'undefined' ? children : <p>no</p>}
             </div>
         </Providers>
     );
