@@ -18,7 +18,7 @@ const useTracksMetadata = (tracks) => {
                         const walletId = res.value.data.logo.split('.')[0];
                         obj[walletId] = res.value.data;
                     } catch(e) {
-                        console.warn('Error fetching metadata:', e);
+                        // Do Nothing
                     }
                     return obj;
                 }, {});

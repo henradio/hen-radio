@@ -1,5 +1,34 @@
 import { createContext, useEffect, useState } from 'react';
 import getUserMetadataByWalletId from '../api/get-user-metadata-by-wallet-id';
+import { gql, request } from 'graphql-request';
+import { ipfsUrls } from '../constants';
+
+
+const query = gql`
+    query AudioObjktData {
+        hic_et_nunc_token(where: {
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            token_holders: {
+                quantity: {_gt: "0"},
+                holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
+            }
+        }, order_by: {id: desc}) {
+            id
+            display_uri
+            level
+            description
+            title
+            token_holders {
+                holder_id
+                quantity
+            }
+            thumbnail_uri
+            mime
+            creator_id
+            artifact_uri
+        }
+    }
+`;
 
 export const PlaylistContext = createContext({
     tracks: [],
@@ -25,7 +54,7 @@ const PlaylistProvider = ({children}) => {
                         const walletId = res.value.data.logo.split('.')[0];
                         obj[walletId] = res.value.data;
                     } catch(e) {
-                        console.warn('Error fetching metadata:', e);
+                        // Do Nothing
                     }
                     return obj;
                 }, {});

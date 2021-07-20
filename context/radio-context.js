@@ -39,7 +39,6 @@ const RadioProvider = ({children}) => {
             setTimeout(() => {
                 setAudioError(null);
             }, 4000);
-            console.log(e);
         } finally {
             setPlayerState(prevState => ({...prevState, isLoading: false}));
         }
@@ -111,7 +110,7 @@ const RadioProvider = ({children}) => {
     const handleTimeChange = (event) => {
         if(!audio) return;
         const changeTime = () => {
-            const timePercent = event.target.value;
+            const timePercent = event.target.value || 0;
             audio.currentTime = timePercent * audio.duration;
         };
         if(timer) clearTimeout(timer);

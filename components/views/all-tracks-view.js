@@ -55,9 +55,6 @@ const AllTracksView = () => {
     useEffect(() => {
         (async() => {
             const data = await request('https://api.hicdex.com/v1/graphql', query);
-            console.log('DATA', data);
-            console.log('st', setTracks);
-            console.log('stt', typeof setTracks);
             const nextTracks = data?.hic_et_nunc_token?.map(o => ({
                 id: o.id,
                 creator: o.creator_id,
@@ -66,7 +63,6 @@ const AllTracksView = () => {
                 mimeType: o.mime,
                 displayUri: o.display_uri,
             }));
-            console.log('nt', nextTracks);
             setTracks(nextTracks);
         })();
         // eslint-disable-next-line react-hooks/exhaustive-deps
