@@ -11,6 +11,7 @@ const PlayPauseButton = () => {
             <LoadingIcon/>
         </span>
     );
+
     return (
         <>
             {playerState.isPlaying ? (

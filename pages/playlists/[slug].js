@@ -1,17 +1,11 @@
 import Layout from '../../components/layout/layout';
 import AllTracksView from '../../components/views/all-tracks-view';
 
-export async function getServerSideProps({params}) {
-    const {slug} = params;
-    return {
-        props: {slug}, // will be passed to the page component as props
-    }
-}
+export const getServerSideProps = async({params}) => ({props: params});
 
-const App = ({slug}) => {
-    console.log('slug', slug);
+const App = ({params}) => {
     return (
-        <Layout>
+        <Layout params={params}>
             <AllTracksView/>
         </Layout>
     );

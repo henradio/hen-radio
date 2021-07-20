@@ -8,6 +8,7 @@ const MuteButton = () => {
         controls,
         playerState,
     } = useRadio();
+
     return <>
         {playerState.isMuted ? (
             <button

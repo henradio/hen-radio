@@ -2,16 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import getObjktsCreatedBy from '../api/get-objkts-created-by';
 import getObjktsOwnedBy from '../api/get-objkts-owned-by';
 
-export const WalletContext = createContext({
-    tz: null,
-    walletId: null,
-    setWalletId: () => {},
-    objkts: null,
-    isLoading: false,
-    setIsLoading: () => {},
-    error: null,
-    setError: () => {},
-});
+export const WalletContext = createContext({});
 
 const WalletProvider = ({children}) => {
     const [walletId, setWalletId] = useState(null);

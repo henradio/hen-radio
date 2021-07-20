@@ -6,10 +6,10 @@ import useWallet from '../../hooks/use-wallet';
 import RadioPlayer from '../radio-player/radio-player';
 import View from './view';
 
-const Layout = ({children}) => {
+const Layout = ({params, children}) => {
     const {walletId} = useWallet();
     return (
-        <View>
+        <View params={params}>
             <div className={styles.headerBar}>
                 <Logo/>
                 <div className={styles.navBar}>

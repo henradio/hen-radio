@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/playlists/[slug].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/audio-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/audio-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/radio-player/buttons/mute-button.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/buttons/mute-button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/radio-player/buttons/play-pause-button.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/buttons/play-pause-button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/track-lists/track-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/track-list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/track-lists/tracks-filter-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/tracks-filter-bar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/context/playlist-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/playlist-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/context/wallet-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/wallet-context.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists/[slug].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/[slug].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tz.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +36,7 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1vZUWCyveInJXD3cyXwU55JrKGU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,6 +50,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript&#10;JSON" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/playlists" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
