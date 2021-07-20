@@ -2,27 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/get-all-tracks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/head/metadata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/radio-player/buttons/mute-button.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/buttons/mute-button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/radio-player/buttons/play-pause-button.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/buttons/play-pause-button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/track-lists/track-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/track-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/track-lists/tracks-filter-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/tracks-filter-bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/playlist-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/playlist-context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/wallet-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/wallet-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/views/all-tracks-view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/views/all-tracks-view.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/playlists/[slug].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/[slug].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists/[slug].js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/tz.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,6 +60,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pages/playlists" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/objkt" />
+      <recent name="$PROJECT_DIR$/pages" />
     </key>
   </component>
   <component name="RunManager">

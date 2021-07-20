@@ -13,14 +13,15 @@ const Layout = ({params, children}) => {
             <div className={styles.headerBar}>
                 <Logo/>
                 <div className={styles.navBar}>
-                    <Link className={styles.navBar_link} href={'/'}>All Tracks</Link>
-                    <Link className={styles.navBar_link} href={'/playlists'}>Playlists</Link>
-                    <Link
-                        className={styles.navBar_link}
-                        href={walletId ? `/tz/${walletId}` : '/tz'}
-                    >
-                        By Wallet
-                    </Link>
+                    <span className={styles.navBar_link}>
+                        <Link href={'/'}>All Tracks</Link>
+                    </span>
+                    <span className={styles.navBar_link}>
+                        <Link href={'/playlists'}>Playlists</Link>
+                    </span>
+                    <span className={styles.navBar_link}>
+                        <Link href={walletId ? `/tz/${walletId}` : '/tz'}>By Wallet</Link>
+                    </span>
                 </div>
             </div>
             <div className={styles.radioPlayerBar}>
