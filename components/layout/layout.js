@@ -24,9 +24,6 @@ const Layout = ({params, children}) => {
                     </span>
                 </div>
             </div>
-            <div className={styles.radioPlayerBar}>
-                <RadioPlayer/>
-            </div>
             <div>
                 {children}
             </div>

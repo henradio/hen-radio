@@ -1,10 +1,10 @@
 import styles from './styles.module.css';
 import getAudioTime from '../../utilities/get-audio-time';
 import useRadio from '../../hooks/use-radio';
+import { audio } from '../../constants';
 
 const ScrubberBar = () => {
     const {
-        audio,
         controls,
         runningTime,
         scrubberRef,

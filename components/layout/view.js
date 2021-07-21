@@ -1,12 +1,9 @@
 import styles from './styles.module.css';
-import Providers from './providers';
 
 const View = ({children}) =>
-    <Providers>
-        <div className={styles.radioView} suppressHydrationWarning={true}>
-            {typeof window !== 'undefined' ? children : <p>no</p>}
-        </div>
-    </Providers>
+    <div className={styles.radioView} suppressHydrationWarning={true}>
+        {typeof window !== 'undefined' ? children : null}
+    </div>
 ;
 
 export default View;

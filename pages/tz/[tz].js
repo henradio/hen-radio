@@ -23,9 +23,7 @@ const Tz = ({wallets}) =>
                 url={'https://hen.radio/tz'}
             />
         </Head>
-        <Layout>
-            <WalletView wallets={wallets}/>
-        </Layout>
+        <WalletView wallets={wallets}/>
     </>
 ;
 

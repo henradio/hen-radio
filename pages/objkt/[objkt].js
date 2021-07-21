@@ -37,9 +37,7 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
                 <link rel="canonical" href={`http://hen.radio/${objkt}`}/>
                 <Metadata title={title} description={description} image={image} url={url}/>
             </Head>
-            <Layout>
-                <AllTracksView tracks={tracks} objkt={objkt}/>
-            </Layout>
+            <AllTracksView tracks={tracks} objkt={objkt}/>
         </>
     );
 };

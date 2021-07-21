@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import TrackList from '../track-lists/track-list';
 import useRadio from '../../hooks/use-radio';
 import useTracksMetadata from '../../hooks/use-metadata';
+import { audio } from '../../constants';
 
 const PlaylistTracks = ({playlist}) => {
     const {
-        audio,
         playerState,
         controls,
         isTrackPlaying,

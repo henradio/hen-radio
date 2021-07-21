@@ -1,4 +1,3 @@
-import Layout from '../components/layout/layout';
 import WalletView from '../components/views/wallet-view';
 import Head from 'next/head';
 import Metadata from '../components/head/metadata';
@@ -17,15 +16,13 @@ const Tz = ({wallets}) =>
             <title>Wallets | Hen Radio</title>
             <link rel="canonical" href={`http://hen.radio/tz`}/>
             <Metadata
-                title={'Listen to Hen Radio'}
-                description={'Hic et Nunc audio NFT audio player and playlists'}
+                title={'Hen Radio'}
+                description={'Find Hic et Nunc audio NFT audio player, search by wallet address'}
                 image={''}
                 url={'https://hen.radio/tz'}
             />
         </Head>
-        <Layout>
-            <WalletView wallets={wallets}/>
-        </Layout>
+        <WalletView wallets={wallets}/>
     </>
 ;
 

@@ -1,16 +1,14 @@
 import { createContext, useRef, useState } from 'react';
-import useAudio from '../hooks/use-audio';
+import { audio, audioContext, fetchSrc } from '../constants';
 
-export const RadioContext = createContext({audioRef: null});
+export const RadioContext = createContext({});
 
 let rAF;
 
 const RadioProvider = ({children}) => {
     const scrubberRef = useRef();
 
-    const {audio, audioContext, fetchSrc} = useAudio();
     const [playerState, setPlayerState] = useState({
-        playing: false,
         currentTrackKey: 0,
         currentTrack: null,
         isPlaying: null,
@@ -192,8 +190,6 @@ const RadioProvider = ({children}) => {
     return (
         <RadioContext.Provider
             value={{
-                audio: audio,
-                audioContext,
                 audioError,
                 playerState,
                 setPlayerState,

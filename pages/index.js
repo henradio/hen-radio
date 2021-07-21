@@ -1,4 +1,3 @@
-import Layout from '../components/layout/layout';
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
@@ -18,14 +17,12 @@ const AllTracksPage = ({tracks}) =>
             <link rel="canonical" href={`http://hen.radio`}/>
             <Metadata
                 title={'Listen to Hen Radio'}
-                description={'Hic et Nunc audio NFT audio player and playlists'}
+                description={'Hic et Nunc NFT audio player, all tracks'}
                 image={''}
                 url={'https://hen.radio'}
             />
         </Head>
-        <Layout>
-            <AllTracksView tracks={tracks} objkt={null}/>
-        </Layout>
+        <AllTracksView tracks={tracks} objkt={null}/>
     </>
 ;
 

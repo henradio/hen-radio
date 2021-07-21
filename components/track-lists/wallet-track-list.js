@@ -4,12 +4,11 @@ import FilterTypes from '../../enums/filter-types';
 import TracksFilterBar from './tracks-filter-bar';
 import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
-import { ipfsUrls } from '../../constants';
+import { audio, ipfsUrls } from '../../constants';
 import useWallet from '../../hooks/use-wallet';
 
 const WalletTrackList = () => {
     const {
-        audio,
         playerState,
         controls,
         isTrackPlaying,
