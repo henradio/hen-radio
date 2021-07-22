@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/get-tracks-by-objkt-ids.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/playlists/[objktIds].js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/track-lists/track-links.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/get-all-tracks.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/get-all-tracks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/objkt/[objkt].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/current-playlist/current-playlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/playlists/playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/playlists/playlists.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/playlists/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/playlists/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/track-lists/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/track-lists/track-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/track-list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/views/wallet-view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/views/wallet-view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/context/playlist-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/playlist-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/general.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

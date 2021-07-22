@@ -1,15 +1,20 @@
 import styles from './styles.module.css';
+import Image from 'next/image';
 
 const CurrentPlaylist = ({playlist}) =>
 
     <div className={styles.currentPlaylistWrapper}>
         <div className={styles.currentPlaylistRow}>
             <div className={styles.currentPlaylistColumnImage}>
-                <img
-                    src={playlist.img || 'images/playlist-default.png'}
-                    alt=""
-                    className={styles.currentPlaylistImage}
-                />
+                <div>
+                    <Image
+                        width={160}
+                        height={160}
+                        src={playlist.img || 'images/playlist-default.png'}
+                        alt=""
+                        className={styles.currentPlaylistImage}
+                    />
+                </div>
             </div>
             <div className={styles.currentPlaylistColumnInfo}>
                 <h1 className={styles.currentPlaylistText}>{playlist.name}</h1>

@@ -1,11 +1,13 @@
 import styles from './styles.module.css';
 import PauseIcon from '../radio-player/icons/pause-icon';
 import PlayIcon from '../radio-player/icons/play-icon';
-import { getAlias, getCreator } from '../../utilities/general';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import RemoveFromPlaylist from '../add-to-playlist/remove-from-playlist';
 import useRadio from '../../hooks/use-radio';
 import LoadingIcon from '../radio-player/icons/loading-icon';
+import Image from 'next/image';
+import TrackLinks from './track-links';
+import { getAlias, getCreator } from '../../utilities/general';
 
 const TrackList = ({
     tracks,
@@ -50,25 +52,20 @@ const TrackList = ({
                                 />
                                 : <AddToPlaylist track={t}/>
                         }
-                        <span className={styles.trackRow_text}>
-                            <a
-                                href={`https://hicetnunc.xyz/objkt/${t.id}`}
-                                className={styles.trackRow_link}
-                            >#{t.id} {t.name}</a>
-                            <br/>
-                            By <a
-                            href={`https://hicetnunc.xyz/tz/${t.creator}`}
-                            className={styles.trackRow_link}
-                        >
-                            {getCreator(t.creator)} {getAlias(t, creatorMetadata)}
-                        </a>
-                                </span>
-                        <img
-                            alt={'Artist\'s avatar'}
-                            className={styles.trackRow_avatar}
-                            src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
+                        <TrackLinks
+                            track={t}
+                            creator={getCreator(t.creator)}
+                            alias={getAlias(t, creatorMetadata)}
                         />
-                    </div>
+                        <div className={styles.trackRow_avatar}>
+                            <Image
+                                width={26}
+                                height={26}
+                                alt={'Artist\'s avatar'}
+                                src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
+                            />
+                        </div>
+                    </div>,
                 )}
             </div>
         )}

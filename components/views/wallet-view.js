@@ -4,6 +4,7 @@ import WalletTrackList from '../track-lists/wallet-track-list';
 import styles from './styles.module.css';
 import useWallet from '../../hooks/use-wallet';
 import getUserMetadataByWalletId from '../../api/get-user-metadata-by-wallet-id';
+import Image from 'next/image';
 
 const WalletView = ({wallets}) => {
     const router = useRouter();
@@ -89,11 +90,14 @@ const WalletView = ({wallets}) => {
                                 href={`https://twitter.com/${w.twitter}`}
                             >@{w.twitter}</a>
                         </div> : null}
-                        <img
-                            alt={'Artist\'s avatar'}
-                            className={styles.walletRow_avatar}
-                            src={`https://services.tzkt.io/v1/avatars2/${w.walletId}`}
-                        />
+                        <div className={styles.trackRow_avatar}>
+                            <Image
+                                width={26}
+                                height={26}
+                                alt={'Artist\'s avatar'}
+                                src={`https://services.tzkt.io/v1/avatars2/${w.walletId}`}
+                            />
+                        </div>
                     </div>
                 ))}
             </div>

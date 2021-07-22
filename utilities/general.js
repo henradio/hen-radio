@@ -3,8 +3,6 @@ export const getCreator = creator => {
 };
 
 export const getAlias = (t, creatorMetadata) => {
-    if(!creatorMetadata) return '';
-    return t.creator in creatorMetadata
-        ? creatorMetadata[t.creator].alias
-        : '';
+    if(!creatorMetadata || !t.creator in creatorMetadata) return '';
+    return creatorMetadata[t.creator]?.alias || creatorMetadata[t.creator]?.twitter
 };

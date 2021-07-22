@@ -3,6 +3,8 @@ import { createRef, useState } from 'react';
 import Image from 'next/image';
 import { getCreator } from '../../utilities/general';
 import useUserPlaylists from '../../hooks/use-user-playlists';
+import Link from 'next/link';
+import TrackLinks from '../track-lists/track-links';
 
 const Playlists = ({handlePlaylistChange, playlists}) => {
     const {createUserPlaylist} = useUserPlaylists();
@@ -81,7 +83,7 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
                 ) : (
                     <div className={styles.filteredPlaylists}>
                         {filteredPlaylists.map(p => (
-                            <div className={styles.filteredPlaylists_row}>
+                            <div key={p.name} className={styles.filteredPlaylists_row}>
                                 <button
                                     key={p.name}
                                     onClick={handlePlaylistChange(p)}
@@ -99,22 +101,16 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
                                     <h3 className={styles.filteredPlaylists_title}>{p.name}</h3>
                                     <p className={styles.filteredPlaylists_subTitle}>{p.curator}</p>
                                     {p.tracks.map(t => (
-                                        <div className={styles.trackRow}>
-                                        <span className={styles.trackRow_text}>
-                                            <a
-                                                href={`https://hicetnunc.xyz/objkt/${t.id}`}
-                                                className={styles.trackRow_link}
-                                            >#{t.id} {t.name}</a>
-                                            <br/>By <a
-                                            href={`https://hicetnunc.xyz/tz/${t.creator}`}
-                                            className={styles.trackRow_link}
-                                        >{getCreator(t.creator)}</a>
-                                        </span>
-                                            <img
-                                                alt={'Artist\'s avatar'}
-                                                className={styles.trackRow_avatar}
-                                                src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
-                                            />
+                                        <div key={t.id} className={styles.trackRow}>
+                                            <TrackLinks track={t} creator={getCreator(t.creator)}/>
+                                            <div className={styles.trackRow_avatar}>
+                                                <Image
+                                                    width={26}
+                                                    height={26}
+                                                    alt={'Artist\'s avatar'}
+                                                    src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
+                                                />
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
