@@ -17,14 +17,14 @@ const ScrubberBar = () => {
                 className={styles.radioRange}
                 title="time"
                 type="range"
-                value={runningTime ? runningTime / audio.duration : 0}
+                value={runningTime && audio?.duration ? runningTime / audio.duration : 0}
                 min="0"
                 max="1"
                 step="0.001"
                 onChange={controls.time}
             />
             <div className={styles.runningTime}>
-                {getAudioTime(runningTime)} of {getAudioTime(audio.duration)}
+                {getAudioTime(runningTime)} of {getAudioTime(audio?.duration)}
             </div>
         </div>
     );

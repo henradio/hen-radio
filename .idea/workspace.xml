@@ -3,24 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/providers.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/providers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/radio-player/playlist-tracks.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/playlist-tracks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/radio-player/radio-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/radio-player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/radio-player/scrubber-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/scrubber-bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/track-lists/wallet-track-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/track-lists/wallet-track-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/views/all-tracks-view.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/views/all-tracks-view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/audio-context.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/radio-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/radio-context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/use-audio.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/objkt/[objkt].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/playlists.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tz.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tz/[tz].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz/[tz].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
