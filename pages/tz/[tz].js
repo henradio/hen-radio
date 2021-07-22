@@ -1,4 +1,3 @@
-import Layout from '../../components/layout/layout';
 import WalletView from '../../components/views/wallet-view';
 import Head from 'next/head';
 import Metadata from '../../components/head/metadata';

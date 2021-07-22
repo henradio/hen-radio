@@ -1,4 +1,3 @@
-import Layout from '../../components/layout/layout';
 import AllTracksView from '../../components/views/all-tracks-view';
 import getAllTracks from '../../api/get-all-tracks';
 import Head from 'next/head';
@@ -22,12 +21,16 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
     const byName = creator?.twitter
         ? ` by @${creator.twitter}`
         : creator?.alias
-        ? ` by ${creator.alias}`
-        : ''
-    const title = currentTrack ? `Listen to ${currentTrack.name}${byName} on Hen Radio` : 'Not found';
-    const description = currentTrack ? `${currentTrack.description}` : 'An audio objkt with this id could not be found.';
+            ? ` by ${creator.alias}`
+            : '';
+    const title = currentTrack
+        ? `Listen to ${currentTrack.name}${byName} on Hen Radio`
+        : 'Not found';
+    const description = currentTrack
+        ? `${currentTrack.description}`
+        : 'An audio objkt with this id could not be found.';
     const image = currentTrack ? `${currentTrack.img}` : '';
-    const url = `https://hen.radio/objkt/${objkt}`
+    const url = `https://hen.radio/objkt/${objkt}`;
 
     return (
         <>

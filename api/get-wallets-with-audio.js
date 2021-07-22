@@ -14,9 +14,9 @@ const query = gql`
     }
 `;
 
-const getWalletsWithAudio = async () => {
+const getWalletsWithAudio = async() => {
     const data = await request('https://api.hicdex.com/v1/graphql', query);
-    return  [...new Set(data?.hic_et_nunc_token?.map(o => o.creator_id))];
-}
+    return [...new Set(data?.hic_et_nunc_token?.map(o => o.creator_id))];
+};
 
 export default getWalletsWithAudio;

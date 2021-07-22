@@ -44,6 +44,8 @@ const RadioProvider = ({children}) => {
 
     const handlePlay = async() => {
         if(!audio) return;
+        if (playerState.isPlaying === null)
+            await fetchSrc(playerState.currentTrack.src, playerState.currentTrack.mimeType);
         await playAudio();
         setPlayerState(prevState => ({...prevState, isPlaying: true}));
     };

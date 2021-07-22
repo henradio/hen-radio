@@ -1,4 +1,3 @@
-
 const Metadata = ({title, description, image, url}) =>
     <>
         <meta name="twitter:card" content="summary"/>
@@ -29,4 +28,4 @@ const Metadata = ({title, description, image, url}) =>
     </>
 ;
 
-export default Metadata
+export default Metadata;

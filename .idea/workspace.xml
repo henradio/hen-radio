@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed6530e-c291-48ed-98c0-3d71420465e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/radio-player/scrubber-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/radio-player/scrubber-bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/get-all-tracks.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/get-all-tracks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/get-wallets-with-audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/get-wallets-with-audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/head/metadata.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/head/metadata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/context/radio-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/radio-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/objkt/[objkt].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/objkt/[objkt].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tz/[tz].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tz/[tz].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
