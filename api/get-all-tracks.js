@@ -12,8 +12,6 @@ const query = gql`
         }, order_by: {id: desc}) {
             id
             display_uri
-            level
-            description
             title
             token_holders {
                 holder_id

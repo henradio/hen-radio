@@ -14,6 +14,8 @@ export const getServerSideProps = async({params}) => {
         if(response.status === 200) creator = await response.data;
     }
 
+    console.log('tttt', tracks[0])
+
     return {props: {objkt, tracks, currentTrack, creator}};
 };
 
