@@ -31,9 +31,7 @@ const AddToPlaylist = ({track}) => {
                                 className={styles.addToPlaylist_button}
                                 onClick={handleAddTrack(up.name)}
                                 key={up.name}
-                            >{up.name}
-                                
-                            </button>
+                            >{up.name}</button>
                         ))
                         : <p>No Playlists</p>}
                 </div>
