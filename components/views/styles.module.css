@@ -60,6 +60,17 @@
     margin-bottom: 10px;
 }
 
+
+.trackRow_avatar {
+    width: 26px;
+    height: 26px;
+    overflow: hidden;
+    border-radius: 13px;
+    margin: 0 0 0 auto;
+    flex-shrink: 0;
+}
+
+
 @media screen and (min-width: 600px) {
     .walletInput {
         max-width: 320px;

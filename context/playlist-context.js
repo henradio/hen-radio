@@ -26,7 +26,6 @@ const PlaylistProvider = ({children}) => {
                     }
                     return obj;
                 }, {});
-            console.log('ncm', nextCreatorMetadata);
             setCreatorMetadata(nextCreatorMetadata);
         })();
         // eslint-disable-next-line react-hooks/exhaustive-deps
