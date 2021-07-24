@@ -55,7 +55,6 @@ const RadioPlayer = () => {
         };
     });
 
-    if(typeof window === 'undefined' || !tracks) return null;
     const track = playerState.currentTrack;
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');

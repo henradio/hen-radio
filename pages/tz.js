@@ -2,7 +2,7 @@ import WalletView from '../components/views/wallet-view';
 import getWalletsWithAudio from '../api/get-wallets-with-audio';
 import Head from 'next/head';
 
-export const getServerSideProps = async({params}) => {
+export const getServerSideProps = async() => {
     const wallets = await getWalletsWithAudio();
 
     return {props: {wallets}};

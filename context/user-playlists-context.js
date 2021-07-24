@@ -1,12 +1,7 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import setLocalStorage from '../utilities/set-local-storage';
 
-export const UserPlaylistsContext = createContext({
-    userPlaylists: [],
-    createUserPlaylist: (name) => {},
-    addTrack: (playlistName, track) => {},
-    removeTrack: (playlistName, track) => {},
-});
+export const UserPlaylistsContext = createContext();
 
 const UserPlaylistProvider = ({children}) => {
     const [userPlaylists, setUserPlaylists] = useState([]);

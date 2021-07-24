@@ -1,8 +1,7 @@
-import {createContext, useEffect, useState} from 'react';
+import { createContext, useEffect, useState } from 'react';
 import getUserMetadataByWalletId from '../api/get-user-metadata-by-wallet-id';
-import {gql} from 'graphql-request';
 
-export const PlaylistContext = createContext({});
+export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({children}) => {
     const [tracks, setTracks] = useState([]);
@@ -14,7 +13,7 @@ const PlaylistProvider = ({children}) => {
             const uniqueCreatorWalletIds = new Set(tracks.map(t => t.creator));
             const nextCreatorMetadata = (await Promise.allSettled(
                 [...uniqueCreatorWalletIds]
-                    .map(id => getUserMetadataByWalletId(id))
+                    .map(id => getUserMetadataByWalletId(id)),
             ))
                 .filter(res => res.status === 'fulfilled')
                 .reduce((obj, res) => {
@@ -36,7 +35,7 @@ const PlaylistProvider = ({children}) => {
             value={{
                 tracks,
                 setTracks,
-                creatorMetadata
+                creatorMetadata,
             }}
         >
             {children}

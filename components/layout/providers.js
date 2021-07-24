@@ -12,7 +12,7 @@ const Providers = ({children}) =>
             <UserPlaylistProvider>
                 <PlaylistProvider>
                     <Layout>
-                        <div className={styles.radioPlayerBar} suppressHydrationWarning={true}>
+                        <div className={styles.radioPlayerBar}>
                             <RadioPlayer/>
                         </div>
                     {children}

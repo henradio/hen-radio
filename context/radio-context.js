@@ -1,7 +1,7 @@
 import { createContext, useRef, useState } from 'react';
 import { audio, audioContext, fetchSrc } from '../constants';
 
-export const RadioContext = createContext({});
+export const RadioContext = createContext();
 
 let rAF;
 
@@ -44,7 +44,7 @@ const RadioProvider = ({children}) => {
 
     const handlePlay = async() => {
         if(!audio) return;
-        if (playerState.isPlaying === null)
+        if(playerState.isPlaying === null)
             await fetchSrc(playerState.currentTrack.src, playerState.currentTrack.mimeType);
         await playAudio();
         setPlayerState(prevState => ({...prevState, isPlaying: true}));
