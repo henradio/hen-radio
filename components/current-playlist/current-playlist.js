@@ -2,7 +2,6 @@ import styles from './styles.module.css';
 import Image from 'next/image';
 
 const CurrentPlaylist = ({playlist}) =>
-
     <div className={styles.currentPlaylistWrapper}>
         <div className={styles.currentPlaylistRow}>
             <div className={styles.currentPlaylistColumnImage}>
@@ -10,7 +9,7 @@ const CurrentPlaylist = ({playlist}) =>
                     <Image
                         width={160}
                         height={160}
-                        src={playlist.img || 'images/playlist-default.png'}
+                        src={playlist.img || '/images/playlist-default.png'}
                         alt=""
                         className={styles.currentPlaylistImage}
                     />
