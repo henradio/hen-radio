@@ -28,7 +28,7 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
     const description = currentTrack?.description
         ? `${currentTrack.description}`
         : 'An audio objkt with this id could not be found.';
-    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
+    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
     const url = `https://hen.radio/objkt/${objkt}`;
 
     return (

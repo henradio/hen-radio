@@ -4,7 +4,7 @@ import Head from 'next/head';
 const PlaylistsPage = () => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player and playlists';
-    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
+    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
     const url = 'https://hen.radio/playlists';
 
     return <>
