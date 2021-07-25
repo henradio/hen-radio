@@ -41,6 +41,7 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) =>
             <Head>
                 <meta charSet="utf-8"/>
                 <title>{currentTrack.name + byName} | Hen Radio | NFT Music Player</title>
+                <meta name="description" content={description}/>
                 <link rel="canonical" href={`http://hen.radio/${objkt}`}/>
                 <meta name="twitter:card" content="summary"/>
                 <meta name="twitter:site" content="@hen_radio"/>

@@ -1,5 +1,10 @@
 const UnmuteIcon = () =>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <svg
+        aria-hidden="true"
+        focusable="false"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+    >
         <title>Unmute</title>
         <path
             fill="currentColor"

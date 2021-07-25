@@ -18,6 +18,7 @@ const PlaylistsPage = ({objktIds, tracks}) => {
         <Head>
             <meta charSet="utf-8"/>
             <title>Playlist with Objkts {objktIds.join(', ')} | Hen Radio | NFT Music Player</title>
+            <meta name="description" content={description}/>
             <link rel="canonical" href={`http://hen.radio/playlists/${objktIds.join(',')}`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>

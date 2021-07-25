@@ -11,6 +11,7 @@ const PlaylistsPage = () => {
         <Head>
             <meta charSet="utf-8"/>
             <title>Playlists | Hen Radio | NFT Music Player</title>
+            <meta name="description" content={description}/>
             <link rel="canonical" href={`http://hen.radio/playlists`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>

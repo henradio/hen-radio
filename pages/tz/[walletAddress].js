@@ -25,6 +25,7 @@ const Tz = ({creator, tracks, wallets}) => {
         <Head>
             <meta charSet="utf-8"/>
             <title>Wallets | Hen Radio</title>
+            <meta name="description" content={description}/>
             <link rel="canonical" href={`http://hen.radio/tz`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>

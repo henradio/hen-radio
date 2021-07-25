@@ -10,7 +10,9 @@ import { ipfsUrls } from '../../constants';
 import PrevButton from './buttons/prev-button';
 import NextButton from './buttons/next-button';
 import ScrubberBar from './scrubber-bar';
-import Image from 'next/image'
+import Image from 'next/image';
+import LinkIcon from './icons/link-icon';
+import LinkButton from './buttons/link-button';
 
 const RadioPlayer = () => {
     const {
@@ -58,6 +60,7 @@ const RadioPlayer = () => {
     const track = playerState.currentTrack;
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
+
     return (
         <div className={styles.radioPlayerContainer}>
             <div className={styles.currentPlaylistImageHolder}>
@@ -89,9 +92,10 @@ const RadioPlayer = () => {
                     />
                     <MuteButton/>
                 </div>
-                <ScrubberBar />
+                <ScrubberBar/>
                 <div className={styles.trackMetaRow}>
                     {track ? <AddToPlaylist track={track}/> : null}
+                    {track ? <LinkButton track={track}/> : null}
                     {playerState.currentTrack !== null
                         ? (
                             <div className={styles.currentTrack}>
@@ -104,7 +108,8 @@ const RadioPlayer = () => {
                                 By <a
                                 href={`https://hicetnunc.xyz/tz/${track.creator}`}
                                 className={styles.trackRow_link}
-                            >{getCreator(track.creator)} {getAlias(track.creator, creatorMetadata)}</a>
+                            >{getCreator(track.creator)} {getAlias(track.creator,
+                                creatorMetadata)}</a>
                                 <br/>
                                 {track.name}
                             </span>
