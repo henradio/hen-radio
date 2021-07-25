@@ -7,16 +7,13 @@ import usePlaylist from '../../hooks/use-playlist';
 import { audio, ipfsUrls } from '../../constants';
 import useWallet from '../../hooks/use-wallet';
 
-const WalletTrackList = () => {
+const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     const {
         playerState,
         controls,
         isTrackPlaying,
     } = useRadio();
-    const {objkts, walletId} = useWallet();
-
-    const {tracks, setTracks, creatorMetadata} = usePlaylist();
-
+    const {setTracks, creatorMetadata} = usePlaylist();
     const [filteredTracks, setFilteredTracks] = useState([]);
     const [filter, setFilter] = useState(FilterTypes.ALL);
 
@@ -29,16 +26,13 @@ const WalletTrackList = () => {
     }
 
     useEffect(() => {
-        setTracks(objkts.map(o => ({
-            id: o.id,
-            creator: o.creator_id,
-            name: o.title,
-            src: `${ipfsUrls[~~(Math.random() * ipfsUrls.length)]}/${o.artifact_uri.slice(7)}`,
-            mimeType: o.mime,
-            displayUri: o.display_uri,
-        })));
+        setTracks(tracks);
+        if(playerState.currentTrack === null) {
+            const foundIndex = tracks.findIndex(t => t.id === Number(objkt));
+            controls.initialiseTrack(tracks)(foundIndex !== -1 ? foundIndex : 0)();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [objkts]);
+    }, [tracks]);
 
     useEffect(() => {
         if(!tracks) return;
@@ -47,9 +41,9 @@ const WalletTrackList = () => {
                 case FilterTypes.ALL:
                     return true;
                 case FilterTypes.CREATIONS:
-                    return t.creator === walletId;
+                    return t.creator === walletAddress;
                 case FilterTypes.COLLECTIONS:
-                    return t.creator !== walletId;
+                    return t.creator !== walletAddress;
                 default:
                     return true;
             }

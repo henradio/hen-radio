@@ -1,4 +1,5 @@
 import { gql, request } from 'graphql-request';
+import { ipfsUrls } from '../constants';
 
 const query = gql`
     query AudioObjktData($ownerId: String!) {
@@ -28,7 +29,15 @@ const getObjktsOwnedBy = async(walletId) => {
         query,
         {ownerId: walletId},
     );
-    return response.hic_et_nunc_token || [];
+    return response?.hic_et_nunc_token?.map(o => ({
+        id: o.id,
+        creator: o.creator_id,
+        name: o.title,
+        src: `${ipfsUrls[~~(Math.random() * ipfsUrls.length)]}/${o.artifact_uri.slice(7)}`,
+        mimeType: o.mime,
+        displayUri: o.display_uri,
+        description: o.description
+    })) || [];
 };
 
 export default getObjktsOwnedBy;

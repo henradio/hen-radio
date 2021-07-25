@@ -1,8 +1,7 @@
 import { gql, request } from 'graphql-request';
-import { ipfsUrls } from '../constants';
 
 const query = gql`
-    query AudioObjktData($creatorId: String!) {
+    query AudioObjktData($objktId: bigint!) {
         hic_et_nunc_token(where: {
             mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
             token_holders: {
@@ -11,7 +10,7 @@ const query = gql`
                     _neq: "tz1burnburnburnburnburnburnburjAYjjX"
                 }
             }
-            creator_id: {_eq: $creatorId}
+            id: {_eq: $objktId}
         }, order_by: {id: desc}) {
             id
             display_uri
@@ -25,21 +24,13 @@ const query = gql`
     }
 `;
 
-const getObjktsCreatedBy = async(walletId) => {
+const getObjktById = async(objktId) => {
     const response = await request(
         'https://api.hicdex.com/v1/graphql',
         query,
-        {creatorId: walletId},
+        {objktId},
     );
-    return response?.hic_et_nunc_token?.map(o => ({
-        id: o.id,
-        creator: o.creator_id,
-        name: o.title,
-        src: `${ipfsUrls[~~(Math.random() * ipfsUrls.length)]}/${o.artifact_uri.slice(7)}`,
-        mimeType: o.mime,
-        displayUri: o.display_uri,
-        description: o.description
-    })) || [];
+    return response.hic_et_nunc_token?.[0] || null;
 };
 
-export default getObjktsCreatedBy;
+export default getObjktById;

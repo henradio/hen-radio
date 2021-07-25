@@ -1,29 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import WalletTrackList from '../track-lists/wallet-track-list';
-import styles from './styles.module.css';
-import useWallet from '../../hooks/use-wallet';
 import getUserMetadataByWalletId from '../../api/get-user-metadata-by-wallet-id';
-import Image from 'next/image';
+import WalletList from '../wallets/wallet-list';
+import styles from './styles.module.css';
 
 const WalletView = ({wallets}) => {
-    const router = useRouter();
-    const {tz} = router.query;
-    const {walletId, setWalletId, objkts, isLoading, setIsLoading, error} = useWallet();
     const [walletsWithAudio, setWalletsWithAudio] = useState([]);
-
-    useEffect(() => {
-        if(!tz || tz === walletId) return;
-        setWalletId(tz);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tz]);
-
+    const [filteredWallets, setFilteredWallets] = useState([]);
     useEffect(() => {
         (async() => {
-            const walletsWithMetadata = (await Promise.allSettled(
-                [...wallets]
-                    .map(id => getUserMetadataByWalletId(id)),
-            ))
+            const walletsWithMetadata = (
+                await Promise.allSettled([...wallets].map(id => getUserMetadataByWalletId(id))))
                 .filter(res => res.status === 'fulfilled')
                 .map((res) => ({
                     ...res.value.data,
@@ -31,76 +17,36 @@ const WalletView = ({wallets}) => {
                 }));
 
             setWalletsWithAudio(walletsWithMetadata);
+            setFilteredWallets(walletsWithMetadata);
         })();
     }, [wallets]);
 
     const [walletIdInput, setWalletIdInput] = useState('');
 
+    // Todo: add filter wallets on search
+
     const handleWalletIdChange = (event) => {
-        setWalletIdInput(event.target.value);
-    };
-
-    const handleWalletIdSelect = (walletId) => () => {
-        setWalletId(walletId);
-    };
-
-    const handleGetTracks = () => {
-        setWalletId(walletIdInput);
-        setWalletIdInput('');
-        setIsLoading(true);
-        if(walletIdInput) history.push(`/tz/${walletIdInput}`);
+        const search = event.target.value.toLowerCase();
+        setFilteredWallets(walletsWithAudio.filter(w => (
+                w.walletId.toLowerCase().includes(search) ||
+                w.twitter?.toLowerCase().includes(search) ||
+                w.alias?.toLowerCase().includes(search)
+            )
+        ));
+        setWalletIdInput(event.target.value)
     };
 
     return (
         <>
-            {objkts ? (
-                <>
-                    {isLoading ? <p>Loading...</p> : <WalletTrackList/>}
-                </>
-            ) : (<>{isLoading ? <p>Loading...</p> : null}</>)}
             <div className={styles.walletIdEntry}>
                 <input
                     className={styles.walletInput}
                     value={walletIdInput}
-                    placeholder={'Enter a wallet address'}
+                    placeholder={'Filter on wallet address and name'}
                     onChange={handleWalletIdChange}
                 />
-                <button
-                    className={styles.button_getObjktData}
-                    onClick={handleGetTracks}
-                    disabled={!walletIdInput}
-                >Get Tracks
-                </button>
             </div>
-            {error && <p className={styles.errorText}>{error}</p>}
-            <div>
-                <h2 className={styles.walletTitle}>Wallets</h2>
-                {walletsWithAudio.map((w) => (
-                    <div
-                        key={w.walletId}
-                        className={styles.walletRow}
-                    >
-                        <button
-                            className={styles.walletRow_button}
-                            onClick={handleWalletIdSelect(w.walletId)}
-                        >{w.walletId}</button>
-                        {w.twitter ? <div>
-                            <a
-                                className={styles.walletRow_alias}
-                                href={`https://twitter.com/${w.twitter}`}
-                            >@{w.twitter}</a>
-                        </div> : null}
-                        <div className={styles.trackRow_avatar}>
-                            <Image
-                                width={26}
-                                height={26}
-                                alt={'Artist\'s avatar'}
-                                src={`https://services.tzkt.io/v1/avatars2/${w.walletId}`}
-                            />
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <WalletList wallets={filteredWallets}/>
         </>
     );
 };

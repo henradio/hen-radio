@@ -1,14 +1,21 @@
 import WalletView from '../../components/views/wallet-view';
 import Head from 'next/head';
 import getWalletsWithAudio from '../../api/get-wallets-with-audio';
+import getObjktsCreatedBy from '../../api/get-objkts-created-by';
+import WalletTrackList from '../../components/track-lists/wallet-track-list';
+import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 
 export const getServerSideProps = async({params}) => {
+    const {walletAddress} = params;
     const wallets = await getWalletsWithAudio();
-
-    return {props: {wallets}};
+    const tracksCreated = await getObjktsCreatedBy(walletAddress);
+    const tracksOwned = await getObjktsOwnedBy(walletAddress);
+    const tracks = [...tracksCreated, ...tracksOwned];
+    const creator = walletAddress;
+    return {props: {creator, tracks, wallets}};
 };
 
-const Tz = ({wallets}) => {
+const Tz = ({creator, tracks, wallets}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc audio NFT audio player and playlists';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
@@ -45,6 +52,7 @@ const Tz = ({wallets}) => {
             <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
             <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         </Head>
+        <WalletTrackList tracks={tracks} walletAddress={creator} objkt={null}/>
         <WalletView wallets={wallets}/>
     </>;
 };

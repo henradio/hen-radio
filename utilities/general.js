@@ -1,5 +1,7 @@
 export const getCreator = creator => {
-    return creator.slice(0, 5) + '...' + creator.slice(-5);
+    const start = creator?.slice(0, 5) || '';
+    const end = creator?.slice(-5) || '';
+    return `${start}...${end}`
 };
 
 export const getAlias = (t, creatorMetadata) => {
