@@ -1,6 +1,7 @@
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
+import logo from '../public/images/hen-radio-logo-social.png';
 
 export const getServerSideProps = async() => {
     const tracks = await getAllTracks();
