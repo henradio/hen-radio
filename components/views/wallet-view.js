@@ -23,8 +23,6 @@ const WalletView = ({wallets}) => {
 
     const [walletIdInput, setWalletIdInput] = useState('');
 
-    // Todo: add filter wallets on search
-
     const handleWalletIdChange = (event) => {
         const search = event.target.value.toLowerCase();
         setFilteredWallets(walletsWithAudio.filter(w => (
@@ -52,5 +50,3 @@ const WalletView = ({wallets}) => {
 };
 
 export default WalletView;
-
-

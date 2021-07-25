@@ -55,7 +55,7 @@ const TrackList = ({
                         <TrackLinks
                             track={t}
                             creator={getCreator(t.creator)}
-                            alias={getAlias(t, creatorMetadata)}
+                            alias={getAlias(t.creator, creatorMetadata)}
                         />
                         <div className={styles.trackRow_avatar}>
                             <Image

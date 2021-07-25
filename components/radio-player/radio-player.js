@@ -104,7 +104,7 @@ const RadioPlayer = () => {
                                 By <a
                                 href={`https://hicetnunc.xyz/tz/${track.creator}`}
                                 className={styles.trackRow_link}
-                            >{getCreator(track.creator)} {getAlias(track, creatorMetadata)}</a>
+                            >{getCreator(track.creator)} {getAlias(track.creator, creatorMetadata)}</a>
                                 <br/>
                                 {track.name}
                             </span>

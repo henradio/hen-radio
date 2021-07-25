@@ -3,8 +3,10 @@ import useRadio from '../../hooks/use-radio';
 import { useEffect } from 'react';
 import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
+import styles from './styles.module.css';
+import { getAlias, getCreator } from '../../utilities/general';
 
-const ObjktView = ({objkt, tracks}) => {
+const ObjktView = ({walletAddress, creator, objkt, tracks}) => {
     const {
         playerState,
         controls,
@@ -33,11 +35,14 @@ const ObjktView = ({objkt, tracks}) => {
     if(!tracks) return <p>Loading...</p>;
 
     return (
-        <TrackList
-            tracks={tracks}
-            isTrackPlaying={isTrackPlaying}
-            creatorMetadata={creatorMetadata}
-        />
+        <>
+            <h2 className={styles.subTitle}>Tracks by {getCreator(walletAddress)} {creator?.alias || creator?.twitter || ''}</h2>
+            <TrackList
+                tracks={tracks}
+                isTrackPlaying={isTrackPlaying}
+                creatorMetadata={creatorMetadata}
+            />
+        </>
     );
 };
 

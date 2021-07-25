@@ -18,10 +18,10 @@ export const getServerSideProps = async({params}) => {
         if(response.status === 200) creator = await response.data;
     }
 
-    return {props: {wallets, objkt, tracks, currentTrack, creator}};
+    return {props: {wallets, objkt, tracks, currentTrack, creator, walletAddress: track.creator_id}};
 };
 
-const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
+const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) => {
     const byName = creator?.twitter
         ? ` by @${creator.twitter}`
         : creator?.alias
@@ -68,7 +68,7 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
                 <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
             </Head>
-            <ObjktView tracks={tracks} objkt={objkt}/>
+            <ObjktView walletAddress={walletAddress} creator={creator} tracks={tracks} objkt={objkt}/>
         </>
     );
 };

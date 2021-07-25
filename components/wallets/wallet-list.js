@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const WalletList = ({wallets}) => <div>
-    <h2 className={styles.walletTitle}>Wallets</h2>
+    <h2 className={styles.subTitle}>Wallets</h2>
     {wallets.map((w) => (
         <div key={w.walletId} className={styles.walletRow}>
                 <span className={styles.walletRow_button}>
