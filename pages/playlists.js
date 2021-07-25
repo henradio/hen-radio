@@ -4,13 +4,13 @@ import Head from 'next/head';
 const PlaylistsPage = () => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player and playlists';
-    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fplaylist-default.png&w=256&q=75';
+    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
     const url = 'https://hen.radio/playlists';
 
     return <>
         <Head>
             <meta charSet="utf-8"/>
-            <title>Playlists | Hen Radio</title>
+            <title>Playlists | Hen Radio | NFT Music Player</title>
             <link rel="canonical" href={`http://hen.radio/playlists`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>

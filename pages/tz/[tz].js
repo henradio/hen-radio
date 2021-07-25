@@ -11,7 +11,7 @@ export const getServerSideProps = async({params}) => {
 const Tz = ({wallets}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc audio NFT audio player and playlists';
-    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fplaylist-default.png&w=256&q=75';
+    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
     const url = 'https://hen.radio/tz';
 
     return <>

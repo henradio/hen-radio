@@ -25,17 +25,17 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator}) => {
     const title = currentTrack
         ? `Listen to ${currentTrack.name}${byName} on Hen Radio`
         : 'Not found';
-    const description = currentTrack
+    const description = currentTrack?.description
         ? `${currentTrack.description}`
         : 'An audio objkt with this id could not be found.';
-    const image = currentTrack ? `${currentTrack.img}` : '';
+    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
     const url = `https://hen.radio/objkt/${objkt}`;
 
     return (
         <>
             <Head>
                 <meta charSet="utf-8"/>
-                <title>{currentTrack ? currentTrack.name + byName : 'All'} | Hen Radio</title>
+                <title>{currentTrack ? currentTrack.name + byName : 'All'} | Hen Radio | NFT Music Player</title>
                 <link rel="canonical" href={`http://hen.radio/${objkt}`}/>
                 <meta name="twitter:card" content="summary"/>
                 <meta name="twitter:site" content="@hen_radio"/>

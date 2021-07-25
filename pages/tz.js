@@ -11,12 +11,12 @@ export const getServerSideProps = async() => {
 const Tz = ({wallets}) => {
     const title = 'Hen Radio';
     const description = 'Find Hic et Nunc audio NFT audio player, search by wallet address';
-    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fplaylist-default.png&w=256&q=75';
+    const image = 'https://hen.radio/_next/image?url=%2Fimages%2Fhen-radio-logo-social.png&w=1024&q=75';
     const url = 'https://hen.radio/tz';
     return <>
         <Head>
             <meta charSet="utf-8"/>
-            <title>Wallets | Hen Radio</title>
+            <title>Wallets | Hen Radio | NFT Music Player</title>
             <link rel="canonical" href={`http://hen.radio/tz`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>

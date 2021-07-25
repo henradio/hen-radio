@@ -13,6 +13,7 @@ const query = gql`
             id
             display_uri
             title
+            description
             token_holders {
                 holder_id
                 quantity
@@ -34,6 +35,7 @@ const getAllTracks = async() => {
         src: `${ipfsUrls[~~(Math.random() * ipfsUrls.length)]}/${o.artifact_uri.slice(7)}`,
         mimeType: o.mime,
         displayUri: o.display_uri,
+        description: o.description
     })) || [];
 };
 
