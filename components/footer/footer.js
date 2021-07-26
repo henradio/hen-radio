@@ -22,8 +22,8 @@ const Footer = () =>
                                          ,{' '}
             <a href='https://twitter.com/jclayton'>@jclayton</a>
         </p>
-        <p className={styles.footerText}>View
-                                         on <a href='https://github.com/OrderAndCh4oS/hen-radio-next'>GitHub</a>
+        <p className={styles.footerText}>
+            View on <a href='https://github.com/OrderAndCh4oS/hen-radio-next'>GitHub</a>
         </p>
     </div>
 ;
