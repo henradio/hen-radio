@@ -44,10 +44,15 @@ const RadioProvider = ({children}) => {
 
     const handlePlay = async() => {
         if(!audio) return;
-        if(playerState.isPlaying === null)
+        setPlayerState(prevState => ({
+            ...prevState,
+            isLoading: true,
+        }));
+        if(playerState.isPlaying === null) {
             await fetchSrc(playerState.currentTrack.src, playerState.currentTrack.mimeType);
+        }
         await playAudio();
-        setPlayerState(prevState => ({...prevState, isPlaying: true}));
+        setPlayerState(prevState => ({...prevState, isPlaying: true, isLoading: false}));
     };
 
     const handleSelectTrack = (tracks) => i => async() => {
@@ -73,7 +78,7 @@ const RadioProvider = ({children}) => {
         setPlayerState(prevState => ({...prevState, isLoading: true}));
         cancelAnimationFrame(rAF);
         // Note: Use fetchSrc if we have issues with duration not being present in the audio meta
-        await fetchSrc(tracks[i].src, tracks[i].mimeType);
+        // await fetchSrc(tracks[i].src, tracks[i].mimeType);
         // audio.src = tracks[i].src;
         // audio.mimeType = tracks[i].mimeType;
         setRunningTime(0);
