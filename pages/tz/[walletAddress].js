@@ -4,18 +4,40 @@ import getWalletsWithAudio from '../../api/get-wallets-with-audio';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import WalletTrackList from '../../components/track-lists/wallet-track-list';
 import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
+import { useRouter } from 'next/router';
 
-export const getServerSideProps = async({params}) => {
+export async function getStaticPaths() {
+    const wallets = await getWalletsWithAudio();
+    return {
+        paths: wallets.map(walletAddress => ({ params: {walletAddress}})),
+        fallback: true
+    };
+}
+
+export const getStaticProps = async({params}) => {
     const {walletAddress} = params;
     const wallets = await getWalletsWithAudio();
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
     const tracksOwned = await getObjktsOwnedBy(walletAddress);
     const tracks = [...tracksCreated, ...tracksOwned];
     const creator = walletAddress;
-    return {props: {creator, tracks, wallets}};
+    return {
+        props: {creator, tracks, wallets},
+        revalidate: 300
+    };
 };
 
 const Tz = ({creator, tracks, wallets}) => {
+    const {isFallback} = useRouter();
+
+    if(isFallback) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+
+        return <p>Loading...</p>;
+    }
+
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc audio NFT audio player and playlists';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';

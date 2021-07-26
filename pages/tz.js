@@ -2,10 +2,13 @@ import WalletView from '../components/views/wallet-view';
 import getWalletsWithAudio from '../api/get-wallets-with-audio';
 import Head from 'next/head';
 
-export const getServerSideProps = async() => {
+export const getStaticProps = async() => {
     const wallets = await getWalletsWithAudio();
 
-    return {props: {wallets}};
+    return {
+        props: {wallets},
+        revalidate: 300
+    };
 };
 
 const Tz = ({wallets}) => {

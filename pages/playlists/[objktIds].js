@@ -6,6 +6,7 @@ export const getServerSideProps = async({params}) => {
     const {objktIds: objktIdStr} = params;
     const objktIds = objktIdStr?.split(',').map(id => Number(id));
     const tracks = await getTracksByObjktIds(objktIds);
+
     return {props: {objktIds, tracks}};
 };
 

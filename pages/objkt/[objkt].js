@@ -4,8 +4,18 @@ import ObjktView from '../../components/views/objkt-view';
 import getWalletsWithAudio from '../../api/get-wallets-with-audio';
 import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
+import { useRouter } from 'next/router';
 
-export const getServerSideProps = async({params}) => {
+export async function getStaticPaths() {
+    const objkts = await getWalletsWithAudio();
+
+    return {
+        paths: objkts.map(objkt => ({params: {objkt}})),
+        fallback: true,
+    };
+}
+
+export const getStaticProps = async({params}) => {
     const {objkt} = params;
     const wallets = await getWalletsWithAudio();
     const track = await getObjktById(objkt);
@@ -18,10 +28,23 @@ export const getServerSideProps = async({params}) => {
         if(response.status === 200) creator = await response.data;
     }
 
-    return {props: {wallets, objkt, tracks, currentTrack, creator, walletAddress: track.creator_id}};
+    return {
+        props: {wallets, objkt, tracks, currentTrack, creator, walletAddress: track.creator_id},
+        revalidate: 300,
+    };
 };
 
 const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) => {
+    const {isFallback} = useRouter();
+
+    if(isFallback) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+
+        return <p>Loading...</p>;
+    }
+
     const byName = creator?.twitter
         ? ` by @${creator.twitter}`
         : creator?.alias
@@ -69,7 +92,12 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) =>
                 <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
             </Head>
-            <ObjktView walletAddress={walletAddress} creator={creator} tracks={tracks} objkt={objkt}/>
+            <ObjktView
+                walletAddress={walletAddress}
+                creator={creator}
+                tracks={tracks}
+                objkt={objkt}
+            />
         </>
     );
 };

@@ -2,10 +2,13 @@ import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
 
-export const getServerSideProps = async() => {
+export const getStaticProps = async() => {
     const tracks = await getAllTracks();
 
-    return {props: {tracks}};
+    return {
+        props: {tracks},
+        revalidate: 60
+    };
 };
 
 const AllTracksPage = ({tracks}) => {

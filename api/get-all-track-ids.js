@@ -8,15 +8,15 @@ const query = gql`
                 quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
             }
-        }, order_by: {creator_id: asc}) {
-            creator_id
+        }) {
+            id
         }
     }
 `;
 
-const getWalletsWithAudio = async() => {
-    const data = await request('https://api.hicdex.com/v1/graphql', query);
-    return [...new Set(data?.hic_et_nunc_token?.map(({creator_id}) => creator_id))];
+const getAllTrackIds = async() => {
+    const response = await request('https://api.hicdex.com/v1/graphql', query);
+    return response?.hic_et_nunc_token.map(({id}) => id) || [];
 };
 
-export default getWalletsWithAudio;
+export default getAllTrackIds;
