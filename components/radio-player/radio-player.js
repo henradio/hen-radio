@@ -107,7 +107,7 @@ const RadioPlayer = () => {
                                 {track.title}
                                 <br/>
                                 By <a
-                                href={`https://hicetnunc.xyz/tz/${track.creator}`}
+                                href={`https://hicetnunc.xyz/tz/${track.creator.walletAddress}`}
                                 className={styles.trackRow_link}
                             >{getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}</a>
                             </span>
