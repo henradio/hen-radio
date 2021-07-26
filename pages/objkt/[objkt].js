@@ -1,40 +1,33 @@
-import getUserMetadataByWalletId from '../../api/get-user-metadata-by-wallet-id';
 import Head from 'next/head';
 import ObjktView from '../../components/views/objkt-view';
-import getWalletsWithAudio from '../../api/get-wallets-with-audio';
 import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import { useRouter } from 'next/router';
+import getAllTrackIds from '../../api/get-all-track-ids';
+import { getTrimmedWallet } from '../../utilities/general';
 
-export async function getStaticPaths() {
-    const objkts = await getWalletsWithAudio();
-
+export const getStaticPaths = async() => {
+    const objkts = await getAllTrackIds();
     return {
         paths: objkts.map(objkt => ({params: {objkt}})),
         fallback: true,
     };
-}
+};
 
 export const getStaticProps = async({params}) => {
     const {objkt} = params;
-    const wallets = await getWalletsWithAudio();
     const track = await getObjktById(objkt);
     let tracks = [];
-    if(track) tracks = await getObjktsCreatedBy(track.creator_id);
+    if(track) tracks = await getObjktsCreatedBy(track.creator.walletAddress);
     const currentTrack = tracks.find(t => t.id === Number(objkt)) || null;
-    let creator = track.creator_id;
-    if(currentTrack) {
-        const response = await getUserMetadataByWalletId(creator);
-        if(response.status === 200) creator = await response.data;
-    }
 
     return {
-        props: {wallets, objkt, tracks, currentTrack, creator, walletAddress: track.creator_id},
+        props: {objkt, tracks, currentTrack, walletAddress: track.creator.walletAddress},
         revalidate: 300,
     };
 };
 
-const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) => {
+const PlayObjktPage = ({objkt, tracks, currentTrack, walletAddress}) => {
     const {isFallback} = useRouter();
 
     if(isFallback) {
@@ -47,13 +40,11 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) =>
         return <p>Loading...</p>;
     }
 
-    const byName = creator?.twitter
-        ? ` by @${creator.twitter}`
-        : creator?.alias
-            ? ` by ${creator.alias}`
-            : '';
+    const byName = currentTrack.creator?.name
+        ? ` by ${currentTrack.creator.name}`
+        : ` by ${getTrimmedWallet(walletAddress)}`;
     const title = currentTrack
-        ? `Listen to ${currentTrack.name}${byName} on Hen Radio`
+        ? `Listen to ${currentTrack.title}${byName} on Hen Radio`
         : 'Not found';
     const description = currentTrack?.description
         ? `${currentTrack.description}`
@@ -65,7 +56,7 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) =>
         <>
             <Head>
                 <meta charSet="utf-8"/>
-                <title>{currentTrack.name + byName} | Hen Radio | NFT Music Player</title>
+                <title>{currentTrack.title + byName} | Hen Radio | NFT Music Player</title>
                 <meta name="description" content={description}/>
                 <link rel="canonical" href={`http://hen.radio/${objkt}`}/>
                 <meta name="twitter:card" content="summary"/>
@@ -96,8 +87,8 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, creator, walletAddress}) =>
             </Head>
             <ObjktView
                 walletAddress={walletAddress}
-                creator={creator}
                 tracks={tracks}
+                currentTrack={currentTrack}
                 objkt={objkt}
             />
         </>

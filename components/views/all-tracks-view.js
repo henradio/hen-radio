@@ -11,7 +11,7 @@ const AllTracksView = ({objkt, tracks}) => {
         isTrackPlaying,
     } = useRadio();
 
-    const {setTracks, creatorMetadata} = usePlaylist();
+    const {setTracks} = usePlaylist();
 
     if(audio) {
         audio.onended = () => {
@@ -36,7 +36,6 @@ const AllTracksView = ({objkt, tracks}) => {
         <TrackList
             tracks={tracks}
             isTrackPlaying={isTrackPlaying}
-            creatorMetadata={creatorMetadata}
         />
     );
 };

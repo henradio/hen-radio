@@ -28,7 +28,6 @@ const WalletProvider = ({children}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [walletId]);
 
-
     return (
         <WalletContext.Provider
             value={{

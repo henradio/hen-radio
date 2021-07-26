@@ -3,7 +3,6 @@ import styles from './styles.module.css';
 import Logo from '../logo/logo';
 import Footer from '../footer/footer';
 import useWallet from '../../hooks/use-wallet';
-import RadioPlayer from '../radio-player/radio-player';
 import View from './view';
 
 const Layout = ({params, children}) => {

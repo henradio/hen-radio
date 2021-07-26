@@ -5,7 +5,378 @@ schema {
     subscription: subscription_root
 }
 
-"columns and relationships of \"hic_et_nunc.dipdup_state\""
+"columns and relationships of \"hic_et_nunc.ask\""
+type hic_et_nunc_ask {
+    amount: bigint!
+    amount_left: bigint!
+    "An object relationship"
+    artist: hic_et_nunc_holder!
+    artist_id: String!
+    "An object relationship"
+    creator: hic_et_nunc_holder!
+    creator_id: String!
+    "An object relationship"
+    fa2: hic_et_nunc_fa2!
+    fa2_id: String!
+    "An array relationship"
+    fulfilled(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): [hic_et_nunc_fulfilled_ask!]!
+    "An aggregated array relationship"
+    fulfilled_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): hic_et_nunc_fulfilled_ask_aggregate!
+    id: bigint!
+    level: bigint!
+    objkt_id: bigint!
+    price: bigint!
+    royalties: bigint!
+    "ACTIVE: active\\nCANCELLED: cancelled\\nCONCLUDED: concluded"
+    status: String!
+    timestamp: timestamptz!
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregated selection of \"hic_et_nunc.ask\""
+type hic_et_nunc_ask_aggregate {
+    aggregate: hic_et_nunc_ask_aggregate_fields
+    nodes: [hic_et_nunc_ask!]!
+}
+
+"aggregate fields of \"hic_et_nunc.ask\""
+type hic_et_nunc_ask_aggregate_fields {
+    avg: hic_et_nunc_ask_avg_fields
+    count(columns: [hic_et_nunc_ask_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_ask_max_fields
+    min: hic_et_nunc_ask_min_fields
+    stddev: hic_et_nunc_ask_stddev_fields
+    stddev_pop: hic_et_nunc_ask_stddev_pop_fields
+    stddev_samp: hic_et_nunc_ask_stddev_samp_fields
+    sum: hic_et_nunc_ask_sum_fields
+    var_pop: hic_et_nunc_ask_var_pop_fields
+    var_samp: hic_et_nunc_ask_var_samp_fields
+    variance: hic_et_nunc_ask_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_ask_avg_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_ask_max_fields {
+    amount: bigint
+    amount_left: bigint
+    artist_id: String
+    creator_id: String
+    fa2_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_ask_min_fields {
+    amount: bigint
+    amount_left: bigint
+    artist_id: String
+    creator_id: String
+    fa2_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_ask_stddev_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_ask_stddev_pop_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_ask_stddev_samp_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_ask_sum_fields {
+    amount: bigint
+    amount_left: bigint
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    update_level: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_ask_var_pop_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_ask_var_samp_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_ask_variance_fields {
+    amount: Float
+    amount_left: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"columns and relationships of \"hic_et_nunc.bid\""
+type hic_et_nunc_bid {
+    "An object relationship"
+    artist: hic_et_nunc_holder!
+    artist_id: String!
+    "An object relationship"
+    creator: hic_et_nunc_holder!
+    creator_id: String!
+    "An object relationship"
+    fa2: hic_et_nunc_fa2!
+    fa2_id: String!
+    id: bigint!
+    level: bigint!
+    objkt_id: bigint!
+    price: bigint!
+    royalties: bigint!
+    "An object relationship"
+    seller: hic_et_nunc_holder
+    seller_id: String
+    "ACTIVE: active\\nCANCELLED: cancelled\\nCONCLUDED: concluded"
+    status: String!
+    timestamp: timestamptz!
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregated selection of \"hic_et_nunc.bid\""
+type hic_et_nunc_bid_aggregate {
+    aggregate: hic_et_nunc_bid_aggregate_fields
+    nodes: [hic_et_nunc_bid!]!
+}
+
+"aggregate fields of \"hic_et_nunc.bid\""
+type hic_et_nunc_bid_aggregate_fields {
+    avg: hic_et_nunc_bid_avg_fields
+    count(columns: [hic_et_nunc_bid_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_bid_max_fields
+    min: hic_et_nunc_bid_min_fields
+    stddev: hic_et_nunc_bid_stddev_fields
+    stddev_pop: hic_et_nunc_bid_stddev_pop_fields
+    stddev_samp: hic_et_nunc_bid_stddev_samp_fields
+    sum: hic_et_nunc_bid_sum_fields
+    var_pop: hic_et_nunc_bid_var_pop_fields
+    var_samp: hic_et_nunc_bid_var_samp_fields
+    variance: hic_et_nunc_bid_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_bid_avg_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_bid_max_fields {
+    artist_id: String
+    creator_id: String
+    fa2_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    seller_id: String
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_bid_min_fields {
+    artist_id: String
+    creator_id: String
+    fa2_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    seller_id: String
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_bid_stddev_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_bid_stddev_pop_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_bid_stddev_samp_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_bid_sum_fields {
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price: bigint
+    royalties: bigint
+    update_level: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_bid_var_pop_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_bid_var_samp_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_bid_variance_fields {
+    id: Float
+    level: Float
+    objkt_id: Float
+    price: Float
+    royalties: Float
+    update_level: Float
+}
+
+"""
+
+Stores current level of index and hash of it's config
+
+
+columns and relationships of "hic_et_nunc.dipdup_state"
+"""
 type hic_et_nunc_dipdup_state {
     hash: String!
     id: Int!
@@ -102,9 +473,980 @@ type hic_et_nunc_dipdup_state_variance_fields {
     level: Float
 }
 
+"columns and relationships of \"hic_et_nunc.dutch_auction\""
+type hic_et_nunc_dutch_auction {
+    "An object relationship"
+    artist: hic_et_nunc_holder!
+    artist_id: String!
+    buy_price: bigint
+    "An object relationship"
+    buyer: hic_et_nunc_holder
+    buyer_id: String
+    contract_version: smallint!
+    "An object relationship"
+    creator: hic_et_nunc_holder!
+    creator_id: String!
+    end_price: bigint!
+    end_time: timestamptz!
+    "An object relationship"
+    fa2: hic_et_nunc_fa2!
+    fa2_id: String!
+    hash: String!
+    id: bigint!
+    level: bigint!
+    objkt_id: bigint!
+    royalties: bigint!
+    start_price: bigint!
+    start_time: timestamptz!
+    "ACTIVE: active\\nCANCELLED: cancelled\\nCONCLUDED: concluded"
+    status: String!
+    timestamp: timestamptz!
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregated selection of \"hic_et_nunc.dutch_auction\""
+type hic_et_nunc_dutch_auction_aggregate {
+    aggregate: hic_et_nunc_dutch_auction_aggregate_fields
+    nodes: [hic_et_nunc_dutch_auction!]!
+}
+
+"aggregate fields of \"hic_et_nunc.dutch_auction\""
+type hic_et_nunc_dutch_auction_aggregate_fields {
+    avg: hic_et_nunc_dutch_auction_avg_fields
+    count(columns: [hic_et_nunc_dutch_auction_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_dutch_auction_max_fields
+    min: hic_et_nunc_dutch_auction_min_fields
+    stddev: hic_et_nunc_dutch_auction_stddev_fields
+    stddev_pop: hic_et_nunc_dutch_auction_stddev_pop_fields
+    stddev_samp: hic_et_nunc_dutch_auction_stddev_samp_fields
+    sum: hic_et_nunc_dutch_auction_sum_fields
+    var_pop: hic_et_nunc_dutch_auction_var_pop_fields
+    var_samp: hic_et_nunc_dutch_auction_var_samp_fields
+    variance: hic_et_nunc_dutch_auction_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_dutch_auction_avg_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_dutch_auction_max_fields {
+    artist_id: String
+    buy_price: bigint
+    buyer_id: String
+    contract_version: smallint
+    creator_id: String
+    end_price: bigint
+    end_time: timestamptz
+    fa2_id: String
+    hash: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    royalties: bigint
+    start_price: bigint
+    start_time: timestamptz
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_dutch_auction_min_fields {
+    artist_id: String
+    buy_price: bigint
+    buyer_id: String
+    contract_version: smallint
+    creator_id: String
+    end_price: bigint
+    end_time: timestamptz
+    fa2_id: String
+    hash: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    royalties: bigint
+    start_price: bigint
+    start_time: timestamptz
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_dutch_auction_stddev_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_dutch_auction_stddev_pop_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_dutch_auction_stddev_samp_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_dutch_auction_sum_fields {
+    buy_price: bigint
+    contract_version: smallint
+    end_price: bigint
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    royalties: bigint
+    start_price: bigint
+    update_level: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_dutch_auction_var_pop_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_dutch_auction_var_samp_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_dutch_auction_variance_fields {
+    buy_price: Float
+    contract_version: Float
+    end_price: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    royalties: Float
+    start_price: Float
+    update_level: Float
+}
+
+"columns and relationships of \"hic_et_nunc.english_auction\""
+type hic_et_nunc_english_auction {
+    "An object relationship"
+    artist: hic_et_nunc_holder!
+    artist_id: String!
+    "An array relationship"
+    bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): [hic_et_nunc_english_bid!]!
+    "An aggregated array relationship"
+    bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): hic_et_nunc_english_bid_aggregate!
+    contract_version: smallint!
+    "An object relationship"
+    creator: hic_et_nunc_holder!
+    creator_id: String!
+    end_time: timestamptz!
+    extension_time: bigint!
+    "An object relationship"
+    fa2: hic_et_nunc_fa2!
+    fa2_id: String!
+    hash: String!
+    id: bigint!
+    level: bigint!
+    objkt_id: bigint!
+    price_increment: bigint!
+    reserve: bigint!
+    royalties: bigint!
+    start_time: timestamptz!
+    "ACTIVE: active\\nCANCELLED: cancelled\\nCONCLUDED: concluded"
+    status: String!
+    timestamp: timestamptz!
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregated selection of \"hic_et_nunc.english_auction\""
+type hic_et_nunc_english_auction_aggregate {
+    aggregate: hic_et_nunc_english_auction_aggregate_fields
+    nodes: [hic_et_nunc_english_auction!]!
+}
+
+"aggregate fields of \"hic_et_nunc.english_auction\""
+type hic_et_nunc_english_auction_aggregate_fields {
+    avg: hic_et_nunc_english_auction_avg_fields
+    count(columns: [hic_et_nunc_english_auction_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_english_auction_max_fields
+    min: hic_et_nunc_english_auction_min_fields
+    stddev: hic_et_nunc_english_auction_stddev_fields
+    stddev_pop: hic_et_nunc_english_auction_stddev_pop_fields
+    stddev_samp: hic_et_nunc_english_auction_stddev_samp_fields
+    sum: hic_et_nunc_english_auction_sum_fields
+    var_pop: hic_et_nunc_english_auction_var_pop_fields
+    var_samp: hic_et_nunc_english_auction_var_samp_fields
+    variance: hic_et_nunc_english_auction_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_english_auction_avg_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_english_auction_max_fields {
+    artist_id: String
+    contract_version: smallint
+    creator_id: String
+    end_time: timestamptz
+    extension_time: bigint
+    fa2_id: String
+    hash: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price_increment: bigint
+    reserve: bigint
+    royalties: bigint
+    start_time: timestamptz
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_english_auction_min_fields {
+    artist_id: String
+    contract_version: smallint
+    creator_id: String
+    end_time: timestamptz
+    extension_time: bigint
+    fa2_id: String
+    hash: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price_increment: bigint
+    reserve: bigint
+    royalties: bigint
+    start_time: timestamptz
+    status: String
+    timestamp: timestamptz
+    update_level: bigint
+    update_timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_english_auction_stddev_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_english_auction_stddev_pop_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_english_auction_stddev_samp_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_english_auction_sum_fields {
+    contract_version: smallint
+    extension_time: bigint
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    price_increment: bigint
+    reserve: bigint
+    royalties: bigint
+    update_level: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_english_auction_var_pop_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_english_auction_var_samp_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_english_auction_variance_fields {
+    contract_version: Float
+    extension_time: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+    price_increment: Float
+    reserve: Float
+    royalties: Float
+    update_level: Float
+}
+
+"columns and relationships of \"hic_et_nunc.english_bid\""
+type hic_et_nunc_english_bid {
+    amount: bigint!
+    "An object relationship"
+    auction: hic_et_nunc_english_auction!
+    auction_id: bigint!
+    "An object relationship"
+    bidder: hic_et_nunc_holder!
+    bidder_id: String!
+    id: bigint!
+    level: bigint!
+    timestamp: timestamptz!
+}
+
+"aggregated selection of \"hic_et_nunc.english_bid\""
+type hic_et_nunc_english_bid_aggregate {
+    aggregate: hic_et_nunc_english_bid_aggregate_fields
+    nodes: [hic_et_nunc_english_bid!]!
+}
+
+"aggregate fields of \"hic_et_nunc.english_bid\""
+type hic_et_nunc_english_bid_aggregate_fields {
+    avg: hic_et_nunc_english_bid_avg_fields
+    count(columns: [hic_et_nunc_english_bid_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_english_bid_max_fields
+    min: hic_et_nunc_english_bid_min_fields
+    stddev: hic_et_nunc_english_bid_stddev_fields
+    stddev_pop: hic_et_nunc_english_bid_stddev_pop_fields
+    stddev_samp: hic_et_nunc_english_bid_stddev_samp_fields
+    sum: hic_et_nunc_english_bid_sum_fields
+    var_pop: hic_et_nunc_english_bid_var_pop_fields
+    var_samp: hic_et_nunc_english_bid_var_samp_fields
+    variance: hic_et_nunc_english_bid_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_english_bid_avg_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_english_bid_max_fields {
+    amount: bigint
+    auction_id: bigint
+    bidder_id: String
+    id: bigint
+    level: bigint
+    timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_english_bid_min_fields {
+    amount: bigint
+    auction_id: bigint
+    bidder_id: String
+    id: bigint
+    level: bigint
+    timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_english_bid_stddev_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_english_bid_stddev_pop_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_english_bid_stddev_samp_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_english_bid_sum_fields {
+    amount: bigint
+    auction_id: bigint
+    id: bigint
+    level: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_english_bid_var_pop_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_english_bid_var_samp_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_english_bid_variance_fields {
+    amount: Float
+    auction_id: Float
+    id: Float
+    level: Float
+}
+
+"columns and relationships of \"hic_et_nunc.fa2\""
+type hic_et_nunc_fa2 {
+    "An array relationship"
+    asks(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): [hic_et_nunc_ask!]!
+    "An aggregated array relationship"
+    asks_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): hic_et_nunc_ask_aggregate!
+    "An array relationship"
+    bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "An aggregated array relationship"
+    bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    contract: String!
+    "An array relationship"
+    dutch_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "An aggregated array relationship"
+    dutch_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
+    "An array relationship"
+    english_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): [hic_et_nunc_english_auction!]!
+    "An aggregated array relationship"
+    english_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): hic_et_nunc_english_auction_aggregate!
+}
+
+"aggregated selection of \"hic_et_nunc.fa2\""
+type hic_et_nunc_fa2_aggregate {
+    aggregate: hic_et_nunc_fa2_aggregate_fields
+    nodes: [hic_et_nunc_fa2!]!
+}
+
+"aggregate fields of \"hic_et_nunc.fa2\""
+type hic_et_nunc_fa2_aggregate_fields {
+    count(columns: [hic_et_nunc_fa2_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_fa2_max_fields
+    min: hic_et_nunc_fa2_min_fields
+}
+
+"aggregate max on columns"
+type hic_et_nunc_fa2_max_fields {
+    contract: String
+}
+
+"aggregate min on columns"
+type hic_et_nunc_fa2_min_fields {
+    contract: String
+}
+
+"columns and relationships of \"hic_et_nunc.fulfilled_ask\""
+type hic_et_nunc_fulfilled_ask {
+    amount: bigint!
+    "An object relationship"
+    ask: hic_et_nunc_ask!
+    ask_id: bigint!
+    "An object relationship"
+    buyer: hic_et_nunc_holder!
+    buyer_id: String!
+    id: bigint!
+    level: bigint!
+    objkt_id: bigint!
+    "An object relationship"
+    seller: hic_et_nunc_holder!
+    seller_id: String!
+    timestamp: timestamptz!
+}
+
+"aggregated selection of \"hic_et_nunc.fulfilled_ask\""
+type hic_et_nunc_fulfilled_ask_aggregate {
+    aggregate: hic_et_nunc_fulfilled_ask_aggregate_fields
+    nodes: [hic_et_nunc_fulfilled_ask!]!
+}
+
+"aggregate fields of \"hic_et_nunc.fulfilled_ask\""
+type hic_et_nunc_fulfilled_ask_aggregate_fields {
+    avg: hic_et_nunc_fulfilled_ask_avg_fields
+    count(columns: [hic_et_nunc_fulfilled_ask_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_fulfilled_ask_max_fields
+    min: hic_et_nunc_fulfilled_ask_min_fields
+    stddev: hic_et_nunc_fulfilled_ask_stddev_fields
+    stddev_pop: hic_et_nunc_fulfilled_ask_stddev_pop_fields
+    stddev_samp: hic_et_nunc_fulfilled_ask_stddev_samp_fields
+    sum: hic_et_nunc_fulfilled_ask_sum_fields
+    var_pop: hic_et_nunc_fulfilled_ask_var_pop_fields
+    var_samp: hic_et_nunc_fulfilled_ask_var_samp_fields
+    variance: hic_et_nunc_fulfilled_ask_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_fulfilled_ask_avg_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_fulfilled_ask_max_fields {
+    amount: bigint
+    ask_id: bigint
+    buyer_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    seller_id: String
+    timestamp: timestamptz
+}
+
+"aggregate min on columns"
+type hic_et_nunc_fulfilled_ask_min_fields {
+    amount: bigint
+    ask_id: bigint
+    buyer_id: String
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+    seller_id: String
+    timestamp: timestamptz
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_fulfilled_ask_stddev_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_fulfilled_ask_stddev_pop_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_fulfilled_ask_stddev_samp_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_fulfilled_ask_sum_fields {
+    amount: bigint
+    ask_id: bigint
+    id: bigint
+    level: bigint
+    objkt_id: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_fulfilled_ask_var_pop_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_fulfilled_ask_var_samp_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_fulfilled_ask_variance_fields {
+    amount: Float
+    ask_id: Float
+    id: Float
+    level: Float
+    objkt_id: Float
+}
+
 "columns and relationships of \"hic_et_nunc.holder\""
 type hic_et_nunc_holder {
     address: String!
+    "An array relationship"
+    asks(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): [hic_et_nunc_ask!]!
+    "An aggregated array relationship"
+    asks_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): hic_et_nunc_ask_aggregate!
+    "An array relationship"
+    bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "An aggregated array relationship"
+    bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    "An array relationship"
+    bought_asks(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): [hic_et_nunc_fulfilled_ask!]!
+    "An aggregated array relationship"
+    bought_asks_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): hic_et_nunc_fulfilled_ask_aggregate!
+    "An array relationship"
+    created_dutch_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "An aggregated array relationship"
+    created_dutch_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
+    "An array relationship"
+    created_english_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): [hic_et_nunc_english_auction!]!
+    "An aggregated array relationship"
+    created_english_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): hic_et_nunc_english_auction_aggregate!
+    description: String!
+    "An array relationship"
+    english_bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): [hic_et_nunc_english_bid!]!
+    "An aggregated array relationship"
+    english_bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): hic_et_nunc_english_bid_aggregate!
+    hdao_balance: bigint!
     "An array relationship"
     holders_token(
         "distinct select on columns"
@@ -131,6 +1473,39 @@ type hic_et_nunc_holder {
         "filter the rows returned"
         where: hic_et_nunc_token_holder_bool_exp
     ): hic_et_nunc_token_holder_aggregate!
+    is_split: Boolean!
+    metadata(
+        "JSON select path"
+        path: String
+    ): jsonb!
+    metadata_file: String!
+    name: String!
+    "An array relationship"
+    owner(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): [hic_et_nunc_token_operator!]!
+    "An aggregated array relationship"
+    owner_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): hic_et_nunc_token_operator_aggregate!
     "An array relationship"
     purchases(
         "distinct select on columns"
@@ -184,6 +1559,214 @@ type hic_et_nunc_holder {
         where: hic_et_nunc_trade_bool_exp
     ): hic_et_nunc_trade_aggregate!
     "An array relationship"
+    shareholder(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): [hic_et_nunc_shareholder!]!
+    "An aggregated array relationship"
+    shareholder_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): hic_et_nunc_shareholder_aggregate!
+    "An array relationship"
+    shares(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): [hic_et_nunc_splitcontract!]!
+    "An aggregated array relationship"
+    shares_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): hic_et_nunc_splitcontract_aggregate!
+    "An array relationship"
+    sold_asks(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): [hic_et_nunc_fulfilled_ask!]!
+    "An aggregated array relationship"
+    sold_asks_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): hic_et_nunc_fulfilled_ask_aggregate!
+    "An array relationship"
+    sold_bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "An aggregated array relationship"
+    sold_bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    "An array relationship"
+    starring_asks(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): [hic_et_nunc_ask!]!
+    "An aggregated array relationship"
+    starring_asks_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): hic_et_nunc_ask_aggregate!
+    "An array relationship"
+    starring_bids(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "An aggregated array relationship"
+    starring_bids_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    "An array relationship"
+    starring_dutch_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "An aggregated array relationship"
+    starring_dutch_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
+    "An array relationship"
+    starring_english_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): [hic_et_nunc_english_auction!]!
+    "An aggregated array relationship"
+    starring_english_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): hic_et_nunc_english_auction_aggregate!
+    "An array relationship"
     swaps(
         "distinct select on columns"
         distinct_on: [hic_et_nunc_swap_select_column!],
@@ -235,6 +1818,32 @@ type hic_et_nunc_holder {
         "filter the rows returned"
         where: hic_et_nunc_token_bool_exp
     ): hic_et_nunc_token_aggregate!
+    "An array relationship"
+    won_dutch_auctions(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "An aggregated array relationship"
+    won_dutch_auctions_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
 }
 
 "aggregated selection of \"hic_et_nunc.holder\""
@@ -245,31 +1854,320 @@ type hic_et_nunc_holder_aggregate {
 
 "aggregate fields of \"hic_et_nunc.holder\""
 type hic_et_nunc_holder_aggregate_fields {
+    avg: hic_et_nunc_holder_avg_fields
     count(columns: [hic_et_nunc_holder_select_column!], distinct: Boolean): Int
     max: hic_et_nunc_holder_max_fields
     min: hic_et_nunc_holder_min_fields
+    stddev: hic_et_nunc_holder_stddev_fields
+    stddev_pop: hic_et_nunc_holder_stddev_pop_fields
+    stddev_samp: hic_et_nunc_holder_stddev_samp_fields
+    sum: hic_et_nunc_holder_sum_fields
+    var_pop: hic_et_nunc_holder_var_pop_fields
+    var_samp: hic_et_nunc_holder_var_samp_fields
+    variance: hic_et_nunc_holder_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_holder_avg_fields {
+    hdao_balance: Float
 }
 
 "aggregate max on columns"
 type hic_et_nunc_holder_max_fields {
     address: String
+    description: String
+    hdao_balance: bigint
+    metadata_file: String
+    name: String
 }
 
 "aggregate min on columns"
 type hic_et_nunc_holder_min_fields {
     address: String
+    description: String
+    hdao_balance: bigint
+    metadata_file: String
+    name: String
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_holder_stddev_fields {
+    hdao_balance: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_holder_stddev_pop_fields {
+    hdao_balance: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_holder_stddev_samp_fields {
+    hdao_balance: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_holder_sum_fields {
+    hdao_balance: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_holder_var_pop_fields {
+    hdao_balance: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_holder_var_samp_fields {
+    hdao_balance: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_holder_variance_fields {
+    hdao_balance: Float
+}
+
+"columns and relationships of \"hic_et_nunc.shareholder\""
+type hic_et_nunc_shareholder {
+    "An object relationship"
+    holder: hic_et_nunc_holder!
+    holder_id: String!
+    "unspecified: unspecified\\ncore_participant: core_participant\\nbenefactor: benefactor"
+    holder_type: String!
+    id: Int!
+    shares: bigint!
+    "An object relationship"
+    split_contract: hic_et_nunc_splitcontract!
+    split_contract_id: Int!
+}
+
+"aggregated selection of \"hic_et_nunc.shareholder\""
+type hic_et_nunc_shareholder_aggregate {
+    aggregate: hic_et_nunc_shareholder_aggregate_fields
+    nodes: [hic_et_nunc_shareholder!]!
+}
+
+"aggregate fields of \"hic_et_nunc.shareholder\""
+type hic_et_nunc_shareholder_aggregate_fields {
+    avg: hic_et_nunc_shareholder_avg_fields
+    count(columns: [hic_et_nunc_shareholder_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_shareholder_max_fields
+    min: hic_et_nunc_shareholder_min_fields
+    stddev: hic_et_nunc_shareholder_stddev_fields
+    stddev_pop: hic_et_nunc_shareholder_stddev_pop_fields
+    stddev_samp: hic_et_nunc_shareholder_stddev_samp_fields
+    sum: hic_et_nunc_shareholder_sum_fields
+    var_pop: hic_et_nunc_shareholder_var_pop_fields
+    var_samp: hic_et_nunc_shareholder_var_samp_fields
+    variance: hic_et_nunc_shareholder_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_shareholder_avg_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_shareholder_max_fields {
+    holder_id: String
+    holder_type: String
+    id: Int
+    shares: bigint
+    split_contract_id: Int
+}
+
+"aggregate min on columns"
+type hic_et_nunc_shareholder_min_fields {
+    holder_id: String
+    holder_type: String
+    id: Int
+    shares: bigint
+    split_contract_id: Int
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_shareholder_stddev_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_shareholder_stddev_pop_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_shareholder_stddev_samp_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_shareholder_sum_fields {
+    id: Int
+    shares: bigint
+    split_contract_id: Int
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_shareholder_var_pop_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_shareholder_var_samp_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_shareholder_variance_fields {
+    id: Float
+    shares: Float
+    split_contract_id: Float
+}
+
+"columns and relationships of \"hic_et_nunc.splitcontract\""
+type hic_et_nunc_splitcontract {
+    administrator: String!
+    "An object relationship"
+    contract: hic_et_nunc_holder!
+    contract_id: String!
+    id: Int!
+    "An array relationship"
+    shareholder(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): [hic_et_nunc_shareholder!]!
+    "An aggregated array relationship"
+    shareholder_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): hic_et_nunc_shareholder_aggregate!
+    total_shares: bigint!
+}
+
+"aggregated selection of \"hic_et_nunc.splitcontract\""
+type hic_et_nunc_splitcontract_aggregate {
+    aggregate: hic_et_nunc_splitcontract_aggregate_fields
+    nodes: [hic_et_nunc_splitcontract!]!
+}
+
+"aggregate fields of \"hic_et_nunc.splitcontract\""
+type hic_et_nunc_splitcontract_aggregate_fields {
+    avg: hic_et_nunc_splitcontract_avg_fields
+    count(columns: [hic_et_nunc_splitcontract_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_splitcontract_max_fields
+    min: hic_et_nunc_splitcontract_min_fields
+    stddev: hic_et_nunc_splitcontract_stddev_fields
+    stddev_pop: hic_et_nunc_splitcontract_stddev_pop_fields
+    stddev_samp: hic_et_nunc_splitcontract_stddev_samp_fields
+    sum: hic_et_nunc_splitcontract_sum_fields
+    var_pop: hic_et_nunc_splitcontract_var_pop_fields
+    var_samp: hic_et_nunc_splitcontract_var_samp_fields
+    variance: hic_et_nunc_splitcontract_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_splitcontract_avg_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_splitcontract_max_fields {
+    administrator: String
+    contract_id: String
+    id: Int
+    total_shares: bigint
+}
+
+"aggregate min on columns"
+type hic_et_nunc_splitcontract_min_fields {
+    administrator: String
+    contract_id: String
+    id: Int
+    total_shares: bigint
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_splitcontract_stddev_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_splitcontract_stddev_pop_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_splitcontract_stddev_samp_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_splitcontract_sum_fields {
+    id: Int
+    total_shares: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_splitcontract_var_pop_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_splitcontract_var_samp_fields {
+    id: Float
+    total_shares: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_splitcontract_variance_fields {
+    id: Float
+    total_shares: Float
 }
 
 "columns and relationships of \"hic_et_nunc.swap\""
 type hic_et_nunc_swap {
-    amount: bigint!
-    amount_left: bigint!
+    amount: smallint!
+    amount_left: smallint!
+    contract_version: smallint!
     "An object relationship"
     creator: hic_et_nunc_holder!
     creator_id: String!
     id: bigint!
+    is_valid: Boolean!
     level: bigint!
     price: bigint!
+    royalties: smallint!
     "ACTIVE: 0\\nFINISHED: 1\\nCANCELED: 2"
     status: smallint!
     timestamp: timestamptz!
@@ -329,21 +2227,25 @@ type hic_et_nunc_swap_aggregate_fields {
 type hic_et_nunc_swap_avg_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
 
 "aggregate max on columns"
 type hic_et_nunc_swap_max_fields {
-    amount: bigint
-    amount_left: bigint
+    amount: smallint
+    amount_left: smallint
+    contract_version: smallint
     creator_id: String
     id: bigint
     level: bigint
     price: bigint
+    royalties: smallint
     status: smallint
     timestamp: timestamptz
     token_id: bigint
@@ -351,12 +2253,14 @@ type hic_et_nunc_swap_max_fields {
 
 "aggregate min on columns"
 type hic_et_nunc_swap_min_fields {
-    amount: bigint
-    amount_left: bigint
+    amount: smallint
+    amount_left: smallint
+    contract_version: smallint
     creator_id: String
     id: bigint
     level: bigint
     price: bigint
+    royalties: smallint
     status: smallint
     timestamp: timestamptz
     token_id: bigint
@@ -366,9 +2270,11 @@ type hic_et_nunc_swap_min_fields {
 type hic_et_nunc_swap_stddev_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
@@ -377,9 +2283,11 @@ type hic_et_nunc_swap_stddev_fields {
 type hic_et_nunc_swap_stddev_pop_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
@@ -388,20 +2296,24 @@ type hic_et_nunc_swap_stddev_pop_fields {
 type hic_et_nunc_swap_stddev_samp_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
 
 "aggregate sum on columns"
 type hic_et_nunc_swap_sum_fields {
-    amount: bigint
-    amount_left: bigint
+    amount: smallint
+    amount_left: smallint
+    contract_version: smallint
     id: bigint
     level: bigint
     price: bigint
+    royalties: smallint
     status: smallint
     token_id: bigint
 }
@@ -410,9 +2322,11 @@ type hic_et_nunc_swap_sum_fields {
 type hic_et_nunc_swap_var_pop_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
@@ -421,9 +2335,11 @@ type hic_et_nunc_swap_var_pop_fields {
 type hic_et_nunc_swap_var_samp_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
@@ -432,9 +2348,11 @@ type hic_et_nunc_swap_var_samp_fields {
 type hic_et_nunc_swap_variance_fields {
     amount: Float
     amount_left: Float
+    contract_version: Float
     id: Float
     level: Float
     price: Float
+    royalties: Float
     status: Float
     token_id: Float
 }
@@ -548,15 +2466,47 @@ type hic_et_nunc_tag_variance_fields {
 type hic_et_nunc_token {
     artifact_uri: String!
     "An object relationship"
-    creator: hic_et_nunc_holder!
-    creator_id: String!
+    creator: hic_et_nunc_holder
+    creator_id: String
     description: String!
     display_uri: String!
+    extra(
+        "JSON select path"
+        path: String
+    ): jsonb!
+    hdao_balance: bigint!
     id: bigint!
     level: bigint!
+    metadata: String!
     mime: String!
-    royalties: bigint!
-    supply: bigint!
+    "An array relationship"
+    operators(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): [hic_et_nunc_token_operator!]!
+    "An aggregated array relationship"
+    operators_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): hic_et_nunc_token_operator_aggregate!
+    royalties: smallint!
+    supply: smallint!
     "An array relationship"
     swaps(
         "distinct select on columns"
@@ -689,6 +2639,7 @@ type hic_et_nunc_token_aggregate_fields {
 
 "aggregate avg on columns"
 type hic_et_nunc_token_avg_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -806,11 +2757,13 @@ type hic_et_nunc_token_max_fields {
     creator_id: String
     description: String
     display_uri: String
+    hdao_balance: bigint
     id: bigint
     level: bigint
+    metadata: String
     mime: String
-    royalties: bigint
-    supply: bigint
+    royalties: smallint
+    supply: smallint
     thumbnail_uri: String
     timestamp: timestamptz
     title: String
@@ -822,18 +2775,129 @@ type hic_et_nunc_token_min_fields {
     creator_id: String
     description: String
     display_uri: String
+    hdao_balance: bigint
     id: bigint
     level: bigint
+    metadata: String
     mime: String
-    royalties: bigint
-    supply: bigint
+    royalties: smallint
+    supply: smallint
     thumbnail_uri: String
     timestamp: timestamptz
     title: String
 }
 
+"columns and relationships of \"hic_et_nunc.token_operator\""
+type hic_et_nunc_token_operator {
+    id: Int!
+    level: bigint!
+    operator: String!
+    "An object relationship"
+    owner: hic_et_nunc_holder!
+    owner_id: String!
+    "An object relationship"
+    token: hic_et_nunc_token!
+    token_id: bigint!
+}
+
+"aggregated selection of \"hic_et_nunc.token_operator\""
+type hic_et_nunc_token_operator_aggregate {
+    aggregate: hic_et_nunc_token_operator_aggregate_fields
+    nodes: [hic_et_nunc_token_operator!]!
+}
+
+"aggregate fields of \"hic_et_nunc.token_operator\""
+type hic_et_nunc_token_operator_aggregate_fields {
+    avg: hic_et_nunc_token_operator_avg_fields
+    count(columns: [hic_et_nunc_token_operator_select_column!], distinct: Boolean): Int
+    max: hic_et_nunc_token_operator_max_fields
+    min: hic_et_nunc_token_operator_min_fields
+    stddev: hic_et_nunc_token_operator_stddev_fields
+    stddev_pop: hic_et_nunc_token_operator_stddev_pop_fields
+    stddev_samp: hic_et_nunc_token_operator_stddev_samp_fields
+    sum: hic_et_nunc_token_operator_sum_fields
+    var_pop: hic_et_nunc_token_operator_var_pop_fields
+    var_samp: hic_et_nunc_token_operator_var_samp_fields
+    variance: hic_et_nunc_token_operator_variance_fields
+}
+
+"aggregate avg on columns"
+type hic_et_nunc_token_operator_avg_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate max on columns"
+type hic_et_nunc_token_operator_max_fields {
+    id: Int
+    level: bigint
+    operator: String
+    owner_id: String
+    token_id: bigint
+}
+
+"aggregate min on columns"
+type hic_et_nunc_token_operator_min_fields {
+    id: Int
+    level: bigint
+    operator: String
+    owner_id: String
+    token_id: bigint
+}
+
+"aggregate stddev on columns"
+type hic_et_nunc_token_operator_stddev_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type hic_et_nunc_token_operator_stddev_pop_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type hic_et_nunc_token_operator_stddev_samp_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate sum on columns"
+type hic_et_nunc_token_operator_sum_fields {
+    id: Int
+    level: bigint
+    token_id: bigint
+}
+
+"aggregate var_pop on columns"
+type hic_et_nunc_token_operator_var_pop_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate var_samp on columns"
+type hic_et_nunc_token_operator_var_samp_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
+"aggregate variance on columns"
+type hic_et_nunc_token_operator_variance_fields {
+    id: Float
+    level: Float
+    token_id: Float
+}
+
 "aggregate stddev on columns"
 type hic_et_nunc_token_stddev_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -842,6 +2906,7 @@ type hic_et_nunc_token_stddev_fields {
 
 "aggregate stddev_pop on columns"
 type hic_et_nunc_token_stddev_pop_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -850,6 +2915,7 @@ type hic_et_nunc_token_stddev_pop_fields {
 
 "aggregate stddev_samp on columns"
 type hic_et_nunc_token_stddev_samp_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -858,10 +2924,11 @@ type hic_et_nunc_token_stddev_samp_fields {
 
 "aggregate sum on columns"
 type hic_et_nunc_token_sum_fields {
+    hdao_balance: bigint
     id: bigint
     level: bigint
-    royalties: bigint
-    supply: bigint
+    royalties: smallint
+    supply: smallint
 }
 
 "columns and relationships of \"hic_et_nunc.token_tag\""
@@ -968,6 +3035,7 @@ type hic_et_nunc_token_tag_variance_fields {
 
 "aggregate var_pop on columns"
 type hic_et_nunc_token_var_pop_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -976,6 +3044,7 @@ type hic_et_nunc_token_var_pop_fields {
 
 "aggregate var_samp on columns"
 type hic_et_nunc_token_var_samp_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -984,6 +3053,7 @@ type hic_et_nunc_token_var_samp_fields {
 
 "aggregate variance on columns"
 type hic_et_nunc_token_variance_fields {
+    hdao_balance: Float
     id: Float
     level: Float
     royalties: Float
@@ -1129,6 +3199,62 @@ type hic_et_nunc_trade_variance_fields {
 
 "query root"
 type query_root {
+    "fetch data from the table: \"hic_et_nunc.ask\""
+    hic_et_nunc_ask(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): [hic_et_nunc_ask!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.ask\""
+    hic_et_nunc_ask_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): hic_et_nunc_ask_aggregate!
+    "fetch data from the table: \"hic_et_nunc.ask\" using primary key columns"
+    hic_et_nunc_ask_by_pk(id: bigint!): hic_et_nunc_ask
+    "fetch data from the table: \"hic_et_nunc.bid\""
+    hic_et_nunc_bid(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.bid\""
+    hic_et_nunc_bid_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    "fetch data from the table: \"hic_et_nunc.bid\" using primary key columns"
+    hic_et_nunc_bid_by_pk(id: bigint!): hic_et_nunc_bid
     "fetch data from the table: \"hic_et_nunc.dipdup_state\""
     hic_et_nunc_dipdup_state(
         "distinct select on columns"
@@ -1157,6 +3283,146 @@ type query_root {
     ): hic_et_nunc_dipdup_state_aggregate!
     "fetch data from the table: \"hic_et_nunc.dipdup_state\" using primary key columns"
     hic_et_nunc_dipdup_state_by_pk(id: Int!): hic_et_nunc_dipdup_state
+    "fetch data from the table: \"hic_et_nunc.dutch_auction\""
+    hic_et_nunc_dutch_auction(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.dutch_auction\""
+    hic_et_nunc_dutch_auction_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
+    "fetch data from the table: \"hic_et_nunc.dutch_auction\" using primary key columns"
+    hic_et_nunc_dutch_auction_by_pk(id: bigint!): hic_et_nunc_dutch_auction
+    "fetch data from the table: \"hic_et_nunc.english_auction\""
+    hic_et_nunc_english_auction(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): [hic_et_nunc_english_auction!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.english_auction\""
+    hic_et_nunc_english_auction_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): hic_et_nunc_english_auction_aggregate!
+    "fetch data from the table: \"hic_et_nunc.english_auction\" using primary key columns"
+    hic_et_nunc_english_auction_by_pk(id: bigint!): hic_et_nunc_english_auction
+    "fetch data from the table: \"hic_et_nunc.english_bid\""
+    hic_et_nunc_english_bid(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): [hic_et_nunc_english_bid!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.english_bid\""
+    hic_et_nunc_english_bid_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): hic_et_nunc_english_bid_aggregate!
+    "fetch data from the table: \"hic_et_nunc.english_bid\" using primary key columns"
+    hic_et_nunc_english_bid_by_pk(id: bigint!): hic_et_nunc_english_bid
+    "fetch data from the table: \"hic_et_nunc.fa2\""
+    hic_et_nunc_fa2(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fa2_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fa2_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fa2_bool_exp
+    ): [hic_et_nunc_fa2!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.fa2\""
+    hic_et_nunc_fa2_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fa2_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fa2_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fa2_bool_exp
+    ): hic_et_nunc_fa2_aggregate!
+    "fetch data from the table: \"hic_et_nunc.fa2\" using primary key columns"
+    hic_et_nunc_fa2_by_pk(contract: String!): hic_et_nunc_fa2
+    "fetch data from the table: \"hic_et_nunc.fulfilled_ask\""
+    hic_et_nunc_fulfilled_ask(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): [hic_et_nunc_fulfilled_ask!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.fulfilled_ask\""
+    hic_et_nunc_fulfilled_ask_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): hic_et_nunc_fulfilled_ask_aggregate!
+    "fetch data from the table: \"hic_et_nunc.fulfilled_ask\" using primary key columns"
+    hic_et_nunc_fulfilled_ask_by_pk(id: bigint!): hic_et_nunc_fulfilled_ask
     "fetch data from the table: \"hic_et_nunc.holder\""
     hic_et_nunc_holder(
         "distinct select on columns"
@@ -1185,6 +3451,62 @@ type query_root {
     ): hic_et_nunc_holder_aggregate!
     "fetch data from the table: \"hic_et_nunc.holder\" using primary key columns"
     hic_et_nunc_holder_by_pk(address: String!): hic_et_nunc_holder
+    "fetch data from the table: \"hic_et_nunc.shareholder\""
+    hic_et_nunc_shareholder(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): [hic_et_nunc_shareholder!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.shareholder\""
+    hic_et_nunc_shareholder_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): hic_et_nunc_shareholder_aggregate!
+    "fetch data from the table: \"hic_et_nunc.shareholder\" using primary key columns"
+    hic_et_nunc_shareholder_by_pk(id: Int!): hic_et_nunc_shareholder
+    "fetch data from the table: \"hic_et_nunc.splitcontract\""
+    hic_et_nunc_splitcontract(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): [hic_et_nunc_splitcontract!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.splitcontract\""
+    hic_et_nunc_splitcontract_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): hic_et_nunc_splitcontract_aggregate!
+    "fetch data from the table: \"hic_et_nunc.splitcontract\" using primary key columns"
+    hic_et_nunc_splitcontract_by_pk(id: Int!): hic_et_nunc_splitcontract
     "fetch data from the table: \"hic_et_nunc.swap\""
     hic_et_nunc_swap(
         "distinct select on columns"
@@ -1297,6 +3619,34 @@ type query_root {
     ): hic_et_nunc_token_holder_aggregate!
     "fetch data from the table: \"hic_et_nunc.token_holder\" using primary key columns"
     hic_et_nunc_token_holder_by_pk(id: Int!): hic_et_nunc_token_holder
+    "fetch data from the table: \"hic_et_nunc.token_operator\""
+    hic_et_nunc_token_operator(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): [hic_et_nunc_token_operator!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.token_operator\""
+    hic_et_nunc_token_operator_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): hic_et_nunc_token_operator_aggregate!
+    "fetch data from the table: \"hic_et_nunc.token_operator\" using primary key columns"
+    hic_et_nunc_token_operator_by_pk(id: Int!): hic_et_nunc_token_operator
     "fetch data from the table: \"hic_et_nunc.token_tag\""
     hic_et_nunc_token_tag(
         "distinct select on columns"
@@ -1357,6 +3707,62 @@ type query_root {
 
 "subscription root"
 type subscription_root {
+    "fetch data from the table: \"hic_et_nunc.ask\""
+    hic_et_nunc_ask(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): [hic_et_nunc_ask!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.ask\""
+    hic_et_nunc_ask_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_ask_bool_exp
+    ): hic_et_nunc_ask_aggregate!
+    "fetch data from the table: \"hic_et_nunc.ask\" using primary key columns"
+    hic_et_nunc_ask_by_pk(id: bigint!): hic_et_nunc_ask
+    "fetch data from the table: \"hic_et_nunc.bid\""
+    hic_et_nunc_bid(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): [hic_et_nunc_bid!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.bid\""
+    hic_et_nunc_bid_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_bid_bool_exp
+    ): hic_et_nunc_bid_aggregate!
+    "fetch data from the table: \"hic_et_nunc.bid\" using primary key columns"
+    hic_et_nunc_bid_by_pk(id: bigint!): hic_et_nunc_bid
     "fetch data from the table: \"hic_et_nunc.dipdup_state\""
     hic_et_nunc_dipdup_state(
         "distinct select on columns"
@@ -1385,6 +3791,146 @@ type subscription_root {
     ): hic_et_nunc_dipdup_state_aggregate!
     "fetch data from the table: \"hic_et_nunc.dipdup_state\" using primary key columns"
     hic_et_nunc_dipdup_state_by_pk(id: Int!): hic_et_nunc_dipdup_state
+    "fetch data from the table: \"hic_et_nunc.dutch_auction\""
+    hic_et_nunc_dutch_auction(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): [hic_et_nunc_dutch_auction!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.dutch_auction\""
+    hic_et_nunc_dutch_auction_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_dutch_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_dutch_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_dutch_auction_bool_exp
+    ): hic_et_nunc_dutch_auction_aggregate!
+    "fetch data from the table: \"hic_et_nunc.dutch_auction\" using primary key columns"
+    hic_et_nunc_dutch_auction_by_pk(id: bigint!): hic_et_nunc_dutch_auction
+    "fetch data from the table: \"hic_et_nunc.english_auction\""
+    hic_et_nunc_english_auction(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): [hic_et_nunc_english_auction!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.english_auction\""
+    hic_et_nunc_english_auction_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_auction_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_auction_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_auction_bool_exp
+    ): hic_et_nunc_english_auction_aggregate!
+    "fetch data from the table: \"hic_et_nunc.english_auction\" using primary key columns"
+    hic_et_nunc_english_auction_by_pk(id: bigint!): hic_et_nunc_english_auction
+    "fetch data from the table: \"hic_et_nunc.english_bid\""
+    hic_et_nunc_english_bid(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): [hic_et_nunc_english_bid!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.english_bid\""
+    hic_et_nunc_english_bid_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_english_bid_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_english_bid_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_english_bid_bool_exp
+    ): hic_et_nunc_english_bid_aggregate!
+    "fetch data from the table: \"hic_et_nunc.english_bid\" using primary key columns"
+    hic_et_nunc_english_bid_by_pk(id: bigint!): hic_et_nunc_english_bid
+    "fetch data from the table: \"hic_et_nunc.fa2\""
+    hic_et_nunc_fa2(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fa2_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fa2_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fa2_bool_exp
+    ): [hic_et_nunc_fa2!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.fa2\""
+    hic_et_nunc_fa2_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fa2_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fa2_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fa2_bool_exp
+    ): hic_et_nunc_fa2_aggregate!
+    "fetch data from the table: \"hic_et_nunc.fa2\" using primary key columns"
+    hic_et_nunc_fa2_by_pk(contract: String!): hic_et_nunc_fa2
+    "fetch data from the table: \"hic_et_nunc.fulfilled_ask\""
+    hic_et_nunc_fulfilled_ask(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): [hic_et_nunc_fulfilled_ask!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.fulfilled_ask\""
+    hic_et_nunc_fulfilled_ask_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_fulfilled_ask_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_fulfilled_ask_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_fulfilled_ask_bool_exp
+    ): hic_et_nunc_fulfilled_ask_aggregate!
+    "fetch data from the table: \"hic_et_nunc.fulfilled_ask\" using primary key columns"
+    hic_et_nunc_fulfilled_ask_by_pk(id: bigint!): hic_et_nunc_fulfilled_ask
     "fetch data from the table: \"hic_et_nunc.holder\""
     hic_et_nunc_holder(
         "distinct select on columns"
@@ -1413,6 +3959,62 @@ type subscription_root {
     ): hic_et_nunc_holder_aggregate!
     "fetch data from the table: \"hic_et_nunc.holder\" using primary key columns"
     hic_et_nunc_holder_by_pk(address: String!): hic_et_nunc_holder
+    "fetch data from the table: \"hic_et_nunc.shareholder\""
+    hic_et_nunc_shareholder(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): [hic_et_nunc_shareholder!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.shareholder\""
+    hic_et_nunc_shareholder_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_shareholder_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_shareholder_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_shareholder_bool_exp
+    ): hic_et_nunc_shareholder_aggregate!
+    "fetch data from the table: \"hic_et_nunc.shareholder\" using primary key columns"
+    hic_et_nunc_shareholder_by_pk(id: Int!): hic_et_nunc_shareholder
+    "fetch data from the table: \"hic_et_nunc.splitcontract\""
+    hic_et_nunc_splitcontract(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): [hic_et_nunc_splitcontract!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.splitcontract\""
+    hic_et_nunc_splitcontract_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_splitcontract_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_splitcontract_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_splitcontract_bool_exp
+    ): hic_et_nunc_splitcontract_aggregate!
+    "fetch data from the table: \"hic_et_nunc.splitcontract\" using primary key columns"
+    hic_et_nunc_splitcontract_by_pk(id: Int!): hic_et_nunc_splitcontract
     "fetch data from the table: \"hic_et_nunc.swap\""
     hic_et_nunc_swap(
         "distinct select on columns"
@@ -1525,6 +4127,34 @@ type subscription_root {
     ): hic_et_nunc_token_holder_aggregate!
     "fetch data from the table: \"hic_et_nunc.token_holder\" using primary key columns"
     hic_et_nunc_token_holder_by_pk(id: Int!): hic_et_nunc_token_holder
+    "fetch data from the table: \"hic_et_nunc.token_operator\""
+    hic_et_nunc_token_operator(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): [hic_et_nunc_token_operator!]!
+    "fetch aggregated fields from the table: \"hic_et_nunc.token_operator\""
+    hic_et_nunc_token_operator_aggregate(
+        "distinct select on columns"
+        distinct_on: [hic_et_nunc_token_operator_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [hic_et_nunc_token_operator_order_by!],
+        "filter the rows returned"
+        where: hic_et_nunc_token_operator_bool_exp
+    ): hic_et_nunc_token_operator_aggregate!
+    "fetch data from the table: \"hic_et_nunc.token_operator\" using primary key columns"
+    hic_et_nunc_token_operator_by_pk(id: Int!): hic_et_nunc_token_operator
     "fetch data from the table: \"hic_et_nunc.token_tag\""
     hic_et_nunc_token_tag(
         "distinct select on columns"
@@ -1583,6 +4213,68 @@ type subscription_root {
     hic_et_nunc_trade_by_pk(id: bigint!): hic_et_nunc_trade
 }
 
+"select columns of table \"hic_et_nunc.ask\""
+enum hic_et_nunc_ask_select_column {
+    "column name"
+    amount
+    "column name"
+    amount_left
+    "column name"
+    artist_id
+    "column name"
+    creator_id
+    "column name"
+    fa2_id
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    objkt_id
+    "column name"
+    price
+    "column name"
+    royalties
+    "column name"
+    status
+    "column name"
+    timestamp
+    "column name"
+    update_level
+    "column name"
+    update_timestamp
+}
+
+"select columns of table \"hic_et_nunc.bid\""
+enum hic_et_nunc_bid_select_column {
+    "column name"
+    artist_id
+    "column name"
+    creator_id
+    "column name"
+    fa2_id
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    objkt_id
+    "column name"
+    price
+    "column name"
+    royalties
+    "column name"
+    seller_id
+    "column name"
+    status
+    "column name"
+    timestamp
+    "column name"
+    update_level
+    "column name"
+    update_timestamp
+}
+
 "select columns of table \"hic_et_nunc.dipdup_state\""
 enum hic_et_nunc_dipdup_state_select_column {
     "column name"
@@ -1597,10 +4289,172 @@ enum hic_et_nunc_dipdup_state_select_column {
     level
 }
 
+"select columns of table \"hic_et_nunc.dutch_auction\""
+enum hic_et_nunc_dutch_auction_select_column {
+    "column name"
+    artist_id
+    "column name"
+    buy_price
+    "column name"
+    buyer_id
+    "column name"
+    contract_version
+    "column name"
+    creator_id
+    "column name"
+    end_price
+    "column name"
+    end_time
+    "column name"
+    fa2_id
+    "column name"
+    hash
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    objkt_id
+    "column name"
+    royalties
+    "column name"
+    start_price
+    "column name"
+    start_time
+    "column name"
+    status
+    "column name"
+    timestamp
+    "column name"
+    update_level
+    "column name"
+    update_timestamp
+}
+
+"select columns of table \"hic_et_nunc.english_auction\""
+enum hic_et_nunc_english_auction_select_column {
+    "column name"
+    artist_id
+    "column name"
+    contract_version
+    "column name"
+    creator_id
+    "column name"
+    end_time
+    "column name"
+    extension_time
+    "column name"
+    fa2_id
+    "column name"
+    hash
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    objkt_id
+    "column name"
+    price_increment
+    "column name"
+    reserve
+    "column name"
+    royalties
+    "column name"
+    start_time
+    "column name"
+    status
+    "column name"
+    timestamp
+    "column name"
+    update_level
+    "column name"
+    update_timestamp
+}
+
+"select columns of table \"hic_et_nunc.english_bid\""
+enum hic_et_nunc_english_bid_select_column {
+    "column name"
+    amount
+    "column name"
+    auction_id
+    "column name"
+    bidder_id
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    timestamp
+}
+
+"select columns of table \"hic_et_nunc.fa2\""
+enum hic_et_nunc_fa2_select_column {
+    "column name"
+    contract
+}
+
+"select columns of table \"hic_et_nunc.fulfilled_ask\""
+enum hic_et_nunc_fulfilled_ask_select_column {
+    "column name"
+    amount
+    "column name"
+    ask_id
+    "column name"
+    buyer_id
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    objkt_id
+    "column name"
+    seller_id
+    "column name"
+    timestamp
+}
+
 "select columns of table \"hic_et_nunc.holder\""
 enum hic_et_nunc_holder_select_column {
     "column name"
     address
+    "column name"
+    description
+    "column name"
+    hdao_balance
+    "column name"
+    is_split
+    "column name"
+    metadata
+    "column name"
+    metadata_file
+    "column name"
+    name
+}
+
+"select columns of table \"hic_et_nunc.shareholder\""
+enum hic_et_nunc_shareholder_select_column {
+    "column name"
+    holder_id
+    "column name"
+    holder_type
+    "column name"
+    id
+    "column name"
+    shares
+    "column name"
+    split_contract_id
+}
+
+"select columns of table \"hic_et_nunc.splitcontract\""
+enum hic_et_nunc_splitcontract_select_column {
+    "column name"
+    administrator
+    "column name"
+    contract_id
+    "column name"
+    id
+    "column name"
+    total_shares
 }
 
 "select columns of table \"hic_et_nunc.swap\""
@@ -1610,13 +4464,19 @@ enum hic_et_nunc_swap_select_column {
     "column name"
     amount_left
     "column name"
+    contract_version
+    "column name"
     creator_id
     "column name"
     id
     "column name"
+    is_valid
+    "column name"
     level
     "column name"
     price
+    "column name"
+    royalties
     "column name"
     status
     "column name"
@@ -1645,6 +4505,20 @@ enum hic_et_nunc_token_holder_select_column {
     token_id
 }
 
+"select columns of table \"hic_et_nunc.token_operator\""
+enum hic_et_nunc_token_operator_select_column {
+    "column name"
+    id
+    "column name"
+    level
+    "column name"
+    operator
+    "column name"
+    owner_id
+    "column name"
+    token_id
+}
+
 "select columns of table \"hic_et_nunc.token\""
 enum hic_et_nunc_token_select_column {
     "column name"
@@ -1656,9 +4530,15 @@ enum hic_et_nunc_token_select_column {
     "column name"
     display_uri
     "column name"
+    extra
+    "column name"
+    hdao_balance
+    "column name"
     id
     "column name"
     level
+    "column name"
+    metadata
     "column name"
     mime
     "column name"
@@ -1719,7 +4599,20 @@ enum order_by {
     desc_nulls_last
 }
 
-"expression to compare columns of type Int. AllTracksView fields are combined with logical 'AND'."
+"expression to compare columns of type Boolean. All fields are combined with logical 'AND'."
+input Boolean_comparison_exp {
+    _eq: Boolean
+    _gt: Boolean
+    _gte: Boolean
+    _in: [Boolean!]
+    _is_null: Boolean
+    _lt: Boolean
+    _lte: Boolean
+    _neq: Boolean
+    _nin: [Boolean!]
+}
+
+"expression to compare columns of type Int. All fields are combined with logical 'AND'."
 input Int_comparison_exp {
     _eq: Int
     _gt: Int
@@ -1732,7 +4625,7 @@ input Int_comparison_exp {
     _nin: [Int!]
 }
 
-"expression to compare columns of type String. AllTracksView fields are combined with logical 'AND'."
+"expression to compare columns of type String. All fields are combined with logical 'AND'."
 input String_comparison_exp {
     _eq: String
     _gt: String
@@ -1751,7 +4644,7 @@ input String_comparison_exp {
     _similar: String
 }
 
-"expression to compare columns of type bigint. AllTracksView fields are combined with logical 'AND'."
+"expression to compare columns of type bigint. All fields are combined with logical 'AND'."
 input bigint_comparison_exp {
     _eq: bigint
     _gt: bigint
@@ -1762,6 +4655,384 @@ input bigint_comparison_exp {
     _lte: bigint
     _neq: bigint
     _nin: [bigint!]
+}
+
+"order by aggregate values of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_aggregate_order_by {
+    avg: hic_et_nunc_ask_avg_order_by
+    count: order_by
+    max: hic_et_nunc_ask_max_order_by
+    min: hic_et_nunc_ask_min_order_by
+    stddev: hic_et_nunc_ask_stddev_order_by
+    stddev_pop: hic_et_nunc_ask_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_ask_stddev_samp_order_by
+    sum: hic_et_nunc_ask_sum_order_by
+    var_pop: hic_et_nunc_ask_var_pop_order_by
+    var_samp: hic_et_nunc_ask_var_samp_order_by
+    variance: hic_et_nunc_ask_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_avg_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.ask\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_ask_bool_exp {
+    _and: [hic_et_nunc_ask_bool_exp]
+    _not: hic_et_nunc_ask_bool_exp
+    _or: [hic_et_nunc_ask_bool_exp]
+    amount: bigint_comparison_exp
+    amount_left: bigint_comparison_exp
+    artist: hic_et_nunc_holder_bool_exp
+    artist_id: String_comparison_exp
+    creator: hic_et_nunc_holder_bool_exp
+    creator_id: String_comparison_exp
+    fa2: hic_et_nunc_fa2_bool_exp
+    fa2_id: String_comparison_exp
+    fulfilled: hic_et_nunc_fulfilled_ask_bool_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    objkt_id: bigint_comparison_exp
+    price: bigint_comparison_exp
+    royalties: bigint_comparison_exp
+    status: String_comparison_exp
+    timestamp: timestamptz_comparison_exp
+    update_level: bigint_comparison_exp
+    update_timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_max_order_by {
+    amount: order_by
+    amount_left: order_by
+    artist_id: order_by
+    creator_id: order_by
+    fa2_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_min_order_by {
+    amount: order_by
+    amount_left: order_by
+    artist_id: order_by
+    creator_id: order_by
+    fa2_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_order_by {
+    amount: order_by
+    amount_left: order_by
+    artist: hic_et_nunc_holder_order_by
+    artist_id: order_by
+    creator: hic_et_nunc_holder_order_by
+    creator_id: order_by
+    fa2: hic_et_nunc_fa2_order_by
+    fa2_id: order_by
+    fulfilled_aggregate: hic_et_nunc_fulfilled_ask_aggregate_order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_stddev_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_stddev_pop_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_stddev_samp_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_sum_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_var_pop_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_var_samp_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.ask\""
+input hic_et_nunc_ask_variance_order_by {
+    amount: order_by
+    amount_left: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_aggregate_order_by {
+    avg: hic_et_nunc_bid_avg_order_by
+    count: order_by
+    max: hic_et_nunc_bid_max_order_by
+    min: hic_et_nunc_bid_min_order_by
+    stddev: hic_et_nunc_bid_stddev_order_by
+    stddev_pop: hic_et_nunc_bid_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_bid_stddev_samp_order_by
+    sum: hic_et_nunc_bid_sum_order_by
+    var_pop: hic_et_nunc_bid_var_pop_order_by
+    var_samp: hic_et_nunc_bid_var_samp_order_by
+    variance: hic_et_nunc_bid_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_avg_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.bid\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_bid_bool_exp {
+    _and: [hic_et_nunc_bid_bool_exp]
+    _not: hic_et_nunc_bid_bool_exp
+    _or: [hic_et_nunc_bid_bool_exp]
+    artist: hic_et_nunc_holder_bool_exp
+    artist_id: String_comparison_exp
+    creator: hic_et_nunc_holder_bool_exp
+    creator_id: String_comparison_exp
+    fa2: hic_et_nunc_fa2_bool_exp
+    fa2_id: String_comparison_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    objkt_id: bigint_comparison_exp
+    price: bigint_comparison_exp
+    royalties: bigint_comparison_exp
+    seller: hic_et_nunc_holder_bool_exp
+    seller_id: String_comparison_exp
+    status: String_comparison_exp
+    timestamp: timestamptz_comparison_exp
+    update_level: bigint_comparison_exp
+    update_timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_max_order_by {
+    artist_id: order_by
+    creator_id: order_by
+    fa2_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    seller_id: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_min_order_by {
+    artist_id: order_by
+    creator_id: order_by
+    fa2_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    seller_id: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_order_by {
+    artist: hic_et_nunc_holder_order_by
+    artist_id: order_by
+    creator: hic_et_nunc_holder_order_by
+    creator_id: order_by
+    fa2: hic_et_nunc_fa2_order_by
+    fa2_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    seller: hic_et_nunc_holder_order_by
+    seller_id: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_stddev_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_stddev_pop_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_stddev_samp_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_sum_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_var_pop_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_var_samp_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.bid\""
+input hic_et_nunc_bid_variance_order_by {
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price: order_by
+    royalties: order_by
+    update_level: order_by
 }
 
 "order by aggregate values of table \"hic_et_nunc.dipdup_state\""
@@ -1785,7 +5056,7 @@ input hic_et_nunc_dipdup_state_avg_order_by {
     level: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.dipdup_state\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.dipdup_state\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_dipdup_state_bool_exp {
     _and: [hic_et_nunc_dipdup_state_bool_exp]
     _not: hic_et_nunc_dipdup_state_bool_exp
@@ -1871,49 +5142,1148 @@ input hic_et_nunc_dipdup_state_variance_order_by {
     level: order_by
 }
 
+"order by aggregate values of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_aggregate_order_by {
+    avg: hic_et_nunc_dutch_auction_avg_order_by
+    count: order_by
+    max: hic_et_nunc_dutch_auction_max_order_by
+    min: hic_et_nunc_dutch_auction_min_order_by
+    stddev: hic_et_nunc_dutch_auction_stddev_order_by
+    stddev_pop: hic_et_nunc_dutch_auction_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_dutch_auction_stddev_samp_order_by
+    sum: hic_et_nunc_dutch_auction_sum_order_by
+    var_pop: hic_et_nunc_dutch_auction_var_pop_order_by
+    var_samp: hic_et_nunc_dutch_auction_var_samp_order_by
+    variance: hic_et_nunc_dutch_auction_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_avg_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.dutch_auction\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_dutch_auction_bool_exp {
+    _and: [hic_et_nunc_dutch_auction_bool_exp]
+    _not: hic_et_nunc_dutch_auction_bool_exp
+    _or: [hic_et_nunc_dutch_auction_bool_exp]
+    artist: hic_et_nunc_holder_bool_exp
+    artist_id: String_comparison_exp
+    buy_price: bigint_comparison_exp
+    buyer: hic_et_nunc_holder_bool_exp
+    buyer_id: String_comparison_exp
+    contract_version: smallint_comparison_exp
+    creator: hic_et_nunc_holder_bool_exp
+    creator_id: String_comparison_exp
+    end_price: bigint_comparison_exp
+    end_time: timestamptz_comparison_exp
+    fa2: hic_et_nunc_fa2_bool_exp
+    fa2_id: String_comparison_exp
+    hash: String_comparison_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    objkt_id: bigint_comparison_exp
+    royalties: bigint_comparison_exp
+    start_price: bigint_comparison_exp
+    start_time: timestamptz_comparison_exp
+    status: String_comparison_exp
+    timestamp: timestamptz_comparison_exp
+    update_level: bigint_comparison_exp
+    update_timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_max_order_by {
+    artist_id: order_by
+    buy_price: order_by
+    buyer_id: order_by
+    contract_version: order_by
+    creator_id: order_by
+    end_price: order_by
+    end_time: order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_min_order_by {
+    artist_id: order_by
+    buy_price: order_by
+    buyer_id: order_by
+    contract_version: order_by
+    creator_id: order_by
+    end_price: order_by
+    end_time: order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_order_by {
+    artist: hic_et_nunc_holder_order_by
+    artist_id: order_by
+    buy_price: order_by
+    buyer: hic_et_nunc_holder_order_by
+    buyer_id: order_by
+    contract_version: order_by
+    creator: hic_et_nunc_holder_order_by
+    creator_id: order_by
+    end_price: order_by
+    end_time: order_by
+    fa2: hic_et_nunc_fa2_order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_stddev_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_stddev_pop_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_stddev_samp_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_sum_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_var_pop_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_var_samp_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.dutch_auction\""
+input hic_et_nunc_dutch_auction_variance_order_by {
+    buy_price: order_by
+    contract_version: order_by
+    end_price: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    royalties: order_by
+    start_price: order_by
+    update_level: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_aggregate_order_by {
+    avg: hic_et_nunc_english_auction_avg_order_by
+    count: order_by
+    max: hic_et_nunc_english_auction_max_order_by
+    min: hic_et_nunc_english_auction_min_order_by
+    stddev: hic_et_nunc_english_auction_stddev_order_by
+    stddev_pop: hic_et_nunc_english_auction_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_english_auction_stddev_samp_order_by
+    sum: hic_et_nunc_english_auction_sum_order_by
+    var_pop: hic_et_nunc_english_auction_var_pop_order_by
+    var_samp: hic_et_nunc_english_auction_var_samp_order_by
+    variance: hic_et_nunc_english_auction_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_avg_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.english_auction\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_english_auction_bool_exp {
+    _and: [hic_et_nunc_english_auction_bool_exp]
+    _not: hic_et_nunc_english_auction_bool_exp
+    _or: [hic_et_nunc_english_auction_bool_exp]
+    artist: hic_et_nunc_holder_bool_exp
+    artist_id: String_comparison_exp
+    bids: hic_et_nunc_english_bid_bool_exp
+    contract_version: smallint_comparison_exp
+    creator: hic_et_nunc_holder_bool_exp
+    creator_id: String_comparison_exp
+    end_time: timestamptz_comparison_exp
+    extension_time: bigint_comparison_exp
+    fa2: hic_et_nunc_fa2_bool_exp
+    fa2_id: String_comparison_exp
+    hash: String_comparison_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    objkt_id: bigint_comparison_exp
+    price_increment: bigint_comparison_exp
+    reserve: bigint_comparison_exp
+    royalties: bigint_comparison_exp
+    start_time: timestamptz_comparison_exp
+    status: String_comparison_exp
+    timestamp: timestamptz_comparison_exp
+    update_level: bigint_comparison_exp
+    update_timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_max_order_by {
+    artist_id: order_by
+    contract_version: order_by
+    creator_id: order_by
+    end_time: order_by
+    extension_time: order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_min_order_by {
+    artist_id: order_by
+    contract_version: order_by
+    creator_id: order_by
+    end_time: order_by
+    extension_time: order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_order_by {
+    artist: hic_et_nunc_holder_order_by
+    artist_id: order_by
+    bids_aggregate: hic_et_nunc_english_bid_aggregate_order_by
+    contract_version: order_by
+    creator: hic_et_nunc_holder_order_by
+    creator_id: order_by
+    end_time: order_by
+    extension_time: order_by
+    fa2: hic_et_nunc_fa2_order_by
+    fa2_id: order_by
+    hash: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    start_time: order_by
+    status: order_by
+    timestamp: order_by
+    update_level: order_by
+    update_timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_stddev_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_stddev_pop_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_stddev_samp_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_sum_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_var_pop_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_var_samp_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.english_auction\""
+input hic_et_nunc_english_auction_variance_order_by {
+    contract_version: order_by
+    extension_time: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    price_increment: order_by
+    reserve: order_by
+    royalties: order_by
+    update_level: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_aggregate_order_by {
+    avg: hic_et_nunc_english_bid_avg_order_by
+    count: order_by
+    max: hic_et_nunc_english_bid_max_order_by
+    min: hic_et_nunc_english_bid_min_order_by
+    stddev: hic_et_nunc_english_bid_stddev_order_by
+    stddev_pop: hic_et_nunc_english_bid_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_english_bid_stddev_samp_order_by
+    sum: hic_et_nunc_english_bid_sum_order_by
+    var_pop: hic_et_nunc_english_bid_var_pop_order_by
+    var_samp: hic_et_nunc_english_bid_var_samp_order_by
+    variance: hic_et_nunc_english_bid_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_avg_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.english_bid\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_english_bid_bool_exp {
+    _and: [hic_et_nunc_english_bid_bool_exp]
+    _not: hic_et_nunc_english_bid_bool_exp
+    _or: [hic_et_nunc_english_bid_bool_exp]
+    amount: bigint_comparison_exp
+    auction: hic_et_nunc_english_auction_bool_exp
+    auction_id: bigint_comparison_exp
+    bidder: hic_et_nunc_holder_bool_exp
+    bidder_id: String_comparison_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_max_order_by {
+    amount: order_by
+    auction_id: order_by
+    bidder_id: order_by
+    id: order_by
+    level: order_by
+    timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_min_order_by {
+    amount: order_by
+    auction_id: order_by
+    bidder_id: order_by
+    id: order_by
+    level: order_by
+    timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_order_by {
+    amount: order_by
+    auction: hic_et_nunc_english_auction_order_by
+    auction_id: order_by
+    bidder: hic_et_nunc_holder_order_by
+    bidder_id: order_by
+    id: order_by
+    level: order_by
+    timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_stddev_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_stddev_pop_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_stddev_samp_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_sum_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_var_pop_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_var_samp_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.english_bid\""
+input hic_et_nunc_english_bid_variance_order_by {
+    amount: order_by
+    auction_id: order_by
+    id: order_by
+    level: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.fa2\""
+input hic_et_nunc_fa2_aggregate_order_by {
+    count: order_by
+    max: hic_et_nunc_fa2_max_order_by
+    min: hic_et_nunc_fa2_min_order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.fa2\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_fa2_bool_exp {
+    _and: [hic_et_nunc_fa2_bool_exp]
+    _not: hic_et_nunc_fa2_bool_exp
+    _or: [hic_et_nunc_fa2_bool_exp]
+    asks: hic_et_nunc_ask_bool_exp
+    bids: hic_et_nunc_bid_bool_exp
+    contract: String_comparison_exp
+    dutch_auctions: hic_et_nunc_dutch_auction_bool_exp
+    english_auctions: hic_et_nunc_english_auction_bool_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.fa2\""
+input hic_et_nunc_fa2_max_order_by {
+    contract: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.fa2\""
+input hic_et_nunc_fa2_min_order_by {
+    contract: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.fa2\""
+input hic_et_nunc_fa2_order_by {
+    asks_aggregate: hic_et_nunc_ask_aggregate_order_by
+    bids_aggregate: hic_et_nunc_bid_aggregate_order_by
+    contract: order_by
+    dutch_auctions_aggregate: hic_et_nunc_dutch_auction_aggregate_order_by
+    english_auctions_aggregate: hic_et_nunc_english_auction_aggregate_order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.fa2\""
+input hic_et_nunc_fa2_pk_columns_input {
+    contract: String!
+}
+
+"order by aggregate values of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_aggregate_order_by {
+    avg: hic_et_nunc_fulfilled_ask_avg_order_by
+    count: order_by
+    max: hic_et_nunc_fulfilled_ask_max_order_by
+    min: hic_et_nunc_fulfilled_ask_min_order_by
+    stddev: hic_et_nunc_fulfilled_ask_stddev_order_by
+    stddev_pop: hic_et_nunc_fulfilled_ask_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_fulfilled_ask_stddev_samp_order_by
+    sum: hic_et_nunc_fulfilled_ask_sum_order_by
+    var_pop: hic_et_nunc_fulfilled_ask_var_pop_order_by
+    var_samp: hic_et_nunc_fulfilled_ask_var_samp_order_by
+    variance: hic_et_nunc_fulfilled_ask_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_avg_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.fulfilled_ask\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_fulfilled_ask_bool_exp {
+    _and: [hic_et_nunc_fulfilled_ask_bool_exp]
+    _not: hic_et_nunc_fulfilled_ask_bool_exp
+    _or: [hic_et_nunc_fulfilled_ask_bool_exp]
+    amount: bigint_comparison_exp
+    ask: hic_et_nunc_ask_bool_exp
+    ask_id: bigint_comparison_exp
+    buyer: hic_et_nunc_holder_bool_exp
+    buyer_id: String_comparison_exp
+    id: bigint_comparison_exp
+    level: bigint_comparison_exp
+    objkt_id: bigint_comparison_exp
+    seller: hic_et_nunc_holder_bool_exp
+    seller_id: String_comparison_exp
+    timestamp: timestamptz_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_max_order_by {
+    amount: order_by
+    ask_id: order_by
+    buyer_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    seller_id: order_by
+    timestamp: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_min_order_by {
+    amount: order_by
+    ask_id: order_by
+    buyer_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    seller_id: order_by
+    timestamp: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_order_by {
+    amount: order_by
+    ask: hic_et_nunc_ask_order_by
+    ask_id: order_by
+    buyer: hic_et_nunc_holder_order_by
+    buyer_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+    seller: hic_et_nunc_holder_order_by
+    seller_id: order_by
+    timestamp: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_pk_columns_input {
+    id: bigint!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_stddev_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_stddev_pop_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_stddev_samp_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_sum_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_var_pop_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_var_samp_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.fulfilled_ask\""
+input hic_et_nunc_fulfilled_ask_variance_order_by {
+    amount: order_by
+    ask_id: order_by
+    id: order_by
+    level: order_by
+    objkt_id: order_by
+}
+
 "order by aggregate values of table \"hic_et_nunc.holder\""
 input hic_et_nunc_holder_aggregate_order_by {
+    avg: hic_et_nunc_holder_avg_order_by
     count: order_by
     max: hic_et_nunc_holder_max_order_by
     min: hic_et_nunc_holder_min_order_by
+    stddev: hic_et_nunc_holder_stddev_order_by
+    stddev_pop: hic_et_nunc_holder_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_holder_stddev_samp_order_by
+    sum: hic_et_nunc_holder_sum_order_by
+    var_pop: hic_et_nunc_holder_var_pop_order_by
+    var_samp: hic_et_nunc_holder_var_samp_order_by
+    variance: hic_et_nunc_holder_variance_order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.holder\". AllTracksView fields are combined with a logical 'AND'."
+"order by avg() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_avg_order_by {
+    hdao_balance: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.holder\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_holder_bool_exp {
     _and: [hic_et_nunc_holder_bool_exp]
     _not: hic_et_nunc_holder_bool_exp
     _or: [hic_et_nunc_holder_bool_exp]
     address: String_comparison_exp
+    asks: hic_et_nunc_ask_bool_exp
+    bids: hic_et_nunc_bid_bool_exp
+    bought_asks: hic_et_nunc_fulfilled_ask_bool_exp
+    created_dutch_auctions: hic_et_nunc_dutch_auction_bool_exp
+    created_english_auctions: hic_et_nunc_english_auction_bool_exp
+    description: String_comparison_exp
+    english_bids: hic_et_nunc_english_bid_bool_exp
+    hdao_balance: bigint_comparison_exp
     holders_token: hic_et_nunc_token_holder_bool_exp
+    is_split: Boolean_comparison_exp
+    metadata: jsonb_comparison_exp
+    metadata_file: String_comparison_exp
+    name: String_comparison_exp
+    owner: hic_et_nunc_token_operator_bool_exp
     purchases: hic_et_nunc_trade_bool_exp
     sales: hic_et_nunc_trade_bool_exp
+    shareholder: hic_et_nunc_shareholder_bool_exp
+    shares: hic_et_nunc_splitcontract_bool_exp
+    sold_asks: hic_et_nunc_fulfilled_ask_bool_exp
+    sold_bids: hic_et_nunc_bid_bool_exp
+    starring_asks: hic_et_nunc_ask_bool_exp
+    starring_bids: hic_et_nunc_bid_bool_exp
+    starring_dutch_auctions: hic_et_nunc_dutch_auction_bool_exp
+    starring_english_auctions: hic_et_nunc_english_auction_bool_exp
     swaps: hic_et_nunc_swap_bool_exp
     tokens: hic_et_nunc_token_bool_exp
+    won_dutch_auctions: hic_et_nunc_dutch_auction_bool_exp
 }
 
 "order by max() on columns of table \"hic_et_nunc.holder\""
 input hic_et_nunc_holder_max_order_by {
     address: order_by
+    description: order_by
+    hdao_balance: order_by
+    metadata_file: order_by
+    name: order_by
 }
 
 "order by min() on columns of table \"hic_et_nunc.holder\""
 input hic_et_nunc_holder_min_order_by {
     address: order_by
+    description: order_by
+    hdao_balance: order_by
+    metadata_file: order_by
+    name: order_by
 }
 
 "ordering options when selecting data from \"hic_et_nunc.holder\""
 input hic_et_nunc_holder_order_by {
     address: order_by
+    asks_aggregate: hic_et_nunc_ask_aggregate_order_by
+    bids_aggregate: hic_et_nunc_bid_aggregate_order_by
+    bought_asks_aggregate: hic_et_nunc_fulfilled_ask_aggregate_order_by
+    created_dutch_auctions_aggregate: hic_et_nunc_dutch_auction_aggregate_order_by
+    created_english_auctions_aggregate: hic_et_nunc_english_auction_aggregate_order_by
+    description: order_by
+    english_bids_aggregate: hic_et_nunc_english_bid_aggregate_order_by
+    hdao_balance: order_by
     holders_token_aggregate: hic_et_nunc_token_holder_aggregate_order_by
+    is_split: order_by
+    metadata: order_by
+    metadata_file: order_by
+    name: order_by
+    owner_aggregate: hic_et_nunc_token_operator_aggregate_order_by
     purchases_aggregate: hic_et_nunc_trade_aggregate_order_by
     sales_aggregate: hic_et_nunc_trade_aggregate_order_by
+    shareholder_aggregate: hic_et_nunc_shareholder_aggregate_order_by
+    shares_aggregate: hic_et_nunc_splitcontract_aggregate_order_by
+    sold_asks_aggregate: hic_et_nunc_fulfilled_ask_aggregate_order_by
+    sold_bids_aggregate: hic_et_nunc_bid_aggregate_order_by
+    starring_asks_aggregate: hic_et_nunc_ask_aggregate_order_by
+    starring_bids_aggregate: hic_et_nunc_bid_aggregate_order_by
+    starring_dutch_auctions_aggregate: hic_et_nunc_dutch_auction_aggregate_order_by
+    starring_english_auctions_aggregate: hic_et_nunc_english_auction_aggregate_order_by
     swaps_aggregate: hic_et_nunc_swap_aggregate_order_by
     tokens_aggregate: hic_et_nunc_token_aggregate_order_by
+    won_dutch_auctions_aggregate: hic_et_nunc_dutch_auction_aggregate_order_by
 }
 
 "primary key columns input for table: \"hic_et_nunc.holder\""
 input hic_et_nunc_holder_pk_columns_input {
     address: String!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_stddev_order_by {
+    hdao_balance: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_stddev_pop_order_by {
+    hdao_balance: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_stddev_samp_order_by {
+    hdao_balance: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_sum_order_by {
+    hdao_balance: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_var_pop_order_by {
+    hdao_balance: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_var_samp_order_by {
+    hdao_balance: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.holder\""
+input hic_et_nunc_holder_variance_order_by {
+    hdao_balance: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_aggregate_order_by {
+    avg: hic_et_nunc_shareholder_avg_order_by
+    count: order_by
+    max: hic_et_nunc_shareholder_max_order_by
+    min: hic_et_nunc_shareholder_min_order_by
+    stddev: hic_et_nunc_shareholder_stddev_order_by
+    stddev_pop: hic_et_nunc_shareholder_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_shareholder_stddev_samp_order_by
+    sum: hic_et_nunc_shareholder_sum_order_by
+    var_pop: hic_et_nunc_shareholder_var_pop_order_by
+    var_samp: hic_et_nunc_shareholder_var_samp_order_by
+    variance: hic_et_nunc_shareholder_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_avg_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.shareholder\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_shareholder_bool_exp {
+    _and: [hic_et_nunc_shareholder_bool_exp]
+    _not: hic_et_nunc_shareholder_bool_exp
+    _or: [hic_et_nunc_shareholder_bool_exp]
+    holder: hic_et_nunc_holder_bool_exp
+    holder_id: String_comparison_exp
+    holder_type: String_comparison_exp
+    id: Int_comparison_exp
+    shares: bigint_comparison_exp
+    split_contract: hic_et_nunc_splitcontract_bool_exp
+    split_contract_id: Int_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_max_order_by {
+    holder_id: order_by
+    holder_type: order_by
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_min_order_by {
+    holder_id: order_by
+    holder_type: order_by
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_order_by {
+    holder: hic_et_nunc_holder_order_by
+    holder_id: order_by
+    holder_type: order_by
+    id: order_by
+    shares: order_by
+    split_contract: hic_et_nunc_splitcontract_order_by
+    split_contract_id: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_pk_columns_input {
+    id: Int!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_stddev_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_stddev_pop_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_stddev_samp_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_sum_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_var_pop_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_var_samp_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.shareholder\""
+input hic_et_nunc_shareholder_variance_order_by {
+    id: order_by
+    shares: order_by
+    split_contract_id: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_aggregate_order_by {
+    avg: hic_et_nunc_splitcontract_avg_order_by
+    count: order_by
+    max: hic_et_nunc_splitcontract_max_order_by
+    min: hic_et_nunc_splitcontract_min_order_by
+    stddev: hic_et_nunc_splitcontract_stddev_order_by
+    stddev_pop: hic_et_nunc_splitcontract_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_splitcontract_stddev_samp_order_by
+    sum: hic_et_nunc_splitcontract_sum_order_by
+    var_pop: hic_et_nunc_splitcontract_var_pop_order_by
+    var_samp: hic_et_nunc_splitcontract_var_samp_order_by
+    variance: hic_et_nunc_splitcontract_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_avg_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.splitcontract\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_splitcontract_bool_exp {
+    _and: [hic_et_nunc_splitcontract_bool_exp]
+    _not: hic_et_nunc_splitcontract_bool_exp
+    _or: [hic_et_nunc_splitcontract_bool_exp]
+    administrator: String_comparison_exp
+    contract: hic_et_nunc_holder_bool_exp
+    contract_id: String_comparison_exp
+    id: Int_comparison_exp
+    shareholder: hic_et_nunc_shareholder_bool_exp
+    total_shares: bigint_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_max_order_by {
+    administrator: order_by
+    contract_id: order_by
+    id: order_by
+    total_shares: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_min_order_by {
+    administrator: order_by
+    contract_id: order_by
+    id: order_by
+    total_shares: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_order_by {
+    administrator: order_by
+    contract: hic_et_nunc_holder_order_by
+    contract_id: order_by
+    id: order_by
+    shareholder_aggregate: hic_et_nunc_shareholder_aggregate_order_by
+    total_shares: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_pk_columns_input {
+    id: Int!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_stddev_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_stddev_pop_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_stddev_samp_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_sum_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_var_pop_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_var_samp_order_by {
+    id: order_by
+    total_shares: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.splitcontract\""
+input hic_et_nunc_splitcontract_variance_order_by {
+    id: order_by
+    total_shares: order_by
 }
 
 "order by aggregate values of table \"hic_et_nunc.swap\""
@@ -1935,25 +6305,30 @@ input hic_et_nunc_swap_aggregate_order_by {
 input hic_et_nunc_swap_avg_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.swap\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.swap\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_swap_bool_exp {
     _and: [hic_et_nunc_swap_bool_exp]
     _not: hic_et_nunc_swap_bool_exp
     _or: [hic_et_nunc_swap_bool_exp]
-    amount: bigint_comparison_exp
-    amount_left: bigint_comparison_exp
+    amount: smallint_comparison_exp
+    amount_left: smallint_comparison_exp
+    contract_version: smallint_comparison_exp
     creator: hic_et_nunc_holder_bool_exp
     creator_id: String_comparison_exp
     id: bigint_comparison_exp
+    is_valid: Boolean_comparison_exp
     level: bigint_comparison_exp
     price: bigint_comparison_exp
+    royalties: smallint_comparison_exp
     status: smallint_comparison_exp
     timestamp: timestamptz_comparison_exp
     token: hic_et_nunc_token_bool_exp
@@ -1965,10 +6340,12 @@ input hic_et_nunc_swap_bool_exp {
 input hic_et_nunc_swap_max_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     creator_id: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     timestamp: order_by
     token_id: order_by
@@ -1978,10 +6355,12 @@ input hic_et_nunc_swap_max_order_by {
 input hic_et_nunc_swap_min_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     creator_id: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     timestamp: order_by
     token_id: order_by
@@ -1991,11 +6370,14 @@ input hic_et_nunc_swap_min_order_by {
 input hic_et_nunc_swap_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     creator: hic_et_nunc_holder_order_by
     creator_id: order_by
     id: order_by
+    is_valid: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     timestamp: order_by
     token: hic_et_nunc_token_order_by
@@ -2012,9 +6394,11 @@ input hic_et_nunc_swap_pk_columns_input {
 input hic_et_nunc_swap_stddev_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2023,9 +6407,11 @@ input hic_et_nunc_swap_stddev_order_by {
 input hic_et_nunc_swap_stddev_pop_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2034,9 +6420,11 @@ input hic_et_nunc_swap_stddev_pop_order_by {
 input hic_et_nunc_swap_stddev_samp_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2045,9 +6433,11 @@ input hic_et_nunc_swap_stddev_samp_order_by {
 input hic_et_nunc_swap_sum_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2056,9 +6446,11 @@ input hic_et_nunc_swap_sum_order_by {
 input hic_et_nunc_swap_var_pop_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2067,9 +6459,11 @@ input hic_et_nunc_swap_var_pop_order_by {
 input hic_et_nunc_swap_var_samp_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2078,9 +6472,11 @@ input hic_et_nunc_swap_var_samp_order_by {
 input hic_et_nunc_swap_variance_order_by {
     amount: order_by
     amount_left: order_by
+    contract_version: order_by
     id: order_by
     level: order_by
     price: order_by
+    royalties: order_by
     status: order_by
     token_id: order_by
 }
@@ -2105,7 +6501,7 @@ input hic_et_nunc_tag_avg_order_by {
     id: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.tag\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.tag\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_tag_bool_exp {
     _and: [hic_et_nunc_tag_bool_exp]
     _not: hic_et_nunc_tag_bool_exp
@@ -2191,13 +6587,14 @@ input hic_et_nunc_token_aggregate_order_by {
 
 "order by avg() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_avg_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
     supply: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.token\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.token\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_token_bool_exp {
     _and: [hic_et_nunc_token_bool_exp]
     _not: hic_et_nunc_token_bool_exp
@@ -2207,11 +6604,15 @@ input hic_et_nunc_token_bool_exp {
     creator_id: String_comparison_exp
     description: String_comparison_exp
     display_uri: String_comparison_exp
+    extra: jsonb_comparison_exp
+    hdao_balance: bigint_comparison_exp
     id: bigint_comparison_exp
     level: bigint_comparison_exp
+    metadata: String_comparison_exp
     mime: String_comparison_exp
-    royalties: bigint_comparison_exp
-    supply: bigint_comparison_exp
+    operators: hic_et_nunc_token_operator_bool_exp
+    royalties: smallint_comparison_exp
+    supply: smallint_comparison_exp
     swaps: hic_et_nunc_swap_bool_exp
     thumbnail_uri: String_comparison_exp
     timestamp: timestamptz_comparison_exp
@@ -2243,7 +6644,7 @@ input hic_et_nunc_token_holder_avg_order_by {
     token_id: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.token_holder\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.token_holder\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_token_holder_bool_exp {
     _and: [hic_et_nunc_token_holder_bool_exp]
     _not: hic_et_nunc_token_holder_bool_exp
@@ -2342,8 +6743,10 @@ input hic_et_nunc_token_max_order_by {
     creator_id: order_by
     description: order_by
     display_uri: order_by
+    hdao_balance: order_by
     id: order_by
     level: order_by
+    metadata: order_by
     mime: order_by
     royalties: order_by
     supply: order_by
@@ -2358,14 +6761,135 @@ input hic_et_nunc_token_min_order_by {
     creator_id: order_by
     description: order_by
     display_uri: order_by
+    hdao_balance: order_by
     id: order_by
     level: order_by
+    metadata: order_by
     mime: order_by
     royalties: order_by
     supply: order_by
     thumbnail_uri: order_by
     timestamp: order_by
     title: order_by
+}
+
+"order by aggregate values of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_aggregate_order_by {
+    avg: hic_et_nunc_token_operator_avg_order_by
+    count: order_by
+    max: hic_et_nunc_token_operator_max_order_by
+    min: hic_et_nunc_token_operator_min_order_by
+    stddev: hic_et_nunc_token_operator_stddev_order_by
+    stddev_pop: hic_et_nunc_token_operator_stddev_pop_order_by
+    stddev_samp: hic_et_nunc_token_operator_stddev_samp_order_by
+    sum: hic_et_nunc_token_operator_sum_order_by
+    var_pop: hic_et_nunc_token_operator_var_pop_order_by
+    var_samp: hic_et_nunc_token_operator_var_samp_order_by
+    variance: hic_et_nunc_token_operator_variance_order_by
+}
+
+"order by avg() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_avg_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"hic_et_nunc.token_operator\". All fields are combined with a logical 'AND'."
+input hic_et_nunc_token_operator_bool_exp {
+    _and: [hic_et_nunc_token_operator_bool_exp]
+    _not: hic_et_nunc_token_operator_bool_exp
+    _or: [hic_et_nunc_token_operator_bool_exp]
+    id: Int_comparison_exp
+    level: bigint_comparison_exp
+    operator: String_comparison_exp
+    owner: hic_et_nunc_holder_bool_exp
+    owner_id: String_comparison_exp
+    token: hic_et_nunc_token_bool_exp
+    token_id: bigint_comparison_exp
+}
+
+"order by max() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_max_order_by {
+    id: order_by
+    level: order_by
+    operator: order_by
+    owner_id: order_by
+    token_id: order_by
+}
+
+"order by min() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_min_order_by {
+    id: order_by
+    level: order_by
+    operator: order_by
+    owner_id: order_by
+    token_id: order_by
+}
+
+"ordering options when selecting data from \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_order_by {
+    id: order_by
+    level: order_by
+    operator: order_by
+    owner: hic_et_nunc_holder_order_by
+    owner_id: order_by
+    token: hic_et_nunc_token_order_by
+    token_id: order_by
+}
+
+"primary key columns input for table: \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_pk_columns_input {
+    id: Int!
+}
+
+"order by stddev() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_stddev_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_stddev_pop_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_stddev_samp_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by sum() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_sum_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by var_pop() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_var_pop_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by var_samp() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_var_samp_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
+}
+
+"order by variance() on columns of table \"hic_et_nunc.token_operator\""
+input hic_et_nunc_token_operator_variance_order_by {
+    id: order_by
+    level: order_by
+    token_id: order_by
 }
 
 "ordering options when selecting data from \"hic_et_nunc.token\""
@@ -2375,9 +6899,13 @@ input hic_et_nunc_token_order_by {
     creator_id: order_by
     description: order_by
     display_uri: order_by
+    extra: order_by
+    hdao_balance: order_by
     id: order_by
     level: order_by
+    metadata: order_by
     mime: order_by
+    operators_aggregate: hic_et_nunc_token_operator_aggregate_order_by
     royalties: order_by
     supply: order_by
     swaps_aggregate: hic_et_nunc_swap_aggregate_order_by
@@ -2396,6 +6924,7 @@ input hic_et_nunc_token_pk_columns_input {
 
 "order by stddev() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_stddev_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2404,6 +6933,7 @@ input hic_et_nunc_token_stddev_order_by {
 
 "order by stddev_pop() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_stddev_pop_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2412,6 +6942,7 @@ input hic_et_nunc_token_stddev_pop_order_by {
 
 "order by stddev_samp() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_stddev_samp_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2420,6 +6951,7 @@ input hic_et_nunc_token_stddev_samp_order_by {
 
 "order by sum() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_sum_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2448,7 +6980,7 @@ input hic_et_nunc_token_tag_avg_order_by {
     token_id: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.token_tag\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.token_tag\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_token_tag_bool_exp {
     _and: [hic_et_nunc_token_tag_bool_exp]
     _not: hic_et_nunc_token_tag_bool_exp
@@ -2539,6 +7071,7 @@ input hic_et_nunc_token_tag_variance_order_by {
 
 "order by var_pop() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_var_pop_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2547,6 +7080,7 @@ input hic_et_nunc_token_var_pop_order_by {
 
 "order by var_samp() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_var_samp_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2555,6 +7089,7 @@ input hic_et_nunc_token_var_samp_order_by {
 
 "order by variance() on columns of table \"hic_et_nunc.token\""
 input hic_et_nunc_token_variance_order_by {
+    hdao_balance: order_by
     id: order_by
     level: order_by
     royalties: order_by
@@ -2585,7 +7120,7 @@ input hic_et_nunc_trade_avg_order_by {
     token_id: order_by
 }
 
-"Boolean expression to filter rows from the table \"hic_et_nunc.trade\". AllTracksView fields are combined with a logical 'AND'."
+"Boolean expression to filter rows from the table \"hic_et_nunc.trade\". All fields are combined with a logical 'AND'."
 input hic_et_nunc_trade_bool_exp {
     _and: [hic_et_nunc_trade_bool_exp]
     _not: hic_et_nunc_trade_bool_exp
@@ -2712,7 +7247,30 @@ input hic_et_nunc_trade_variance_order_by {
     token_id: order_by
 }
 
-"expression to compare columns of type smallint. AllTracksView fields are combined with logical 'AND'."
+"expression to compare columns of type jsonb. All fields are combined with logical 'AND'."
+input jsonb_comparison_exp {
+    "is the column contained in the given json value"
+    _contained_in: jsonb
+    "does the column contain the given json value at the top level"
+    _contains: jsonb
+    _eq: jsonb
+    _gt: jsonb
+    _gte: jsonb
+    "does the string exist as a top-level key in the column"
+    _has_key: String
+    "do all of these strings exist as top-level keys in the column"
+    _has_keys_all: [String!]
+    "do any of these strings exist as top-level keys in the column"
+    _has_keys_any: [String!]
+    _in: [jsonb!]
+    _is_null: Boolean
+    _lt: jsonb
+    _lte: jsonb
+    _neq: jsonb
+    _nin: [jsonb!]
+}
+
+"expression to compare columns of type smallint. All fields are combined with logical 'AND'."
 input smallint_comparison_exp {
     _eq: smallint
     _gt: smallint
@@ -2725,7 +7283,7 @@ input smallint_comparison_exp {
     _nin: [smallint!]
 }
 
-"expression to compare columns of type timestamptz. AllTracksView fields are combined with logical 'AND'."
+"expression to compare columns of type timestamptz. All fields are combined with logical 'AND'."
 input timestamptz_comparison_exp {
     _eq: timestamptz
     _gt: timestamptz
@@ -2740,6 +7298,8 @@ input timestamptz_comparison_exp {
 
 
 scalar bigint
+
+scalar jsonb
 
 scalar smallint
 

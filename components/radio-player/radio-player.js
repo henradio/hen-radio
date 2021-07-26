@@ -3,7 +3,7 @@ import PlayPauseButton from './buttons/play-pause-button';
 import MuteButton from './buttons/mute-button';
 import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
-import { getAlias, getCreator } from '../../utilities/general';
+import { getIpfsUrl, getTrimmedWallet } from '../../utilities/general';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import { useEffect } from 'react';
 import { ipfsUrls } from '../../constants';
@@ -11,7 +11,6 @@ import PrevButton from './buttons/prev-button';
 import NextButton from './buttons/next-button';
 import ScrubberBar from './scrubber-bar';
 import Image from 'next/image';
-import LinkIcon from './icons/link-icon';
 import LinkButton from './buttons/link-button';
 
 const RadioPlayer = () => {
@@ -20,7 +19,7 @@ const RadioPlayer = () => {
         playerState,
         controls,
     } = useRadio();
-    const {tracks, creatorMetadata} = usePlaylist();
+    const {tracks} = usePlaylist();
 
     // Todo: double check this actually works…
     useEffect(() => {
@@ -66,7 +65,7 @@ const RadioPlayer = () => {
             <div className={styles.currentPlaylistImageHolder}>
                 <Image
                     src={track?.displayUri
-                        ? `https://cloudflare-ipfs.com/ipfs/${track.displayUri.slice(7)}`
+                        ? getIpfsUrl(track.displayUri)
                         : '/images/playlist-default.png'}
                     srcSet={track?.displayUri ? srcSet : 'images/playlist-default.png'}
                     width={120}
@@ -105,13 +104,12 @@ const RadioPlayer = () => {
                                     className={styles.trackRow_link}
                                 >#{track.id}</a>
                                 {' '}
+                                {track.title}
+                                <br/>
                                 By <a
                                 href={`https://hicetnunc.xyz/tz/${track.creator}`}
                                 className={styles.trackRow_link}
-                            >{getCreator(track.creator)} {getAlias(track.creator,
-                                creatorMetadata)}</a>
-                                <br/>
-                                {track.name}
+                            >{getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}</a>
                             </span>
                             </div>
                         ) : null}

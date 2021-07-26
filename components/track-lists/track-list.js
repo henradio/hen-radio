@@ -7,12 +7,11 @@ import useRadio from '../../hooks/use-radio';
 import LoadingIcon from '../radio-player/icons/loading-icon';
 import Image from 'next/image';
 import TrackLinks from './track-links';
-import { getAlias, getCreator } from '../../utilities/general';
+import { getIpfsUrl } from '../../utilities/general';
 
 const TrackList = ({
     tracks,
     isTrackPlaying,
-    creatorMetadata,
     playlist,
 }) => {
     const {controls, playerState} = useRadio();
@@ -54,15 +53,17 @@ const TrackList = ({
                         }
                         <TrackLinks
                             track={t}
-                            creator={getCreator(t.creator)}
-                            alias={getAlias(t.creator, creatorMetadata)}
+                            walletAddress={t.creator.walletAddress}
+                            name={t.creator.name}
                         />
                         <div className={styles.trackRow_avatar}>
                             <Image
                                 width={26}
                                 height={26}
                                 alt={'Artist\'s avatar'}
-                                src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
+                                src={t.displayUri
+                                    ? getIpfsUrl(t.displayUri)
+                                    : '/images/playlist-default.png'}
                             />
                         </div>
                     </div>,

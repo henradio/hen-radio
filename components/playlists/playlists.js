@@ -1,9 +1,8 @@
 import styles from './styles.module.css';
 import { createRef, useState } from 'react';
 import Image from 'next/image';
-import { getCreator } from '../../utilities/general';
+import { getIpfsUrl } from '../../utilities/general';
 import useUserPlaylists from '../../hooks/use-user-playlists';
-import Link from 'next/link';
 import TrackLinks from '../track-lists/track-links';
 
 const Playlists = ({handlePlaylistChange, playlists}) => {
@@ -25,7 +24,7 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
             if(p.name.toLowerCase().includes(search)) return true;
             if(p.curator.toLowerCase().includes(search)) return true;
             for(const track of p.tracks) {
-                if(track.name.toLowerCase().includes(search)) return true;
+                if(track.title.toLowerCase().includes(search)) return true;
                 if(track.id.toString().toLowerCase().includes(search)) return true;
                 if(track.creator.toLowerCase().includes(search)) return true;
             }
@@ -102,13 +101,19 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
                                     <p className={styles.filteredPlaylists_subTitle}>{p.curator}</p>
                                     {p.tracks.map(t => (
                                         <div key={t.id} className={styles.trackRow}>
-                                            <TrackLinks track={t} creator={getCreator(t.creator)}/>
+                                            <TrackLinks
+                                                track={t}
+                                                walletAddress={t.creator.walletAddress}
+                                                name={t.creator.name}
+                                            />
                                             <div className={styles.trackRow_avatar}>
                                                 <Image
                                                     width={26}
                                                     height={26}
                                                     alt={'Artist\'s avatar'}
-                                                    src={`https://services.tzkt.io/v1/avatars2/${t.creator}`}
+                                                    src={getIpfsUrl(
+                                                        t.creator.metadata?.indenticon) ||
+                                                    '/images/playlist-default.png'}
                                                 />
                                             </div>
                                         </div>

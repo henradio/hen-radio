@@ -7,7 +7,7 @@ export const getStaticProps = async() => {
 
     return {
         props: {tracks},
-        revalidate: 60
+        revalidate: 60,
     };
 };
 

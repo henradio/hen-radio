@@ -4,16 +4,16 @@ import { useEffect } from 'react';
 import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
 import styles from './styles.module.css';
-import { getAlias, getCreator } from '../../utilities/general';
+import { getTrimmedWallet } from '../../utilities/general';
 
-const ObjktView = ({walletAddress, creator, objkt, tracks}) => {
+const ObjktView = ({walletAddress, objkt, tracks}) => {
     const {
         playerState,
         controls,
         isTrackPlaying,
     } = useRadio();
 
-    const {setTracks, creatorMetadata} = usePlaylist();
+    const {setTracks} = usePlaylist();
 
     if(audio) {
         audio.onended = () => {
@@ -36,11 +36,11 @@ const ObjktView = ({walletAddress, creator, objkt, tracks}) => {
 
     return (
         <>
-            <h2 className={styles.subTitle}>Tracks by {getCreator(walletAddress)} {creator?.alias || creator?.twitter || ''}</h2>
+            <h2 className={styles.subTitle}>Tracks by {getTrimmedWallet(
+                walletAddress)} {playerState.currentTrack?.creator?.name || ''}</h2>
             <TrackList
                 tracks={tracks}
                 isTrackPlaying={isTrackPlaying}
-                creatorMetadata={creatorMetadata}
             />
         </>
     );

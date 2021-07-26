@@ -4,8 +4,7 @@ import FilterTypes from '../../enums/filter-types';
 import TracksFilterBar from './tracks-filter-bar';
 import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
-import { audio, ipfsUrls } from '../../constants';
-import useWallet from '../../hooks/use-wallet';
+import { audio } from '../../constants';
 
 const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     const {
@@ -13,7 +12,7 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
         controls,
         isTrackPlaying,
     } = useRadio();
-    const {setTracks, creatorMetadata} = usePlaylist();
+    const {setTracks} = usePlaylist();
     const [filteredTracks, setFilteredTracks] = useState([]);
     const [filter, setFilter] = useState(FilterTypes.ALL);
 
@@ -59,7 +58,6 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
             <TrackList
                 tracks={filteredTracks}
                 isTrackPlaying={isTrackPlaying}
-                creatorMetadata={creatorMetadata}
             />
         </>
     );

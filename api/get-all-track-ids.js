@@ -16,7 +16,7 @@ const query = gql`
 
 const getAllTrackIds = async() => {
     const response = await request('https://api.hicdex.com/v1/graphql', query);
-    return response?.hic_et_nunc_token.map(({id}) => id) || [];
+    return response?.hic_et_nunc_token.map(({id}) => id.toString()) || [];
 };
 
 export default getAllTrackIds;

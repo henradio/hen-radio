@@ -7,7 +7,7 @@ export const getStaticProps = async() => {
 
     return {
         props: {wallets},
-        revalidate: 300
+        revalidate: 300,
     };
 };
 

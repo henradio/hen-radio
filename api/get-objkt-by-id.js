@@ -1,4 +1,5 @@
 import { gql, request } from 'graphql-request';
+import { getIpfsUrl } from '../utilities/general';
 
 const query = gql`
     query AudioObjktData($objktId: bigint!) {
@@ -20,6 +21,10 @@ const query = gql`
             mime
             creator_id
             artifact_uri
+            creator {
+                name
+                metadata
+            }
         }
     }
 `;
@@ -30,7 +35,17 @@ const getObjktById = async(objktId) => {
         query,
         {objktId},
     );
-    return response.hic_et_nunc_token?.[0] || null;
+    return response.hic_et_nunc_token?.map(o => ({
+        id: o.id,
+        creator: {
+            walletAddress: o.creator_id,
+            ...o.creator,
+        },
+        title: o.title,
+        src: getIpfsUrl(o.artifact_uri),
+        mimeType: o.mime,
+        displayUri: o.display_uri,
+    }))?.[0] || null;
 };
 
 export default getObjktById;

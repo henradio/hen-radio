@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 const WalletView = ({wallets}) => {
     const [walletsWithAudio, setWalletsWithAudio] = useState([]);
     const [filteredWallets, setFilteredWallets] = useState([]);
+
     useEffect(() => {
         (async() => {
             const walletsWithMetadata = (
@@ -29,9 +30,9 @@ const WalletView = ({wallets}) => {
                 w.walletId.toLowerCase().includes(search) ||
                 w.twitter?.toLowerCase().includes(search) ||
                 w.alias?.toLowerCase().includes(search)
-            )
+            ),
         ));
-        setWalletIdInput(event.target.value)
+        setWalletIdInput(event.target.value);
     };
 
     return (

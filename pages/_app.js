@@ -6,7 +6,7 @@ const MyApp = ({Component, pageProps}) =>
     <>
         <Head>
             <title>Hen Radio | NFT Music Player</title>
-            <link rel="icon" href="/favicon.png" />
+            <link rel="icon" href="/favicon.png"/>
         </Head>
         <Providers>
             <Component {...pageProps} />

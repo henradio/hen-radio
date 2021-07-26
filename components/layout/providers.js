@@ -15,7 +15,7 @@ const Providers = ({children}) =>
                         <div className={styles.radioPlayerBar}>
                             <RadioPlayer/>
                         </div>
-                    {children}
+                        {children}
                     </Layout>
                 </PlaylistProvider>
             </UserPlaylistProvider>

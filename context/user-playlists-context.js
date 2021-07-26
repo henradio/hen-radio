@@ -47,7 +47,7 @@ const UserPlaylistProvider = ({children}) => {
                 const playlist = prevState.shift();
                 nextPlaylists.push(playlist);
                 if(playlist.name === playlistName) {
-                    playlist.tracks = playlist.tracks.filter(t => t.name !== track.name);
+                    playlist.tracks = playlist.tracks.filter(t => t.title !== track.title);
                     break;
                 }
             }

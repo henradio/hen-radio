@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import TrackList from '../track-lists/track-list';
 import useRadio from '../../hooks/use-radio';
-import useTracksMetadata from '../../hooks/use-metadata';
 import { audio } from '../../constants';
 
 const PlaylistTracks = ({playlist}) => {
@@ -12,7 +11,6 @@ const PlaylistTracks = ({playlist}) => {
     } = useRadio();
 
     const {tracks} = playlist;
-    const creatorMetadata = useTracksMetadata(tracks);
 
     if(audio) {
         audio.onended = () => {
@@ -35,7 +33,6 @@ const PlaylistTracks = ({playlist}) => {
         <TrackList
             tracks={tracks}
             isTrackPlaying={isTrackPlaying}
-            creatorMetadata={creatorMetadata}
             playlist={playlist}
         />
     );
