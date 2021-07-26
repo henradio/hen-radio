@@ -26,7 +26,7 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
             for(const track of p.tracks) {
                 if(track.title.toLowerCase().includes(search)) return true;
                 if(track.id.toString().toLowerCase().includes(search)) return true;
-                if(track.creator.toLowerCase().includes(search)) return true;
+                if(track.creator.walletAddress.toLowerCase().includes(search)) return true;
             }
             return false;
         });
