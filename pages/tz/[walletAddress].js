@@ -31,9 +31,11 @@ const Tz = ({creator, tracks, wallets}) => {
     const {isFallback} = useRouter();
 
     if(isFallback) {
-        setTimeout(() => {
-            window.location.reload();
-        }, 2000);
+        if(typeof window !== 'undefined') {
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
 
         return <p>Loading...</p>;
     }
