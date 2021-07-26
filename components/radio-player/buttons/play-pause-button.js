@@ -1,8 +1,8 @@
 import styles from '../styles.module.css';
-import PauseIcon from '../icons/pause-icon';
-import PlayIcon from '../icons/play-icon';
+import PauseIcon from '../../icons/pause-icon';
+import PlayIcon from '../../icons/play-icon';
 import useRadio from '../../../hooks/use-radio';
-import LoadingIcon from '../icons/loading-icon';
+import LoadingIcon from '../../icons/loading-icon';
 
 const PlayPauseButton = () => {
     const {controls, playerState} = useRadio();

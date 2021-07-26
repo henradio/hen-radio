@@ -1,6 +1,6 @@
 import styles from '../styles.module.css';
-import UnmuteIcon from '../icons/unmute-icon';
-import MuteIcon from '../icons/mute-icon';
+import UnmuteIcon from '../../icons/unmute-icon';
+import MuteIcon from '../../icons/mute-icon';
 import useRadio from '../../../hooks/use-radio';
 
 const MuteButton = () => {

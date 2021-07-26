@@ -1,12 +1,14 @@
-import styles from '../styles.module.css';
-import LinkIcon from '../../icons/link-icon';
+import styles from './styles.module.css';
+import LinkIcon from '../icons/link-icon';
 import { useState } from 'react';
 
 const LinkButton = ({tracks}) => {
     const [showMessage, setShowMessage] = useState(false);
 
     const handleCopyShareLink = async() => {
-        await navigator.clipboard.writeText(`https://hen.radio/objkt/${tracks.id}`);
+        const trackIds = tracks.map(t => t.id).join(',');
+        await navigator.clipboard
+            .writeText(`https://hen.radio/playlists/${trackIds}`);
         setShowMessage(true);
         setTimeout(() => {
             setShowMessage(false);
@@ -16,7 +18,7 @@ const LinkButton = ({tracks}) => {
     return (
         <div className={styles.shareLinkHolder}>
             <button
-                title="Copy Track Url"
+                title="Copy Playlist Url"
                 className={`${styles.button} ${styles.button_link} ${styles.playerIconHolder}`}
                 onClick={handleCopyShareLink}
             >

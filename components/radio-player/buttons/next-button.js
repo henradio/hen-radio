@@ -1,6 +1,6 @@
 import useRadio from '../../../hooks/use-radio';
 import styles from '../styles.module.css';
-import NextIcon from '../icons/next-icon';
+import NextIcon from '../../icons/next-icon';
 
 const NextButton = ({tracks}) => {
     const {controls} = useRadio();

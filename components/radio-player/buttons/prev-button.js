@@ -1,6 +1,6 @@
 import useRadio from '../../../hooks/use-radio';
 import styles from '../styles.module.css';
-import PrevIcon from '../icons/prev-icon';
+import PrevIcon from '../../icons/prev-icon';
 
 const PrevButton = ({tracks}) => {
     const {controls} = useRadio();

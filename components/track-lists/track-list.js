@@ -1,10 +1,10 @@
 import styles from './styles.module.css';
-import PauseIcon from '../radio-player/icons/pause-icon';
-import PlayIcon from '../radio-player/icons/play-icon';
+import PauseIcon from '../icons/pause-icon';
+import PlayIcon from '../icons/play-icon';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import RemoveFromPlaylist from '../add-to-playlist/remove-from-playlist';
 import useRadio from '../../hooks/use-radio';
-import LoadingIcon from '../radio-player/icons/loading-icon';
+import LoadingIcon from '../icons/loading-icon';
 import Image from 'next/image';
 import TrackLinks from './track-links';
 import { getIpfsUrl } from '../../utilities/general';
