@@ -26,7 +26,7 @@ function FilterButtons() {
                         <p className={styles.smallText}>Selected Tags: {selectedTags.length
                             ? selectedTags.join(
                                 ', ')
-                            : 'All'}</p>
+                            : 'all'}</p>
                         <button onClick={clearTags}>
                             All ({totalTracks})
                         </button>
@@ -34,7 +34,7 @@ function FilterButtons() {
                             Object
                                 .entries(tags)
                                 .filter(
-                                    ([tag, count]) => count >= 5 && tag.length < 20 && tag.length > 0)
+                                    ([tag, count]) => count >= 3 && tag.length < 20 && tag.length > 0)
                                 .sort(([_a, countA], [_b, countB]) => countB - countA)
                                 .map(
                                     ([tag, count]) => (
