@@ -56,16 +56,6 @@ const TrackList = ({
                             walletAddress={t.creator.walletAddress}
                             name={t.creator.name}
                         />
-                        <div className={styles.trackRow_avatar}>
-                            <Image
-                                width={26}
-                                height={26}
-                                alt={'Artist\'s avatar'}
-                                src={t.displayUri
-                                    ? getIpfsUrl(t.displayUri)
-                                    : '/images/playlist-default.png'}
-                            />
-                        </div>
                     </div>,
                 )}
             </div>
