@@ -3,6 +3,7 @@ import useRadio from '../../hooks/use-radio';
 import { useEffect } from 'react';
 import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
+import FilterButtons from '../track-lists/filter-buttons';
 
 const AllTracksView = ({objkt, tracks}) => {
     const {
@@ -11,7 +12,7 @@ const AllTracksView = ({objkt, tracks}) => {
         isTrackPlaying,
     } = useRadio();
 
-    const {setTracks} = usePlaylist();
+    const {filteredTracks, setTracks} = usePlaylist();
 
     if(audio) {
         audio.onended = () => {
@@ -23,6 +24,10 @@ const AllTracksView = ({objkt, tracks}) => {
 
     useEffect(() => {
         setTracks(tracks);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [tracks])
+
+    useEffect(() => {
         if(playerState.currentTrack === null) {
             const foundIndex = tracks.findIndex(t => t.id === Number(objkt));
             controls.initialiseTrack(tracks)(foundIndex !== -1 ? foundIndex : 0)();
@@ -30,13 +35,16 @@ const AllTracksView = ({objkt, tracks}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tracks]);
 
-    if(!tracks) return <p>Loading...</p>;
+    if(!filteredTracks) return <p>Loading...</p>;
 
     return (
-        <TrackList
-            tracks={tracks}
-            isTrackPlaying={isTrackPlaying}
-        />
+        <>
+            <FilterButtons/>
+            <TrackList
+                tracks={filteredTracks}
+                isTrackPlaying={isTrackPlaying}
+            />
+        </>
     );
 };
 

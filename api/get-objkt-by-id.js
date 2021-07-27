@@ -21,6 +21,11 @@ const query = gql`
             mime
             creator_id
             artifact_uri
+            token_tags {
+                tag {
+                    tag
+                }
+            }
             creator {
                 name
                 metadata
@@ -45,6 +50,7 @@ const getObjktById = async(objktId) => {
         src: getIpfsUrl(o.artifact_uri),
         mimeType: o.mime,
         displayUri: o.display_uri,
+        tags: o.token_tags.map(tt => tt.tag.tag)
     }))?.[0] || null;
 };
 

@@ -79,6 +79,28 @@
     font-weight: bold;
 }
 
+.smallText {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+}
+
+.marginTop {
+    margin-top: 16px;
+}
+
+.tagToggleButton {
+    margin-bottom: 16px;
+}
+
+.tagsHolder {
+    margin-bottom: 16px;
+}
+
+.tagsContainer {
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 16px;
+}
+
 @media screen and (min-width: 600px) {
     .trackRow_text {
         display: block;

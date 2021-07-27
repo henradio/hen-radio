@@ -22,6 +22,11 @@ const query = gql`
             mime
             creator_id
             artifact_uri
+            token_tags {
+                tag {
+                    tag
+                }
+            }
             creator {
                 name
                 metadata
@@ -43,6 +48,7 @@ const getAllTracks = async() => {
         mimeType: o.mime,
         displayUri: o.display_uri,
         description: o.description,
+        tags: o.token_tags.map(tt => tt.tag.tag)
     })) || [];
 };
 

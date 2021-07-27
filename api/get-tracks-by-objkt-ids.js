@@ -17,6 +17,11 @@ const query = gql`
             mime
             creator_id
             artifact_uri
+            token_tags {
+                tag {
+                    tag
+                }
+            }
             creator {
                 name
                 metadata
@@ -39,6 +44,7 @@ const getTracksByObjktIds = async(objktIds) => {
             src: getIpfsUrl(o.artifact_uri),
             mimeType: o.mime,
             displayUri: o.display_uri,
+            tags: o.token_tags.map(tt => tt.tag.tag)
         }))
         ?.sort((a, b) => objktIds.indexOf(a.id) - objktIds.indexOf(b.id));
 
