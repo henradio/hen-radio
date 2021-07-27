@@ -4,8 +4,8 @@ const Footer = () =>
     <div className={styles.footerBar}>
         <h2 className={styles.footerTitle}>Hic et Nunc: NFT Music Player</h2>
         <p className={styles.footerText}>
-            Listen to music NFTs on Hen Radio. An audio player for Hic et Nunc Objkts.
-            <a href='https://twitter.com/hen_radio'>@hen_radio</a>
+            Listen to music NFTs on Hen Radio. An audio player for Hic et Nunc Objkts.<br />
+            Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a>
         </p>
         <p className={styles.footerText}><strong>Created as part of Hicathon Hackday 2021</strong></p>
         <p className={styles.footerText}>Working Group:<br/>
