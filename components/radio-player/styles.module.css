@@ -20,7 +20,7 @@
     height: 60px;
     margin-bottom: 16px;
     flex-shrink: 0;
-    margin-right: 12px;
+    margin-right: 24px;
     padding-top: 12px;
     display: flex;
     align-items: center;
@@ -325,7 +325,7 @@ input[type=range].radioRange:focus::-ms-fill-upper {
         padding: 0;
         width: 100%;
         box-shadow: none;
-        height: 120px;
+        height: 180px;
         align-items: center;
         flex-direction: row;
         max-width: 600px;
@@ -334,14 +334,14 @@ input[type=range].radioRange:focus::-ms-fill-upper {
     }
 
     .currentPlaylistImageHolder {
-        width: 120px;
-        height: 120px;
+        width: 180px;
+        height: 180px;
         margin-bottom: 0;
     }
 
     .currentPlaylistImage {
-        max-width: 120px;
-        max-height: 120px;
+        max-width: 180px;
+        max-height: 180px;
     }
 
     .playerBar {

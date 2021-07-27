@@ -68,8 +68,8 @@ const RadioPlayer = () => {
                         ? getIpfsUrl(track.displayUri)
                         : '/images/playlist-default.png'}
                     srcSet={track?.displayUri ? srcSet : 'images/playlist-default.png'}
-                    width={120}
-                    height={120}
+                    width={180}
+                    height={180}
                     alt=""
                     className={styles.currentPlaylistImage}
                 />
