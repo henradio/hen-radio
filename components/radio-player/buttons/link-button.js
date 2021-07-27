@@ -2,11 +2,11 @@ import styles from '../styles.module.css';
 import LinkIcon from '../../icons/link-icon';
 import { useState } from 'react';
 
-const LinkButton = ({tracks}) => {
+const LinkButton = ({track}) => {
     const [showMessage, setShowMessage] = useState(false);
 
     const handleCopyShareLink = async() => {
-        await navigator.clipboard.writeText(`https://hen.radio/objkt/${tracks.id}`);
+        await navigator.clipboard.writeText(`https://hen.radio/objkt/${track.id}`);
         setShowMessage(true);
         setTimeout(() => {
             setShowMessage(false);
