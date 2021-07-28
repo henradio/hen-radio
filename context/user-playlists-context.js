@@ -9,8 +9,11 @@ const UserPlaylistProvider = ({children}) => {
     useEffect(() => {
         const storedPlaylist = window.localStorage.getItem('user-playlists');
         if(!storedPlaylist) return;
-        const initialPlaylists = JSON.parse(storedPlaylist);
-        setUserPlaylists(initialPlaylists);
+        const playlists = JSON.parse(storedPlaylist)
+            .filter(sp => sp.name)
+            .map(sp => sp.tags ? {...sp, tags: []} : sp);
+        setLocalStorage('user-playlists', playlists);
+        setUserPlaylists(playlists);
     }, []);
 
     const createUserPlaylist = (name) => {

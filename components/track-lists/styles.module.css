@@ -101,6 +101,10 @@
     margin-bottom: 16px;
 }
 
+.filterActionBar {
+    display: flex;
+}
+
 @media screen and (min-width: 600px) {
     .trackRow_text {
         display: block;

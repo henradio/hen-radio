@@ -12,7 +12,10 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
 
     const handleCreatePlaylist = () => {
         if(!createPlaylistRef.current) return;
-        if(!createPlaylistRef.current.value) alert('Enter a playlist name');
+        if(!createPlaylistRef.current.value) {
+            alert('Enter a playlist name');
+            return;
+        }
         createUserPlaylist(createPlaylistRef.current.value);
         createPlaylistRef.current.value = '';
     };

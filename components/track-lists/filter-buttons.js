@@ -18,9 +18,11 @@ function FilterButtons() {
 
     return (
         <div className={styles.tagsContainer}>
-            <button className={styles.tagToggleButton} onClick={handleToggleTags}>{!isOpen
-                ? 'Show Tags'
-                : 'Hide Tags'}</button>
+            <div className={styles.filterActionBar}>
+                <button className={styles.tagToggleButton} onClick={handleToggleTags}>{!isOpen
+                    ? 'Show Tags'
+                    : 'Hide Tags'}</button>
+            </div>
             {isOpen ? <>
                     <div className={styles.tagsHolder}>
                         <p className={styles.smallText}>Selected Tags: {selectedTags.length
@@ -34,7 +36,8 @@ function FilterButtons() {
                             Object
                                 .entries(tags)
                                 .filter(
-                                    ([tag, count]) => (Object.keys(tags).length < 15 || count >= 3) && tag.length < 20 && tag.length > 0)
+                                    ([tag, count]) => (Object.keys(tags).length < 15 || count >= 3) &&
+                                        tag.length < 20 && tag.length > 0)
                                 .sort(([_a, countA], [_b, countB]) => countB - countA)
                                 .map(
                                     ([tag, count]) => (
