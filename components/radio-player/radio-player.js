@@ -109,7 +109,8 @@ const RadioPlayer = () => {
                                 By <a
                                 href={`https://hicetnunc.xyz/tz/${track.creator.walletAddress}`}
                                 className={styles.trackRow_link}
-                            >{getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}</a>
+                            >{getTrimmedWallet(
+                                track.creator.walletAddress)} {track.creator.name}</a>
                             </span>
                             </div>
                         ) : null}

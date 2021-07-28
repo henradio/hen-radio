@@ -25,7 +25,7 @@ const AllTracksView = ({objkt, tracks}) => {
     useEffect(() => {
         setTracks(tracks);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tracks])
+    }, [tracks]);
 
     useEffect(() => {
         if(playerState.currentTrack === null) {

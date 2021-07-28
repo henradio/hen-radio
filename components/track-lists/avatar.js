@@ -12,4 +12,4 @@ const TrackRowAvatar = (track) =>
                 ? getIpfsUrl(track.displayUri)
                 : '/images/playlist-default.png'}
         />
-    </div>
+    </div>;

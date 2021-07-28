@@ -22,7 +22,7 @@ const CurrentPlaylist = ({playlist}) =>
                     By <a href="https://hicetnunc.xyz">{playlist.curator}</a>
                 </p>
                 <p className={styles.currentPlaylistDescription}>{playlist.description}</p>
-                <LinkButton tracks={playlist.tracks} />
+                <LinkButton tracks={playlist.tracks}/>
             </div>
         </div>
     </div>

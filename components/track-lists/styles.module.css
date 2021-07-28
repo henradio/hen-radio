@@ -84,6 +84,16 @@
     font-size: 14px;
 }
 
+.priceData {
+    text-align: right;
+    margin-left: auto;
+}
+
+.priceText {
+    margin: 0;
+    font-size: 14px;
+}
+
 .marginTop {
     margin-top: 16px;
 }

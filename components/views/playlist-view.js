@@ -27,7 +27,7 @@ const PlaylistView = () => {
     useEffect(() => {
         setTracks(selectedPlaylist.tracks);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedPlaylist])
+    }, [selectedPlaylist]);
 
     const handlePlaylistChange = (playlist) => () => setSelectedPlaylist(playlist);
 

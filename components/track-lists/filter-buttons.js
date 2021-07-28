@@ -19,7 +19,7 @@ function FilterButtons() {
     };
 
     const handleSearch = event => {
-        setSearch(event.target.value)
+        setSearch(event.target.value);
     };
 
     return (

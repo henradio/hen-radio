@@ -5,9 +5,7 @@ import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import RemoveFromPlaylist from '../add-to-playlist/remove-from-playlist';
 import useRadio from '../../hooks/use-radio';
 import LoadingIcon from '../icons/loading-icon';
-import Image from 'next/image';
 import TrackLinks from './track-links';
-import { getIpfsUrl } from '../../utilities/general';
 
 const TrackList = ({
     tracks,
@@ -56,11 +54,16 @@ const TrackList = ({
                             walletAddress={t.creator.walletAddress}
                             name={t.creator.name}
                         />
+                        <div className={styles.priceData}>
+                            <p className={styles.priceText}>{t.availability}</p>
+                            {t.price ? (<p className={styles.priceText}>{t.price}</p>) : null}
+                        </div>
                     </div>,
                 )}
             </div>
         )}
     </>;
-};
+}
+;
 
 export default TrackList;

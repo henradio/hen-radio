@@ -1,5 +1,5 @@
 import { gql, request } from 'graphql-request';
-import { getIpfsUrl } from '../utilities/general';
+import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
 
 const query = gql`
     query AudioObjktData {
@@ -14,10 +14,6 @@ const query = gql`
             display_uri
             title
             description
-            token_holders {
-                holder_id
-                quantity
-            }
             thumbnail_uri
             mime
             creator_id
@@ -30,6 +26,13 @@ const query = gql`
             creator {
                 name
                 metadata
+            }
+            supply
+            token_holders(where: {holder_id: {_eq: "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"}}) {
+                quantity
+            }
+            swaps(where: {status: {_eq: "0"}, contract_version: {_neq: "1"}}, order_by: {price: asc}) {
+                price
             }
         }
     }
@@ -48,7 +51,9 @@ const getAllTracks = async() => {
         mimeType: o.mime,
         displayUri: o.display_uri,
         description: o.description,
-        tags: o.token_tags.map(tt => tt.tag.tag)
+        availability: getAvailability(o) + '/' + o.supply,
+        price: o.swaps.length ? convertPriceToXtz(o.swaps[0].price) + 'xtz' : '',
+        tags: o.token_tags.map(tt => tt.tag.tag),
     })) || [];
 };
 
