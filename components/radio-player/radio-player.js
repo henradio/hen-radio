@@ -115,6 +115,10 @@ const RadioPlayer = () => {
                             </div>
                         ) : null}
                 </div>
+                {track?.availability ? <div className={styles.priceData}>
+                    <p className={styles.priceText}>Editions: {track.availability}</p>
+                    {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
+                </div> : null}
                 {audioError && <p className={styles.errorText}>{audioError}</p>}
             </div>
         </div>

@@ -317,6 +317,14 @@ input[type=range].radioRange:focus::-ms-fill-upper {
     background-color: #ffffff;
 }
 
+.priceData {
+}
+
+.priceText {
+    margin: 0;
+    font-size: 14px;
+}
+
 @media screen and (min-width: 600px) {
     .radioPlayerContainer {
         position: static;
