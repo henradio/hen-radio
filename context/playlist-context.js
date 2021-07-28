@@ -6,6 +6,7 @@ const PlaylistProvider = ({children}) => {
     const [tracks, setTracks] = useState([]);
     const [filteredTracks, setFilteredTracks] = useState([]);
     const [selectedTags, setSelectedTags] = useState(tracks);
+    const [search, setSearch] = useState('');
     const [tags, setTags] = useState({});
 
     const selectTag = (tag) => () => {
@@ -18,12 +19,19 @@ const PlaylistProvider = ({children}) => {
 
     useEffect(() => {
         (async() => {
-            const filteredTracks = selectedTags.length ? tracks.filter(
-                track => selectedTags.every(st => track.tags.includes(st)),
-            ) : tracks;
-            setFilteredTracks(filteredTracks);
+            const filteredTracks = selectedTags.length
+                ? tracks.filter(track => selectedTags.every(st => track.tags.includes(st)))
+                : tracks;
+            const lowercaseSearch = search.toLowerCase();
+            const searchedAndFilteredTracks = lowercaseSearch
+                ? filteredTracks.filter(track => {
+                    if(track.title.toLowerCase().includes(lowercaseSearch)) return true;
+                    if(track.creator.name?.toLowerCase().includes(lowercaseSearch)) return true;
+                })
+                : filteredTracks;
+            setFilteredTracks(searchedAndFilteredTracks);
         })();
-    }, [tracks, selectedTags]);
+    }, [tracks, selectedTags, search]);
 
     useEffect(() => {
         const tags = filteredTracks.reduce((obj, track) => {
@@ -37,7 +45,7 @@ const PlaylistProvider = ({children}) => {
             }, {},
         );
         setTags(tags);
-    }, [filteredTracks])
+    }, [filteredTracks]);
 
     return (
         <PlaylistContext.Provider
@@ -47,13 +55,15 @@ const PlaylistProvider = ({children}) => {
                 setFilteredTracks,
                 selectedTags,
                 setSelectedTags,
+                search,
+                setSearch,
                 tags,
                 setTags,
                 selectTag,
                 clearTags,
                 setTracks,
                 totalTracks: tracks.length,
-                totalFilteredTracks: filteredTracks.length
+                totalFilteredTracks: filteredTracks.length,
             }}
         >
             {children}

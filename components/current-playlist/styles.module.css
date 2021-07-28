@@ -33,7 +33,7 @@
 .currentPlaylistColumnImage {
     display: flex;
     flex-direction: column;
-    flex: 0 1 12em;
+    flex: 0 1 12.75em;
 }
 
 .currentPlaylistColumnInfo {

@@ -17,6 +17,12 @@ button {
   cursor: pointer;
 }
 
+input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+  padding: 6px 4px;
+  border: 1px solid #E5E5E5;
+  margin-bottom: 0;
+}
+
 a {
   color: #000;
   text-decoration: none;

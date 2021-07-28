@@ -8,6 +8,8 @@ function FilterButtons() {
         selectedTags,
         clearTags,
         selectTag,
+        search,
+        setSearch,
         totalTracks,
         totalFilteredTracks,
     } = usePlaylist();
@@ -16,12 +18,23 @@ function FilterButtons() {
         setIsOpen(prevState => !prevState);
     };
 
+    const handleSearch = event => {
+        setSearch(event.target.value)
+    };
+
     return (
         <div className={styles.tagsContainer}>
             <div className={styles.filterActionBar}>
                 <button className={styles.tagToggleButton} onClick={handleToggleTags}>{!isOpen
                     ? 'Show Tags'
                     : 'Hide Tags'}</button>
+                <input
+                    className={styles.searchField}
+                    value={search}
+                    onChange={handleSearch}
+                    title='Create Playlist'
+                    placeholder='Search by artist and track name'
+                />
             </div>
             {isOpen ? <>
                     <div className={styles.tagsHolder}>
