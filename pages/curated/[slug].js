@@ -16,15 +16,16 @@ export const getStaticProps = async({params}) => {
 };
 
 const PlaylistsPage = ({slug}) => {
-    const title = 'Listen to Hen Radio';
-    const description = 'Hic et Nunc NFT audio player and playlists';
+    const selectedPlaylist = playlists.find(p => p.slug === slug);
+    const title = `${selectedPlaylist.name} | Hen Radio`;
+    const description = selectedPlaylist.description || 'Curated playlist for Hen Radio';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
-    const url = 'https://hen.radio/playlists';
+    const url = `https://hen.radio/curated/${selectedPlaylist.slug}`;
 
     return <>
         <Head>
             <meta charSet="utf-8"/>
-            <title>Playlists | Hen Radio | NFT Music Player</title>
+            <title>{title}</title>
             <meta name="description" content={description}/>
             <link rel="canonical" href={`http://hen.radio/playlists`}/>
             <meta name="twitter:card" content="summary"/>
