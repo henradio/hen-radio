@@ -40,7 +40,6 @@ const PlaylistProvider = ({children}) => {
                     if(tag in obj) obj[tag]++;
                     else obj[tag] = 1;
                 }
-                console.log(obj);
                 return obj;
             }, {},
         );

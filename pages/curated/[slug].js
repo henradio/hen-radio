@@ -1,9 +1,21 @@
-import PlaylistView from '../components/views/playlist-view';
 import Head from 'next/head';
-import { playlists } from '../playlists/playlists';
+import { playlists } from '../../playlists/playlists';
+import PlaylistView from '../../components/views/playlist-view';
 
+export const getStaticPaths = async() => {
+    return {
+        paths: playlists.map((p) => ({params: {slug: p.slug}})),
+        fallback: false,
+    };
+};
 
-const PlaylistsPage = () => {
+export const getStaticProps = async({params}) => {
+    const {slug} = params;
+
+    return {props: {slug}};
+};
+
+const PlaylistsPage = ({slug}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player and playlists';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
@@ -41,7 +53,7 @@ const PlaylistsPage = () => {
             <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
             <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         </Head>
-        <PlaylistView initialPlaylists={playlists} slug={null}/>
+        <PlaylistView initialPlaylists={playlists} slug={slug}/>
     </>;
 };
 
