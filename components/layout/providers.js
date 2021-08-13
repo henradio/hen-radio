@@ -5,21 +5,24 @@ import PlaylistProvider from '../../context/playlist-context';
 import Layout from './layout';
 import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
+import TrackProvider from '../../context/track-context';
 
 const Providers = ({children}) =>
     <WalletProvider>
-        <RadioProvider>
-            <UserPlaylistProvider>
-                <PlaylistProvider>
-                    <Layout>
-                        <div className={styles.radioPlayerBar}>
-                            <RadioPlayer/>
-                        </div>
-                        {children}
-                    </Layout>
-                </PlaylistProvider>
-            </UserPlaylistProvider>
-        </RadioProvider>
+        <TrackProvider>
+            <RadioProvider>
+                <UserPlaylistProvider>
+                    <PlaylistProvider>
+                        <Layout>
+                            <div className={styles.radioPlayerBar}>
+                                <RadioPlayer/>
+                            </div>
+                            {children}
+                        </Layout>
+                    </PlaylistProvider>
+                </UserPlaylistProvider>
+            </RadioProvider>
+        </TrackProvider>
     </WalletProvider>
 ;
 

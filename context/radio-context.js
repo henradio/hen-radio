@@ -1,5 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import { audio, audioContext, fetchSrc } from '../constants';
+import useTrack from '../hooks/use-track';
 
 export const RadioContext = createContext();
 
@@ -7,6 +8,7 @@ let rAF;
 
 const RadioProvider = ({children}) => {
     const scrubberRef = useRef();
+    const {trackState, setTrackState} = useTrack();
 
     const [playerState, setPlayerState] = useState({
         currentTrackKey: 0,
@@ -49,7 +51,7 @@ const RadioProvider = ({children}) => {
             isLoading: true,
         }));
         if(playerState.isPlaying === null) {
-            await fetchSrc(playerState.currentTrack.src, playerState.currentTrack.mimeType);
+            await fetchSrc(trackState.currentTrack.src, trackState.currentTrack.mimeType);
         }
         await playAudio();
         setPlayerState(prevState => ({...prevState, isPlaying: true, isLoading: false}));
@@ -64,10 +66,12 @@ const RadioProvider = ({children}) => {
         // audio.mimeType = tracks[i].mimeType;
         await playAudio();
         setRunningTime(0);
-        setPlayerState(prevState => ({
-            ...prevState,
+        setTrackState({
             currentTrackKey: i,
             currentTrack: tracks[i],
+        })
+        setPlayerState(prevState => ({
+            ...prevState,
             isPlaying: true,
             isLoading: false,
         }));
@@ -81,11 +85,13 @@ const RadioProvider = ({children}) => {
         // await fetchSrc(tracks[i].src, tracks[i].mimeType);
         // audio.src = tracks[i].src;
         // audio.mimeType = tracks[i].mimeType;
+        setTrackState({
+            currentTrackKey: i,
+            currentTrack: tracks[i],
+        })
         setRunningTime(0);
         setPlayerState(prevState => ({
             ...prevState,
-            currentTrackKey: i,
-            currentTrack: tracks[i],
             isLoading: false,
         }));
     };
@@ -162,10 +168,12 @@ const RadioProvider = ({children}) => {
             audioContext.resume();
             audio.play();
         }
-        setPlayerState(prevState => ({
-            ...prevState,
+        setTrackState({
             currentTrackKey: nextTrackKey,
             currentTrack: tracks[nextTrackKey],
+        })
+        setPlayerState(prevState => ({
+            ...prevState,
             isLoading: false,
         }));
     };
@@ -184,6 +192,10 @@ const RadioProvider = ({children}) => {
             audioContext.resume();
             audio.play();
         }
+        setTrackState({
+            currentTrackKey: prevTrackKey,
+            currentTrack: tracks[prevTrackKey],
+        })
         setPlayerState(prevState => ({
             ...prevState,
             currentTrackKey: prevTrackKey,

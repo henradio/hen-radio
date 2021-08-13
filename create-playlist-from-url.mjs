@@ -1,11 +1,11 @@
 import { gql, request } from 'graphql-request';
 
-const url = 'https://hen.radio/playlists/44528,187125,180023,40382,160691,184521,184534,185156,163778,164362,175354,176366,176431,176756,177341,177343,43421,170082,171608'
+const url = 'https://hen.radio/playlists/197596,196064,193262,190830,178113,189702,162790'
 
 const extractIdsFromUrl = (url) => url.match(/\d+/g).map(d => Number(d));
 const objktIds = extractIdsFromUrl(url);
 
-export const getIpfsUrl = (ipfs) => {
+const getIpfsUrl = (ipfs) => {
     const ipfsUrls = [
         'https://cloudflare-ipfs.com/ipfs',
         'https://infura-ipfs.io/ipfs',

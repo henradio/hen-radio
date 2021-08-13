@@ -5,58 +5,79 @@ import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
 import { getIpfsUrl, getTrimmedWallet } from '../../utilities/general';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
-import { useEffect } from 'react';
 import { ipfsUrls } from '../../constants';
 import PrevButton from './buttons/prev-button';
 import NextButton from './buttons/next-button';
 import ScrubberBar from './scrubber-bar';
 import Image from 'next/image';
 import LinkButton from './buttons/link-button';
+import useTrack from '../../hooks/use-track';
 
-const RadioPlayer = () => {
+const Player = () => {
+    const {filteredTracks} = usePlaylist();
     const {
         audioError,
         playerState,
         controls,
     } = useRadio();
-    const {filteredTracks} = usePlaylist();
+    const {trackState} = useTrack();
+    const track = trackState?.currentTrack;
+    console.log('TRACK', track);
+    return (
+        <div className={styles.controlsLayout}>
+            <div className={styles.playerBar}>
+                <PrevButton tracks={filteredTracks}/>
+                <PlayPauseButton/>
+                <NextButton tracks={filteredTracks}/>
+                <input
+                    className={`${styles.radioRange} ${styles.volumeControl}`}
+                    title="volume"
+                    type="range"
+                    value={playerState.volume}
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    onChange={controls.volume}
+                />
+                <MuteButton/>
+            </div>
+            <ScrubberBar/>
+            <div className={styles.trackMetaRow}>
+                {track ? <AddToPlaylist track={track}/> : null}
+                {track ? <LinkButton track={track}/> : null}
+                {trackState.currentTrack !== null
+                    ? (
+                        <div className={styles.currentTrack}>
+                            <span className={styles.trackRow_text}>
+                                <a
+                                    href={`https://hicetnunc.xyz/objkt/${track.id}`}
+                                    className={styles.trackRow_link}
+                                >#{track.id}</a>
+                                {' '}
+                                {track.title}
+                                <br/>
+                                By <a
+                                href={`https://hicetnunc.xyz/tz/${track.creator.walletAddress}`}
+                                className={styles.trackRow_link}
+                            >{getTrimmedWallet(
+                                track.creator.walletAddress)} {track.creator.name}</a>
+                            </span>
+                        </div>
+                    ) : null}
+            </div>
+            {track?.availability ? <div className={styles.priceData}>
+                <p className={styles.priceText}>Editions: {track.availability}</p>
+                {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
+            </div> : null}
+            {audioError && <p className={styles.errorText}>{audioError}</p>}
+        </div>
+    );
+};
 
-    // Todo: double check this actually works…
-    useEffect(() => {
-        const keyUpListener = document.addEventListener('keydown', async(event) => {
-            if(!filteredTracks) return;
-            switch(event) {
-                case 'MediaPlayPause':
-                    if(!playerState.isPlaying) { await controls.play(); } else { await controls.pause(); }
-                    break;
-                case 'MediaStop':
-                    await controls.pause();
-                    break;
-                case 'MediaTrackPrevious':
-                    await controls.previous(filteredTracks);
-                    break;
-                case 'MediaTrackNext':
-                    await controls.next(filteredTracks);
-                    break;
-                case 'VolumeUp':
-                    await controls.volumeUp();
-                    break;
-                case 'VolumeDown':
-                    await controls.volumeDown();
-                    break;
-                case 'VolumeMute':
-                    if(playerState.isMuted) { await controls.unmute(); } else { await controls.mute(); }
-                    break;
-                default:
-                    return;
-            }
-        });
-        return () => {
-            document.removeEventListener('keydown', keyUpListener);
-        };
-    });
+const RadioPlayer = () => {
+    const {trackState} = useTrack();
+    const track = trackState?.currentTrack;
 
-    const track = playerState.currentTrack;
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
 
@@ -74,53 +95,7 @@ const RadioPlayer = () => {
                     className={styles.currentPlaylistImage}
                 />
             </div>
-            <div className={styles.controlsLayout}>
-                <div className={styles.playerBar}>
-                    <PrevButton tracks={filteredTracks}/>
-                    <PlayPauseButton/>
-                    <NextButton tracks={filteredTracks}/>
-                    <input
-                        className={`${styles.radioRange} ${styles.volumeControl}`}
-                        title="volume"
-                        type="range"
-                        value={playerState.volume}
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        onChange={controls.volume}
-                    />
-                    <MuteButton/>
-                </div>
-                <ScrubberBar/>
-                <div className={styles.trackMetaRow}>
-                    {track ? <AddToPlaylist track={track}/> : null}
-                    {track ? <LinkButton track={track}/> : null}
-                    {playerState.currentTrack !== null
-                        ? (
-                            <div className={styles.currentTrack}>
-                            <span className={styles.trackRow_text}>
-                                <a
-                                    href={`https://hicetnunc.xyz/objkt/${track.id}`}
-                                    className={styles.trackRow_link}
-                                >#{track.id}</a>
-                                {' '}
-                                {track.title}
-                                <br/>
-                                By <a
-                                href={`https://hicetnunc.xyz/tz/${track.creator.walletAddress}`}
-                                className={styles.trackRow_link}
-                            >{getTrimmedWallet(
-                                track.creator.walletAddress)} {track.creator.name}</a>
-                            </span>
-                            </div>
-                        ) : null}
-                </div>
-                {track?.availability ? <div className={styles.priceData}>
-                    <p className={styles.priceText}>Editions: {track.availability}</p>
-                    {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
-                </div> : null}
-                {audioError && <p className={styles.errorText}>{audioError}</p>}
-            </div>
+            <Player/>
         </div>
     );
 };

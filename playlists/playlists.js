@@ -1,5 +1,152 @@
 export const playlists = [
     {
+        name: 'Nomad Label',
+        curator: '@hen_radio',
+        description: 'Various Nomad_label sound objkts',
+        img: '/images/nomad_label.png',
+        slug: 'nomad-label',
+        tracks: [
+            {
+                'id': 98380, 'creator': {
+                    'walletAddress': 'tz1cP6n3wsdGA57YRizTwk2ks6uKV2gNNGkC',
+                    'name': 'blusimonwasem',
+                    'metadata': {'description': 'Nomad Trans-disciplinary Brazilian Artist. CryptoNoise. Daily life simulacrum'},
+                }, 'title': 'Crypto Noise series #00',
+                'src': 'https://cloudflare-ipfs.com/ipfs/QmQCSnBGmQoKNC43kddTqdNWJXM2nEiEf6zXJd88T8Wqex',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmRzzN8NmeiB7KhjhzQiEyG4aUnkrb92JCZZDDYkvhL7DS', 'tags': [],
+            },
+            {
+                'id': 99466, 'creator': {
+                    'walletAddress': 'tz1cP6n3wsdGA57YRizTwk2ks6uKV2gNNGkC',
+                    'name': 'blusimonwasem',
+                    'metadata': {'description': 'Nomad Trans-disciplinary Brazilian Artist. CryptoNoise. Daily life simulacrum'},
+                }, 'title': 'Crypto Noise series #01',
+                'src': 'https://dweb.link/ipfs/QmNn5PQyDRfLQ9HYQiFhd8ikQTQnRpe3NQ3wMVsjoKo4LW',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmRH9rf5N3nXE6U8iV6z8Fd56g2mqfc9DNMGwrVGV7F2ZN', 'tags': [],
+            },
+            {
+                'id': 100843, 'creator': {
+                    'walletAddress': 'tz1cP6n3wsdGA57YRizTwk2ks6uKV2gNNGkC',
+                    'name': 'blusimonwasem',
+                    'metadata': {'description': 'Nomad Trans-disciplinary Brazilian Artist. CryptoNoise. Daily life simulacrum'},
+                }, 'title': 'Crypto Noise series #02',
+                'src': 'https://ipfs.io/ipfs/QmdSgdkusmiKea2u4PzESaipZKbttpo48s7tYp5i63j3BD',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmYKkQi4V26o4MHtTSgcdvjePuh8S7hrnpyj4gBcFY4r8i', 'tags': [],
+            },
+            {
+                'id': 100943, 'creator': {
+                    'walletAddress': 'tz1cP6n3wsdGA57YRizTwk2ks6uKV2gNNGkC',
+                    'name': 'blusimonwasem',
+                    'metadata': {'description': 'Nomad Trans-disciplinary Brazilian Artist. CryptoNoise. Daily life simulacrum'},
+                }, 'title': 'Crypto Noise series #03',
+                'src': 'https://ipfs.io/ipfs/QmRwbLVhnXFKqHz1trzpxWzE6QtNqxWkppM7pb7JNHtzHD',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://Qmctv8KjqBGyqN6gQ7Ap22Y8cTaJ1g1NqZLbC14DG5b3TW', 'tags': [],
+            },
+            {
+                'id': 101079, 'creator': {
+                    'walletAddress': 'tz1cP6n3wsdGA57YRizTwk2ks6uKV2gNNGkC',
+                    'name': 'blusimonwasem',
+                    'metadata': {'description': 'Nomad Trans-disciplinary Brazilian Artist. CryptoNoise. Daily life simulacrum'},
+                }, 'title': 'Crypto Noise series #04',
+                'src': 'https://ipfs.io/ipfs/QmatzMuSP2XAWDMpjUxmXeFDCSJAtePjhte7J58DE4ssKp',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmdrM9XZELeuf4dqfCWCqmWonS7znSyGsEA512Dbo143k3', 'tags': [],
+            },
+            {
+                'id': 194594, 'creator': {
+                    'walletAddress': 'tz1Z54DwbANhFxaGsxLutmcFR57YeYHZ6ua3', 'name': 'nomadelabel',
+                    'metadata': {'description': 'Nomade Tokens ensembles Trans-disciplinary arts, from bangkok to Irará. No gender or genre definitions'},
+                }, 'title': 'cryptochristo - ode to joy tape speed distortion',
+                'src': 'https://cloudflare-ipfs.com/ipfs/QmXSBbFHKAu9eYjhpqZdugWGEgy4j2DeD5AJbK3uPvwArK',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmTDJ48ECcMV8va1CWSjhhqzD7vVdsDMweqVLfukjQDMeQ', 'tags': [],
+            },
+            {
+                'id': 195042, 'creator': {
+                    'walletAddress': 'tz1Z54DwbANhFxaGsxLutmcFR57YeYHZ6ua3', 'name': 'nomadelabel',
+                    'metadata': {'description': 'Nomade Tokens ensembles Trans-disciplinary arts, from bangkok to Irará. No gender or genre definitions'},
+                }, 'title': 'Tua Tempestade',
+                'src': 'https://cloudflare-ipfs.com/ipfs/QmNsxddw4A9QqwxppQKaBqBNUkAha3kg8rG4tgESjFAT4w',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmaSsNYYbWFgKwvxF3LqR8YzJ4zCKDKjKyBfcaNBYgMrBU', 'tags': [],
+            },
+            {
+                'id': 195568, 'creator': {
+                    'walletAddress': 'tz1Z54DwbANhFxaGsxLutmcFR57YeYHZ6ua3', 'name': 'nomadelabel',
+                    'metadata': {'description': 'Nomade Tokens ensembles Trans-disciplinary arts, from bangkok to Irará. No gender or genre definitions'},
+                }, 'title': 'Fierce and Fabulosa - work in process',
+                'src': 'https://dweb.link/ipfs/QmVknbTerGiHF3T4wFsXWFRAQWr1eWMmXFC4TUnCV974CB',
+                'mimeType': 'audio/wav',
+                'displayUri': 'ipfs://QmZQmmNEY1jG1xdqvy5Z3udwGRrRRfeZ7wZWZkWYNF6XDZ', 'tags': [],
+            },
+            {
+                'id': 199974, 'creator': {
+                    'walletAddress': 'tz1Z54DwbANhFxaGsxLutmcFR57YeYHZ6ua3', 'name': 'nomadelabel',
+                    'metadata': {'description': 'Nomade Tokens ensembles Trans-disciplinary arts, from bangkok to Irará. No gender or genre definitions'},
+                }, 'title': 'STE-002[undefined].mp3 - 1hz estúdio',
+                'src': 'https://infura-ipfs.io/ipfs/QmeeD6f1dUvLio7Hn49DuRVMJgo8L867ACXvr9rufQsD9Y',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmVKNQxqmi2s9E4TbmRjVu7FB5aL5PGcQZ2BibvV3mii8F', 'tags': [],
+            },
+            {
+                'id': 200478, 'creator': {
+                    'walletAddress': 'tz1Z54DwbANhFxaGsxLutmcFR57YeYHZ6ua3', 'name': 'nomadelabel',
+                    'metadata': {'description': 'Nomade Tokens ensembles Trans-disciplinary arts, from bangkok to Irará. No gender or genre definitions'},
+                }, 'title': 'Pire(กองฟืน) - pradit-saengkrai(thailand)',
+                'src': 'https://cloudflare-ipfs.com/ipfs/QmU292s8BdY1Mr16T1bQEbSYqoUcWXg5sWsiZVrYc78CPw',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmRzpk3hFBZQfzzm2YYBowxdvDzrHfkTVkvGRrRFRzTKFu', 'tags': [],
+            }],
+    },
+    {
+        name: 'We love Marcello, dead or not',
+        curator: '@hen_radio',
+        description: 'Agreeable sound experiments',
+        img: '/images/dead_marcello.png',
+        slug: 'we-love-marcello-dead-or-not',
+        tracks: [
+            {
+                'id': 162790, 'creator': {
+                    'walletAddress': 'tz1TG9d5ACUTVsyASTP2yi412VbW8hf2HUV6', 'name': 'dead_marcelo',
+                    'metadata': {'description': '#nft #modular #music on #web3 https://🎛🎧👽.y.at'},
+                }, 'title': 'Krell Phrygian G',
+                'src': 'https://ipfs.io/ipfs/QmXfnkWRwuTE5UbK6FAXfLR1BAiU93SeMo7qEcFoVzHDGE',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmRXXRdwAyjCNBKxZr3HDMKJLEVFjUjtPTbYrMz9PUBQwE', 'tags': [],
+            },
+            {
+                'id': 178113, 'creator': {
+                    'walletAddress': 'tz1TG9d5ACUTVsyASTP2yi412VbW8hf2HUV6', 'name': 'dead_marcelo',
+                    'metadata': {'description': '#nft #modular #music on #web3 https://🎛🎧👽.y.at'},
+                }, 'title': 'Machines by Alan Turing',
+                'src': 'https://dweb.link/ipfs/QmepYpPzTsqNeArvSydhqDbWE3TZ6RsGV54hWMCGS6zqQD',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://Qmbbntf1xKKiTkhWBncDYmuHwK3i1sTEbeaAgsP1fVAL6g', 'tags': [],
+            },
+            {
+                'id': 189702, 'creator': {
+                    'walletAddress': 'tz1TG9d5ACUTVsyASTP2yi412VbW8hf2HUV6', 'name': 'dead_marcelo',
+                    'metadata': {'description': '#nft #modular #music on #web3 https://🎛🎧👽.y.at'},
+                }, 'title': 'morning path 5',
+                'src': 'https://gateway.pinata.cloud/ipfs/QmZ4Txv4jHsekCpdC7V7fiEpFMFgSCCqNJPrYgFYUwNoJ6',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmeGnUqLXyaDJ5R75ZjQNfyrBdPBgF9xXhEaun4WY9PsyA', 'tags': [],
+            },
+            {
+                'id': 197596, 'creator': {
+                    'walletAddress': 'tz1TG9d5ACUTVsyASTP2yi412VbW8hf2HUV6', 'name': 'dead_marcelo',
+                    'metadata': {'description': '#nft #modular #music on #web3 https://🎛🎧👽.y.at'},
+                }, 'title': 'ao Sol',
+                'src': 'https://dweb.link/ipfs/QmNaoRpbfzZGGwjDdE3VYj9UVne8a47Mj3tabGq5QuNZ9K',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmQVoWd1Rhm4AwstTmZEZrEbV9eYd5nT5dpT29QbZGZmUg', 'tags': [],
+            }],
+    },
+    {
         name: 'Tezos-Artcast Mix Tape #1',
         curator: '@ArtcastTezos',
         description: 'Tezos-artcast mixtape A: Sonic explorations in a time of strangeness.',
