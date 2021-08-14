@@ -22,7 +22,6 @@ const Player = () => {
     } = useRadio();
     const {trackState} = useTrack();
     const track = trackState?.currentTrack;
-    console.log('TRACK', track);
     return (
         <div className={styles.controlsLayout}>
             <div className={styles.playerBar}>

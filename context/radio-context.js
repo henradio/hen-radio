@@ -157,7 +157,7 @@ const RadioProvider = ({children}) => {
 
     const handleNext = (tracks) => async() => {
         setPlayerState(prevState => ({...prevState, isLoading: true}));
-        const {currentTrackKey} = playerState;
+        const {currentTrackKey} = trackState;
         if(!tracks.length) return;
         const nextTrackKey = (currentTrackKey + 1) % tracks.length;
         // Note: Use fetchSrc if we have issues with duration not being present in the audio meta
@@ -180,7 +180,7 @@ const RadioProvider = ({children}) => {
 
     const handlePrev = (tracks) => async() => {
         setPlayerState(prevState => ({...prevState, isLoading: true}));
-        const {currentTrackKey} = playerState;
+        const {currentTrackKey} = trackState;
         if(!tracks.length) return;
         let prevTrackKey = currentTrackKey - 1;
         if(prevTrackKey < 0) prevTrackKey = tracks.length - 1;

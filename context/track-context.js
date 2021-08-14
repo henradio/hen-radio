@@ -1,5 +1,6 @@
 import { createContext, useRef, useState } from 'react';
 import { audio, audioContext, fetchSrc } from '../constants';
+import { useEffect } from 'react';
 
 export const TrackContext = createContext();
 
@@ -9,6 +10,10 @@ const TrackProvider = ({children}) => {
         currentTrackKey: 0,
         currentTrack: null,
     });
+
+    useEffect(() => {
+        console.log(trackState);
+    }, [trackState])
 
     return (
         <TrackContext.Provider
