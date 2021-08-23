@@ -19,11 +19,11 @@ const FaqPage = () => {
                     <li>Enter a title in the textbox "Playlist Title"</li>
                     <li>Click "Create Playlist"</li>
                     <li>Add tracks to the playlist by clicking the little "+" button next to each track.</li>
-                    <li>Clicking the link icon will copy the link to the playlist. For example: https://hen.radio/playlists/178891,11305,10159,8228</li>
+                    <li>Clicking the link icon will copy the link to the playlist. You can share this link via Twitter or email. For example: https://hen.radio/playlists/178891,11305,10159,8228</li>
                 </ol>
                 <br/>
                 <u>A. To create a playlist with a cover image and visible to everybody:</u><br/>
-                DM us the following details our twitter account @hen_radio<br/>
+                Work in progress, be patient... But you can try to message our twitter account @hen_radio with<br/>
                 <ol>
                     <li>The link to the playlist (see above. eg.: https://hen.radio/playlists/178891,11305,10159,8228)</li>
                     <li>Title of the playlist</li>
