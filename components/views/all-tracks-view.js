@@ -17,8 +17,7 @@ const AllTracksView = ({objkt, tracks}) => {
     if(audio) {
         audio.onended = () => {
             if(!tracks.length) return;
-            const nextTrackKey = (playerState.currentTrackKey + 1) % tracks.length;
-            controls.selectTrack(tracks)(nextTrackKey)();
+            controls.next(filteredTracks)();
         };
     }
 
