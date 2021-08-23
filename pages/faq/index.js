@@ -15,10 +15,10 @@ const FaqPage = () => {
                 <p><strong>Q. How do I create a playlist?</strong><br/>
                 <u>A. To create a local playlist (only visible to you):</u><br/>
                 <ol>
-                    <li>Go to "Playlists" in the top right menu</li>
-                    <li>Enter a title in the textbox "Playlist Title"</li>
-                    <li>Click "Create Playlist"</li>
-                    <li>Add tracks to the playlist by clicking the little "+" button next to each track.</li>
+                    <li>Go to &quot;Playlists&quot; in the top right menu</li>
+                    <li>Enter a title in the textbox &quot;Playlist Title&quot;</li>
+                    <li>Click &quot;Create Playlist&quot;</li>
+                    <li>Add tracks to the playlist by clicking the little &quot;+&quot; button next to each track.</li>
                     <li>Clicking the link icon will copy the link to the playlist. You can share this link via Twitter or email. For example: https://hen.radio/playlists/178891,11305,10159,8228</li>
                 </ol>
                 <br/>
