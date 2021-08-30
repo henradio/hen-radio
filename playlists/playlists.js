@@ -1,5 +1,45 @@
 export const playlists = [
     {
+        name: 'Hen.Radio contributors',
+        curator: '@hen_radio',
+        description: 'A playlist of music artists having contributed to Hen.Radio',
+        img: '/images/V5MT_HEN_Radio_180X180.gif',
+        slug: 'hen_radio',
+        tracks: [
+            {
+                'id': 195132, 'creator': {
+                    'walletAddress': 'tz1QbNsyBSznN3T4eQsHtFjhNbjwsu3iEZ5G',
+                    'name': 'EJKEW',
+                    'metadata': {'description': 'ttps://soundcloud.com/ejkew-1/sets/myrcene track from the B-MYRCENE PROJECT, comes with FROOTS print.'},
+                }, 'title': 'TROPICAL PUNCH',
+                'src': 'https://ipfs.io/ipfs/QmQe8Y3eRT93zrxiRCAJoqAmj8wNxfhDvvCSLuUBACbAtN',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmStVvBz9qWedMoYhPhyzUHMX1Kzwgkt7xnVwhq1SpfXgK', 'tags': [],
+            },
+            {
+                'id': 180278, 'creator': {
+                    'walletAddress': 'tz2DurpCmTtZp7YPHmP2hPyonZ3G6VMxqWSQ',
+                    'name': 'Nujonakihs',
+                    'metadata': {'description': 'Nujonakihs is a Zipangri creator. I make things that belong to the sphere of culture or entertainment.'},
+                }, 'title': 'O.D #721',
+                'src': 'https://ipfs.io/ipfs/QmR8azpX7EPQqtw9YL8cFd9AFZEbggrm93tgaYxSCGnK1t',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs/QmadMcsEV45Yn3Qty1a9FBp6QutyS98yzssSAWbCbFBNWG', 'tags': [],
+            },
+            {
+                'id': 217384, 'creator': {
+                    'walletAddress': 'tz1Mpr7WD3UG47UFPbizLPnBCNhh8pcdbSyz',
+                    'name': 'V4W.ENKO',
+                    'metadata': {'description': 'v4w.enko - "RE-03_snd". The first 11 seconds of original soundtrack for the objekt porting to  non fungible token of the audiovisual artwork "RE_w-03 [Resolution of the Energy _white]". This is procedural sound I made with my custom instrument - node based synthesizer I created by myself with custom coding in the software of Max/Msp. It is a combination of generative "golden ratio" based sequencer, additive synthesis and some tricks with realtime rhythmic/harmonic structure.  All components are recorded in realtime from the live algorithm.  Mixed into one. listen / use / mix.  No sound effects are used. Pure wave physics.  Microsound. '},
+                }, 'title': 'v4w.enko - "RE-03_snd"',
+                'src': 'https://ipfs.io/ipfs/QmZT99Yyep5NQGbqQZRjvNG7wTiN6UpqgKW3fQ7RHBWEMF',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs/QmadMcsEV45Yn3Qty1a9FBp6QutyS98yzssSAWbCbFBNWG', 'tags': [],
+            },
+            
+ ],
+    },
+    {
         name: 'Nomad Label',
         curator: '@hen_radio',
         description: 'Various Nomad_label sound objkts',
