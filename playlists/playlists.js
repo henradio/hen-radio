@@ -24,7 +24,7 @@ export const playlists = [
                 }, 'title': 'O.D #721',
                 'src': 'https://ipfs.io/ipfs/QmR8azpX7EPQqtw9YL8cFd9AFZEbggrm93tgaYxSCGnK1t',
                 'mimeType': 'audio/mpeg',
-                'displayUri': 'ipfs/QmadMcsEV45Yn3Qty1a9FBp6QutyS98yzssSAWbCbFBNWG', 'tags': [],
+                'displayUri': 'ipfs://QmW8HgCvZGDjv7WPEXNYhSzTW9MQVwsTRZ6mNCgJCk9QKd', 'tags': [],
             },
             {
                 'id': 217384, 'creator': {
@@ -34,7 +34,7 @@ export const playlists = [
                 }, 'title': 'v4w.enko - "RE-03_snd"',
                 'src': 'https://ipfs.io/ipfs/QmZT99Yyep5NQGbqQZRjvNG7wTiN6UpqgKW3fQ7RHBWEMF',
                 'mimeType': 'audio/mpeg',
-                'displayUri': 'ipfs/QmadMcsEV45Yn3Qty1a9FBp6QutyS98yzssSAWbCbFBNWG', 'tags': [],
+                'displayUri': 'ipfs://QmadMcsEV45Yn3Qty1a9FBp6QutyS98yzssSAWbCbFBNWG', 'tags': [],
             },
             
  ],
