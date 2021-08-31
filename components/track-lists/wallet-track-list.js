@@ -5,6 +5,7 @@ import TracksFilterBar from './tracks-filter-bar';
 import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
+import useTrack from '../../hooks/use-track';
 
 const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     const {
@@ -15,6 +16,7 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     const {setTracks} = usePlaylist();
     const [filteredTracks, setFilteredTracks] = useState([]);
     const [filter, setFilter] = useState(FilterTypes.ALL);
+    const {trackState} = useTrack();
 
     if(audio) {
         audio.onended = () => {
@@ -26,7 +28,7 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
 
     useEffect(() => {
         setTracks(tracks);
-        if(playerState.currentTrack === null) {
+        if(trackState.currentTrack === null) {
             const foundIndex = tracks.findIndex(t => t.id === Number(objkt));
             controls.initialiseTrack(tracks)(foundIndex !== -1 ? foundIndex : 0)();
         }
