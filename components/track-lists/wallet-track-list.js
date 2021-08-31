@@ -40,9 +40,9 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
                 case FilterTypes.ALL:
                     return true;
                 case FilterTypes.CREATIONS:
-                    return t.creator === walletAddress;
+                    return t.creator.walletAddress === walletAddress;
                 case FilterTypes.COLLECTIONS:
-                    return t.creator !== walletAddress;
+                    return t.creator.walletAddress !== walletAddress;
                 default:
                     return true;
             }
