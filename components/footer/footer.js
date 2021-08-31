@@ -25,7 +25,7 @@ const Footer = () =>
             <a href='https://twitter.com/jclayton'>@jclayton</a>
         </p>
         <p className={styles.footerText}>
-            View on <a href='https://github.com/OrderAndCh4oS/hen-radio-next'>GitHub</a>
+            View on <a href='https://github.com/henradio/hen-radio'>GitHub</a>
         </p>
     </div>
 ;

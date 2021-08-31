@@ -11,10 +11,6 @@ const TrackProvider = ({children}) => {
         currentTrack: null,
     });
 
-    useEffect(() => {
-        console.log(trackState);
-    }, [trackState])
-
     return (
         <TrackContext.Provider
             value={{
