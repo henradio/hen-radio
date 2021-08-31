@@ -4,16 +4,16 @@ import { useEffect } from 'react';
 import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
 import FilterButtons from '../track-lists/filter-buttons';
+import useTrack from '../../hooks/use-track';
 
 const AllTracksView = ({objkt, tracks}) => {
     const {
-        playerState,
         controls,
         isTrackPlaying,
     } = useRadio();
 
     const {filteredTracks, setTracks} = usePlaylist();
-
+    const {trackState} = useTrack();
     if(audio) {
         audio.onended = () => {
             if(!tracks.length) return;
@@ -27,7 +27,7 @@ const AllTracksView = ({objkt, tracks}) => {
     }, [tracks]);
 
     useEffect(() => {
-        if(playerState.currentTrack === null) {
+        if(trackState.currentTrack === null) {
             const foundIndex = tracks.findIndex(t => t.id === Number(objkt));
             controls.initialiseTrack(tracks)(foundIndex !== -1 ? foundIndex : 0)();
         }
