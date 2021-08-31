@@ -21,8 +21,7 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     if(audio) {
         audio.onended = () => {
             if(!filteredTracks.length) return;
-            const nextTrackKey = (playerState.currentTrackKey + 1) % filteredTracks.length;
-            controls.initialiseTrack(filteredTracks)(nextTrackKey)();
+            controls.next(filteredTracks)();
         };
     }
 
