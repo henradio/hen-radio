@@ -204,7 +204,7 @@ const RadioProvider = ({children}) => {
         }));
     };
 
-    const isTrackPlaying = id => playerState.isPlaying && playerState.currentTrack?.id === id;
+    const isTrackPlaying = id => playerState.isPlaying && trackState.currentTrack?.id === id;
 
     return (
         <RadioContext.Provider
