@@ -40,6 +40,114 @@ export const playlists = [
  ],
     },
     {
+        name: 'Zimbabwe3000',
+        curator: '@DmitryGruber',
+        description: 'Music compilation of legendary dark jazz artist Zimbabwe3000. These sounds may be described like "music for listening silence" or "late night music',
+        img: '/images/Zimbabwe3000.jpg',
+        slug: 'Zimbabwe3000',
+        tracks: [
+            {
+                'id': 239994, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': "It s like diving into the sky, a kiss of heaven latenightjazz nightcitymusic doomjazz noirjazz postjazz soundtrack contemporaryjazz music darkcabaret nftmusic tripjazz darkjazz ambientjazz"},
+                }, 'title': "When It's Better Than Ever",
+                'src': 'https://ipfs.io/ipfs/QmZKQBNPQzVc65hLGQpLXV18HBVYe92zPMuNnn7vs3AcAb',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmQNFBm3G5UR3CGFmsdmchombf2DMRevzEVgTnH8M8GmVD', 'tags': [],
+            },
+            {
+                'id': 240038, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': "I'm not sure about what I'm feeling here but you can feel it"},
+                }, 'title': "Where It's Dark",
+                'src': 'https://ipfs.io/ipfs/QmZw4jMskdkZiNEtScDh46BDKvfwbd5NLa7LLgVbatg8vD',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://Qmf1s9Jpq7KdrA3HMhW4x5qhF1Kg8k6zXkwhtK247vBaBE', 'tags': [],
+            },
+            {
+                'id': 240048, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'Music for listening silence'},
+                }, 'title': 'Music To Listening Silence To',
+                'src': 'https://ipfs.io/ipfs/QmV6Wmv7eHEuXffjm2zmwRqF7vZQgUyKDnm4pe1hVYgRWu',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmVes4eMqBUo5JYnAm5zV2Zn781GMehHWgmdLxmLBtLMXJ', 'tags': [],
+            },
+            {
+                'id': 240004, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': "Gaze the lights, don't ask"},
+                }, 'title': 'Gazing The Lights',
+                'src': 'https://ipfs.io/ipfs/QmYUtXJvAUgXDPt2hSUnBc68s8TYnh2GEaa5hykh8359VB',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://Qmco4L6XddnQkUgPtSkGcZS64A5zQJQuBrkAxj6TLrDe7q', 'tags': [],
+            },
+            {
+                'id': 240077, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'Dance slow, let the world burn behind your eyes'},
+                }, 'title': 'Slow Dance',
+                'src': 'https://ipfs.io/ipfs/QmZ3ov5x5BtVVhdHbd4D3VALc2BtEZpaRoF6Kph66LSbiv',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmRNwH6QHHGtTbKP4LuP1WSb74MMVRXWtdGxV4dtCMTmqg', 'tags': [],
+            },
+            {
+                'id': 239989, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'Just Follow The Sound'},
+                }, 'title': 'In A Relaxed, Lazy Manner',
+                'src': 'https://ipfs.io/ipfs/QmRwWLQFtRc7SnUAvzL4EEuTf8TxXwPw4TkRdohpi3vZ26',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmXXcr8VGGjuZQTdNwjWPadpzNB8cZ6YLSmZChRsa5tuBN', 'tags': [],
+            },
+            {
+                'id': 240062, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'The sound of time, the sound of life, the sound of nothingness'},
+                }, 'title': 'Nocturne №2',
+                'src': 'https://ipfs.io/ipfs/Qmefn13wJc3m2k8UXmXcVPGJMSSEfs1WDipXa8urSRVyPT',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmVKfzJ5Ckrk4AFsepWVZyFgzZqt2BLe7h71828kLnCHQQ', 'tags': [],
+            },
+            {
+                'id': 240030, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': "Sometimes it's a dream, other times it's a nightmare. There are two kinds of nightmares: Those that stay and those that leave"},
+                }, 'title': "Yes, It's Like A Nightmare Sometimes",
+                'src': 'https://ipfs.io/ipfs/QmQc9X9XUG1rfhBifckxf2BhCPRJhhv1uJVmrPGpTpUAy8',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmWfnEiMLzzA2491R4R2kgHP1xWnxkMeE5cLacfwfE9QQB', 'tags': [],
+            },
+            {
+                'id': 239976, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'This is a song of hope for the future. If people stop fighting and start bumping more, things will change for the better'},
+                }, 'title': 'Cruising The Night, Looking For Bumping (Commercial Song)',
+                'src': 'https://ipfs.io/ipfs/QmbKqRE6rJfRhaykwyjYHGc3NkiCUVX6KicU9ekSspR8X4',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmUg4kUttKuZ82uxKb9exZvzHnKnXzcpPamQdbLhc92wqi', 'tags': [],
+            },
+            {
+                'id': 239964, 'creator': {
+                    'walletAddress': 'tz1Rmjn3ga5CvXDSnPTV8k5M2QprJkBPRHBR',
+                    'name': 'zimbabwe3000',
+                    'metadata': {'description': 'The people in the world are living without a sense of time. They live in a “future desert” of uncertainty'},
+                }, 'title': 'Song For The Future Deserts',
+                'src': 'https://ipfs.io/ipfs/QmSY5rjokfD9LdqxP4X6TF4pVbzfZDygP25pQSUbCCNcuz',
+                'mimeType': 'audio/mpeg',
+                'displayUri': 'ipfs://QmR69VD2smnVCc8LUzs4zavwzAbAuvyE6H3w8JX7WCZsUu', 'tags': [],
+            },],
+    },
+    {
         name: 'Nomad Label',
         curator: '@hen_radio',
         description: 'Various Nomad_label sound objkts',

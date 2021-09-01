@@ -23,15 +23,10 @@ const FaqPage = () => {
                 </ol>
                 <br/>
                 <u>A. To create a playlist with a cover image and visible to everybody:</u><br/>
-                Work in progress, be patient... But you can try to message our twitter account @hen_radio with<br/>
-                <ol>
-                    <li>The link to the playlist (see above. eg.: https://hen.radio/playlists/178891,11305,10159,8228)</li>
-                    <li>Title of the playlist</li>
-                    <li>Description</li>
-                    <li>The playlist creator alias, name or twitter handle</li>
-                    <li>Cover image in jpeg format</li>
-                </ol>
+                Work in progress... For now you can create a pull request on this file: <a href="https://github.com/henradio/hen-radio/blob/main/playlists/playlists.js">playlist.js</a><br/>
                 </p>
+                <p><strong>Q. What is your Discord?</strong><br/>
+                A. Come and say hi! You can find the HEN Discord from the <a href="https://hicetnunc.xyz/about">About page</a>, and from there find the hicathon-wg-7-2-hic-radio. We do need people with experience with smart contract and tokens...</p>
             </div>
         </>
     );
