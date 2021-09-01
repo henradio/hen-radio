@@ -13,10 +13,10 @@ const WalletTrackList = ({walletAddress, tracks, objkt}) => {
         controls,
         isTrackPlaying,
     } = useRadio();
+    const {trackState} = useTrack();
     const {setTracks} = usePlaylist();
     const [filteredTracks, setFilteredTracks] = useState([]);
     const [filter, setFilter] = useState(FilterTypes.ALL);
-    const {trackState} = useTrack();
 
     if(audio) {
         audio.onended = () => {
