@@ -7,7 +7,8 @@ import getAllTrackIds from '../../api/get-all-track-ids';
 import { getTrimmedWallet } from '../../utilities/general';
 
 export const getStaticPaths = async() => {
-    const objkts = await getAllTrackIds();
+    //const objkts = await getAllTrackIds();
+    const objkts = {};
     return {
         paths: objkts.map(objkt => ({params: {objkt}})),
         fallback: true,

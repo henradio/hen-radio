@@ -12,7 +12,7 @@ const FaqPage = () => {
                 <p><strong>Q. Does everything works as well in visual Hen?</strong><br/>
                 A. Yes, everything on Hen.radio will also be available on Hen</p>
 
-                <p><strong>Q. How do I create a playlist?</strong><br/>
+                <div><strong>Q. How do I create a playlist?</strong><br/>
                 <u>A. To create a local playlist (only visible to you):</u><br/>
                 <ol>
                     <li>Go to &quot;Playlists&quot; in the top right menu</li>
@@ -31,7 +31,7 @@ const FaqPage = () => {
                     <li>The playlist creator alias, name or twitter handle</li>
                     <li>Cover image in jpeg format</li>
                 </ol>
-                </p>
+                </div>
             </div>
         </>
     );
