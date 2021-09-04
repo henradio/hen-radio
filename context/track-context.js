@@ -1,6 +1,4 @@
-import { createContext, useRef, useState } from 'react';
-import { audio, audioContext, fetchSrc } from '../constants';
-import { useEffect } from 'react';
+import { createContext, useState } from 'react';
 
 export const TrackContext = createContext();
 

@@ -44,7 +44,7 @@ const Player = () => {
             <div className={styles.trackMetaRow}>
                 {track ? <AddToPlaylist track={track}/> : null}
                 {track ? <LinkButton track={track}/> : null}
-                {trackState.currentTrack !== null
+                {track 
                     ? (
                         <div className={styles.currentTrack}>
                             <span className={styles.trackRow_text}>

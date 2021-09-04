@@ -1,4 +1,5 @@
-import { gql, request } from 'graphql-request';
+import { gql } from "@apollo/client";
+import client from "./apollo-client";
 
 const query = gql`
     query AudioObjktData {
@@ -15,7 +16,7 @@ const query = gql`
 `;
 
 const getWalletsWithAudio = async() => {
-    const data = await request('https://api.hicdex.com/v1/graphql', query);
+    const { loading, error, data } = await client.query({query: query});
     return [...new Set(data?.hic_et_nunc_token?.map(({creator_id}) => creator_id))];
 };
 

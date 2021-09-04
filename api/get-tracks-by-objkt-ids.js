@@ -1,4 +1,5 @@
-import { gql, request } from 'graphql-request';
+import { gql } from "@apollo/client";
+import client from "./apollo-client";
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
 
 const query = gql`
@@ -38,7 +39,7 @@ const query = gql`
 `;
 
 const getTracksByObjktIds = async(objktIds) => {
-    const response = await request('https://api.hicdex.com/v1/graphql', query, {objktIds});
+    const { loading, error, response } = await client.query({query: query, variables: {objktIds}});
     const trackList = response
         ?.hic_et_nunc_token
         ?.map(o => ({
