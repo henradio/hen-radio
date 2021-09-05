@@ -1,8 +1,8 @@
 export const playlists = [
     {
-        name: 'Hen.Radio contributors',
+        name: 'Hen.Radio jingle #1',
         curator: '@hen_radio',
-        description: 'A playlist of music artists having contributed to Hen.Radio',
+        description: 'A playlist of music artists having contributed to Hen.Radio jingle #1',
         img: '/images/V5MT_HEN_Radio_180X180.gif',
         slug: 'hen_radio',
         tracks: [
