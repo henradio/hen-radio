@@ -18,6 +18,8 @@ const Footer = () =>
             <a href='https://twitter.com/BabyCommando_'>@BabyCommando_</a>
                                          ,{' '}
             <a href='https://twitter.com/jclayton'>@jclayton</a>
+                                        ,{' '}
+            <a href='https://twitter.com/v5mt_tv'>@v5mt</a>
         </p>
         <p className={styles.footerText}>
             Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a><br/>
