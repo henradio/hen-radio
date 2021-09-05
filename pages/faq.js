@@ -2,6 +2,9 @@ const FaqPage = () =>
     <>
         <h1>FAQ</h1>
         <div>
+            <p><strong>Q. What is Hen.radio?</strong><br/>
+                A. Hen.radio is Hic et Nunc, or HEN, NFT Music Player. It has been created during the first Hicathon in 2021.<br/>
+                It aims at making it easier to discover, listen to and reward NFT music artists.</p>
             <p><strong>Q. How does the minting work on hen radio?</strong></p>
             <p> A. Mint your audio file (preferably ogg or mp3) as usual on{' '}
                 <a href="https://www.hicetnunc.xyz/mint">https://www.hicetnunc.xyz/mint</a>
@@ -35,6 +38,11 @@ const FaqPage = () =>
                 <li>Cover image in jpeg format</li>
             </ol>
             <p>Playlists are a work in progress, please be patient, we will do our best to include all submissions.</p>
+            <p><strong>Q. How can I contribute? How do we contact Hen.radio?</strong><br/>
+                A. <li>You can find the HEN Discord from this <a href="https://hicetnunc.xyz/about"><u>About page</u></a>, and from there find the hicathon-wg-7-2-hic-radio group.</li>
+                   <li>Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a></li>
+                   <li>Github: <a href='https://github.com/henradio/hen-radio'>hen-radio</a></li>
+                </p>
         </div>
     </>;
 

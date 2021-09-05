@@ -2,12 +2,7 @@ import styles from './styles.module.css';
 
 const Footer = () =>
     <div className={styles.footerBar}>
-        <h2 className={styles.footerTitle}>Hic et Nunc: NFT Music Player</h2>
-        <p className={styles.footerText}>
-            Listen to music NFTs on Hen Radio. An audio player for Hic et Nunc Objkts.<br/>
-            Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a>
-        </p>
-        <p className={styles.footerText}><strong>Created as part of Hicathon Hackday 2021</strong>
+        <p className={styles.footerText}><strong>Created as part of the 2021 Hicathon</strong>
         </p>
         <p className={styles.footerText}>Working Group:<br/>
             <a href='https://twitter.com/lauzaki'>@lauzaki</a>
@@ -23,9 +18,12 @@ const Footer = () =>
             <a href='https://twitter.com/BabyCommando_'>@BabyCommando_</a>
                                          ,{' '}
             <a href='https://twitter.com/jclayton'>@jclayton</a>
+                                        ,{' '}
+            <a href='https://twitter.com/v5mt_tv'>@v5mt</a>
         </p>
         <p className={styles.footerText}>
-            View on <a href='https://github.com/henradio/hen-radio'>GitHub</a>
+            Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a><br/>
+            Github: <a href='https://github.com/henradio/hen-radio'>hen-radio</a>
         </p>
     </div>
 ;
