@@ -40,6 +40,16 @@ export const playlists = [
  ],
     },
     {
+        name: 'GabPol',
+        curator: '@GabrielPolitzer',
+        description: 'Sound artist, musician and biologist from Rio de Janeiro.',
+        img: '/images/GadPol.png',
+        slug: 'GadPol',
+        tracks: [
+{"id":240344,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"A SINGLE FURNITURE // FURNITURE SONGS","src":"https://gateway.pinata.cloud/ipfs/QmYbJVBviQgzNoFpU8vMuPHSPMLTtMt12we4E5rJReCRR5","mimeType":"audio/mpeg","displayUri":"ipfs://QmRWsLCogBrLaccFk9PKzMgExCtX56CugsoRYHNv34PA7y","tags":[]},{"id":241060,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"LIV // FURNITURE SONGS","src":"https://cloudflare-ipfs.com/ipfs/QmYfP4vNpbJ8Zoxqktmiv6FrX3SbCosiR8qMNhGbMBM8of","mimeType":"audio/mpeg","displayUri":"ipfs://QmRdwn7dLVvseyWxS5gBLytegD4TeVBA2HBVWVXTFw5Sii","tags":[]},{"id":243371,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"SELF-ISOLATION // FURNITURE SONGS","src":"https://ipfs.io/ipfs/QmYoRpvUD2pcaKWes2gmywdwZNvbkTimfjQyMg3p2uBU5x","mimeType":"audio/mpeg","displayUri":"ipfs://QmVisQdb3hL8TUWFnHZY7VBedGH6nv1d3EzmqUf1CMsJFu","tags":[]},{"id":247523,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"DANCING SLOWLY // FURNITURE SONGS","src":"https://gateway.pinata.cloud/ipfs/QmSfwC8BfrhFHPP5ZH4LGdmFrhVF4oercsNAsithAEZ6i1","mimeType":"audio/mpeg","displayUri":"ipfs://Qme7xjegvgC1mATJxRgANtqcRk4xqVcPS4UZBah6iMHNMk","tags":[]},{"id":251449,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"CURRENTLY USING A MEDICATION // FURNITURE SONGS","src":"https://ipfs.io/ipfs/QmQfmGNKJH75LatciYir6iMCUYmqZqvqwNFDtbFPBFhpP6","mimeType":"audio/mpeg","displayUri":"ipfs://QmRmkreKxZSMCAJoDeNJ13XjjKVckbph4USmbEcy7cS518","tags":[]},{"id":255866,"creator":{"walletAddress":"tz1MM2wfCrRzGvXYTt1BsChqsACaF5SJQiVN","name":"GabPol","metadata":{"identicon":"","description":""}},"title":"BUENO SONORO // FURNITURE SONGS","src":"https://infura-ipfs.io/ipfs/QmbKKxAiQaDh4NexC4bSs1fLLpoXzruyqm2QJcNTavkimN","mimeType":"audio/mpeg","displayUri":"ipfs://QmVWZkhiJYivhuqynoGEix3Cc48H6FLvpy7mL4NTfEZdb6","tags":[]}
+,],
+    },
+    {
         name: 'Zimbabwe3000',
         curator: '@DmitryGruber',
         description: 'Music compilation of legendary dark jazz artist Zimbabwe3000. These sounds may be described like "music for listening silence" or "late night music',
