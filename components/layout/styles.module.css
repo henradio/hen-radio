@@ -28,21 +28,3 @@
     margin-bottom: 12px;
     border-bottom: 1px solid #e5e5e5;
 }
-
-@media screen and (min-width: 600px) {
-    .headerBar {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-    }
-
-    .navBar {
-        display: flex;
-        justify-content: flex-end;
-        flex-direction: row;
-    }
-
-    .navBar_link {
-        margin-left: 24px;
-    }
-}

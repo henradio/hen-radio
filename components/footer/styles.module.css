@@ -12,17 +12,3 @@
 .footerText {
     font-size: 9px;
 }
-
-@media screen and (min-width: 600px) {
-    .footerBar {
-        padding-bottom: 20px;
-    }
-
-    .footerTitle {
-        font-size: 12px;
-    }
-
-    .footerText {
-        font-size: 12px;
-    }
-}

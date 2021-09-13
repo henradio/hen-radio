@@ -124,22 +124,3 @@
     width: 100%;
 }
 
-@media screen and (min-width: 600px) {
-    .trackRow_text {
-        display: block;
-        font-size: 14px;
-        margin-left: 12px;
-    }
-
-    .filterButton {
-        font-size: 14px;
-    }
-
-    .searchField {
-        padding: 6px 4px;
-        border: 1px solid #E5E5E5;
-        margin: 0 0 16px auto;
-        min-width: 400px;
-        width: 33%;
-    }
-}

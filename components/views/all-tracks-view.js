@@ -5,6 +5,7 @@ import usePlaylist from '../../hooks/use-playlist';
 import { audio } from '../../constants';
 import FilterButtons from '../track-lists/filter-buttons';
 import useTrack from '../../hooks/use-track';
+import TrackHighlight from '../radio-player/track-highlight';
 
 const AllTracksView = ({objkt, tracks}) => {
     const {
@@ -39,6 +40,7 @@ const AllTracksView = ({objkt, tracks}) => {
     return (
         <>
             <FilterButtons/>
+            <TrackHighlight track={trackState.currentTrack}/>
             <TrackList
                 tracks={filteredTracks}
                 isTrackPlaying={isTrackPlaying}

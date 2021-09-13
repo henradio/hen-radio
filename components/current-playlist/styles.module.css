@@ -93,9 +93,3 @@
     border: none;
     background: none;
 }
-
-@media screen and (max-width: 600px) {
-    .currentPlaylistColumnInfo {
-        margin-top: 30px;
-    }
-}

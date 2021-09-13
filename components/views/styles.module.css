@@ -70,35 +70,3 @@
     flex-shrink: 0;
 }
 
-
-@media screen and (min-width: 600px) {
-    .walletInput {
-        max-width: 320px;
-    }
-
-    .walletRow {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 6px 0;
-        border-bottom: 1px solid #E5E5E5;
-    }
-
-    .walletRow_alias {
-        margin-left: 16px;
-    }
-
-    .walletRow_avatar {
-        margin: 0 0 0 auto;
-    }
-
-    .button_getObjktData {
-        margin-left: 8px;
-        padding: 4px 3px;
-    }
-
-    .errorText {
-        color: #cd0117;
-        font-size: 14px;
-    }
-}
