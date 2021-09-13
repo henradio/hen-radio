@@ -14,7 +14,7 @@ export const getStaticPaths = async() => {
     };
 };
 
-export const getStaticProps = async({params}) => {
+export const getServerSideProps = async({params}) => {
     const {walletAddress} = params;
     const wallets = await getWalletsWithAudio();
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
