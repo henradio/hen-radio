@@ -5,6 +5,7 @@ import { ipfsUrls } from '../../constants';
 
 
 const TrackHighlight = ({ track }) => {
+    console.log(track)
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
     return (
@@ -26,12 +27,12 @@ const TrackHighlight = ({ track }) => {
                     </div>
                 </div>
                 <div className={styles.currentPlaylistColumnInfo}>
-                    <h1 className={styles.currentPlaylistText}>{track?.name}</h1>
+                    <h1 className={styles.currentPlaylistText}>{track?.title}</h1>
                     <p className={styles.currentPlaylistArtist}>
-                        By <a href="https://hicetnunc.xyz">{track?.curator}</a>
+                        By <a href="https://hicetnunc.xyz">{track?.creator.name}</a>
                     </p>
                     <p className={styles.currentPlaylistDescription}>{track?.description}</p>
-
+                    <hr />
                 </div>
             </div>
         </div>
