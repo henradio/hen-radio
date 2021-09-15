@@ -3,7 +3,6 @@ import ObjktView from '../../components/views/objkt-view';
 import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import { useRouter } from 'next/router';
-import getAllTrackIds from '../../api/get-all-track-ids';
 import { getTrimmedWallet } from '../../utilities/general';
 
 export const getServerSideProps = async({params}) => {
