@@ -39,6 +39,15 @@ export const playlists = [
             
  ],
     },
+
+    {
+        name: 'Echoedreaming - Songs From The Dream',
+        curator: '@DmitryGruber',
+        description: 'This album was recorded in a week, and it is backed by many years of experience with different music and sounds. In every song guitars have different tunings, scale lengths, setups and even string-calibers. It contains beautiful femme vocals, a lot of shimmer delays/reverbs and many-many other interesting things.',
+        img: '/images/_OUOw70f.jpg',
+        slug: 'DmitryGruber',
+        tracks:[{"id":299978,"creator":{"walletAddress":"tz1PQKRX51E1A7CiZxxZzFNw6cJgc6cj8UyN","name":"echoedreaming","metadata":{"identicon":"ipfs://QmW6aMMz1imrUqUPLndgjcdLYVVRbeFKs3xdRuTVmE5oie","description":"Dream-pop / Shoegaze artist"}},"title":"Broken Coast","src":"https://ipfs.io/ipfs/bafybeiclxyenesrgplswrsdrthyksddux4xbs6ilk3gqun3rcr7qw67wjq","mimeType":"audio/mpeg","displayUri":"ipfs://bafkreib54ibaxg7pksc5dyirasafly5xldypfalb44lkpcpl6dsl3f47aa","tags":[]},{"id":299939,"creator":{"walletAddress":"tz1PQKRX51E1A7CiZxxZzFNw6cJgc6cj8UyN","name":"echoedreaming","metadata":{"identicon":"ipfs://QmW6aMMz1imrUqUPLndgjcdLYVVRbeFKs3xdRuTVmE5oie","description":"Dream-pop / Shoegaze artist"}},"title":"Soulmates","src":"https://infura-ipfs.io/ipfs/bafybeifxpjlsy6kxz4zbynfjccbfqd6eps5qk2r7piydtgsvynjyvqq6ee","mimeType":"audio/mpeg","displayUri":"ipfs://bafkreiamp5yqs3nuthtjk4bbpa74gmlpsahagf7fde7qy6u2mqaweg256m","tags":[]},{"id":299930,"creator":{"walletAddress":"tz1PQKRX51E1A7CiZxxZzFNw6cJgc6cj8UyN","name":"echoedreaming","metadata":{"identicon":"ipfs://QmW6aMMz1imrUqUPLndgjcdLYVVRbeFKs3xdRuTVmE5oie","description":"Dream-pop / Shoegaze artist"}},"title":"Boat Made Of Stars","src":"https://infura-ipfs.io/ipfs/bafybeifqpfqugayx5oygojpq46j33o3www47sxgcvmxc5en3ud7bwzcaoa","mimeType":"audio/mpeg","displayUri":"ipfs://bafybeigjvrghjlw7ealupdmoqz4y7vbv4qgm6rqs34t73irkez46tyryiy","tags":[]},{"id":299915,"creator":{"walletAddress":"tz1PQKRX51E1A7CiZxxZzFNw6cJgc6cj8UyN","name":"echoedreaming","metadata":{"identicon":"ipfs://QmW6aMMz1imrUqUPLndgjcdLYVVRbeFKs3xdRuTVmE5oie","description":"Dream-pop / Shoegaze artist"}},"title":"Catch The Wave","src":"https://dweb.link/ipfs/bafybeiaakenyfc4pbpq2xymzfrddnmjxrelljaz2l7fjbzkatfal4xze3q","mimeType":"audio/mpeg","displayUri":"ipfs://bafkreice3xoahxflshg7zoi5o7yt7mclxyq2qxwn3l7ett5ragknvvv7jm","tags":[]},{"id":299909,"creator":{"walletAddress":"tz1PQKRX51E1A7CiZxxZzFNw6cJgc6cj8UyN","name":"echoedreaming","metadata":{"identicon":"ipfs://QmW6aMMz1imrUqUPLndgjcdLYVVRbeFKs3xdRuTVmE5oie","description":"Dream-pop / Shoegaze artist"}},"title":"Hypnotic Dream","src":"https://infura-ipfs.io/ipfs/bafybeif7ge2qa73d3hqrzpywh3evtuefkas2jmx6arjqcqzqqvutsevcqq","mimeType":"audio/mpeg","displayUri":"ipfs://bafybeihqk7ojrpwwuf2quitztin3oazrngekf5l55amejbs5pgi5dmfnoe","tags":[]}]
+     },
     {
         name: 'GabPol',
         curator: '@GabrielPolitzer',

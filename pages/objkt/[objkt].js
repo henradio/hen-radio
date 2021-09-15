@@ -3,18 +3,9 @@ import ObjktView from '../../components/views/objkt-view';
 import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import { useRouter } from 'next/router';
-import getAllTrackIds from '../../api/get-all-track-ids';
 import { getTrimmedWallet } from '../../utilities/general';
 
-export const getStaticPaths = async() => {
-    const objkts = await getAllTrackIds();
-    return {
-        paths: objkts.map(objkt => ({params: {objkt}})),
-        fallback: true,
-    };
-};
-
-export const getStaticProps = async({params}) => {
+export const getServerSideProps = async({params}) => {
     const {objkt} = params;
     const track = await getObjktById(objkt);
     let tracks = [];
@@ -22,8 +13,7 @@ export const getStaticProps = async({params}) => {
     const currentTrack = tracks.find(t => t.id === Number(objkt)) || null;
 
     return {
-        props: {objkt, tracks, currentTrack, walletAddress: track.creator.walletAddress},
-        revalidate: 300,
+        props: {objkt, tracks, currentTrack, walletAddress: track.creator.walletAddress}
     };
 };
 

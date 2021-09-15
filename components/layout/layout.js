@@ -13,7 +13,7 @@ const Layout = ({params, children}) => {
                 <Logo/>
                 <div className={styles.navBar}>
                     <span className={styles.navBar_link}>
-                        <Link href={'/'}>All Tracks</Link>
+                        <Link href={'/'}>Feed</Link>
                     </span>
                     <span className={styles.navBar_link}>
                         <Link href={'/playlists'}>Playlists</Link>
