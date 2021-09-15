@@ -6,15 +6,8 @@ import WalletTrackList from '../../components/track-lists/wallet-track-list';
 import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 import { useRouter } from 'next/router';
 
-export const getStaticPaths = async() => {
-    const wallets = await getWalletsWithAudio();
-    return {
-        paths: wallets.map(walletAddress => ({params: {walletAddress}})),
-        fallback: true,
-    };
-};
 
-export const getStaticProps = async({params}) => {
+export const getServerSideProps = async({params}) => {
     const {walletAddress} = params;
     const wallets = await getWalletsWithAudio();
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
@@ -22,8 +15,7 @@ export const getStaticProps = async({params}) => {
     const tracks = [...tracksCreated, ...tracksOwned];
     const creator = walletAddress;
     return {
-        props: {creator, tracks, wallets},
-        revalidate: 300,
+        props: {creator, tracks, wallets}
     };
 };
 
