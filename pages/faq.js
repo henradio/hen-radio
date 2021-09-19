@@ -14,7 +14,7 @@ const FaqPage = () =>
                site</p>
             <p><strong>Q. Is there an app?</strong></p>
             <p>A. Not at the moment. It is optimised for viewing in the mobile browser, but no app yet.</p>
-            <p><strong>Q. Why don't you support video or html music?</strong></p>
+            <p><strong>Q. Why don&apos;t you support video or html music?</strong></p>
             <p>A. Currently technical restrictions are making it difficult to differenciate music HTML from other HTML objkt.</p>
             <p>and handling video is different than handling audio, so it is also difficult to implement at the moment.</p>
             <p><strong>Q. How do I create a playlist?</strong></p>
