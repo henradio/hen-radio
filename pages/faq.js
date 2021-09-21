@@ -44,7 +44,7 @@ const FaqPage = () =>
             </ol>
             <p>Playlists are a work in progress, please be patient, we will do our best to include all submissions.</p>
             <p><strong>Q. How can I contribute? How do we contact Hen.radio?</strong><br/>
-                A. <li>Ideas, praises, feedbacks? Here is <a href="https://forms.gle/iqaiGRdreNpRZQRY7"><u>the form</u></a>.</li>
+                A. <li>Ideas, praises, feedbacks? Here is <a href="https://forms.gle/sajNsHuW9GESQNaFA"><u>the form</u></a>.</li>
                    <li>You can find the HEN Discord from this <a href="https://hicetnunc.xyz/about"><u>About page</u></a>, and from there find the hicathon-wg-7-2-hic-radio group.</li>
                    <li>Twitter: <a href='https://twitter.com/hen_radio'>@hen_radio</a></li>
                    <li>Github: <a href='https://github.com/henradio/hen-radio'>hen-radio</a></li>
