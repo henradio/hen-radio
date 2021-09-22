@@ -24,6 +24,9 @@ const Layout = ({params, children}) => {
                     <span className={styles.navBar_link}>
                         <Link href={'/faq'}>FAQ</Link>
                     </span>
+                    <span className={styles.navBar_link}>
+                        <Link href={'/sync'}>sync</Link>
+                    </span>
                 </div>
             </div>
             <div>
