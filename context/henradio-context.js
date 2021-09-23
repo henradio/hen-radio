@@ -1,7 +1,6 @@
 import { createContext, useEffect } from 'react';
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
-import { TezosOperationType } from "@airgap/beacon-sdk";
 
 export const henradioContext = createContext();
 
@@ -36,11 +35,7 @@ const HenradioProvider = ({ children }) => {
             console.log(`${balance.toNumber() / 1000000} ꜩ`)
 
 
-            const contractExample = 'KT1XKiWUguV7xKG7gWYCd7pr47wuThPajPeE';
-
-           // gets contract entrypoints
-           //const entrypoints = await client.getEntrypoints(contractExample);
-           //console.log('-- Entrypoints:', entrypoints);
+            const contractExample = 'KT18ybfzfmBmjzJhDviN661Sju3gRLBbpRKp';
 
 
             // Connect to a specific contract on the tezos blockchain.
@@ -56,7 +51,7 @@ const HenradioProvider = ({ children }) => {
             // Taquito will automatically check if the entrypoint exists and if we call it with the right parameters.
             // In this case the parameters are [from, to, amount].
             // This will prepare the contract call and send the request to the connected wallet.
-            const result = await contract.methods.hDAO_batch(([{"amount":1,"to_":recipient}])).send();
+            const result = await contract.methods.diezDAO_batch(([{"amount":2,"to_":recipient}])).send();
 
         }
         connectWallet()
