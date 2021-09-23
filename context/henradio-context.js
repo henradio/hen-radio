@@ -1,48 +1,70 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect } from 'react';
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
-import setLocalStorage from '../utilities/set-local-storage';
+import { TezosOperationType } from "@airgap/beacon-sdk";
 
 export const henradioContext = createContext();
 
-const HenradioProvider = ({children}) => {
-const Tezos = new TezosToolkit('https://granadanet.smartpy.io/');
-const options = {
-    name: 'Henradio',
-    preferredNetwork: "granadanet"
-  };
-  useEffect( ()=>{
-const wallet = new BeaconWallet(options);
+const HenradioProvider = ({ children }) => {
+    const Tezos = new TezosToolkit('https://granadanet.smartpy.io/');
 
-wallet
-  .requestPermissions({ network: { type: 'granadanet' } })
-  .then((_) => wallet.getPKH())
-  .then((address) => console.log(`Your address: ${address}`));
+    useEffect(() => {
 
-Tezos.setWalletProvider(wallet)
+        async function connectWallet() {
+            const options = {
+                name: 'Henradio',
+                preferredNetwork: "granadanet"
+            };
+            const wallet = new BeaconWallet(options);
+            Tezos.setWalletProvider(wallet)
 
-Tezos.tz
-  .getBalance('tz1dQXqXZ3Y5sgYwU9Aq9xRJPxEZNUwyE6ht')
-  .then((balance) => console.log(`${balance.toNumber() / 1000000} ꜩ`))
-  .catch((error) => console.log(JSON.stringify(error)));
+            //const permissions = await wallet.client.requestPermissions({ network: { type: 'granadanet' } });
+            // Check if we are connected. If not, do a permission request first.
+            const activeAccount = await wallet.client.getActiveAccount();
 
-Tezos.wallet
-  .at('KT1XKiWUguV7xKG7gWYCd7pr47wuThPajPeE')
-  .then((contract) => {
-    const i = 7;
-    return contract.methods.HDAO_batch([sp.record(amount = 12345, to_ = sp.address('tz1dQXqXZ3Y5sgYwU9Aq9xRJPxEZNUwyE6ht'))]).send();
-  })
-  .then((op) => {
-    console.log(`Waiting for ${op.hash} to be confirmed...`);
-    return op.confirmation(1).then(() => op.hash);
-  })
-  .then((hash) => console.log(`Operation injected: https://granada.tzstats.com/${hash}`))
-  .catch((error) => console.log(`Error: ${JSON.stringify(error, null, 2)}`));
-});
-  return (
-    <henradioContext.Provider>
-    </henradioContext.Provider>
-);
+            let myAddress
+
+            if (!activeAccount) {
+                const permissions = await wallet.client.requestPermissions({ network: { type: 'granadanet' } });
+                console.log("New connection:", permissions.address);
+                myAddress = permissions.address;
+            } else {
+                myAddress = activeAccount.address;
+                console.log(myAddress)
+            }
+            const balance = await Tezos.tz.getBalance(myAddress)
+            console.log(`${balance.toNumber() / 1000000} ꜩ`)
+
+
+            const contractExample = 'KT1XKiWUguV7xKG7gWYCd7pr47wuThPajPeE';
+
+           // gets contract entrypoints
+           //const entrypoints = await client.getEntrypoints(contractExample);
+           //console.log('-- Entrypoints:', entrypoints);
+
+
+            // Connect to a specific contract on the tezos blockchain.
+            // Make sure the contract is deployed on the network you requested permissions for.
+            const contract = await Tezos.wallet.at(contractExample);
+            const entries = await contract.methods;
+            console.log(entries)
+
+            const TOKEN_ID = 0; // FA2 token id
+            const recipient = "tz1fjxfrHvVLbcDxnNBKa9Uw5gocGRdfsJQS"; 
+
+            // Call a method on the contract. In this case, we use the transfer entrypoint.
+            // Taquito will automatically check if the entrypoint exists and if we call it with the right parameters.
+            // In this case the parameters are [from, to, amount].
+            // This will prepare the contract call and send the request to the connected wallet.
+            const result = await contract.methods.hDAO_batch(([{"amount":1,"to_":recipient}])).send();
+
+        }
+        connectWallet()
+    });
+    return (
+        <henradioContext.Provider>
+        </henradioContext.Provider>
+    );
 
 }
-  export default HenradioProvider;
+export default HenradioProvider;

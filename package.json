@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@airgap/beacon-sdk": "^2.3.2",
     "@taquito/beacon-wallet": "^10.1.2",
     "@taquito/taquito": "^10.1.2",
     "@taquito/tezbridge-signer": "^10.1.2",
