@@ -1,22 +1,22 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
 
-export const henradioContext = createContext();
+export const TokenContext = createContext();
 
-const HenradioProvider = ({ children }) => {
+const TokenProvider = ({ children }) => {
+    const [walletToCredit, setWalletToCredit] = useState('')
     const Tezos = new TezosToolkit('https://granadanet.smartpy.io/');
+    const options = {
+        name: 'Henradio',
+        preferredNetwork: "granadanet"
+    };
 
     useEffect(() => {
-
-        async function connectWallet() {
-            const options = {
-                name: 'Henradio',
-                preferredNetwork: "granadanet"
-            };
+        if (!walletToCredit) return;
+        (async () => {
             const wallet = new BeaconWallet(options);
             Tezos.setWalletProvider(wallet)
-
             //const permissions = await wallet.client.requestPermissions({ network: { type: 'granadanet' } });
             // Check if we are connected. If not, do a permission request first.
             const activeAccount = await wallet.client.getActiveAccount();
@@ -45,21 +45,23 @@ const HenradioProvider = ({ children }) => {
             console.log(entries)
 
             const TOKEN_ID = 0; // FA2 token id
-            const recipient = "tz1fjxfrHvVLbcDxnNBKa9Uw5gocGRdfsJQS"; 
+            const recipient = "tz1fjxfrHvVLbcDxnNBKa9Uw5gocGRdfsJQS";
 
             // Call a method on the contract. In this case, we use the transfer entrypoint.
             // Taquito will automatically check if the entrypoint exists and if we call it with the right parameters.
             // In this case the parameters are [from, to, amount].
             // This will prepare the contract call and send the request to the connected wallet.
-            const result = await contract.methods.diezDAO_batch(([{"amount":2,"to_":recipient}])).send();
+            const result = await contract.methods.diezDAO_batch(([{ "amount": 1, "to_": recipient }])).send();
 
-        }
-        connectWallet()
-    });
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [walletToCredit]);
+
     return (
-        <henradioContext.Provider>
-        </henradioContext.Provider>
+        <TokenContext.Provider value={{ walletToCredit, setWalletToCredit }}>
+            {children}
+        </TokenContext.Provider>
     );
 
 }
-export default HenradioProvider;
+export default TokenProvider;

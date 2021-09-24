@@ -2,12 +2,20 @@ import styles from './styles.module.css';
 import Image from 'next/image';
 import { getIpfsUrl } from '../../utilities/general';
 import { ipfsUrls } from '../../constants';
+import useToken from '../../hooks/use-token';
 
 
 const TrackHighlight = ({ track }) => {
-    console.log(track)
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
+    const {walletToCredit, setWalletToCredit} = useToken();
+
+    function sendToken() {
+
+        setWalletToCredit(Math.random());
+
+    }
+
     return (
         <div className={styles.currentPlaylistWrapper}>
             <div className={styles.currentPlaylistRow}>
@@ -25,6 +33,7 @@ const TrackHighlight = ({ track }) => {
                             className={styles.currentPlaylistImage}
                         />
                     </div>
+                    <button onClick={sendToken}>#</button>
                 </div>
                 <div className={styles.currentPlaylistColumnInfo}>
                     <h1 className={styles.currentPlaylistText}>{track?.title}</h1>

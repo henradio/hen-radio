@@ -6,10 +6,10 @@ import Layout from './layout';
 import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
-import HenradioProvider from '../../context/henradio-context';
+import TokenProvider from '../../context/token-context';
 
 const Providers = ({children}) =>
-<HenradioProvider>
+<TokenProvider>
     <WalletProvider>
         <TrackProvider>
             <RadioProvider>
@@ -26,7 +26,7 @@ const Providers = ({children}) =>
             </RadioProvider>
         </TrackProvider>
     </WalletProvider>
-</HenradioProvider>
+</TokenProvider>
 ;
 
 export default Providers;
