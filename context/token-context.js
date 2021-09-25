@@ -45,7 +45,7 @@ const TokenProvider = ({ children }) => {
             console.log(entries)
 
             const TOKEN_ID = 0; // FA2 token id
-            const recipient = "tz1fjxfrHvVLbcDxnNBKa9Uw5gocGRdfsJQS";
+            const recipient = "tz1WFaenZYYm72NVuTnZcML1QQyGM6j5632N";
 
             // Call a method on the contract. In this case, we use the transfer entrypoint.
             // Taquito will automatically check if the entrypoint exists and if we call it with the right parameters.
