@@ -13,7 +13,7 @@ export const getIpfsUrl = (ipfs) => {
 };
 
 export const convertPriceToXtz = price => (price * 0.000001)
-    .toPrecision(3)
+    .toFixed(3)
     .replace(/0*$/, '')
     .replace(/\.$/, '');
 
