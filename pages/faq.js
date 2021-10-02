@@ -4,7 +4,7 @@ const FaqPage = () =>
         <div>
             <p><strong>Q. What is Hen.radio?</strong><br/>
                 A. Hen.radio is Hic et Nunc, or HEN, NFT Music Player. It has been created during the first Hicathon in 2021.<br/>
-                It aims at making it easier to discover, listen to and reward NFT music artists. See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing"><u>here</u></a></p>
+                It aims at making it easier to discover, listen to and reward NFT music artists. See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing"><u>here</u></a>.</p>
             <p><strong>Q. How does the minting work on hen radio?</strong></p>
             <p> A. Mint your audio file (preferably ogg or mp3) as usual on{' '}
                 <a href="https://www.hicetnunc.xyz/mint">https://www.hicetnunc.xyz/mint</a>
