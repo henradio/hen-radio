@@ -1,6 +1,7 @@
 import styles from './styles.module.css';
 import Image from 'next/image';
 import LinkButton from './link-button';
+import DeleteButton from './delete-button';
 
 const CurrentPlaylist = ({playlist}) =>
     <div className={styles.currentPlaylistWrapper}>
@@ -23,6 +24,7 @@ const CurrentPlaylist = ({playlist}) =>
                 </p>
                 <p className={styles.currentPlaylistDescription}>{playlist.description}</p>
                 <LinkButton tracks={playlist.tracks}/>
+                <DeleteButton playlist={playlist}/>
             </div>
         </div>
     </div>
