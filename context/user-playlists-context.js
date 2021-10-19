@@ -3,15 +3,15 @@ import setLocalStorage from '../utilities/set-local-storage';
 
 export const UserPlaylistsContext = createContext();
 
-const UserPlaylistProvider = ({children}) => {
+const UserPlaylistProvider = ({ children }) => {
     const [userPlaylists, setUserPlaylists] = useState([]);
 
     useEffect(() => {
         const storedPlaylist = window.localStorage.getItem('user-playlists');
-        if(!storedPlaylist) return;
+        if (!storedPlaylist) return;
         const playlists = JSON.parse(storedPlaylist)
             .filter(sp => sp.name)
-            .map(sp => sp.tags ? {...sp, tags: []} : sp);
+            .map(sp => sp.tags ? { ...sp, tags: [] } : sp);
         setLocalStorage('user-playlists', playlists);
         setUserPlaylists(playlists);
     }, []);
@@ -28,13 +28,21 @@ const UserPlaylistProvider = ({children}) => {
         ]));
     };
 
+    const deleteUserPlaylist = (playlist) => {
+        const storedPlaylist = window.localStorage.getItem('user-playlists');
+        if (!storedPlaylist) return;
+        const resultPlaylist = JSON.parse(storedPlaylist).filter(list => JSON.stringify(list) !== JSON.stringify(playlist))
+        setLocalStorage('user-playlists', resultPlaylist);
+        window.location.reload(false);
+    };
+
     const addTrack = (playlistName, track) => {
         setUserPlaylists(prevState => {
             const nextPlaylists = [];
-            while(prevState.length) {
+            while (prevState.length) {
                 const playlist = prevState.shift();
                 nextPlaylists.push(playlist);
-                if(playlist.name === playlistName) {
+                if (playlist.name === playlistName) {
                     playlist.tracks.push(track);
                     break;
                 }
@@ -46,10 +54,10 @@ const UserPlaylistProvider = ({children}) => {
     const removeTrack = (playlistName, track) => {
         setUserPlaylists(prevState => {
             const nextPlaylists = [];
-            while(prevState.length) {
+            while (prevState.length) {
                 const playlist = prevState.shift();
                 nextPlaylists.push(playlist);
-                if(playlist.name === playlistName) {
+                if (playlist.name === playlistName) {
                     playlist.tracks = playlist.tracks.filter(t => t.title !== track.title);
                     break;
                 }
@@ -63,6 +71,7 @@ const UserPlaylistProvider = ({children}) => {
             value={{
                 userPlaylists,
                 createUserPlaylist,
+                deleteUserPlaylist,
                 addTrack,
                 removeTrack,
             }}
