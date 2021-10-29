@@ -47,7 +47,7 @@ const getAllTracks = async() => {
             ...o.creator,
         },
         title: o.title,
-        src: getIpfsUrl(o.artifact_uri),
+        src: getIpfsUrl(o.artifact_uri, o.id),
         mimeType: o.mime,
         displayUri: o.display_uri,
         description: o.description,
