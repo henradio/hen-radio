@@ -19,6 +19,7 @@ let fetchSrc = () => {};
 
 if(typeof window !== 'undefined') {
     audio = new Audio();
+    audio.crossOrigin='anonymous';
     audioContext = window.AudioContext
         ? new window.AudioContext()
         : new window.webkitAudioContext();

@@ -8,7 +8,6 @@ import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import { ipfsUrls } from '../../constants';
 import PrevButton from './buttons/prev-button';
 import NextButton from './buttons/next-button';
-import ScrubberBar from './scrubber-bar';
 import Image from 'next/image';
 import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
@@ -40,7 +39,6 @@ const Player = () => {
                 />
                 <MuteButton/>
             </div>
-            <ScrubberBar/>
             <div className={styles.trackMetaRow}>
                 {track ? <AddToPlaylist track={track}/> : null}
                 {track ? <LinkButton track={track}/> : null}
