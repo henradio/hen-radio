@@ -8,7 +8,7 @@ export const getTrimmedWallet = walletAddress => {
 
 export const getIpfsUrl = (ipfs) => {
     return ipfs
-        ? `${ipfsUrls[~~(Math.random() * ipfsUrls.length)]}/${ipfs.slice(7)}`
+        ? `https://ipfs.io/ipfs/${ipfs.slice(7)}`
         : null;
 };
 
