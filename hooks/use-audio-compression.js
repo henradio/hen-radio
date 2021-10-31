@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { CompressAudioContext } from '../../context/compress-audio-context';
-const useAudioCompression = () => useContext(CompressAudioContext);
+import { MintContext } from '../context/mint-context';
 
-export default useAudioCompression;
+const useMint = () => useContext(MintContext);
+
+export default useMint;

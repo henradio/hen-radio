@@ -5,6 +5,11 @@ export const ipfsUrls = [
     'https://ipfs.io/ipfs',
 ];
 
+export const AWS_API_BASE_URL = 'https://aaa.execute-api.eu-west-1.amazonaws.com/dev'
+export const AWS_WEBSOCKET_URL = 'wss://aaa.execute-api.eu-west-1.amazonaws.com/dev'
+export const MAX_FILE_SIZE_BYTES = 	100000000;
+
+
 let audio = null;
 let audioContext = null;
 let audioSource = null;

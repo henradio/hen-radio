@@ -1,11 +1,11 @@
 import { useState, createContext } from 'react';
-import { MAX_FILE_SIZE_BYTES, AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../pages/mint/constants';
+import { MAX_FILE_SIZE_BYTES, AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../constants';
 import axios from 'axios';
 
 const bytesToMb = bytes => bytes / 1000000;
-export const CompressAudioContext = createContext()
+export const MintContext = createContext()
 
-const CompressAudioProvider = ({ children }) => {
+const MintProvider = ({ children }) => {
 
 
     const [fileError, setFileError] = useState();
@@ -23,15 +23,6 @@ const CompressAudioProvider = ({ children }) => {
         }
 
         const [type] = fileObj.type.split('/');
-
-        /*
-        if (!type || type !== 'image') {
-            fileDispatch({
-                type: 'FILE_CHANGE_FAILURE',
-                fileError: 'You can only upload image files.',
-            });
-            return;
-        }*/
 
         if (fileObj.size > MAX_FILE_SIZE_BYTES) {
  
@@ -118,8 +109,12 @@ async function uploadToS3({ fileType, fileContents }, presignedPostUrl) {
     return presignedPostUrl.filePath;
 }
 
+const handlePreview = () => {
+        console.log("handlePreview")
+}
+
     return (
-        <CompressAudioContext.Provider
+        <MintContext.Provider
         value={{
             fileError,
             fileContents,
@@ -127,15 +122,16 @@ async function uploadToS3({ fileType, fileContents }, presignedPostUrl) {
             fileType,
             fileSize,
             handleFileChange,
+            handlePreview,
             callCompression,
             getPresignedUrls,
             uploadToS3
         }}>
         {children}
-        </CompressAudioContext.Provider>
+        </MintContext.Provider>
        
     )
 
 }
 
-export default CompressAudioProvider;
+export default MintProvider;

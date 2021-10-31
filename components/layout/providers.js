@@ -6,8 +6,10 @@ import Layout from './layout';
 import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
+import MintProvider from '../../context/mint-context';
 
 const Providers = ({children}) =>
+<MintProvider>
     <WalletProvider>
         <TrackProvider>
             <RadioProvider>
@@ -24,6 +26,7 @@ const Providers = ({children}) =>
             </RadioProvider>
         </TrackProvider>
     </WalletProvider>
+</MintProvider>
 ;
 
 export default Providers;
