@@ -1,16 +1,16 @@
 import React, { Image } from 'react'
-import { getIpfsUrl } from '../../utilities/general';
 import styles from './styles.module.css'
 
 
-export const Preview = ({ title, description, rawAudio, cover, thumb, tags }) => {
+const Preview = ({ title, description, rawAudio, cover, thumb, tags }) => {
+
   return (
 
     <div className={styles.container}>
       <div className={styles.media}>
         <div>
-          <Image src={cover} alt="" /><br />
-          <audio src={rawAudio} controls />
+          <img src={URL.createObjectURL(cover)} alt="" /><br />
+          <audio src={URL.createObjectURL(rawAudio)} controls />
         </div>
 
       </div>
@@ -21,3 +21,5 @@ export const Preview = ({ title, description, rawAudio, cover, thumb, tags }) =>
     </div>
   )
 }
+
+export default Preview

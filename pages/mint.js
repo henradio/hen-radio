@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Preview } from '../components/mint-preview'
+import Preview from '../components/mint-preview'
 import useAudioCompression from '../hooks/use-audio-compression'
 
 
@@ -8,7 +8,7 @@ const Mint = () => {
     const MAX_EDITIONS = 10000;
     const MIN_ROYALTIES = 10;
     const MAX_ROYALTIES = 25;
-    const MAX_FILE_SIZE_BYTES  = 100000000;
+    const MAX_FILE_SIZE_BYTES = 100000000;
     const MAX_COVER_SIZE_BYTES = 10000000;
     const MAX_THUMB_SIZE_BYTES = 1000000;
 
@@ -44,9 +44,10 @@ const Mint = () => {
 
     };
 
-    const handleCoverUpload = (e) => {
-
+    const handleCoverUpload = async (e) => {
+        console.log(e.target.files)
         const coverObj = e.target.files[0]
+
         if (coverObj.size > MAX_COVER_SIZE_BYTES) {
 
 
@@ -56,7 +57,11 @@ const Mint = () => {
 
             return;
         }
+      //  const buffer = Buffer.from(await coverObj.arrayBuffer())
 
+        // set reader for preview
+       // const reader = new FileReader()
+       // reader.readAsDataURL(coverObj)
         setCover(coverObj)
 
     }
@@ -145,7 +150,13 @@ const Mint = () => {
                         onChange={handleThumbUpload}
                     />
 
-                    <button onClick={(e) => setStep(1)}>
+                    <button onClick={(e) => {
+                        console.log(title)
+                        console.log(description)
+                        console.log(file)
+                        console.log(cover)
+                        setStep(1)
+                    }}>
                         Preview
                     </button>
                 </form>
@@ -155,7 +166,7 @@ const Mint = () => {
         {step === 1 && (
             <>
                 <div style={{ display: 'flex' }}>
-                    <button onClick={() => setStep(0)} fit>
+                    <button onClick={() => setStep(0)}>
                         <strong>back</strong>
                     </button>
                 </div>
@@ -167,8 +178,7 @@ const Mint = () => {
                     description={description}
                     rawAudio={file}
                     cover={cover}
-                    thumb={thumbnail}
-                    tags={tags}
+
                 />
 
 
