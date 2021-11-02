@@ -1,24 +1,18 @@
-import React from 'react'
-import { AudioComponent } from './audio'
+import React, { Image } from 'react'
+import { getIpfsUrl } from '../../utilities/general';
 import styles from './styles.module.css'
 
 
-export const Preview = ({ title, description, mimeType, previewUri, tags }) => {
+export const Preview = ({ title, description, rawAudio, cover, thumb, tags }) => {
   return (
+
     <div className={styles.container}>
       <div className={styles.media}>
-      parsedArtifactUri = HashToURL(artifactUri, 'IPFS')
-      parsedDisplayUri = HashToURL(displayUri, 'IPFS')
-      return (
-          <AudioComponent
-            artifactUri={parsedArtifactUri}
-            displayUri={parsedDisplayUri}
-            previewUri={previewUri}
-            preview={preview}
-            onDetailView={interactive}
-            displayView={displayView}
-          />
-      )
+        <div>
+          <Image src={cover} alt="" /><br />
+          <audio src={rawAudio} controls />
+        </div>
+
       </div>
       <div className={styles.info}>
         <div className={styles.title}>{title}</div>

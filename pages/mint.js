@@ -1,17 +1,18 @@
 import { useState } from 'react'
-import { Container } from '../components/UI-elements/Container'
-import { Input, Textarea } from '../components/UI-elements/input'
-import { Upload } from '../components/UI-elements/load-file-btn'
 import { Preview } from '../components/mint-preview'
 import useAudioCompression from '../hooks/use-audio-compression'
+
 
 const Mint = () => {
 
     const MAX_EDITIONS = 10000;
     const MIN_ROYALTIES = 10;
     const MAX_ROYALTIES = 25;
+    const MAX_FILE_SIZE_BYTES  = 100000000;
+    const MAX_COVER_SIZE_BYTES = 10000000;
+    const MAX_THUMB_SIZE_BYTES = 1000000;
 
-    const { handleFileChange, handlePreview } = useAudioCompression();
+    const { handleMint } = useAudioCompression();
 
     const [step, setStep] = useState(0)
     const [title, setTitle] = useState('')
@@ -22,116 +23,169 @@ const Mint = () => {
     const [file, setFile] = useState() // the uploaded file
     const [cover, setCover] = useState() // the uploaded or generated cover image
     const [thumbnail, setThumbnail] = useState() // the uploaded or generated cover image
+    const [fileError, setFileError] = useState();
+
+    const handleFileChange = (e) => {
+        const fileObj = e.target.files[0]
+
+
+        if (fileObj.size > MAX_FILE_SIZE_BYTES) {
+
+
+            setFileError(`File is too large, file size is ${bytesToMb(
+                fileObj.size,
+            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
+
+            return;
+        }
+
+        setFileError(null)
+        setFile(fileObj)
+
+    };
+
+    const handleCoverUpload = (e) => {
+
+        const coverObj = e.target.files[0]
+        if (coverObj.size > MAX_COVER_SIZE_BYTES) {
+
+
+            setFileError(`File is too large, file size is ${bytesToMb(
+                coverObj.size,
+            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
+
+            return;
+        }
+
+        setCover(coverObj)
+
+    }
+
+    const handleThumbUpload = (e) => {
+
+        const thumbObj = e.target.files[0]
+        if (thumbObj.size > MAX_THUMB_SIZE_BYTES) {
+
+
+            setFileError(`File is too large, file size is ${bytesToMb(
+                thumbObj.size,
+            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
+
+            return;
+        }
+        setThumbnail(thumbObj)
+    }
 
     return <>
 
-            {step === 0 && (
-                
-                <>
-                    <Container>
-                            <Input
-                                type="text"
-                                onChange={(e) => setTitle(e.target.value)}
-                                placeholder="title"
-                                label="title"
-                                value={title}
-                            />
+        {step === 0 && (
 
-                            <Input
-                                type="text"
-                                onChange={(e) => setTags(e.target.value)}
-                                placeholder="tags (comma separated. example: illustration, digital)"
-                                label="tags"
-                                value={tags}
-                            />
+            <>
+                <form>
+                    <input
+                        type="text"
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="title"
+                        label="title"
+                        value={title}
+                    />
+                    <input
+                        type="text"
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="description"
+                        label="description"
+                        value={description}
+                    />
 
-                            <Input
-                                type="number"
-                                min={1}
-                                max={MAX_EDITIONS}
-                                onChange={(e) => setAmount(e.target.value)}
-                                onBlur={(e) => {
-                                    limitNumericField(e.target, 1, MAX_EDITIONS)
-                                    setAmount(e.target.value)
-                                }}
-                                placeholder={`editions (no. editions, 1-${MAX_EDITIONS})`}
-                                label="editions"
-                                value={amount}
-                            />
+                    <input
+                        type="text"
+                        onChange={(e) => setTags(e.target.value)}
+                        placeholder="tags (comma separated. example: illustration, digital)"
+                        label="tags"
+                        value={tags}
+                    />
 
-                            <Input
-                                type="number"
-                                min={MIN_ROYALTIES}
-                                max={MAX_ROYALTIES}
-                                onChange={(e) => setRoyalties(e.target.value)}
-                                onBlur={(e) => {
-                                    limitNumericField(e.target, MIN_ROYALTIES, MAX_ROYALTIES)
-                                    setRoyalties(e.target.value)
-                                }}
-                                placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
-                                label="royalties"
-                                value={royalties}
-                            />
-                    </Container>
+                    <input
+                        type="number"
+                        min={1}
+                        max={MAX_EDITIONS}
+                        onChange={(e) => setAmount(e.target.value)}
+                        onBlur={(e) => {
+                            setAmount(e.target.value)
+                        }}
+                        placeholder={`editions (no. editions, 1-${MAX_EDITIONS})`}
+                        label="editions"
+                        value={amount}
+                    />
 
-                    <Container>
-                            <Upload
-                                label="Upload OBJKT"
-                                onChange={handleFileChange}
-                            />
-                    </Container>
+                    <input
+                        type="number"
+                        min={MIN_ROYALTIES}
+                        max={MAX_ROYALTIES}
+                        onChange={(e) => setRoyalties(e.target.value)}
+                        onBlur={(e) => {
+                            setRoyalties(e.target.value)
+                        }}
+                        placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
+                        label="royalties"
+                        value={royalties}
+                    />
 
-                    {file && needsCover && (
-                        <Container>
-                                <Upload
-                                    label="Upload cover image"
-                                    onChange={handleCoverUpload}
-                                />
-                        </Container>
-                    )}
+                    <input type="file"
+                        label="Upload audio (wav, mp3, ogg, max 100MB)"
+                        onChange={handleFileChange}
+                    />
+                    <input type="file"
+                        label="Upload cover image (jpeg or gif, max 10MB)"
+                        onChange={handleCoverUpload}
+                    />
 
-                    <Container>
-                            <button onClick={handlePreview}>
-                                Preview
-                            </button>
-                    </Container>
-                </>
-            )}
+                    <input type="file"
+                        label="Upload thumbnail image (jpeg or gif, max 1MB)"
+                        onChange={handleThumbUpload}
+                    />
 
-            {step === 1 && (
-                <>
-                    <Container>
-                            <div style={{ display: 'flex' }}>
-                                <button onClick={() => setStep(0)} fit>
-                                        <strong>back</strong>
-                                </button>
-                            </div>
-                    </Container>
+                    <button onClick={(e) => setStep(1)}>
+                        Preview
+                    </button>
+                </form>
+            </>
+        )}
 
-                    <Container>
-                            <Preview
-                                mimeType={file.mimeType}
-                                previewUri={file.reader}
-                                title={title}
-                                description={description}
-                                tags={tags}
-                            />
-                    </Container>
+        {step === 1 && (
+            <>
+                <div style={{ display: 'flex' }}>
+                    <button onClick={() => setStep(0)} fit>
+                        <strong>back</strong>
+                    </button>
+                </div>
 
-                    <Container>
-                            <button onClick={handleMint} fit>
-                                mint OBJKT
-                            </button>
-                    </Container>
 
-                    <Container>
-                            <p>this operation costs 0.08~ tez</p>
-                            <p>Your royalties upon each sale are {royalties}%</p>
-                    </Container>
-                </>
-            )}
-        </>
-    
+
+                <Preview
+                    title={title}
+                    description={description}
+                    rawAudio={file}
+                    cover={cover}
+                    thumb={thumbnail}
+                    tags={tags}
+                />
+
+
+
+                <button onClick={handleMint}>
+                    mint OBJKT
+                </button>
+
+
+
+                <p>this operation costs 0.08~ tez</p>
+                <p>Your royalties upon each sale are {royalties}%</p>
+
+            </>
+        )}
+    </>
+
 }
 
 export default Mint;
