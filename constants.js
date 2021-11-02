@@ -1,7 +1,7 @@
 export const tzktApi = 'https://api.tzkt.io/v1/accounts';
 export const ipfsUrls = [
-    'https://cloudflare-ipfs.com/ipfs',
-    'https://infura-ipfs.io/ipfs',
+//    'https://cloudflare-ipfs.com/ipfs',
+//    'https://infura-ipfs.io/ipfs',
     'https://ipfs.io/ipfs',
 ];
 
