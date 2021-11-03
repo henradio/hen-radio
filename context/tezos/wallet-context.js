@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
-import getObjktsCreatedBy from '../api/get-objkts-created-by';
-import getObjktsOwnedBy from '../api/get-objkts-owned-by';
+import getObjktsCreatedBy from '../../api/get-objkts-created-by';
+import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 
 export const WalletContext = createContext();
 

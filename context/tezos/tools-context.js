@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import useTezos from '../hooks/use-tezos';
+import useTezos from '../../hooks/use-tezos';
 import {OpKind} from '@taquito/taquito';
 
 export const ToolsContext = createContext({

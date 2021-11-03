@@ -1,9 +1,10 @@
 import React, { Image } from 'react'
 import styles from './styles.module.css'
+import useAudioCompression from '../../hooks/use-audio-compression'
 
+const Preview = () => {
 
-const Preview = ({ title, description, rawAudio, cover, thumb, tags }) => {
-
+  const { title, description, tags, amount, rawAudio, cover, thumbnail, fileError} = useAudioCompression();
   return (
 
     <div className={styles.container}>
@@ -18,6 +19,7 @@ const Preview = ({ title, description, rawAudio, cover, thumb, tags }) => {
         <div className={styles.title}>{title}</div>
         <div className={styles.description}>{description}</div>
       </div>
+
     </div>
   )
 }

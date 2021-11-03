@@ -1,5 +1,6 @@
 import { useState, createContext } from 'react';
-import { AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../constants';
+import { AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../../constants';
+const { create } = require('ipfs-http-client')
 import axios from 'axios';
 
 const bytesToMb = bytes => bytes / 1000000;
@@ -7,12 +8,21 @@ export const MintContext = createContext()
 
 const MintProvider = ({ children }) => {
 
-    const [fileContents, setFileContents] = useState();
-    const [fileName, setFileName] = useState();
-    const [fileSize, setFileSize] = useState();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [rawAudio, setRawAudio] = useState();
+    const [cover, setCover] = useState();
+    const [thumbnail, setThumbnail] = useState();
+    const [tags, setTags] = useState('');
     const [fileType, setFileType] = useState();
+    const [amount, setAmount] = useState(1)
+    const [royalties, setRoyalties] = useState(10)
+    const [fileError, setFileError] = useState();
 
+    const handleMint = async (filePath, getUrl) => {
 
+        console.log("handle mint");
+    }
 
     async function getPresignedUrls(fileType) {
         const { data: presignedPostUrl } = await axios.get(
@@ -20,11 +30,6 @@ const MintProvider = ({ children }) => {
         );
 
         return presignedPostUrl;
-    }
-
-    const handleMint = async (filePath, getUrl) => {
-
-        console.log("handle mint");
     }
 
     const callCompression = async (filePath, getUrl) => {
@@ -63,7 +68,7 @@ const MintProvider = ({ children }) => {
     }
 
 
-    async function uploadToS3({ fileType, fileContents }, presignedPostUrl) {
+    async function uploadToS3({ fileType, rawAudio }, presignedPostUrl) {
 
         console.log(fileType)
         const formData = new FormData();
@@ -72,7 +77,7 @@ const MintProvider = ({ children }) => {
         Object.entries(presignedPostUrl.fields).forEach(([k, v]) => {
             formData.append(k, v);
         });
-        formData.append('file', fileContents); // The file has be the last element
+        formData.append('file', rawAudio); // The file has be the last element
 
         const response = await axios.post(presignedPostUrl.url, formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
@@ -87,13 +92,27 @@ const MintProvider = ({ children }) => {
     return (
         <MintContext.Provider
             value={{
-                fileContents,
-                fileName,
+                title,
+                setTitle, 
+                description, 
+                setDescription,
+                rawAudio,
+                setRawAudio, 
+                cover, 
+                setCover,
+                thumbnail,
+                setThumbnail, 
+                tags,
+                setTags,
                 fileType,
-                fileSize,
-                callCompression,
-                getPresignedUrls,
-                uploadToS3
+                setFileType,
+                amount,
+                setAmount,
+                royalties,
+                setRoyalties,
+                fileError,
+                setFileError,
+                handleMint
             }}>
             {children}
         </MintContext.Provider>

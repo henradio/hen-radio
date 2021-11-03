@@ -1,12 +1,12 @@
 import UserPlaylistProvider from '../../context/user-playlists-context';
 import RadioProvider from '../../context/radio-context';
-import WalletProvider from '../../context/wallet-context';
+import WalletProvider from '../../context/tezos/wallet-context';
 import PlaylistProvider from '../../context/playlist-context';
 import Layout from './layout';
 import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
-import MintProvider from '../../context/mint-context';
+import MintProvider from '../../context/tezos/mint-context';
 
 const Providers = ({children}) =>
 <MintProvider>

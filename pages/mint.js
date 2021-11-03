@@ -12,18 +12,9 @@ const Mint = () => {
     const MAX_COVER_SIZE_BYTES = 10000000;
     const MAX_THUMB_SIZE_BYTES = 1000000;
 
-    const { handleMint } = useAudioCompression();
+    const { handleMint, title, setTitle,description, setDescription, tags, setTags, amount, setAmount,royalties, setRoyalties, rawAudio, setRawAudio, cover, setCover, thumbnail, setThumbnail, fileError, setFileError} = useAudioCompression();
 
     const [step, setStep] = useState(0)
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [tags, setTags] = useState('')
-    const [amount, setAmount] = useState()
-    const [royalties, setRoyalties] = useState()
-    const [file, setFile] = useState() // the uploaded file
-    const [cover, setCover] = useState() // the uploaded or generated cover image
-    const [thumbnail, setThumbnail] = useState() // the uploaded or generated cover image
-    const [fileError, setFileError] = useState();
 
     const handleFileChange = (e) => {
         const fileObj = e.target.files[0]
@@ -40,7 +31,7 @@ const Mint = () => {
         }
 
         setFileError(null)
-        setFile(fileObj)
+        setRawAudio(fileObj)
 
     };
 
@@ -151,10 +142,7 @@ const Mint = () => {
                     />
 
                     <button onClick={(e) => {
-                        console.log(title)
-                        console.log(description)
-                        console.log(file)
-                        console.log(cover)
+
                         setStep(1)
                     }}>
                         Preview
@@ -173,13 +161,7 @@ const Mint = () => {
 
 
 
-                <Preview
-                    title={title}
-                    description={description}
-                    rawAudio={file}
-                    cover={cover}
-
-                />
+                <Preview/>
 
 
 
