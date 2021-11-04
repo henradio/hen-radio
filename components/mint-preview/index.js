@@ -1,15 +1,12 @@
-import React, { Image } from 'react'
 import styles from './styles.module.css'
 
 const Preview = ({ title, description, cover, rawAudio }) => {
-
-  console.log(rawAudio)
   return (
 
     <div className={styles.container}>
       <div className={styles.media}>
         <div>
-          <img src={URL.createObjectURL(cover)} alt="" /><br />
+          <img src={URL.createObjectURL(cover)} alt="Cover image" /><br />
           <audio src={URL.createObjectURL(rawAudio)} controls />
         </div>
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Preview from '../components/mint-preview'
-import useAudioCompression from '../hooks/use-audio-compression'
+import useMint from '../hooks/use-mint';
 
 
 const Mint = () => {
@@ -13,7 +13,7 @@ const Mint = () => {
     const MAX_THUMB_SIZE_BYTES = 1000000;
     const bytesToMb = bytes => bytes / 1000000;
 
-    const { handleMint } = useAudioCompression();
+    const { handleMint } = useMint();
 
     const [step, setStep] = useState(0)
     const [title, setTitle] = useState('');
@@ -59,11 +59,7 @@ const Mint = () => {
 
             return;
         }
-        //  const buffer = Buffer.from(await coverObj.arrayBuffer())
 
-        // set reader for preview
-        // const reader = new FileReader()
-        // reader.readAsDataURL(coverObj)
         setCover(coverObj)
 
     }

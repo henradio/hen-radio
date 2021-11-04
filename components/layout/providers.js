@@ -7,26 +7,29 @@ import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
 import MintProvider from '../../context/tezos/mint-context';
+import CompressProvider from '../../context/audio-compression-context';
 
-const Providers = ({children}) =>
-<MintProvider>
-    <WalletProvider>
-        <TrackProvider>
-            <RadioProvider>
-                <UserPlaylistProvider>
-                    <PlaylistProvider>
-                        <Layout>
-                            <div className={styles.radioPlayerBar}>
-                                <RadioPlayer/>
-                            </div>
-                            {children}
-                        </Layout>
-                    </PlaylistProvider>
-                </UserPlaylistProvider>
-            </RadioProvider>
-        </TrackProvider>
-    </WalletProvider>
-</MintProvider>
-;
+const Providers = ({ children }) =>
+    <CompressProvider>
+        <MintProvider>
+            <WalletProvider>
+                <TrackProvider>
+                    <RadioProvider>
+                        <UserPlaylistProvider>
+                            <PlaylistProvider>
+                                <Layout>
+                                    <div className={styles.radioPlayerBar}>
+                                        <RadioPlayer />
+                                    </div>
+                                    {children}
+                                </Layout>
+                            </PlaylistProvider>
+                        </UserPlaylistProvider>
+                    </RadioProvider>
+                </TrackProvider>
+            </WalletProvider>
+        </MintProvider>
+    </CompressProvider>
+    ;
 
 export default Providers;
