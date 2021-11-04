@@ -1,10 +1,9 @@
 import React, { Image } from 'react'
 import styles from './styles.module.css'
-import useAudioCompression from '../../hooks/use-audio-compression'
 
-const Preview = () => {
+const Preview = ({ title, description, cover, rawAudio }) => {
 
-  const { title, description, tags, amount, rawAudio, cover, thumbnail, fileError} = useAudioCompression();
+  console.log(rawAudio)
   return (
 
     <div className={styles.container}>

@@ -3,7 +3,6 @@ import { AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../../constants';
 const { create } = require('ipfs-http-client')
 import axios from 'axios';
 
-const bytesToMb = bytes => bytes / 1000000;
 export const MintContext = createContext()
 
 const MintProvider = ({ children }) => {

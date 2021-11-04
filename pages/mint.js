@@ -11,10 +11,21 @@ const Mint = () => {
     const MAX_FILE_SIZE_BYTES = 100000000;
     const MAX_COVER_SIZE_BYTES = 10000000;
     const MAX_THUMB_SIZE_BYTES = 1000000;
+    const bytesToMb = bytes => bytes / 1000000;
 
-    const { handleMint, title, setTitle,description, setDescription, tags, setTags, amount, setAmount,royalties, setRoyalties, rawAudio, setRawAudio, cover, setCover, thumbnail, setThumbnail, fileError, setFileError} = useAudioCompression();
+    const { handleMint } = useAudioCompression();
 
     const [step, setStep] = useState(0)
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [rawAudio, setRawAudio] = useState();
+    const [cover, setCover] = useState();
+    const [thumbnail, setThumbnail] = useState();
+    const [tags, setTags] = useState('');
+    const [fileType, setFileType] = useState();
+    const [amount, setAmount] = useState(1)
+    const [royalties, setRoyalties] = useState(10)
+    const [fileError, setFileError] = useState();
 
     const handleFileChange = (e) => {
         const fileObj = e.target.files[0]
@@ -48,11 +59,11 @@ const Mint = () => {
 
             return;
         }
-      //  const buffer = Buffer.from(await coverObj.arrayBuffer())
+        //  const buffer = Buffer.from(await coverObj.arrayBuffer())
 
         // set reader for preview
-       // const reader = new FileReader()
-       // reader.readAsDataURL(coverObj)
+        // const reader = new FileReader()
+        // reader.readAsDataURL(coverObj)
         setCover(coverObj)
 
     }
@@ -126,21 +137,25 @@ const Mint = () => {
                         label="royalties"
                         value={royalties}
                     />
+                    <div>
+                        <label>Upload audio (wav, mp3, ogg, max 100MB)</label>
+                        <input type="file" accept="audio/*"
 
-                    <input type="file"
-                        label="Upload audio (wav, mp3, ogg, max 100MB)"
-                        onChange={handleFileChange}
-                    />
-                    <input type="file"
-                        label="Upload cover image (jpeg or gif, max 10MB)"
-                        onChange={handleCoverUpload}
-                    />
-
-                    <input type="file"
-                        label="Upload thumbnail image (jpeg or gif, max 1MB)"
-                        onChange={handleThumbUpload}
-                    />
-
+                            onChange={handleFileChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Upload cover image (jpeg or gif, max 10MB)</label>
+                        <input type="file" accept="image/*"
+                            onChange={handleCoverUpload}
+                        />
+                    </div>
+                    <div>
+                        <label>Upload thumbnail image (jpeg or gif, max 1MB)</label>
+                        <input type="file" accept=".jpg, .jpeg, .gif"
+                            onChange={handleThumbUpload}
+                        />
+                    </div>
                     <button onClick={(e) => {
 
                         setStep(1)
@@ -161,7 +176,12 @@ const Mint = () => {
 
 
 
-                <Preview/>
+                <Preview
+                    title={title}
+                    description={description}
+                    cover={cover}
+                    rawAudio={rawAudio}
+                />
 
 
 
