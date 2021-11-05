@@ -57,7 +57,9 @@ const Mint = () => {
 
                 const fileObj = event.target.files && event.target.files[0];
                 if(!fileObj) {
-                    alert('MISSING fileObj');
+                    const error = 'Missing file'
+                    formik.setFieldError(name, error);
+                    event.target.value = '';
                     return;
                 }
 
