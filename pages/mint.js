@@ -1,199 +1,194 @@
-import { useState } from 'react'
-import Preview from '../components/mint-preview'
+import {ErrorMessage, Field, Form, Formik} from 'formik';
+import * as yup from 'yup';
 import useMint from '../hooks/use-mint';
 
 
+const MAX_EDITIONS = 10000;
+const MIN_ROYALTIES = 10;
+const MAX_ROYALTIES = 25;
+const MAX_AUDIO_SIZE_BYTES = 1_000_000_00;
+const MAX_COVER_SIZE_BYTES = 1_000_000_0;
+const MAX_THUMB_SIZE_BYTES = 1_000_000;
+const ALLOWED_AUDIO_TYPES = ['audio/wav', 'audio/ogg', 'audio/mpeg', 'audio/flac'];
+const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/gif'];
+const bytesToMb = bytes => bytes / 1_000_000;
+
+const validationSchema = yup.object().shape({
+    title: yup.string().required(),
+    description: yup.string().required(),
+    tags: yup.string().required(),
+    amount: yup.number()
+        .min(1)
+        .max(MAX_EDITIONS),
+    royalties: yup.number()
+        .min(MIN_ROYALTIES)
+        .max(MAX_ROYALTIES),
+    audio: yup.mixed().required(),
+    cover: yup.mixed().required(),
+    thumbnail: yup.mixed().required(),
+});
+
+const initialValues = {
+    title: '',
+    description: '',
+    tags: '',
+    amount: '',
+    royalties: '',
+    audio: '',
+    cover: '',
+    thumbnail: ''
+};
+
 const Mint = () => {
 
-    const MAX_EDITIONS = 10000;
-    const MIN_ROYALTIES = 10;
-    const MAX_ROYALTIES = 25;
-    const MAX_FILE_SIZE_BYTES = 100000000;
-    const MAX_COVER_SIZE_BYTES = 10000000;
-    const MAX_THUMB_SIZE_BYTES = 1000000;
-    const bytesToMb = bytes => bytes / 1000000;
+        const {handleMint} = useMint();
 
-    const { handleMint } = useMint();
-
-    const [step, setStep] = useState(0)
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [rawAudio, setRawAudio] = useState();
-    const [cover, setCover] = useState();
-    const [thumbnail, setThumbnail] = useState();
-    const [tags, setTags] = useState('');
-    const [fileType, setFileType] = useState();
-    const [amount, setAmount] = useState(1)
-    const [royalties, setRoyalties] = useState(10)
-    const [fileError, setFileError] = useState();
-
-    const handleFileChange = (e) => {
-        const fileObj = e.target.files[0]
-
-
-        if (fileObj.size > MAX_FILE_SIZE_BYTES) {
-
-
-            setFileError(`File is too large, file size is ${bytesToMb(
-                fileObj.size,
-            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
-
-            return;
+        function handleSubmit(values, formikHelpers) {
+            console.log(values);
         }
+    const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
+        (event) => {
+            formik.setTouched({ [name]: true }, false);
 
-        setFileError(null)
-        setRawAudio(fileObj)
+            const fileObj = event.target.files && event.target.files[0];
+            if(!fileObj) {
+                alert('MISSING fileObj')
+                return;
+            }
 
-    };
+            if(!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
+                const mimetypes = allowedTypes.join(', ');
+                const error = `You can only upload files with ${mimetypes} mimetypes`;
+                formik.setFieldError(name, error);
+                event.target.value = '';
+                return;
+            }
 
-    const handleCoverUpload = async (e) => {
-        console.log(e.target.files)
-        const coverObj = e.target.files[0]
+            if(fileObj.size > maxBytes) {
+                const fileSize = bytesToMb(fileObj.size).toFixed(2);
+                const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
+                formik.setFieldError(name, error);
+                event.target.value = '';
+                return;
+            }
 
-        if (coverObj.size > MAX_COVER_SIZE_BYTES) {
+            formik.setFieldValue(name, fileObj);
+        };
 
-
-            setFileError(`File is too large, file size is ${bytesToMb(
-                coverObj.size,
-            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
-
-            return;
-        }
-
-        setCover(coverObj)
-
+        return <>
+            <Formik
+                onSubmit={handleSubmit}
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+            >
+                {(formik) =>
+                    <Form>
+                        <>{/*JSON.stringify(formik.errors)*/}</>
+                        <div>
+                            <label htmlFor={'title'}>Title</label>
+                            <Field
+                                id="title"
+                                name="title"
+                                type="text"
+                            />
+                            <ErrorMessage name="title"/>
+                        </div>
+                        <div>
+                            <label htmlFor={'description'}>Description</label>
+                            <Field
+                                id="description"
+                                name="description"
+                                type="text"
+                            />
+                            <ErrorMessage name="description"/>
+                        </div>
+                        <div>
+                            <label htmlFor={'tags'}>Tags</label>
+                            <Field
+                                id="tags"
+                                name="tags"
+                                type="text"
+                                placeholder="tags (comma separated. example: illustration, digital)"
+                            />
+                            <ErrorMessage name="tags"/>
+                        </div>
+                        <div>
+                            <label htmlFor={'amount'}>Editions (1–${MAX_EDITIONS})</label>
+                            <Field
+                                id="amount"
+                                name="amount"
+                                type="number"
+                                min={1}
+                                max={MAX_EDITIONS}
+                            />
+                            <ErrorMessage name="amount"/>
+                        </div>
+                        <div>
+                            <label htmlFor={'royalties'}>Royalties</label>
+                            <Field
+                                id="royalties"
+                                name="royalties"
+                                type="number"
+                                min={MIN_ROYALTIES}
+                                max={MAX_ROYALTIES}
+                                placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
+                            />
+                            <ErrorMessage name="royalties"/>
+                        </div>
+                        <div>
+                            <label htmlFor="audio">Upload audio (mp3, ogg, wav, flac, max 100MB)</label>
+                            <input
+                                id="audio"
+                                name="audio"
+                                type="file"
+                                onChange={handleFileChange(
+                                    'audio',
+                                    ALLOWED_AUDIO_TYPES,
+                                    MAX_AUDIO_SIZE_BYTES,
+                                    formik
+                                )}
+                                accept="audio/*"
+                            />
+                            <ErrorMessage name="audio"/>
+                        </div>
+                        <div>
+                            <label htmlFor="cover">Upload cover (png, jpeg, gif, max 10MB)</label>
+                            <input
+                                id="cover"
+                                name="cover"
+                                type="file"
+                                onChange={handleFileChange(
+                                    'cover',
+                                    ALLOWED_IMAGE_TYPES,
+                                    MAX_COVER_SIZE_BYTES,
+                                    formik
+                                )}
+                                accept="image/*"
+                            />
+                            <ErrorMessage name="cover"/>
+                        </div>
+                        <div>
+                            <label htmlFor="thumbnail">Upload thumbnail (png, jpeg, gif, max 1MB)</label>
+                            <input
+                                id="thumbnail"
+                                name="thumbnail"
+                                type="file"
+                                onChange={handleFileChange(
+                                    'thumbnail',
+                                    ALLOWED_IMAGE_TYPES,
+                                    MAX_THUMB_SIZE_BYTES,
+                                    formik
+                                )}
+                                accept="image/*"
+                            />
+                            <ErrorMessage name="thumbnail"/>
+                        </div>
+                        <button type='submit'>Preview</button>
+                    </Form>
+                }
+            </Formik>
+        </>;
     }
-
-    const handleThumbUpload = (e) => {
-
-        const thumbObj = e.target.files[0]
-        if (thumbObj.size > MAX_THUMB_SIZE_BYTES) {
-
-
-            setFileError(`File is too large, file size is ${bytesToMb(
-                thumbObj.size,
-            ).toFixed(2)} MB, maximum allowed size - 1 MB.`)
-
-            return;
-        }
-        setThumbnail(thumbObj)
-    }
-
-    return <>
-
-        {step === 0 && (
-
-            <>
-                <form>
-                    <input
-                        type="text"
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="title"
-                        label="title"
-                        value={title}
-                    />
-                    <input
-                        type="text"
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="description"
-                        label="description"
-                        value={description}
-                    />
-
-                    <input
-                        type="text"
-                        onChange={(e) => setTags(e.target.value)}
-                        placeholder="tags (comma separated. example: illustration, digital)"
-                        label="tags"
-                        value={tags}
-                    />
-
-                    <input
-                        type="number"
-                        min={1}
-                        max={MAX_EDITIONS}
-                        onChange={(e) => setAmount(e.target.value)}
-                        onBlur={(e) => {
-                            setAmount(e.target.value)
-                        }}
-                        placeholder={`editions (no. editions, 1-${MAX_EDITIONS})`}
-                        label="editions"
-                        value={amount}
-                    />
-
-                    <input
-                        type="number"
-                        min={MIN_ROYALTIES}
-                        max={MAX_ROYALTIES}
-                        onChange={(e) => setRoyalties(e.target.value)}
-                        onBlur={(e) => {
-                            setRoyalties(e.target.value)
-                        }}
-                        placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
-                        label="royalties"
-                        value={royalties}
-                    />
-                    <div>
-                        <label>Upload audio (wav, mp3, ogg, max 100MB)</label>
-                        <input type="file" accept="audio/*"
-
-                            onChange={handleFileChange}
-                        />
-                    </div>
-                    <div>
-                        <label>Upload cover image (jpeg or gif, max 10MB)</label>
-                        <input type="file" accept="image/*"
-                            onChange={handleCoverUpload}
-                        />
-                    </div>
-                    <div>
-                        <label>Upload thumbnail image (jpeg or gif, max 1MB)</label>
-                        <input type="file" accept=".jpg, .jpeg, .gif"
-                            onChange={handleThumbUpload}
-                        />
-                    </div>
-                    <button onClick={(e) => {
-
-                        setStep(1)
-                    }}>
-                        Preview
-                    </button>
-                </form>
-            </>
-        )}
-
-        {step === 1 && (
-            <>
-                <div style={{ display: 'flex' }}>
-                    <button onClick={() => setStep(0)}>
-                        <strong>back</strong>
-                    </button>
-                </div>
-
-
-
-                <Preview
-                    title={title}
-                    description={description}
-                    cover={cover}
-                    rawAudio={rawAudio}
-                />
-
-
-
-                <button onClick={handleMint}>
-                    mint OBJKT
-                </button>
-
-
-
-                <p>this operation costs 0.08~ tez</p>
-                <p>Your royalties upon each sale are {royalties}%</p>
-
-            </>
-        )}
-    </>
-
-}
+;
 
 export default Mint;
