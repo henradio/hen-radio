@@ -2,14 +2,17 @@ import {ErrorMessage, Field, Form, Formik} from 'formik';
 import * as yup from 'yup';
 import useMint from '../hooks/use-mint';
 
-
 const MAX_EDITIONS = 10000;
 const MIN_ROYALTIES = 10;
 const MAX_ROYALTIES = 25;
 const MAX_AUDIO_SIZE_BYTES = 1_000_000_00;
 const MAX_COVER_SIZE_BYTES = 1_000_000_0;
 const MAX_THUMB_SIZE_BYTES = 1_000_000;
-const ALLOWED_AUDIO_TYPES = ['audio/wav', 'audio/ogg', 'audio/mpeg', 'audio/flac'];
+const ALLOWED_AUDIO_TYPES = [
+    'audio/wav',
+    'audio/ogg',
+    'audio/mpeg',
+    'audio/flac'];
 const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/gif'];
 const bytesToMb = bytes => bytes / 1_000_000;
 
@@ -25,7 +28,7 @@ const validationSchema = yup.object().shape({
         .max(MAX_ROYALTIES),
     audio: yup.mixed().required(),
     cover: yup.mixed().required(),
-    thumbnail: yup.mixed().required(),
+    thumbnail: yup.mixed().required()
 });
 
 const initialValues = {
@@ -43,37 +46,39 @@ const Mint = () => {
 
         const {handleMint} = useMint();
 
-        function handleSubmit(values, formikHelpers) {
+        const handleSubmit = (values, formikHelpers) => {
             console.log(values);
-        }
-    const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
-        (event) => {
-            formik.setTouched({ [name]: true }, false);
-
-            const fileObj = event.target.files && event.target.files[0];
-            if(!fileObj) {
-                alert('MISSING fileObj')
-                return;
-            }
-
-            if(!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
-                const mimetypes = allowedTypes.join(', ');
-                const error = `You can only upload files with ${mimetypes} mimetypes`;
-                formik.setFieldError(name, error);
-                event.target.value = '';
-                return;
-            }
-
-            if(fileObj.size > maxBytes) {
-                const fileSize = bytesToMb(fileObj.size).toFixed(2);
-                const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
-                formik.setFieldError(name, error);
-                event.target.value = '';
-                return;
-            }
-
-            formik.setFieldValue(name, fileObj);
+            // handleMint()
         };
+
+        const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
+            (event) => {
+                formik.setTouched({[name]: true}, false);
+
+                const fileObj = event.target.files && event.target.files[0];
+                if(!fileObj) {
+                    alert('MISSING fileObj');
+                    return;
+                }
+
+                if(!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
+                    const mimetypes = allowedTypes.join(', ');
+                    const error = `You can only upload files with ${mimetypes} mimetypes`;
+                    formik.setFieldError(name, error);
+                    event.target.value = '';
+                    return;
+                }
+
+                if(fileObj.size > maxBytes) {
+                    const fileSize = bytesToMb(fileObj.size).toFixed(2);
+                    const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
+                    formik.setFieldError(name, error);
+                    event.target.value = '';
+                    return;
+                }
+
+                formik.setFieldValue(name, fileObj);
+            };
 
         return <>
             <Formik
@@ -113,7 +118,8 @@ const Mint = () => {
                             <ErrorMessage name="tags"/>
                         </div>
                         <div>
-                            <label htmlFor={'amount'}>Editions (1–{MAX_EDITIONS})</label>
+                            <label htmlFor={'amount'}>Editions
+                                                      (1–{MAX_EDITIONS})</label>
                             <Field
                                 id="amount"
                                 name="amount"
@@ -136,7 +142,8 @@ const Mint = () => {
                             <ErrorMessage name="royalties"/>
                         </div>
                         <div>
-                            <label htmlFor="audio">Upload audio (mp3, ogg, wav, flac, max 100MB)</label>
+                            <label htmlFor="audio">Upload audio (mp3, ogg, wav,
+                                                   flac, max 100MB)</label>
                             <input
                                 id="audio"
                                 name="audio"
@@ -152,7 +159,8 @@ const Mint = () => {
                             <ErrorMessage name="audio"/>
                         </div>
                         <div>
-                            <label htmlFor="cover">Upload cover (png, jpeg, gif, max 10MB)</label>
+                            <label htmlFor="cover">Upload cover (png, jpeg, gif, max
+                                                   10MB)</label>
                             <input
                                 id="cover"
                                 name="cover"
@@ -168,7 +176,8 @@ const Mint = () => {
                             <ErrorMessage name="cover"/>
                         </div>
                         <div>
-                            <label htmlFor="thumbnail">Upload thumbnail (png, jpeg, gif, max 1MB)</label>
+                            <label htmlFor="thumbnail">Upload thumbnail (png, jpeg,
+                                                       gif, max 1MB)</label>
                             <input
                                 id="thumbnail"
                                 name="thumbnail"
@@ -183,7 +192,7 @@ const Mint = () => {
                             />
                             <ErrorMessage name="thumbnail"/>
                         </div>
-                        <button type='submit'>Preview</button>
+                        <button type="submit">Preview</button>
                     </Form>
                 }
             </Formik>
