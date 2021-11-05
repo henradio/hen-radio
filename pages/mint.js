@@ -113,7 +113,7 @@ const Mint = () => {
                             <ErrorMessage name="tags"/>
                         </div>
                         <div>
-                            <label htmlFor={'amount'}>Editions (1–${MAX_EDITIONS})</label>
+                            <label htmlFor={'amount'}>Editions (1–{MAX_EDITIONS})</label>
                             <Field
                                 id="amount"
                                 name="amount"
