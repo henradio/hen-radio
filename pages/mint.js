@@ -1,6 +1,8 @@
-import {ErrorMessage, Field, Form, Formik} from 'formik';
+import { useState } from 'react'
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import useMint from '../hooks/use-mint';
+import Preview from '../components/mint-preview'
 
 const MAX_EDITIONS = 10000;
 const MIN_ROYALTIES = 10;
@@ -44,45 +46,50 @@ const initialValues = {
 
 const Mint = () => {
 
-        const {handleMint} = useMint();
+    const { handleMint } = useMint();
+    const [step, setStep] = useState(0);
+    const [mintPayload, setMintPayload] = useState();
 
-        const handleSubmit = (values, formikHelpers) => {
-            console.log(values);
-            // handleMint()
+    const handleSubmit = (values, formikHelpers) => {
+        console.log(values)
+        setMintPayload(values);
+        setStep(1);
+        //handleMint()
+    };
+
+    const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
+        (event) => {
+            formik.setTouched({ [name]: true }, false);
+
+            const fileObj = event.target.files && event.target.files[0];
+            if (!fileObj) {
+                const error = 'Missing file'
+                formik.setFieldError(name, error);
+                event.target.value = '';
+                return;
+            }
+
+            if (!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
+                const mimetypes = allowedTypes.join(', ');
+                const error = `You can only upload files with ${mimetypes} mimetypes`;
+                formik.setFieldError(name, error);
+                event.target.value = '';
+                return;
+            }
+
+            if (fileObj.size > maxBytes) {
+                const fileSize = bytesToMb(fileObj.size).toFixed(2);
+                const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
+                formik.setFieldError(name, error);
+                event.target.value = '';
+                return;
+            }
+
+            formik.setFieldValue(name, fileObj);
         };
 
-        const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
-            (event) => {
-                formik.setTouched({[name]: true}, false);
-
-                const fileObj = event.target.files && event.target.files[0];
-                if(!fileObj) {
-                    const error = 'Missing file'
-                    formik.setFieldError(name, error);
-                    event.target.value = '';
-                    return;
-                }
-
-                if(!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
-                    const mimetypes = allowedTypes.join(', ');
-                    const error = `You can only upload files with ${mimetypes} mimetypes`;
-                    formik.setFieldError(name, error);
-                    event.target.value = '';
-                    return;
-                }
-
-                if(fileObj.size > maxBytes) {
-                    const fileSize = bytesToMb(fileObj.size).toFixed(2);
-                    const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
-                    formik.setFieldError(name, error);
-                    event.target.value = '';
-                    return;
-                }
-
-                formik.setFieldValue(name, fileObj);
-            };
-
-        return <>
+    return <>
+        {step === 0 && (
             <Formik
                 onSubmit={handleSubmit}
                 initialValues={initialValues}
@@ -98,7 +105,7 @@ const Mint = () => {
                                 name="title"
                                 type="text"
                             />
-                            <ErrorMessage name="title"/>
+                            <ErrorMessage name="title" />
                         </div>
                         <div>
                             <label htmlFor={'description'}>Description</label>
@@ -107,7 +114,7 @@ const Mint = () => {
                                 name="description"
                                 type="text"
                             />
-                            <ErrorMessage name="description"/>
+                            <ErrorMessage name="description" />
                         </div>
                         <div>
                             <label htmlFor={'tags'}>Tags</label>
@@ -117,11 +124,11 @@ const Mint = () => {
                                 type="text"
                                 placeholder="tags (comma separated. example: illustration, digital)"
                             />
-                            <ErrorMessage name="tags"/>
+                            <ErrorMessage name="tags" />
                         </div>
                         <div>
                             <label htmlFor={'amount'}>Editions
-                                                      (1–{MAX_EDITIONS})</label>
+                                (1–{MAX_EDITIONS})</label>
                             <Field
                                 id="amount"
                                 name="amount"
@@ -129,7 +136,7 @@ const Mint = () => {
                                 min={1}
                                 max={MAX_EDITIONS}
                             />
-                            <ErrorMessage name="amount"/>
+                            <ErrorMessage name="amount" />
                         </div>
                         <div>
                             <label htmlFor={'royalties'}>Royalties</label>
@@ -141,11 +148,11 @@ const Mint = () => {
                                 max={MAX_ROYALTIES}
                                 placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
                             />
-                            <ErrorMessage name="royalties"/>
+                            <ErrorMessage name="royalties" />
                         </div>
                         <div>
                             <label htmlFor="audio">Upload audio (mp3, ogg, wav,
-                                                   flac, max 100MB)</label>
+                                flac, max 100MB)</label>
                             <input
                                 id="audio"
                                 name="audio"
@@ -158,11 +165,11 @@ const Mint = () => {
                                 )}
                                 accept="audio/*"
                             />
-                            <ErrorMessage name="audio"/>
+                            <ErrorMessage name="audio" />
                         </div>
                         <div>
                             <label htmlFor="cover">Upload cover (png, jpeg, gif, max
-                                                   10MB)</label>
+                                10MB)</label>
                             <input
                                 id="cover"
                                 name="cover"
@@ -175,11 +182,11 @@ const Mint = () => {
                                 )}
                                 accept="image/*"
                             />
-                            <ErrorMessage name="cover"/>
+                            <ErrorMessage name="cover" />
                         </div>
                         <div>
                             <label htmlFor="thumbnail">Upload thumbnail (png, jpeg,
-                                                       gif, max 1MB)</label>
+                                gif, max 1MB)</label>
                             <input
                                 id="thumbnail"
                                 name="thumbnail"
@@ -192,14 +199,44 @@ const Mint = () => {
                                 )}
                                 accept="image/*"
                             />
-                            <ErrorMessage name="thumbnail"/>
+                            <ErrorMessage name="thumbnail" />
                         </div>
                         <button type="submit">Preview</button>
                     </Form>
                 }
             </Formik>
-        </>;
-    }
-;
+        )}
+        {step === 1 && (
+            <>
+                <div style={{ display: 'flex' }}>
+                    <button onClick={() => setStep(0)}>
+                        <strong>back</strong>
+                    </button>
+                </div>
+
+
+
+                <Preview
+                    title={mintPayload.title}
+                    description={mintPayload.description}
+                    cover={mintPayload.cover}
+                    audio={mintPayload.audio}
+                />
+
+
+
+                <button onClick={handleMint}>
+                    mint OBJKT
+                </button>
+
+
+
+                <p>this operation costs 0.08~ tez</p>
+                <p>Your royalties upon each sale are {royalties}%</p>
+            </>
+        )}
+    </>;
+}
+    ;
 
 export default Mint;
