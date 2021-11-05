@@ -17,9 +17,10 @@ const CompressProvider = ({ children }) => {
     const [royalties, setRoyalties] = useState(10)
     const [fileError, setFileError] = useState();
 
-    const handleCompress = async (filePath, getUrl) => {
+    const handleCompress = async (payload) => {
 
         console.log("handle compress");
+        console.log(payload);
     }
 
     async function getPresignedUrls(fileType) {

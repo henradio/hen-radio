@@ -9,8 +9,8 @@ const MintProvider = ({children}) => {
 
     const {handleCompress} = useCompress();
 
-    const handleMint = async(filePath, getUrl) => {
-        handleCompress();
+    const handleMint = async(payload) => {
+        handleCompress(payload);
         console.log('handle mint');
     };
 

@@ -50,11 +50,13 @@ const Mint = () => {
     const [step, setStep] = useState(0);
     const [mintPayload, setMintPayload] = useState();
 
-    const handleSubmit = (values, formikHelpers) => {
-        console.log(values)
+    const handleSubmit = (values) => {
         setMintPayload(values);
         setStep(1);
-        //handleMint()
+    };
+
+    const triggerMint = () => {
+        handleMint(mintPayload);
     };
 
     const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
@@ -225,14 +227,14 @@ const Mint = () => {
 
 
 
-                <button onClick={handleMint}>
+                <button onClick={triggerMint}>
                     mint OBJKT
                 </button>
 
 
 
                 <p>this operation costs 0.08~ tez</p>
-                <p>Your royalties upon each sale are {royalties}%</p>
+                <p>Your royalties upon each sale are {mintPayload.royalties}%</p>
             </>
         )}
     </>;
