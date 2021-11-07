@@ -4,19 +4,23 @@ import { BeaconWallet } from '@taquito/beacon-wallet';
 
 const Tezos = new TezosToolkit('https://mainnet.smartpy.io');
 
-
-
-    const wallet = new BeaconWallet({
-        name: 'hicetnunc.xyz',
-        preferredNetwork: 'mainnet'
-    });
-/*
 const network = {
     type: 'mainnet',
     rpcUrl: 'https://mainnet.smartpy.io'
 };
-Tezos.setWalletProvider(wallet);
-*/
+
+let wallet
+if (process.browser) {
+    // on browser
+
+    wallet = new BeaconWallet({
+        name: 'hicetnunc.xyz',
+        preferredNetwork: 'mainnet'
+    });
+
+    Tezos.setWalletProvider(wallet);
+}
+
 export const TezosContext = createContext({
     Tezos,
     user: null,
@@ -26,7 +30,7 @@ export const TezosContext = createContext({
 
 const TezosProvider = ({ children }) => {
     const [auth, setAuth] = useState(null);
-    /*
+    
         const sync = async () => {
             await wallet.requestPermissions({ network });
             const account = await wallet.client.getActiveAccount();
@@ -55,14 +59,14 @@ const TezosProvider = ({ children }) => {
                 });
             })();
         }, []);
-    */
+    
     return (
         <TezosContext.Provider
             value={{
-                // Tezos,
-                // auth,
-                //  sync,
-                //  unsync
+                 Tezos,
+                 auth,
+                  sync,
+                  unsync
             }}
         >
             {children}

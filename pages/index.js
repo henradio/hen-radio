@@ -1,7 +1,6 @@
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
-import { BeaconWallet } from '@taquito/beacon-wallet';
 
 export const getStaticProps = async() => {
     const tracks = await getAllTracks();
