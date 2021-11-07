@@ -12,34 +12,26 @@ const MintProvider = ({children}) => {
 
     const {handleCompress} = useCompress();
 
+    const addToIpfs = async (file) => {
+        const hash = await ipfs.add(file);
+        return `ipfs://${hash.path}`;
+    }
+
     const handleMint = async(payload) => {
         const p = payload;
         console.log('handle mint');
         const compressedAudio = await handleCompress(p);
         console.log(compressedAudio)
 
-        //upload compressed audio to ipfs
-        const compressedAudioHash = await ipfs.add(compressedAudio.data)
-        console.log(compressedAudioHash)
-        const compressedAudioUri = `ipfs://${compressedAudioHash.path}`
+        //upload files to ipfs
+        const compressedAudioUri = await addToIpfs(compressedAudio.data)
+        const audioUri = await addToIpfs(p.audio)
+        const coverUri = await addToIpfs(p.cover)
+        const coverThumbUri = await addToIpfs(p.thumbnail)
+
         console.log(compressedAudioUri)
-
-        //upload audio to ipfs
-        const audioHash = await ipfs.add(p.audio)
-        console.log(audioHash)
-        const audioUri = `ipfs://${audioHash.path}`
         console.log(audioUri)
-
-        //upload cover to ipfs
-        const coverHash = await ipfs.add(p.cover)
-        console.log(coverHash)
-        const coverUri = `ipfs://${coverHash.path}`
         console.log(coverUri)
-
-        //upload coverThumb to ipfs
-        const coverThumbHash = await ipfs.add(p.thumbnail)
-        console.log(coverThumbHash)
-        const coverThumbUri = `ipfs://${coverThumbHash.path}`
         console.log(coverThumbUri)
 
 

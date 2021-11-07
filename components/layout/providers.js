@@ -1,6 +1,7 @@
 import UserPlaylistProvider from '../../context/user-playlists-context';
 import RadioProvider from '../../context/radio-context';
-import WalletProvider from '../../context/tezos/wallet-context';
+import TezosProvider from '../../context/tezos/tezos-context';
+import ToolsProvider from '../../context/tezos/tools-context';
 import PlaylistProvider from '../../context/playlist-context';
 import Layout from './layout';
 import styles from './styles.module.css';
@@ -12,22 +13,24 @@ import CompressProvider from '../../context/audio-compression-context';
 const Providers = ({ children }) =>
     <CompressProvider>
         <MintProvider>
-            <WalletProvider>
-                <TrackProvider>
-                    <RadioProvider>
-                        <UserPlaylistProvider>
-                            <PlaylistProvider>
-                                <Layout>
-                                    <div className={styles.radioPlayerBar}>
-                                        <RadioPlayer />
-                                    </div>
-                                    {children}
-                                </Layout>
-                            </PlaylistProvider>
-                        </UserPlaylistProvider>
-                    </RadioProvider>
-                </TrackProvider>
-            </WalletProvider>
+            <TezosProvider>
+                <ToolsProvider>
+                    <TrackProvider>
+                        <RadioProvider>
+                            <UserPlaylistProvider>
+                                <PlaylistProvider>
+                                    <Layout>
+                                        <div className={styles.radioPlayerBar}>
+                                            <RadioPlayer />
+                                        </div>
+                                        {children}
+                                    </Layout>
+                                </PlaylistProvider>
+                            </UserPlaylistProvider>
+                        </RadioProvider>
+                    </TrackProvider>
+                </ToolsProvider>
+            </TezosProvider>
         </MintProvider>
     </CompressProvider>
     ;
