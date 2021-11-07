@@ -14,8 +14,13 @@ const ALLOWED_AUDIO_TYPES = [
     'audio/wav',
     'audio/ogg',
     'audio/mpeg',
-    'audio/flac'];
-const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/gif'];
+    'audio/flac'
+];
+const ALLOWED_IMAGE_TYPES = [
+    'image/png',
+    'image/jpeg',
+    'image/gif'
+];
 const bytesToMb = bytes => bytes / 1_000_000;
 
 const validationSchema = yup.object().shape({
