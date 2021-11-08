@@ -40,10 +40,6 @@ const RadioProvider = ({children}) => {
             ...prevState,
             isLoading: true
         }));
-        if(playerState.isPlaying === null) {
-            await fetchSrc(trackState.currentTrack.src,
-                trackState.currentTrack.mimeType);
-        }
         await playAudio();
         setPlayerState(
             prevState => ({...prevState, isPlaying: true, isLoading: false}));
