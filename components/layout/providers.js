@@ -1,7 +1,6 @@
 import UserPlaylistProvider from '../../context/user-playlists-context';
 import RadioProvider from '../../context/radio-context';
 import TezosProvider from '../../context/tezos/tezos-context';
-import ToolsProvider from '../../context/tezos/tools-context';
 import PlaylistProvider from '../../context/playlist-context';
 import Layout from './layout';
 import styles from './styles.module.css';
@@ -14,7 +13,6 @@ const Providers = ({ children }) =>
     <CompressProvider>
         <TezosProvider>
             <MintProvider>
-                <ToolsProvider>
                     <TrackProvider>
                         <RadioProvider>
                             <UserPlaylistProvider>
@@ -29,7 +27,6 @@ const Providers = ({ children }) =>
                             </UserPlaylistProvider>
                         </RadioProvider>
                     </TrackProvider>
-                </ToolsProvider>
             </MintProvider>
         </TezosProvider>
     </CompressProvider>
