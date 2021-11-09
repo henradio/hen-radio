@@ -5,8 +5,11 @@ export const ipfsUrls = [
     'https://ipfs.io/ipfs',
 ];
 
-export const AWS_API_BASE_URL = 'https://aaaa.execute-api.eu-west-1.amazonaws.com/dev'
-export const AWS_WEBSOCKET_URL = 'wss://aaaa.execute-api.eu-west-1.amazonaws.com/dev'
+export const AWS_API_BASE_URL = 'https://aaa.execute-api.eu-west-1.amazonaws.com/dev'
+export const AWS_WEBSOCKET_URL = 'wss://aaa.execute-api.eu-west-1.amazonaws.com/dev'
+
+//using same as Hen, the black circle
+export const IPFS_DEFAULT_THUMBNAIL_URI = 'ipfs://QmNrhZHUaEqxhyLfqoq1mtHSipkWHeT31LNHb1QEbDHgnc'
 
 
 let audio = null;

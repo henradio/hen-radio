@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { createContext } from 'react';
 import { AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../constants';
 import axios from 'axios';
 

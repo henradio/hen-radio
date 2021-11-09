@@ -12,8 +12,8 @@ import CompressProvider from '../../context/audio-compression-context';
 
 const Providers = ({ children }) =>
     <CompressProvider>
-        <MintProvider>
-            <TezosProvider>
+        <TezosProvider>
+            <MintProvider>
                 <ToolsProvider>
                     <TrackProvider>
                         <RadioProvider>
@@ -30,8 +30,8 @@ const Providers = ({ children }) =>
                         </RadioProvider>
                     </TrackProvider>
                 </ToolsProvider>
-            </TezosProvider>
-        </MintProvider>
+            </MintProvider>
+        </TezosProvider>
     </CompressProvider>
     ;
 
