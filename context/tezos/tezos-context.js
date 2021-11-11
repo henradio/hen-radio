@@ -11,10 +11,8 @@ const network = {
 
 let wallet
 if (process.browser) {
-    // on browser
-
     wallet = new BeaconWallet({
-        name: 'hicetnunc.xyz',
+        name: 'hen.radio',
         preferredNetwork: 'mainnet'
     });
 
@@ -44,11 +42,6 @@ const TezosProvider = ({ children }) => {
     const unsync = async () => {
         await wallet.client.clearActiveAccount();
         setAuth(null);
-    };
-
-    const getAddress = () => {
-
-        return "auth.address"
     };
 
     useEffect(() => {

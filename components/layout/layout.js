@@ -4,6 +4,7 @@ import Logo from '../logo/logo';
 import Footer from '../footer/footer';
 import useTezos from '../../hooks/use-tezos';
 import View from './view';
+import {getTrimmedWallet} from '../../utilities/general';
 
 const Layout = ({params, children}) => {
    const {auth, sync, unsync } = useTezos();
@@ -30,12 +31,11 @@ console.log(auth)
                     </span>
                     <span className={styles.navBar_link}>
                         <Link href="/">
-                            {auth? 
-                        <a onClick={unsync}>unsync[&hellip;{auth.address.substr(-10,10)}]</a>
-                        :
-                        <a onClick={sync}>Sync</a>
-                            }
+                            {auth
+                                ? <a onClick={unsync}>Unsync ({getTrimmedWallet(auth.address)})</a>
+                                : <a onClick={sync}>Sync</a>}
                         </Link>
+                        <br/>
                     </span>
                 </div>
             </div>

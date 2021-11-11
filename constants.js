@@ -7,10 +7,7 @@ export const ipfsUrls = [
 
 export const AWS_API_BASE_URL = 'https://aaa.execute-api.eu-west-1.amazonaws.com/dev'
 export const AWS_WEBSOCKET_URL = 'wss://aaa.execute-api.eu-west-1.amazonaws.com/dev'
-
-//using same as Hen, the black circle
 export const IPFS_DEFAULT_THUMBNAIL_URI = 'ipfs://QmNrhZHUaEqxhyLfqoq1mtHSipkWHeT31LNHb1QEbDHgnc'
-
 
 let audio = null;
 let audioContext = null;
@@ -20,7 +17,6 @@ let analyser = null;
 let bufferLength = null;
 let dataFloatArray = null;
 let dataByteArray = null;
-let fetchSrc = () => {};
 
 if(typeof window !== 'undefined') {
     audio = new Audio();
@@ -38,16 +34,6 @@ if(typeof window !== 'undefined') {
     bufferLength = analyser.frequencyBinCount;
     dataFloatArray = new Float32Array(bufferLength);
     dataByteArray = new Uint8Array(bufferLength);
-    fetchSrc = async(url, mimeType) => {
-        const audioResponse = await fetch(url, {
-            method: 'get',
-            headers: {'Accept': mimeType},
-        });
-        const blob = await audioResponse.blob();
-        audio.mimeType = mimeType;
-        audio.preload = 'metadata';
-        audio.src = URL.createObjectURL(blob);
-    };
 }
 
 export {
@@ -58,7 +44,6 @@ export {
     analyser,
     bufferLength,
     dataFloatArray,
-    dataByteArray,
-    fetchSrc
+    dataByteArray
 }
 

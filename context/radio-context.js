@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import {audio, audioContext, fetchSrc} from '../constants';
+import {audio, audioContext} from '../constants';
 import useTrack from '../hooks/use-track';
 
 export const RadioContext = createContext();
