@@ -1,5 +1,16 @@
 export const playlists = [
     {
+        name: 'mambembe AI (os metasambas)',
+        curator: 'os_metasambas',
+        description: "this is 'mambembe AI', the first series by the brazilian NFT music project ‘os_metasambas’. 'os_metasambas' makes language experiments w/ brazilian music and musical collages of stuff like glitchy sounds, funk carioca and electronic music. the emergence of a whole weird world of dissolution through the lens of a transhuman intelligence in some forgotten corner of the suburbs of Brazil ",
+        img: '/images/metasamba.png',
+        slug: 'metasamba',
+        tracks: [
+            {"id":519669,"creator":{"walletAddress":"tz1i2tQZSMop7dR3u3qnag8DBg5qBBM7qQxW","name":"os_metasambas","metadata":{}},"title":"calado e quieto/ quiet and still","src":"https://dweb.link/ipfs/QmNYfQR9aF5Teg3gfMJ7YS4wrtfpdcAFYWQBcJa5pjXm3P","mimeType":"audio/wav","displayUri":"ipfs://QmW5krjHVb5VNEHnQcj8h9Sys3axYo1VfeCoGmPtAkPkVC","tags":[]},
+            {"id":496548,"creator":{"walletAddress":"tz1i2tQZSMop7dR3u3qnag8DBg5qBBM7qQxW","name":"os_metasambas","metadata":{}},"title":"plataforma sensível/ sensory platform","src":"https://ipfs.io/ipfs/QmaY6e6FTopLkwpbCHJCCUGf9hN8S7ujagLmeJiMstHaaS","mimeType":"audio/wav","displayUri":"ipfs://Qmbch4pyRC3MaNxmubqkSiUPuXGr2webr2en3arZnJZ3xa","tags":[]},
+            {"id":472403,"creator":{"walletAddress":"tz1i2tQZSMop7dR3u3qnag8DBg5qBBM7qQxW","name":"os_metasambas","metadata":{}},"title":"onda esquisita/ weird vibes","src":"https://cloudflare-ipfs.com/ipfs/QmQAUvdPvkBKau7t1VF659EZFTfPY1DGDDm6aG2PGHTPgk","mimeType":"audio/wav","displayUri":"ipfs://QmWKevXstw9K2Be2GvuFc6MaCUUoGAdctCf15nbxpZ1Y64","tags":[]}]
+    },
+    {
         name: 'Hen.Radio Halloween',
         curator: '@hen_radio',
         description: 'Halloween 2021 Hen.radio playlist',
