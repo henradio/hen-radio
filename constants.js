@@ -1,12 +1,8 @@
 export const tzktApi = 'https://api.tzkt.io/v1/accounts';
-export const ipfsUrls = [
-//    'https://cloudflare-ipfs.com/ipfs',
-//    'https://infura-ipfs.io/ipfs',
-    'https://ipfs.io/ipfs',
-];
+export const ipfsUrls = ['https://ipfs.io/ipfs'];
 
-export const AWS_API_BASE_URL = 'https://aaa.execute-api.eu-west-1.amazonaws.com/dev'
-export const AWS_WEBSOCKET_URL = 'wss://aaa.execute-api.eu-west-1.amazonaws.com/dev'
+export const AWS_API_BASE_URL = process.env.NEXT_PUBLIC_AWS_API_BASE_URL
+export const AWS_WEBSOCKET_URL = process.env.NEXT_PUBLIC_AWS_WEBSOCKET_URL
 export const IPFS_DEFAULT_THUMBNAIL_URI = 'ipfs://QmNrhZHUaEqxhyLfqoq1mtHSipkWHeT31LNHb1QEbDHgnc'
 
 let audio = null;

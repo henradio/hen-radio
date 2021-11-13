@@ -13,8 +13,8 @@ const ipfs = create(infuraUrl);
 const MintProvider = ({children}) => {
     const {auth, Tezos} = useTezos();
     const {handleCompress} = useCompress();
-    const {transactionMessage, setTransactionStatus} = useState(null);
-    const {operationHash, setOperationHash} = useState(null);
+    const [transactionMessage, setTransactionStatus] = useState(null);
+    const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
         const p = payload;
