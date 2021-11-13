@@ -2,6 +2,7 @@ import {createContext, useState} from 'react';
 import useCompress from '../../hooks/use-audio-compression';
 import useTezos from '../../hooks/use-tezos';
 import {IPFS_DEFAULT_THUMBNAIL_URI} from '../../constants';
+import useToast from '../../hooks/use-toast';
 
 const {create} = require('ipfs-http-client');
 
@@ -13,16 +14,16 @@ const ipfs = create(infuraUrl);
 const MintProvider = ({children}) => {
     const {auth, Tezos} = useTezos();
     const {handleCompress} = useCompress();
-    const [transactionMessage, setTransactionStatus] = useState(null);
+    const {setMessage} = useToast();
     const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
         const p = payload;
         console.log(IPFS_DEFAULT_THUMBNAIL_URI);
-        setTransactionStatus('Creating compressed audio file…');
+        setMessage('Creating compressed audio file…');
         const compressedAudio = await handleCompress(p);
         console.log(compressedAudio);
-        setTransactionStatus('Uploading to IPFS…');
+        setMessage('Uploading to IPFS…');
         const compressedAudioUri = await addToIpfs(compressedAudio.data);
         const artifactUri = await addToIpfs(p.audio);
         const displayUri = await addToIpfs(p.cover);
@@ -61,11 +62,11 @@ const MintProvider = ({children}) => {
         console.log(p);
         console.log(p.amount);
         console.log(p.royalties);
-        setTransactionStatus('Minting…');
+        setMessage('Minting…');
         const isSuccessful = await mint(auth.address, p.amount, nftCid.substr(7), p.royalties);
-        setTransactionStatus(isSuccessful ? 'Completed' : 'Failed to mint');
+        setMessage(isSuccessful ? 'Completed' : 'Failed to mint');
         setTimeout(() => {
-            setTransactionStatus(null);
+            setMessage(null);
         }, 2000)
     };
 
@@ -108,7 +109,6 @@ const MintProvider = ({children}) => {
         <MintContext.Provider
             value={{
                 handleMint,
-                transactionMessage,
                 operationHash
             }}
         >

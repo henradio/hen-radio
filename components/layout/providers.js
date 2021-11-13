@@ -8,18 +8,20 @@ import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
 import MintProvider from '../../context/tezos/mint-context';
 import CompressProvider from '../../context/audio-compression-context';
+import ToastProvider from '../../context/toast-context';
 
-const Providers = ({ children }) =>
+const Providers = ({children}) =>
     <CompressProvider>
-        <TezosProvider>
-            <MintProvider>
+        <ToastProvider>
+            <TezosProvider>
+                <MintProvider>
                     <TrackProvider>
                         <RadioProvider>
                             <UserPlaylistProvider>
                                 <PlaylistProvider>
                                     <Layout>
                                         <div className={styles.radioPlayerBar}>
-                                            <RadioPlayer />
+                                            <RadioPlayer/>
                                         </div>
                                         {children}
                                     </Layout>
@@ -27,9 +29,10 @@ const Providers = ({ children }) =>
                             </UserPlaylistProvider>
                         </RadioProvider>
                     </TrackProvider>
-            </MintProvider>
-        </TezosProvider>
+                </MintProvider>
+            </TezosProvider>
+        </ToastProvider>
     </CompressProvider>
-    ;
+;
 
 export default Providers;
