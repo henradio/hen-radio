@@ -101,7 +101,11 @@ const MintForm = ({handleSubmit}) => {
                                 name="title"
                                 type="text"
                             />
-                            <ErrorMessage name="title"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="title"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -112,9 +116,13 @@ const MintForm = ({handleSubmit}) => {
                                 className={styles.input}
                                 id="description"
                                 name="description"
-                                type="text"
+                                component="textarea"
                             />
-                            <ErrorMessage name="description"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="description"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -128,7 +136,11 @@ const MintForm = ({handleSubmit}) => {
                                 type="text"
                                 placeholder="tags (comma separated. example: illustration, digital)"
                             />
-                            <ErrorMessage name="tags"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="tags"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -145,7 +157,11 @@ const MintForm = ({handleSubmit}) => {
                                 min={1}
                                 max={MAX_EDITIONS}
                             />
-                            <ErrorMessage name="amount"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="amount"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -161,7 +177,11 @@ const MintForm = ({handleSubmit}) => {
                                 max={MAX_ROYALTIES}
                                 placeholder={`royalties after each sale (between ${MIN_ROYALTIES}-${MAX_ROYALTIES}%)`}
                             />
-                            <ErrorMessage name="royalties"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="royalties"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -183,7 +203,11 @@ const MintForm = ({handleSubmit}) => {
                                 )}
                                 accept="audio/*"
                             />
-                            <ErrorMessage name="audio"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="audio"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -205,7 +229,11 @@ const MintForm = ({handleSubmit}) => {
                                 )}
                                 accept="image/*"
                             />
-                            <ErrorMessage name="cover"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="cover"
+                            />
                         </div>
                         <div className={styles.formField}>
                             <label
@@ -227,12 +255,17 @@ const MintForm = ({handleSubmit}) => {
                                 )}
                                 accept="image/*"
                             />
-                            <ErrorMessage name="thumbnail"/>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="thumbnail"
+                            />
                         </div>
                         <button
                             className={styles.formButton}
                             type="submit"
-                        >Preview</button>
+                        >Preview
+                        </button>
                     </Form>
                 }
             </Formik>

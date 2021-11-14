@@ -12,6 +12,13 @@
     width: 100%;
 }
 
+.errorMessage {
+    display: block;
+    margin-top: 4px;
+    color: #cd0117;
+    font-size: 14px;
+}
+
 .container {
     display: flex;
     margin-left: -8px;

@@ -3,7 +3,7 @@ html, body {
   margin: 0;
 }
 
-body, button, input {
+body, button, input, textarea {
   font-family: "Courier New", "Courier", monospace
 }
 
@@ -17,7 +17,7 @@ button {
   cursor: pointer;
 }
 
-input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea {
   padding: 6px 4px;
   border: 1px solid #E5E5E5;
   margin-bottom: 0;
