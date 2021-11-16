@@ -1,7 +1,7 @@
 export const playlists = [
     {
         name: 'Lucy',
-        curator: 'tuneofworms - brazilian audiovisual artist.',
+        curator: 'tuneofworms - Brazilian audiovisual artist.',
         description: "Generative music developed in MaxLive for @tuneofworms.",
         img: '/images/worm.jpg',
         slug: 'worms',
