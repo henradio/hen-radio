@@ -3,8 +3,8 @@ export const playlists = [
         name: 'Lucy',
         curator: 'tuneofworms - Brazilian audiovisual artist.',
         description: "Generative music developed in MaxLive for @tuneofworms.",
-        img: '/images/worm.jpg',
-        slug: 'worms',
+        img: '/images/tuneofworms.jpg',
+        slug: 'tuneofworms',
         tracks: [
             { "id": 535712, "creator": { "walletAddress": "tz1du7JyqkpAWrQf7kspXS383wpMxkVWCoqQ", "name": "lucy", "metadata": { "identicon": "ipfs://QmUoFwvFNwdinHjepWiE4uSfWof86Aah3AS6CwqjLjnQS6", "description": "LUCY is a music project developed by @tuneofworms in collab with others artists." } }, "title": "LUCY THEME - HUMAN HEART", "src": "https://gateway.pinata.cloud/ipfs/QmTdfMwDQBTsAowHzfi2roZiZ2mK6GNkAVEmL5XS5bzent", "mimeType": "audio/wav", "displayUri": "ipfs://Qme559XqLRdS1Rm3FzWovejUQVJqih5aLfBQVT486CUbpw", "tags": [] }, 
             { "id": 513096, "creator": { "walletAddress": "tz1du7JyqkpAWrQf7kspXS383wpMxkVWCoqQ", "name": "lucy", "metadata": { "identicon": "ipfs://QmUoFwvFNwdinHjepWiE4uSfWof86Aah3AS6CwqjLjnQS6", "description": "LUCY is a music project developed by @tuneofworms in collab with others artists." } }, "title": "LUCY THEME2", "src": "https://ipfs.io/ipfs/QmdFZzPXYJpV4KppKwdbdmyhopmekz8oMDCw9L5dM8fF1H", "mimeType": "audio/wav", "displayUri": "ipfs://QmZdpvkdboGrWF1mEKHYxA4gS6kpFVZY1T5HYCGn7zgX31", "tags": [] }, 
