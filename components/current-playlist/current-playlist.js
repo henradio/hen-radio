@@ -20,7 +20,7 @@ const CurrentPlaylist = ({playlist}) =>
             <div className={styles.currentPlaylistColumnInfo}>
                 <h1 className={styles.currentPlaylistText}>{playlist.name}</h1>
                 <p className={styles.currentPlaylistArtist}>
-                    By <a href="https://hicetnunc.xyz">{playlist.curator}</a>
+                    By {playlist.curator}
                 </p>
                 <p className={styles.currentPlaylistDescription}>{playlist.description}</p>
                 <LinkButton tracks={playlist.tracks}/>
