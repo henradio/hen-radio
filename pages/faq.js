@@ -7,7 +7,7 @@ const FaqPage = () =>
                 It aims at making it easier to discover, listen to and reward NFT music artists. See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing"><u>here</u></a>.</p>
             <p><strong>Q. How does the minting work on hen radio?</strong></p>
             <p> A. Mint your audio file (preferably ogg or mp3) as usual on{' '}
-                <a href="https://www.hicetnunc.xyz/mint">https://www.hicetnunc.xyz/mint</a>
+                <a href="https://www.hicetnunc.xyz/mint">https://www.hicetnunc.art/mint</a>
             </p>
             <p><strong>Q. Is everything here also work on Hic et Nunc?</strong></p>
             <p>A. Yes, everything on hen.radio will also be available on the main Hic et Nunc
