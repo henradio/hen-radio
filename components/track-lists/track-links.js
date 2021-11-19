@@ -5,7 +5,7 @@ import { getTrimmedWallet } from '../../utilities/general';
 const TrackLinks = ({track, walletAddress, name}) =>
     <span className={styles.trackRow_text}>
         <a
-            href={`https://hicetnunc.xyz/objkt/${track.id}`}
+            href={`https://hicetnunc.art/objkt/${track.id}`}
             className={styles.trackRow_link}
         >#{track.id} {track.title}</a>
         <br/>
