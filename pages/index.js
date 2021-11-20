@@ -1,8 +1,11 @@
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
+import getBlockLists from '../api/get-blocklists';
 import Head from 'next/head';
 
+
 export const getStaticProps = async() => {
+    await getBlockLists();
     const tracks = await getAllTracks();
 
     return {

@@ -1,5 +1,9 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import {
+    getObjktBlockList,
+    getWalletBlockList,
+} from '../constants'
 
 const query = gql`
     query AudioObjktData {
@@ -38,9 +42,19 @@ const query = gql`
     }
 `;
 
+const filterFeeds = (resp) => {
+    const oblock = getObjktBlockList()
+    const wblock = getWalletBlockList()
+    const filtered = resp.hic_et_nunc_token.filter((i) => !oblock.includes(i.token_id))
+      // filter objkt's out if they're from flagged wallets
+      .filter((i) => !wblock.includes(i.creator_id)) 
+    return filtered
+  }
+
 const getAllTracks = async() => {
-    const response = await request('https://api.hicdex.com/v1/graphql', query);
-    return response?.hic_et_nunc_token?.map(o => ({
+    const resp = await request('https://api.hicdex.com/v1/graphql', query);
+    const response = filterFeeds(resp);
+    return response.map(o => ({
         id: o.id,
         creator: {
             walletAddress: o.creator_id,
