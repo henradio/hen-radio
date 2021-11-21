@@ -1,9 +1,7 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
-import {
-    getObjktBlockList,
-    getWalletBlockList,
-} from '../constants'
+import getBlockLists from '../api/get-blocklists';
+import { getObjktBlockList, getWalletBlockList } from '../constants'
 
 const query = gql`
     query AudioObjktData {
@@ -52,6 +50,7 @@ const filterFeeds = (resp) => {
   }
 
 const getAllTracks = async() => {
+    await getBlockLists();
     const resp = await request('https://api.hicdex.com/v1/graphql', query);
     const response = filterFeeds(resp);
     return response.map(o => ({

@@ -19,7 +19,6 @@ const MintProvider = ({children}) => {
 
     const handleMint = async(payload) => {
         const p = payload;
-        console.log(IPFS_DEFAULT_THUMBNAIL_URI);
         setMessage('Creating compressed audio file…');
         const compressedAudio = await handleCompress(p);
         console.log(compressedAudio);
