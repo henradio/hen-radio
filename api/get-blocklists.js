@@ -1,15 +1,16 @@
 import {
     setObjktBlockList,
     setWalletBlockList,
-    setBanBlockList,
+    BLOCKLIST_WALLET,
+    BLOCKLIST_OBJKT
 } from '../constants'
 
 const axios = require('axios')
 
 const getBlockLists = async () => {
 
-        const blockObjkt = await axios.get(process.env.REACT_APP_BLOCKLIST_OBJKT) // loads blocked objkt
-        const blockwallet = await axios.get(process.env.REACT_APP_BLOCKLIST_WALLET) // loads blocked wallets
+        const blockObjkt = await axios.get(BLOCKLIST_OBJKT) // loads blocked objkt
+        const blockwallet = await axios.get(BLOCKLIST_WALLET) // loads blocked wallets
 
         setObjktBlockList(blockObjkt.data)
         setWalletBlockList(blockwallet.data)
