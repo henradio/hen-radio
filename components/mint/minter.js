@@ -7,12 +7,15 @@ import styles from './styles.module.css';
 const Minter = () => {
     const {handleMint} = useMint();
     const [mintPayload, setMintPayload] = useState();
+    const [isMinting, setIsMinting] = useState(false)
 
     const handleSubmit = (values) => {
+        setIsMinting(false)
         setMintPayload(values);
     };
 
     const triggerMint = () => {
+        setIsMinting(true)
         handleMint(mintPayload);
     };
 
@@ -25,6 +28,7 @@ const Minter = () => {
                     mintPayload={mintPayload}
                     handleBack={handleBack}
                     triggerMint={triggerMint}
+                    isMinting={isMinting}
                 />
             }
         </div>
