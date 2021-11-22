@@ -23,9 +23,9 @@ console.log(auth)
                     <span className={styles.navBar_link}>
                         <Link href={'/tz'}>By Wallet</Link>
                     </span>
-                    <span className={styles.navBar_link}>
+                    {auth && <span className={styles.navBar_link}>
                         <Link href={'/mint'}>Mint</Link>
-                    </span>
+                    </span>}
                     <span className={styles.navBar_link}>
                         <Link href={'/faq'}>FAQ</Link>
                     </span>

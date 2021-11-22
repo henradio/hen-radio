@@ -18,7 +18,6 @@ const MintProvider = ({children}) => {
     const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
-        if (!auth) await sync();
         const p = payload;
         setMessage('Creating compressed audio file…');
         const compressedAudio = await handleCompress(p);
@@ -33,6 +32,9 @@ const MintProvider = ({children}) => {
         console.log(artifactUri);
         console.log(displayUri);
         console.log(coverThumbUri);
+        console.log('---------auth-------');        
+        console.log(auth);
+        console.log(auth.address);
 
         const metadata = Buffer.from(
             JSON.stringify({
