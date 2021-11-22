@@ -8,12 +8,11 @@ import {
 const axios = require('axios')
 
 const getBlockLists = async () => {
+    const blockObjkt = await axios.get(BLOCKLIST_OBJKT) // loads blocked objkt
+    const blockwallet = await axios.get(BLOCKLIST_WALLET) // loads blocked wallets
 
-        const blockObjkt = await axios.get(BLOCKLIST_OBJKT) // loads blocked objkt
-        const blockwallet = await axios.get(BLOCKLIST_WALLET) // loads blocked wallets
-
-        setObjktBlockList(blockObjkt.data)
-        setWalletBlockList(blockwallet.data)
+    setObjktBlockList(blockObjkt.data)
+    setWalletBlockList(blockwallet.data)
 
 
 

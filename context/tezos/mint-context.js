@@ -12,12 +12,13 @@ const infuraUrl = 'https://ipfs.infura.io:5001';
 const ipfs = create(infuraUrl);
 
 const MintProvider = ({children}) => {
-    const {auth, Tezos} = useTezos();
+    const {auth, sync, Tezos} = useTezos();
     const {handleCompress} = useCompress();
     const {setMessage} = useToast();
     const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
+        if (!auth) await sync();
         const p = payload;
         setMessage('Creating compressed audio file…');
         const compressedAudio = await handleCompress(p);
