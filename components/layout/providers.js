@@ -9,8 +9,9 @@ import TrackProvider from '../../context/track-context';
 import MintProvider from '../../context/tezos/mint-context';
 import CompressProvider from '../../context/audio-compression-context';
 import ToastProvider from '../../context/toast-context';
+import BlocklistProvider from '../../context/blocklist-context';
 
-const Providers = ({children}) =>
+const Providers = ({ children }) =>
     <CompressProvider>
         <ToastProvider>
             <TezosProvider>
@@ -19,12 +20,14 @@ const Providers = ({children}) =>
                         <RadioProvider>
                             <UserPlaylistProvider>
                                 <PlaylistProvider>
-                                    <Layout>
-                                        <div className={styles.radioPlayerBar}>
-                                            <RadioPlayer/>
-                                        </div>
-                                        {children}
-                                    </Layout>
+                                    <BlocklistProvider>
+                                        <Layout>
+                                            <div className={styles.radioPlayerBar}>
+                                                <RadioPlayer />
+                                            </div>
+                                            {children}
+                                        </Layout>
+                                    </BlocklistProvider>
                                 </PlaylistProvider>
                             </UserPlaylistProvider>
                         </RadioProvider>
@@ -33,6 +36,6 @@ const Providers = ({children}) =>
             </TezosProvider>
         </ToastProvider>
     </CompressProvider>
-;
+    ;
 
 export default Providers;
