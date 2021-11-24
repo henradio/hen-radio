@@ -21,20 +21,37 @@ const BlocklistProvider = ({ children }) => {
         console.log("unfiltered objkt::" + tracks.length)
         const filtered = tracks.filter((i) => !blocklists[0].includes(i.id))
             .filter((i) => {
-                if (blocklists[1].includes(i.creator.walletAddress))
+                if (blocklists[1].includes(i.creator?.walletAddress))
                 {
-                    console.log("blocked " + i.id)
+                    console.log("blocked " + i.id + "from " + i.creator.walletAddress)
                 }
-                return !blocklists[1].includes(i.creator.walletAddress)})
+                return !blocklists[1].includes(i.creator?.walletAddress)})
         console.log("filtered objkt::" + filtered.length)
         return filtered
 
     }
+
+
+    const filterWallets = async (wallets, blocklists) => {
+
+        console.log("unfiltered wallets::" + wallets.length)
+        const filtered = wallets.filter((i) => {
+                if (blocklists[1].includes(i))
+                {
+                    console.log("blocked " +  i)
+                }
+                return !blocklists[1].includes(i)})
+        console.log("filtered objkt::" + filtered.length)
+        return filtered
+
+    }
+
     return (
         <BlocklistContext.Provider
             value={{
                 fetchBlockLists,
-                filterFeeds
+                filterFeeds,
+                filterWallets
             }}
         >
             {children}
