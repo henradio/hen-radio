@@ -1,10 +1,28 @@
+@font-face {
+  font-family: 'source_code_proregular';
+  src: url('/fonts/sourcecodepro-regular-webfont.woff2') format('woff2'),
+       url('/fonts/sourcecodepro-regular-webfont.woff') format('woff'),
+       url('/fonts/SourceCodePro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'source_code_prosemibold';
+  src: url('/fonts/sourcecodepro-semibold-webfont.woff2') format('woff2'),
+       url('/fonts/sourcecodepro-semibold-webfont.woff') format('woff'),
+       url('/fonts/SourceCodePro-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   padding: 0;
   margin: 0;
 }
 
 body, button, input, textarea {
-  font-family: "Source Code Pro", monospace
+  font-family: "source_code_proregular", sans-serif;
 }
 
 button {
