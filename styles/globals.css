@@ -4,7 +4,7 @@ html, body {
 }
 
 body, button, input, textarea {
-  font-family: "Courier New", "Courier", monospace
+  font-family: "Source Code Pro", monospace
 }
 
 button {
