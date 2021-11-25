@@ -12,6 +12,10 @@
     margin-left: 8px;
 }
 
+.trackRow_text > a{
+    font-weight: 600;
+}
+
 .trackRow_link {
     color: #000;
     text-decoration: none;
