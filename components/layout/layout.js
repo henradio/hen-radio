@@ -23,12 +23,12 @@ console.log(auth)
                     <span className={styles.navBar_link}>
                         <Link href={'/tz'}>By Wallet</Link>
                     </span>
-                    {auth && <span className={styles.navBar_link}>
-                        <Link href={'/mint'}>Mint</Link>
-                    </span>}
                     <span className={styles.navBar_link}>
                         <Link href={'/faq'}>FAQ</Link>
                     </span>
+                    {auth && <span className={styles.navBar_link}>
+                        <Link href={'/mint'}>Mint</Link>
+                    </span>}
                     <span className={styles.navBar_link}>
                         <Link href="/">
                             {auth
