@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'source_code_prosemibold';
-  font-display: block;
+  font-display: fallback;
   src: url('/fonts/sourcecodepro-semibold-webfont.woff2') format('woff2'),
        url('/fonts/sourcecodepro-semibold-webfont.woff') format('woff'),
        url('/fonts/SourceCodePro-SemiBold.ttf') format('truetype');
@@ -52,3 +52,4 @@ a:hover, a:visited, a:active {
   color: #000;
   text-decoration: underline;
 }
+
