@@ -1,5 +1,6 @@
 @font-face {
   font-family: 'source_code_proregular';
+  font-display: block;
   src: url('/fonts/sourcecodepro-regular-webfont.woff2') format('woff2'),
        url('/fonts/sourcecodepro-regular-webfont.woff') format('woff'),
        url('/fonts/SourceCodePro-Regular.ttf') format('truetype');
@@ -9,6 +10,7 @@
 
 @font-face {
   font-family: 'source_code_prosemibold';
+  font-display: block;
   src: url('/fonts/sourcecodepro-semibold-webfont.woff2') format('woff2'),
        url('/fonts/sourcecodepro-semibold-webfont.woff') format('woff'),
        url('/fonts/SourceCodePro-SemiBold.ttf') format('truetype');

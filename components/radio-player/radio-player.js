@@ -49,15 +49,15 @@ const Player = () => {
                                 <a
                                     href={`https://hicetnunc.art/objkt/${track.id}`}
                                     className={styles.trackRow_link}
-                                >#{track.id}</a>
+                                >#{track.id}
                                 {' '}
-                                {track.title}
-                                <br/>
-                                By <a
+                                {track.title}</a>
+                                <span>by&nbsp;
+                                <a
                                 href={`https://hicetnunc.art/tz/${track.creator.walletAddress}`}
-                                className={styles.trackRow_link}
                             >{getTrimmedWallet(
                                 track.creator.walletAddress)} {track.creator.name}</a>
+                                </span>
                             </span>
                         </div>
                     ) : null}

@@ -299,11 +299,17 @@ input[type=range].radioRange:focus::-ms-fill-upper {
     display: block;
     font-size: 11px;
     margin-left: 8px;
+    line-height: 1.2;
 }
 
 .trackRow_link {
     color: #000;
     text-decoration: none;
+}
+
+.trackRow_text > a:first-child{
+    font-family: 'source_code_prosemibold';
+    display: block;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
