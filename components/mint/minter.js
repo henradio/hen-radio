@@ -21,7 +21,9 @@ const Minter = () => {
 
     const handleBack = () => setMintPayload(null);
     return (
-        <div className={styles.container}>
+        <>
+            <h1 className={styles.mainTitle}>Mint</h1>
+            <div className={styles.container}>
             {!mintPayload
                 ? <MintForm handleSubmit={handleSubmit}/>
                 : <Preview
@@ -31,8 +33,8 @@ const Minter = () => {
                     isMinting={isMinting}
                 />
             }
-        </div>
+        </div></>
     );
 };
 
-export default Minter
+export default Minter;

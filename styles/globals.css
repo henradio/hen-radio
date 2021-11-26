@@ -1,30 +1,37 @@
 @font-face {
-  font-family: 'source_code_proregular';
-  font-display: block;
-  src: url('/fonts/sourcecodepro-regular-webfont.woff2') format('woff2'),
-       url('/fonts/sourcecodepro-regular-webfont.woff') format('woff'),
-       url('/fonts/SourceCodePro-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: "BallingerMono";
+  src: url("/fonts/WOFF2/BallingerMono-Bold.woff2") format("woff2"),
+  url("/fonts/WOFF/BallingerMono-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'source_code_prosemibold';
-  font-display: fallback;
-  src: url('/fonts/sourcecodepro-semibold-webfont.woff2') format('woff2'),
-       url('/fonts/sourcecodepro-semibold-webfont.woff') format('woff'),
-       url('/fonts/SourceCodePro-SemiBold.ttf') format('truetype');
-  font-weight: normal;
+  font-family: "BallingerMono";
+  src: url("/fonts/WOFF2/BallingerMono-Regular.woff2") format("woff2"),
+  url("/fonts/WOFF/BallingerMono-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BallingerMono";
+  src: url("/fonts/WOFF2/BallingerMono-Light.woff2") format("woff2"),
+  url("/fonts/WOFF/BallingerMono-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
 
 html, body {
   padding: 0;
   margin: 0;
+  font-family: "BallingerMono", "Courier New", Courier, monospace;
+  font-weight: 400;
 }
 
-body, button, input, textarea {
-  font-family: "source_code_proregular", sans-serif;
+button, input, textarea {
+  font-family: "BallingerMono", "Courier New", Courier, monospace;
+  font-weight: 400;
 }
 
 button {
@@ -52,4 +59,9 @@ a:hover, a:visited, a:active {
   color: #000;
   text-decoration: underline;
 }
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 700;
+}
+
 
