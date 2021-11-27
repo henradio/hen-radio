@@ -10,7 +10,7 @@ import {BLOCKLIST_OBJKT} from '../../constants';
 export const getServerSideProps = async({params}) => {
     const {objkt} = params;
     const blockedObjkts = axios.get(BLOCKLIST_OBJKT);
-    if(blockedObjkts.includes(objkt)) {
+    if(blockedObjkts.data.includes(objkt)) {
         return {
             notFound: true
         };
