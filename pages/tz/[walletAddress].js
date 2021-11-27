@@ -5,15 +5,19 @@ import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import WalletTrackList from '../../components/track-lists/wallet-track-list';
 import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 import { useRouter } from 'next/router';
-import useBlockList from '../../hooks/use-block-list';
-import { useState, useEffect } from 'react';
+import {getBlockedTracks, getBlockedWallets} from '../../api/get-blocked-lists';
 
 export const getServerSideProps = async ({ params }) => {
     const { walletAddress } = params;
-    const wallets = await getWalletsWithAudio();
+    const [allWallets, blockedWallets, blockedTracks] = await Promise.all([
+        getWalletsWithAudio(),
+        getBlockedWallets(),
+        getBlockedTracks()
+    ]);
+    const wallets = allWallets.filter(w => !blockedWallets.data.includes(w));
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
     const tracksOwned = await getObjktsOwnedBy(walletAddress);
-    const tracks = [...tracksCreated, ...tracksOwned];
+    const tracks = [...tracksCreated, ...tracksOwned].filter(t => !blockedTracks.includes(t));
     const creator = walletAddress;
 
     return {
@@ -23,21 +27,6 @@ export const getServerSideProps = async ({ params }) => {
 
 const Tz = ({ creator, tracks, wallets }) => {
     const { isFallback } = useRouter();
-    const { filterFeeds, filterWallets, fetchBlockLists } = useBlockList();
-    const [cleanTracks, setCleanTracks] = useState(tracks);
-    const [cleanWallets, setCleanWallets] = useState(tracks);
-
-    useEffect(() => {
-        cleanFeed();
-    }, []);
-
-    const cleanFeed = async () => {
-        const blocklists = await fetchBlockLists();
-        const cleanTracks = await filterFeeds(tracks, blocklists);
-        const cleanWallets = await filterWallets(wallets, blocklists);
-        setCleanTracks(cleanTracks);
-        setCleanWallets(cleanWallets);
-    }
 
     if (isFallback) {
         if (typeof window !== 'undefined') {

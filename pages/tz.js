@@ -1,13 +1,12 @@
 import WalletView from '../components/views/wallet-view';
 import getWalletsWithAudio from '../api/get-wallets-with-audio';
 import Head from 'next/head';
-import axios from 'axios';
-import {BLOCKLIST_WALLET} from '../constants';
+import {getBlockedWallets} from '../api/get-blocked-lists';
 
 export const getStaticProps = async() => {
     const [allWallets, blockedWallets] = await Promise.all([
         getWalletsWithAudio(),
-        axios.get(BLOCKLIST_WALLET)
+        getBlockedWallets()
     ]);
     const wallets = allWallets.filter(w => !blockedWallets.data.includes(w));
     return {

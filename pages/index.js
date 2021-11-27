@@ -1,8 +1,7 @@
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
-import axios from 'axios';
-import {BLOCKLIST_OBJKT, BLOCKLIST_WALLET} from '../constants';
+import {getBlockedTracks, getBlockedWallets} from '../api/get-blocked-lists';
 
 const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
     allTracks.filter(t => (
@@ -13,8 +12,8 @@ const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
 export const getStaticProps = async() => {
     const [allTracks, blockedObjkts, blockedWallets] = await Promise.all([
         getAllTracks(),
-        axios.get(BLOCKLIST_OBJKT),
-        axios.get(BLOCKLIST_WALLET)
+        getBlockedTracks(),
+        getBlockedWallets()
     ]);
     const tracks = filterBannedTracks(allTracks, blockedWallets, blockedObjkts);
     return {
