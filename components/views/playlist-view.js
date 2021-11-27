@@ -17,7 +17,7 @@ const PlaylistView = ({initialPlaylists, slug}) => {
     useEffect(() => {
         const nextPlaylists = [...userPlaylists, ...initialPlaylists];
         setPlaylists(nextPlaylists);
-    }, [userPlaylists]);
+    }, [userPlaylists, initialPlaylists]);
 
     useEffect(() => {
         setSelectedPlaylist(playlists.find(p => p.slug === slug) || playlists[0]);

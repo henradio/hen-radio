@@ -12,13 +12,13 @@
     margin-left: 8px;
 }
 
-.trackRow_text > a{
-    font-family: "source_code_prosemibold";
-}
-
 .trackRow_link {
     color: #000;
     text-decoration: none;
+}
+
+.trackRow_title {
+    font-weight: 700;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
