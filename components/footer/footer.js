@@ -4,7 +4,7 @@ const Footer = () =>
     <div className={styles.footerBar}>
         <p className={styles.footerText}><strong>Created as part of the 2021 Hicathon</strong>
         </p>
-        <p className={styles.footerText}>Working Group:<br/>
+        <p className={styles.footerText}>Initial working Group:<br/>
             <a href='https://twitter.com/lauzaki'>@lauzaki</a>
                                          ,{' '}
             <a href='https://twitter.com/andreasrau_eu'>@andreasrau_eu</a>

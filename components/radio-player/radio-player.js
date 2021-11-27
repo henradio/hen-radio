@@ -51,7 +51,7 @@ const Player = () => {
                                     className={styles.trackRow_link}
                                 >#{track.id}
                                 {' '}
-                                {track.title}</a>
+                                {track.title}</a><br/>
                                 <span>by&nbsp;
                                 <a
                                 href={`https://hicetnunc.art/tz/${track.creator.walletAddress}`}
