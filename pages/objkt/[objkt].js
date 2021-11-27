@@ -4,8 +4,6 @@ import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import {useRouter} from 'next/router';
 import {getTrimmedWallet} from '../../utilities/general';
-import axios from 'axios';
-import {BLOCKLIST_OBJKT} from '../../constants';
 import {getBlockedTracks} from '../../api/get-blocked-lists';
 
 export const getServerSideProps = async({params}) => {

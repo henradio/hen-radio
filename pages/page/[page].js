@@ -1,9 +1,10 @@
-import AllTracksView from '../components/views/all-tracks-view';
-import getAllTracks from '../api/get-all-tracks';
+import AllTracksView from '../../components/views/all-tracks-view';
+import getAllTracks from '../../api/get-all-tracks';
 import Head from 'next/head';
-import {getBlockedTracks, getBlockedWallets} from '../api/get-blocked-lists';
-import getAllTracksCount from '../api/get-all-tracks-count';
-import Pagination from '../components/pagination';
+import {getBlockedTracks, getBlockedWallets} from '../../api/get-blocked-lists';
+import Pagination from '../../components/pagination';
+import getAllTracksCount from '../../api/get-all-tracks-count';
+import {getPageCount} from '../../utilities/pagination';
 
 const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
     allTracks.filter(t => (
@@ -11,27 +12,33 @@ const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
         !blockedObjkts.data.includes(t.id)
     ));
 
-export const getStaticProps = async() => {
-    const [allTracks, count, blockedObjkts, blockedWallets] = await Promise.all([
-        getAllTracks(),
-        getAllTracksCount(),
-        getBlockedTracks(),
-        getBlockedWallets(),
-    ]);
-
-    const tracks = filterBannedTracks(
-        allTracks,
-        blockedWallets,
-        blockedObjkts
-    );
-
+export const getStaticProps = async({params}) => {
+    const {page} = params;
+    const [allTracks, count, blockedObjkts, blockedWallets] = await Promise.all(
+        [
+            getAllTracks(page),
+            getAllTracksCount(),
+            getBlockedTracks(),
+            getBlockedWallets()
+        ]);
+    const tracks = filterBannedTracks(allTracks, blockedWallets, blockedObjkts);
     return {
-        props: {tracks, count},
-        revalidate: 300
+        props: {tracks, count, page: Number(page)}
     };
 };
 
-const AllTracksPage = ({tracks, count}) => {
+export const getStaticPaths = async() => {
+    const total = await getAllTracksCount();
+    const pageCount = getPageCount(Number(total), 250);
+    let paths = [];
+    for(let i = 0; i < pageCount; i++) {
+        paths.push({params: {page: (i + 1).toString()}});
+    }
+    console.log('PATHS', paths)
+    return {paths, fallback: true};
+};
+
+const Page = ({tracks, count, page}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player, all tracks';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
@@ -73,10 +80,10 @@ const AllTracksPage = ({tracks, count}) => {
             />
         </Head>
         <AllTracksView tracks={tracks} objkt={null}/>
-        <Pagination total={count} currentPage={1} limit={250} />
+        <Pagination total={count} currentPage={page} limit={250}/>
     </>;
 };
 
-export default AllTracksPage;
+export default Page;
 
 

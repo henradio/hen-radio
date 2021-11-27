@@ -2,14 +2,19 @@ import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
 
 const query = gql`
-    query AudioObjktData {
-        hic_et_nunc_token(where: {
+    query AudioObjktData($offset: Int!, $limit: Int!) {
+        hic_et_nunc_token(
+            where: {
             mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
             token_holders: {
                 quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
             }
-        }, order_by: {id: desc}) {
+        },
+            order_by: {id: desc}, 
+            limit: $limit, 
+            offset: $offset
+        ) {
             id
             display_uri
             title
@@ -38,8 +43,9 @@ const query = gql`
     }
 `;
 
-const getAllTracks = async() => {
-    const resp = await request('https://api.hicdex.com/v1/graphql', query);
+const getAllTracks = async(page = 1, limit = 250) => {
+    const offset = Math.max((page - 1) * limit, 0);
+    const resp = await request('https://api.hicdex.com/v1/graphql', query, {offset, limit});
     return resp?.hic_et_nunc_token?.map(o => ({
         id: o.id,
         creator: {
