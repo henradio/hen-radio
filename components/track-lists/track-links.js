@@ -7,7 +7,9 @@ const TrackLinks = ({track, walletAddress, name}) =>
         <a
             href={`https://hicetnunc.art/objkt/${track.id}`}
             className={styles.trackRow_link}
-        >#{track.id} {track.title}</a>
+        >
+            <span className={styles.trackRow_title}>#{track.id} {track.title}</span>
+        </a>
         <br/>
         By{' '}
         <span className={styles.trackRow_link}>
