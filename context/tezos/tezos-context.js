@@ -49,7 +49,6 @@ const TezosProvider = ({ children }) => {
             const account = await wallet.client.getActiveAccount();
             if (!account) return;
             const address = await wallet.getPKH();
-            console.log(address)
             setAuth({
                 address,
                 account,

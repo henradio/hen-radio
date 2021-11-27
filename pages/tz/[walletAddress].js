@@ -5,7 +5,7 @@ import getObjktsCreatedBy from '../../api/get-objkts-created-by';
 import WalletTrackList from '../../components/track-lists/wallet-track-list';
 import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 import { useRouter } from 'next/router';
-import useBlocklist from '../../hooks/use-blocklist';
+import useBlockList from '../../hooks/use-block-list';
 import { useState, useEffect } from 'react';
 
 export const getServerSideProps = async ({ params }) => {
@@ -23,7 +23,7 @@ export const getServerSideProps = async ({ params }) => {
 
 const Tz = ({ creator, tracks, wallets }) => {
     const { isFallback } = useRouter();
-    const { filterFeeds, filterWallets, fetchBlockLists } = useBlocklist();
+    const { filterFeeds, filterWallets, fetchBlockLists } = useBlockList();
     const [cleanTracks, setCleanTracks] = useState(tracks);
     const [cleanWallets, setCleanWallets] = useState(tracks);
 

@@ -40,7 +40,6 @@ const query = gql`
 
 const getAllTracks = async() => {
     const resp = await request('https://api.hicdex.com/v1/graphql', query);
-    console.log("unfiltered objkt:" + resp.length)
     return resp?.hic_et_nunc_token?.map(o => ({
         id: o.id,
         creator: {

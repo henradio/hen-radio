@@ -5,15 +5,9 @@ export const AWS_API_BASE_URL = process.env.NEXT_PUBLIC_AWS_API_BASE_URL
 export const AWS_WEBSOCKET_URL = process.env.NEXT_PUBLIC_AWS_WEBSOCKET_URL
 export const BLOCKLIST_OBJKT = process.env.NEXT_PUBLIC_BLOCKLIST_OBJKT
 export const BLOCKLIST_WALLET = process.env.NEXT_PUBLIC_BLOCKLIST_WALLET
+export const BLOCKLIST_BAN = process.env.NEXT_PUBLIC_BLOCKLIST_BAN
 export const IPFS_DEFAULT_THUMBNAIL_URI = 'ipfs://QmNrhZHUaEqxhyLfqoq1mtHSipkWHeT31LNHb1QEbDHgnc'
 
-let objktBlockList = []
-export const setObjktBlockList = (data) => (objktBlockList = data)
-export const getObjktBlockList = () => objktBlockList
-
-let walletBlockList = []
-export const setWalletBlockList = (data) => (walletBlockList = data)
-export const getWalletBlockList = () => walletBlockList
 
 let audio = null;
 let audioContext = null;

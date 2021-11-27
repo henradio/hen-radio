@@ -76,5 +76,3 @@ const getTracksByObjktIds = async(objktIds) => {
 };
 
 const tracks = await getTracksByObjktIds(objktIds);
-
-console.log(JSON.stringify(tracks.reverse()));
