@@ -1,9 +1,13 @@
 export const tzktApi = 'https://api.tzkt.io/v1/accounts';
-export const ipfsUrls = [
-//    'https://cloudflare-ipfs.com/ipfs',
-//    'https://infura-ipfs.io/ipfs',
-    'https://ipfs.io/ipfs',
-];
+export const ipfsUrls = ['https://ipfs.io/ipfs'];
+
+export const AWS_API_BASE_URL = process.env.NEXT_PUBLIC_AWS_API_BASE_URL
+export const AWS_WEBSOCKET_URL = process.env.NEXT_PUBLIC_AWS_WEBSOCKET_URL
+export const BLOCKLIST_OBJKT = process.env.NEXT_PUBLIC_BLOCKLIST_OBJKT
+export const BLOCKLIST_WALLET = process.env.NEXT_PUBLIC_BLOCKLIST_WALLET
+export const BLOCKLIST_BAN = process.env.NEXT_PUBLIC_BLOCKLIST_BAN
+export const IPFS_DEFAULT_THUMBNAIL_URI = 'ipfs://QmNrhZHUaEqxhyLfqoq1mtHSipkWHeT31LNHb1QEbDHgnc'
+
 
 let audio = null;
 let audioContext = null;
@@ -13,7 +17,6 @@ let analyser = null;
 let bufferLength = null;
 let dataFloatArray = null;
 let dataByteArray = null;
-let fetchSrc = () => {};
 
 if(typeof window !== 'undefined') {
     audio = new Audio();
@@ -31,16 +34,6 @@ if(typeof window !== 'undefined') {
     bufferLength = analyser.frequencyBinCount;
     dataFloatArray = new Float32Array(bufferLength);
     dataByteArray = new Uint8Array(bufferLength);
-    fetchSrc = async(url, mimeType) => {
-        const audioResponse = await fetch(url, {
-            method: 'get',
-            headers: {'Accept': mimeType},
-        });
-        const blob = await audioResponse.blob();
-        audio.mimeType = mimeType;
-        audio.preload = 'metadata';
-        audio.src = URL.createObjectURL(blob);
-    };
 }
 
 export {
@@ -51,7 +44,6 @@ export {
     analyser,
     bufferLength,
     dataFloatArray,
-    dataByteArray,
-    fetchSrc
+    dataByteArray
 }
 

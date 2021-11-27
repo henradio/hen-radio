@@ -1,10 +1,13 @@
 html, body {
   padding: 0;
   margin: 0;
+  font-family: 'Source Code Pro', "Courier New", Courier, monospace;
+  font-weight: 400;
 }
 
-body, button, input {
-  font-family: "Courier New", "Courier", monospace
+button, input, textarea {
+  font-family: 'Source Code Pro', "Courier New", Courier, monospace;
+  font-weight: 400;
 }
 
 button {
@@ -17,7 +20,7 @@ button {
   cursor: pointer;
 }
 
-input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea {
   padding: 6px 4px;
   border: 1px solid #E5E5E5;
   margin-bottom: 0;
@@ -32,3 +35,9 @@ a:hover, a:visited, a:active {
   color: #000;
   text-decoration: underline;
 }
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 600;
+}
+
+

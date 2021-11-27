@@ -1,13 +1,24 @@
 import AllTracksView from '../components/views/all-tracks-view';
 import getAllTracks from '../api/get-all-tracks';
 import Head from 'next/head';
+import {getBlockedTracks, getBlockedWallets} from '../api/get-blocked-lists';
+
+const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
+    allTracks.filter(t => (
+        !blockedWallets.data.includes(t.creator_id) &&
+        !blockedObjkts.data.includes(t.id)
+    ));
 
 export const getStaticProps = async() => {
-    const tracks = await getAllTracks();
-
+    const [allTracks, blockedObjkts, blockedWallets] = await Promise.all([
+        getAllTracks(),
+        getBlockedTracks(),
+        getBlockedWallets()
+    ]);
+    const tracks = filterBannedTracks(allTracks, blockedWallets, blockedObjkts);
     return {
         props: {tracks},
-        revalidate: 60,
+        revalidate: 60
     };
 };
 
@@ -47,7 +58,10 @@ const AllTracksPage = ({tracks}) => {
                 content={image}
             />
             <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+            <meta
+                name="viewport"
+                content="initial-scale=1.0, width=device-width"
+            />
         </Head>
         <AllTracksView tracks={tracks} objkt={null}/>
     </>;

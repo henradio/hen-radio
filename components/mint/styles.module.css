@@ -1,0 +1,66 @@
+.formField {
+    padding-bottom: 16px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+}
+
+.errorMessage {
+    display: block;
+    margin-top: 4px;
+    color: #cd0117;
+    font-size: 14px;
+}
+
+.mainTitle {
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.column {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0 8px;
+}
+
+.media {
+
+}
+
+.formButton {
+    padding: 4px 8px;
+}
+
+.info {
+    margin-bottom: 16px;
+}
+
+.infoTitle {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.infoText {
+    margin-bottom: 16px;
+}
+
+.image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    display: block;
+    margin-bottom: 16px;
+}
+

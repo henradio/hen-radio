@@ -17,6 +17,10 @@
     text-decoration: none;
 }
 
+.trackRow_title {
+    font-weight: 700;
+}
+
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
     color: #000;
     text-decoration: underline;
@@ -92,6 +96,7 @@
 .priceText {
     margin: 0;
     font-size: 14px;
+    line-height: 1.1;
 }
 
 .marginTop {
@@ -129,6 +134,7 @@
         display: block;
         font-size: 14px;
         margin-left: 12px;
+        line-height: 1.2;
     }
 
     .filterButton {

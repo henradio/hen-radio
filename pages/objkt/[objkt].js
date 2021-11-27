@@ -2,18 +2,32 @@ import Head from 'next/head';
 import ObjktView from '../../components/views/objkt-view';
 import getObjktById from '../../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../../api/get-objkts-created-by';
-import { useRouter } from 'next/router';
-import { getTrimmedWallet } from '../../utilities/general';
+import {useRouter} from 'next/router';
+import {getTrimmedWallet} from '../../utilities/general';
+import axios from 'axios';
+import {BLOCKLIST_OBJKT} from '../../constants';
+import {getBlockedTracks} from '../../api/get-blocked-lists';
 
 export const getServerSideProps = async({params}) => {
     const {objkt} = params;
+    const blockedObjkts = getBlockedTracks();
+    if(blockedObjkts.data.includes(objkt)) {
+        return {
+            notFound: true
+        };
+    }
     const track = await getObjktById(objkt);
     let tracks = [];
     if(track) tracks = await getObjktsCreatedBy(track.creator.walletAddress);
     const currentTrack = tracks.find(t => t.id === Number(objkt)) || null;
 
     return {
-        props: {objkt, tracks, currentTrack, walletAddress: track.creator.walletAddress}
+        props: {
+            objkt,
+            tracks,
+            currentTrack,
+            walletAddress: track.creator.walletAddress
+        }
     };
 };
 
@@ -46,7 +60,8 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, walletAddress}) => {
         <>
             <Head>
                 <meta charSet="utf-8"/>
-                <title>{currentTrack.title + byName} | Hen Radio | NFT Music Player</title>
+                <title>{currentTrack.title + byName} | Hen Radio | NFT Music
+                                                     Player</title>
                 <meta name="description" content={description}/>
                 <link rel="canonical" href={`http://hen.radio/${objkt}`}/>
                 <meta name="twitter:card" content="summary"/>
@@ -73,7 +88,10 @@ const PlayObjktPage = ({objkt, tracks, currentTrack, walletAddress}) => {
                     content={image}
                 />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
             </Head>
             <ObjktView
                 walletAddress={walletAddress}

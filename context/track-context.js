@@ -1,6 +1,4 @@
-import { createContext, useRef, useState } from 'react';
-import { audio, audioContext, fetchSrc } from '../constants';
-import { useEffect } from 'react';
+import {createContext, useState} from 'react';
 
 export const TrackContext = createContext();
 
@@ -8,14 +6,14 @@ const TrackProvider = ({children}) => {
 
     const [trackState, setTrackState] = useState({
         currentTrackKey: 0,
-        currentTrack: null,
+        currentTrack: null
     });
 
     return (
         <TrackContext.Provider
             value={{
                 trackState,
-                setTrackState,
+                setTrackState
             }}
         >
             {children}
