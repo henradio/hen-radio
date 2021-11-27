@@ -25,10 +25,6 @@ const ToastProvider = ({children}) => {
         setMessage(null);
     };
 
-    useEffect(() => {
-        console.log(message);
-    }, [message])
-
     return (
         <ToastContext.Provider
             value={{

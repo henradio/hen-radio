@@ -8,7 +8,6 @@ import {getTrimmedWallet} from '../../utilities/general';
 
 const Layout = ({params, children}) => {
    const {auth, sync, unsync } = useTezos();
-console.log(auth)
     return (
         <View params={params}>
             <div className={styles.headerBar}>
