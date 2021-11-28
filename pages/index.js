@@ -2,14 +2,14 @@ import AllTracksView from '../components/views/all-tracks-view';
 import Head from 'next/head';
 import {SWRConfig} from 'swr';
 import allTracksFetcher, {allTracksApi} from '../fetchers/all-tracks-fetcher';
-import serialise from '../fetchers/serialiser';
+import Pagination from '../components/pagination';
 
 export const getServerSideProps = async() => {
     const data = await allTracksFetcher();
     return {
         props: {
             fallback: {
-                [JSON.stringify([allTracksApi, 1, 250])]: data
+                [JSON.stringify([allTracksApi, 1, null])]: data
             }
         }
     };
@@ -25,8 +25,7 @@ const AllTracksPage = ({fallback}) => {
         <SWRConfig
             value={{
                 fallback,
-                use: [serialise],
-                refreshInterval: 3000,
+                refreshInterval: 3000
             }}
         >
             <Head>
@@ -64,6 +63,7 @@ const AllTracksPage = ({fallback}) => {
                 />
             </Head>
             <AllTracksView/>
+            <Pagination page={1} search={null}/>
         </SWRConfig>
     );
 };

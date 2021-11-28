@@ -6,8 +6,9 @@ export function getPageCount(total, limit) {
     return Math.ceil(total / limit);
 }
 
-const paginate = (currentPage = 1, total, limit = 10, maxRange = 3) => {
+const paginate = (currentPage = 1, total, limit = 250, maxRange = 3) => {
     const pageCount = getPageCount(total, limit);
+    currentPage = Number(currentPage)
     switch (true) {
         case pageCount <= 1:
             return []

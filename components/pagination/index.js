@@ -2,19 +2,24 @@ import Link from 'next/link';
 import styles from './styles.module.css';
 import paginate from '../../utilities/pagination';
 import useSWR from 'swr';
-import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
+import allTracksFetcher, {
+    allTracksApi,
+    limit
+} from '../../fetchers/all-tracks-fetcher';
 import serialise from '../../fetchers/serialiser';
 
-const Pagination = () => {
-    const {data} = useSWR([allTracksApi, 1, 250], allTracksFetcher, { use: [serialise] });
-    const {page, search, total, limit} = data;
+const Pagination = ({page, search}) => {
+    const {data} = useSWR([allTracksApi, page, search], allTracksFetcher, { use: [serialise] });
+    const {total} = data;
     const query = search ? {search} : {};
+    const pages = paginate(page, total, limit);
+
     return (
         <div className={styles.pagination}>
-            {paginate(page, total, limit).map(p =>
+            {pages.map((p, i) =>
                 p !== '…'
                     ? <Link
-                        key={p}
+                        key={i}
                         href={{
                             pathname: `/page/[page]`,
                             query: {...query, page: p}
@@ -28,7 +33,7 @@ const Pagination = () => {
                         >{p}</a>
                     </Link>
                     : <button
-                        key={p}
+                        key={i}
                         disabled
                         className={styles.page}
                     >{p}</button>

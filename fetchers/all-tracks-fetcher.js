@@ -12,7 +12,9 @@ const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
 
 export const allTracksApi = '/api/tracks';
 
-const allTracksFetcher = async(url = allTracksApi, page = 1, limit = 250, search = '') => {
+export const limit = 250
+
+const allTracksFetcher = async(url = allTracksApi, page = 1, search = '') => {
 
     page = page > 0 ? page : 1
 

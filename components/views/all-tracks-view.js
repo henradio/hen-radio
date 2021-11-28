@@ -6,11 +6,11 @@ import FilterButtons from '../track-lists/filter-buttons';
 import useTrack from '../../hooks/use-track';
 import useSWR from 'swr';
 import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
-import Pagination from '../pagination';
 import serialise from '../../fetchers/serialiser';
 
-const AllTracksView = () => {
-    const {data} = useSWR([allTracksApi, 1, 250], allTracksFetcher, { use: [serialise] });
+const AllTracksView = ({page = 1, search = null}) => {
+    const {data} = useSWR([allTracksApi, page, search], allTracksFetcher,
+        {use: [serialise]});
     const {tracks, objkt} = data;
     const {
         controls,
@@ -44,7 +44,6 @@ const AllTracksView = () => {
                 tracks={tracks}
                 isTrackPlaying={isTrackPlaying}
             />
-            <Pagination/>
         </>
     );
 };
