@@ -47,7 +47,7 @@ const PlaylistsPage = ({objktIds, tracks}) => {
             <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
             <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         </Head>
-        <AllTracksView tracks={tracks} objkt={null}/>
+        <AllTracksView/>
     </>;
 };
 

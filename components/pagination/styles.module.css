@@ -13,6 +13,11 @@
     cursor: pointer;
 }
 
+.page:hover, .page:active {
+    font-weight: 700;
+    text-decoration: none;
+}
+
 .currentPage {
     font-weight: 700;
 }

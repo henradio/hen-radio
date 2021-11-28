@@ -144,7 +144,7 @@
     .searchField {
         padding: 6px 4px;
         border: 1px solid #E5E5E5;
-        margin: 0 0 16px auto;
+        margin: 0 0 16px;
         min-width: 400px;
         width: 33%;
     }

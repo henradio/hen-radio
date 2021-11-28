@@ -13,7 +13,7 @@ import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
 
 const Player = () => {
-    const {filteredTracks} = usePlaylist();
+    const {tracks} = usePlaylist();
     const {
         audioError,
         playerState,
@@ -24,9 +24,9 @@ const Player = () => {
     return (
         <div className={styles.controlsLayout}>
             <div className={styles.playerBar}>
-                <PrevButton tracks={filteredTracks}/>
+                <PrevButton tracks={tracks}/>
                 <PlayPauseButton/>
-                <NextButton tracks={filteredTracks}/>
+                <NextButton tracks={tracks}/>
                 <input
                     className={`${styles.radioRange} ${styles.volumeControl}`}
                     title="volume"

@@ -1,12 +1,23 @@
-import { gql, request } from 'graphql-request';
-import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import {gql, request} from 'graphql-request';
+import {
+    convertPriceToXtz,
+    getAvailability,
+    getIpfsUrl
+} from '../utilities/general';
 
 const query = gql`
-    query GetAllTracks($offset: Int!, $limit: Int!) {
+    query SearchAllTracks($offset: Int!, $limit: Int!, $search: String!) {
         hic_et_nunc_token(where: {
+            _or: [
+                {creator: {name: {_ilike: $search}}},
+                {title: {_ilike: $search}},
+                {token_tags: {tag: {tag: {_ilike: $search}}}}
+            ]
             mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
-            token_holders: {quantity: {_gt: "0"},
-                holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}}
+            token_holders: {
+                quantity: {_gt: "0"},
+                holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
+            }
         }, order_by: {id: desc}, limit: $limit, offset: $offset) {
             id
             display_uri
@@ -39,18 +50,18 @@ const query = gql`
     }
 `;
 
-const getAllTracks = async(page = 1, limit = 250) => {
+const searchAllTracks = async(page = 1, limit = 250, search) => {
     const offset = Math.max((page - 1) * limit, 0);
     const resp = await request(
         'https://api.hicdex.com/v1/graphql',
         query,
-        {offset, limit}
+        {offset, limit, search: `%${search}%`}
     );
     return resp?.hic_et_nunc_token?.map(o => ({
         id: o.id,
         creator: {
             walletAddress: o.creator_id,
-            ...o.creator,
+            ...o.creator
         },
         title: o.title,
         src: getIpfsUrl(o.artifact_uri, o.id),
@@ -58,9 +69,11 @@ const getAllTracks = async(page = 1, limit = 250) => {
         displayUri: o.display_uri,
         description: o.description,
         availability: getAvailability(o) + '/' + o.supply,
-        price: o.swaps.length ? convertPriceToXtz(o.swaps[0].price) + 'xtz' : '',
-        tags: o.token_tags.map(tt => tt.tag.tag),
+        price: o.swaps.length
+            ? convertPriceToXtz(o.swaps[0].price) + 'xtz'
+            : '',
+        tags: o.token_tags.map(tt => tt.tag.tag)
     })) || [];
 };
 
-export default getAllTracks;
+export default searchAllTracks;
