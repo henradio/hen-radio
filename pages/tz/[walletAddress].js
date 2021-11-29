@@ -8,7 +8,6 @@ import {useRouter} from 'next/router';
 import {getBlockedTracks, getBlockedWallets} from '../../api/get-blocked-lists';
 
 export const getServerSideProps = async({params}) => {
-    console.log('HJAFAsf');
     const {walletAddress} = params;
     const [allWallets, blockedWallets, blockedTracks] = await Promise.all([
         getWalletsWithAudio(),
@@ -21,8 +20,6 @@ export const getServerSideProps = async({params}) => {
     const tracks = [...tracksCreated, ...tracksOwned].filter(
         t => !blockedTracks.data.includes(t));
     const creator = walletAddress;
-
-    console.log('HWERERER');
 
     return {
         props: {creator, tracks, wallets}
