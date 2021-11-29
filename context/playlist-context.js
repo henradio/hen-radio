@@ -5,18 +5,12 @@ import searchAllTracksCount from '../api/search-all-tracks-count';
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({children}) => {
-    const [state, setState] = useState({
-        tracks: [],
-    });
-
-    const setTracks = (tracks) => {
-        setState((prevState) => ({...prevState, tracks}))
-    }
+    const [tracks, setTracks] = useState([]);
 
     return (
         <PlaylistContext.Provider
             value={{
-                tracks: state.tracks,
+                tracks,
                 setTracks,
             }}
         >
