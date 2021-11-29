@@ -2,7 +2,7 @@ import TrackList from '../track-lists/track-list';
 import useRadio from '../../hooks/use-radio';
 import {useEffect} from 'react';
 import {audio} from '../../constants';
-import FilterButtons from '../track-lists/filter-buttons';
+import SearchBar from '../track-lists/search-bar';
 import useTrack from '../../hooks/use-track';
 import useSWR from 'swr';
 import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
@@ -41,7 +41,7 @@ const AllTracksView = ({page = 1, search = null}) => {
 
     return (
         <>
-            <FilterButtons/>
+            <SearchBar/>
             <TrackList
                 tracks={tracks}
                 isTrackPlaying={isTrackPlaying}
