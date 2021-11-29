@@ -13,7 +13,7 @@ const Layout = ({params, children}) => {
             <div className={styles.headerBar}>
                 <Link href={'/'}>
                     <a>
-                    <Logo/>
+                        <Logo/>
                     </a>
                 </Link>
                 <div className={styles.navBar}>
