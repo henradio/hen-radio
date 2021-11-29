@@ -10,7 +10,7 @@ import {getBlockedTracks} from '../../api/get-blocked-lists';
 
 export const getServerSideProps = async({params}) => {
     const {objkt} = params;
-    const blockedObjkts = getBlockedTracks();
+    const blockedObjkts = await getBlockedTracks();
     if(blockedObjkts.data.includes(objkt)) {
         return {
             notFound: true
