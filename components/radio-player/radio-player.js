@@ -11,6 +11,7 @@ import NextButton from './buttons/next-button';
 import Image from 'next/image';
 import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
+import Link from 'next/link';
 
 const Player = () => {
     const {tracks} = usePlaylist();
@@ -45,20 +46,28 @@ const Player = () => {
                 {trackState.currentTrack !== null
                     ? (
                         <div className={styles.currentTrack}>
-                            <span className={styles.trackRow_text}>
+                            <p className={styles.trackRow_text}>
                                 <a
                                     href={`https://hicetnunc.art/objkt/${track.id}`}
                                     className={styles.trackRow_link}
-                                >#{track.id}
-                                {' '}
-                                {track.title}</a>
+                                >
+                                    #{track.id}
+                                </a>
+                                <br/>
+                                <Link href={`/objkt/${track.id}`}>
+                                    <a className={styles.trackRow_link}>
+                                        <strong>{track.title}</strong>
+                                    </a>
+                                </Link>
+                                <br/>
                                 <span>by&nbsp;
-                                <a
-                                href={`https://hicetnunc.art/tz/${track.creator.walletAddress}`}
-                            >{getTrimmedWallet(
-                                track.creator.walletAddress)} {track.creator.name}</a>
+                                    <Link href={`/tz/${track.creator.walletAddress}`}>
+                                        <a>
+                                            {getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}
+                                        </a>
+                                    </Link>
                                 </span>
-                            </span>
+                            </p>
                         </div>
                     ) : null}
             </div>
