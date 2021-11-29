@@ -30,7 +30,7 @@ const Page = ({page, search, fallback}) => {
     return (
         <SWRConfig value={{
             fallback,
-            refreshInterval: 3000
+            refreshInterval: 1000 * 60 * 15
         }}>
             <Head>
                 <meta charSet="utf-8"/>

@@ -5,30 +5,19 @@ import searchAllTracksCount from '../api/search-all-tracks-count';
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({children}) => {
-    const [tracks, setTracks] = useState([]);
-    const [totalTracks, setTotalTracks] = useState([]);
-    const [search, setSearch] = useState('');
+    const [state, setState] = useState({
+        tracks: [],
+    });
 
-    useEffect(() => {
-        (async () => {
-            const [foundTracks, total] = await Promise.all([
-                searchAllTracks(1, 250, search),
-                searchAllTracksCount(search)
-            ]);
-            setTracks(foundTracks);
-            setTotalTracks(total);
-        })()
-    }, [search]);
+    const setTracks = (tracks) => {
+        setState((prevState) => ({...prevState, tracks}))
+    }
 
     return (
         <PlaylistContext.Provider
             value={{
-                tracks,
+                tracks: state.tracks,
                 setTracks,
-                search,
-                setSearch,
-                totalTracks,
-                setTotalTracks,
             }}
         >
             {children}

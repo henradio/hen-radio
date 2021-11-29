@@ -7,11 +7,12 @@ import useTrack from '../../hooks/use-track';
 import useSWR from 'swr';
 import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
 import serialise from '../../fetchers/serialiser';
+import usePlaylist from '../../hooks/use-playlist';
 
 const AllTracksView = ({page = 1, search = null}) => {
-    const {data} = useSWR([allTracksApi, page, search], allTracksFetcher,
-        {use: [serialise]});
+    const {data} = useSWR([allTracksApi, page, search], allTracksFetcher, {use: [serialise]});
     const {tracks, objkt} = data;
+    const {setTracks} = usePlaylist();
     const {
         controls,
         isTrackPlaying
@@ -27,6 +28,7 @@ const AllTracksView = ({page = 1, search = null}) => {
     }
 
     useEffect(() => {
+        setTracks(tracks);
         if(trackState.currentTrack === null) {
             const foundIndex = tracks.findIndex(t => t.id === Number(objkt));
             controls.initialiseTrack(tracks)(
