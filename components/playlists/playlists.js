@@ -57,7 +57,7 @@ const Playlists = ({handlePlaylistChange, playlists}) => {
                 <div className={styles.searchInput_container}>
                     <input
                         className={styles.searchInput}
-                        placeholder={'Search PlaylistsPage'}
+                        placeholder={'Search Playlists'}
                         onKeyUp={handleSearch}
                     />
                 </div>
