@@ -7,11 +7,15 @@ import View from './view';
 import {getTrimmedWallet} from '../../utilities/general';
 
 const Layout = ({params, children}) => {
-   const {auth, sync, unsync } = useTezos();
+    const {auth, sync, unsync} = useTezos();
     return (
         <View params={params}>
             <div className={styles.headerBar}>
-                <Logo/>
+                <Link href={'/'}>
+                    <a>
+                        <Logo/>
+                    </a>
+                </Link>
                 <div className={styles.navBar}>
                     <span className={styles.navBar_link}>
                         <Link href={'/'}>Feed</Link>
@@ -31,7 +35,8 @@ const Layout = ({params, children}) => {
                     <span className={styles.navBar_link}>
                         <Link href="/">
                             {auth
-                                ? <a onClick={unsync}>Unsync ({getTrimmedWallet(auth.address)})</a>
+                                ? <a onClick={unsync}>Unsync ({getTrimmedWallet(
+                                    auth.address)})</a>
                                 : <a onClick={sync}>Sync</a>}
                         </Link>
                         <br/>

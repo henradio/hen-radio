@@ -63,11 +63,11 @@ const RadioProvider = ({children}) => {
 
     const handleInitialiseTrack = (tracks) => i => async() => {
         setPlayerState(prevState => ({...prevState, isLoading: true}));
-        audio.src = tracks[i].src;
-        audio.mimeType = tracks[i].mimeType;
+        audio.src = tracks[i]?.src;
+        audio.mimeType = tracks[i]?.mimeType;
         setTrackState({
             currentTrackKey: i,
-            currentTrack: tracks[i]
+            currentTrack: tracks[i] || null
         });
         setPlayerState(prevState => ({
             ...prevState,

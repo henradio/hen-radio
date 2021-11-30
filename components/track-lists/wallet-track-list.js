@@ -9,7 +9,6 @@ import useTrack from '../../hooks/use-track';
 
 const WalletTrackList = ({walletAddress, tracks, objkt}) => {
     const {
-        playerState,
         controls,
         isTrackPlaying,
     } = useRadio();

@@ -1,33 +1,37 @@
-import AllTracksView from '../components/views/all-tracks-view';
+import AllTracksView from '../../components/views/all-tracks-view';
 import Head from 'next/head';
+import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
 import {SWRConfig} from 'swr';
-import allTracksFetcher, {allTracksApi} from '../fetchers/all-tracks-fetcher';
-import Pagination from '../components/pagination';
+import Pagination from '../../components/pagination';
 
-export const getServerSideProps = async() => {
-    const data = await allTracksFetcher();
+export const getServerSideProps = async({params, query}) => {
+    const {page} = params;
+    const search = query?.search || null;
+
+    const data = await allTracksFetcher(allTracksApi, page, search);
+
     return {
         props: {
+            page,
+            search,
             fallback: {
-                [JSON.stringify([allTracksApi, 1, null])]: data
+                [JSON.stringify([allTracksApi, page, search])]: data
             }
         }
     };
 };
 
-const AllTracksPage = ({fallback}) => {
+const Page = ({page, search, fallback}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player, all tracks';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
     const url = 'https://hen.radio';
 
     return (
-        <SWRConfig
-            value={{
-                fallback,
-                refreshInterval: 1000 * 60 * 15
-            }}
-        >
+        <SWRConfig value={{
+            fallback,
+            refreshInterval: 1000 * 60 * 15
+        }}>
             <Head>
                 <meta charSet="utf-8"/>
                 <title>Hen Radio | NFT Music Player</title>
@@ -62,12 +66,12 @@ const AllTracksPage = ({fallback}) => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <AllTracksView/>
-            <Pagination page={1} search={null}/>
+            <AllTracksView page={page} search={search}/>
+            <Pagination page={page} search={search}/>
         </SWRConfig>
     );
 };
 
-export default AllTracksPage;
+export default Page;
 
 

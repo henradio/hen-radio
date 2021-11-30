@@ -2,9 +2,10 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    margin: auto 20px;
-    padding: 40px;
+    min-height: 100vh;
+    margin: auto 0;
+    padding: 40px 40px 140px;
+    max-width: 100vw;
 }
 
 .headerBar {
@@ -22,11 +23,6 @@
 
 .navBar_link {
     margin-left: auto;
-}
-
-.radioPlayerBar {
-    margin-bottom: 12px;
-    border-bottom: 1px solid #e5e5e5;
 }
 
 @media screen and (min-width: 600px) {

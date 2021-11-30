@@ -11,9 +11,10 @@ import NextButton from './buttons/next-button';
 import Image from 'next/image';
 import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
+import Link from 'next/link';
 
 const Player = () => {
-    const {filteredTracks} = usePlaylist();
+    const {tracks} = usePlaylist();
     const {
         audioError,
         playerState,
@@ -24,9 +25,9 @@ const Player = () => {
     return (
         <div className={styles.controlsLayout}>
             <div className={styles.playerBar}>
-                <PrevButton tracks={filteredTracks}/>
+                <PrevButton tracks={tracks}/>
                 <PlayPauseButton/>
-                <NextButton tracks={filteredTracks}/>
+                <NextButton tracks={tracks}/>
                 <input
                     className={`${styles.radioRange} ${styles.volumeControl}`}
                     title="volume"
@@ -38,27 +39,38 @@ const Player = () => {
                     onChange={controls.volume}
                 />
                 <MuteButton/>
+                {audioError && <p className={styles.errorText}>{audioError}</p>}
             </div>
             <div className={styles.trackMetaRow}>
-                {track ? <AddToPlaylist track={track}/> : null}
-                {track ? <LinkButton track={track}/> : null}
+                <div className={styles.trackActionsBar}>
+                    {track ? <AddToPlaylist track={track}/> : null}
+                    {track ? <LinkButton track={track}/> : null}
+                </div>
                 {trackState.currentTrack !== null
                     ? (
                         <div className={styles.currentTrack}>
-                            <span className={styles.trackRow_text}>
+                            <p className={styles.trackRow_text}>
                                 <a
                                     href={`https://hicetnunc.art/objkt/${track.id}`}
                                     className={styles.trackRow_link}
-                                >#{track.id}
-                                {' '}
-                                {track.title}</a><br/>
+                                >
+                                    #{track.id}
+                                </a>
+                                <br/>
+                                <Link href={`/objkt/${track.id}`}>
+                                    <a className={styles.trackRow_link}>
+                                        <strong>{track.title}</strong>
+                                    </a>
+                                </Link>
+                                <br/>
                                 <span>by&nbsp;
-                                <a
-                                href={`https://hicetnunc.art/tz/${track.creator.walletAddress}`}
-                            >{getTrimmedWallet(
-                                track.creator.walletAddress)} {track.creator.name}</a>
+                                    <Link href={`/tz/${track.creator.walletAddress}`}>
+                                        <a>
+                                            {getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}
+                                        </a>
+                                    </Link>
                                 </span>
-                            </span>
+                            </p>
                         </div>
                     ) : null}
             </div>
@@ -66,7 +78,6 @@ const Player = () => {
                 <p className={styles.priceText}>Editions: {track.availability}</p>
                 {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
             </div> : null}
-            {audioError && <p className={styles.errorText}>{audioError}</p>}
         </div>
     );
 };
@@ -77,7 +88,6 @@ const RadioPlayer = () => {
 
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
-
     return (
         <div className={styles.radioPlayerContainer}>
             <div className={styles.currentPlaylistImageHolder}>

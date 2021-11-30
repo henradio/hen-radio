@@ -1,8 +1,8 @@
 .toast {
     position: fixed;
     right: 40px;
-    bottom: 40px;
-    width: 240px;
+    bottom: 140px;
+    width: 300px;
     padding: 24px;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
     background-color: #ffffff;

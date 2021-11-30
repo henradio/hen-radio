@@ -1,7 +1,7 @@
 import { gql, request } from 'graphql-request';
 
 const query = gql`
-    query AudioObjktData {
+    query GetAllTrackIds {
         hic_et_nunc_token(where: {
             mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
             token_holders: {
