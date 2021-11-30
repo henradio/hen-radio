@@ -33,9 +33,14 @@ const query = gql`
             }
             token_holders(where: {holder_id: {_eq: "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"}}) {
                 quantity
+                holder_id
             }
             swaps(where: {status: {_eq: "0"}, contract_version: {_neq: "1"}}, order_by: {price: asc}) {
+                id
                 price
+                amount
+                amount_left
+                creator_id
             }
         }
     }
@@ -48,6 +53,7 @@ const getObjktById = async(objktId) => {
         {objktId},
     );
     return response.hic_et_nunc_token?.map(o => ({
+        ...o,
         id: o.id,
         creator: {
             walletAddress: o.creator_id,

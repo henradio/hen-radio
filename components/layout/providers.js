@@ -9,27 +9,30 @@ import TrackProvider from '../../context/track-context';
 import MintProvider from '../../context/tezos/mint-context';
 import CompressProvider from '../../context/audio-compression-context';
 import ToastProvider from '../../context/toast-context';
+import ToolsProvider from '../../context/tools-context';
 
 const Providers = ({children}) =>
     <CompressProvider>
         <ToastProvider>
             <TezosProvider>
-                <MintProvider>
-                    <TrackProvider>
-                        <RadioProvider>
-                            <UserPlaylistProvider>
-                                <PlaylistProvider>
-                                    <Layout>
-                                        <div className={styles.radioPlayerBar}>
-                                            <RadioPlayer/>
-                                        </div>
-                                        {children}
-                                    </Layout>
-                                </PlaylistProvider>
-                            </UserPlaylistProvider>
-                        </RadioProvider>
-                    </TrackProvider>
-                </MintProvider>
+                <ToolsProvider>
+                    <MintProvider>
+                        <TrackProvider>
+                            <RadioProvider>
+                                <UserPlaylistProvider>
+                                    <PlaylistProvider>
+                                        <Layout>
+                                            <div className={styles.radioPlayerBar}>
+                                                <RadioPlayer/>
+                                            </div>
+                                            {children}
+                                        </Layout>
+                                    </PlaylistProvider>
+                                </UserPlaylistProvider>
+                            </RadioProvider>
+                        </TrackProvider>
+                    </MintProvider>
+                </ToolsProvider>
             </TezosProvider>
         </ToastProvider>
     </CompressProvider>

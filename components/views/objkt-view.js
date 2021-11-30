@@ -1,6 +1,6 @@
 import TrackList from '../track-lists/track-list';
 import useRadio from '../../hooks/use-radio';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import usePlaylist from '../../hooks/use-playlist';
 import {audio, ipfsUrls} from '../../constants';
 import styles from './styles.module.css';
@@ -10,10 +10,10 @@ import Image from 'next/image';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import LinkButton from '../radio-player/buttons/link-button';
 import Link from 'next/link';
+import Swaps from '../swaps';
 
 const ObjktView = ({walletAddress, objkt, tracks}) => {
     const {
-        playerState,
         controls,
         isTrackPlaying
     } = useRadio();
@@ -99,6 +99,7 @@ const ObjktView = ({walletAddress, objkt, tracks}) => {
                     </div>
                 </div>
             </div>
+            <Swaps objkt={objkt} />
             <h2 className={styles.subTitle}>All tracks by {getTrimmedWallet(
                 walletAddress)} {trackState.currentTrack?.creator?.name ||
             ''}</h2>
