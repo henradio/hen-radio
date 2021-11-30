@@ -39,10 +39,13 @@ const Player = () => {
                     onChange={controls.volume}
                 />
                 <MuteButton/>
+                {audioError && <p className={styles.errorText}>{audioError}</p>}
             </div>
             <div className={styles.trackMetaRow}>
-                {track ? <AddToPlaylist track={track}/> : null}
-                {track ? <LinkButton track={track}/> : null}
+                <div className={styles.trackActionsBar}>
+                    {track ? <AddToPlaylist track={track}/> : null}
+                    {track ? <LinkButton track={track}/> : null}
+                </div>
                 {trackState.currentTrack !== null
                     ? (
                         <div className={styles.currentTrack}>
@@ -75,7 +78,6 @@ const Player = () => {
                 <p className={styles.priceText}>Editions: {track.availability}</p>
                 {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
             </div> : null}
-            {audioError && <p className={styles.errorText}>{audioError}</p>}
         </div>
     );
 };
@@ -86,7 +88,6 @@ const RadioPlayer = () => {
 
     const coverHash = track?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
-
     return (
         <div className={styles.radioPlayerContainer}>
             <div className={styles.currentPlaylistImageHolder}>
