@@ -2,9 +2,9 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     margin: auto 0;
-    padding: 40px;
+    padding: 40px 40px 140px;
     max-width: 100vw;
 }
 
