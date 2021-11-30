@@ -307,6 +307,7 @@ input[type=range].radioRange:focus::-ms-fill-upper {
 .trackRow_link {
     color: #000;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
