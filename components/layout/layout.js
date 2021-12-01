@@ -20,6 +20,9 @@ const Layout = ({params, children}) => {
                     <span className={styles.navBar_link}>
                         <Link href={'/'}>Feed</Link>
                     </span>
+                    {auth && <span className={styles.navBar_link}>
+                        <Link href={`/tz/${auth.address}`}>Profile</Link>
+                    </span>}
                     <span className={styles.navBar_link}>
                         <Link href={'/playlists'}>Playlists</Link>
                     </span>

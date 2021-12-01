@@ -22,7 +22,7 @@ const TracksFilterBar = ({filter, setFilter}) =>
                 ? styles.selected
                 : ''}`}
             onClick={() => setFilter(FilterTypes.COLLECTIONS)}
-        >Collections
+        >Collection
         </button>
     </div>
 ;
