@@ -82,14 +82,14 @@
 
 .objktContainer {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 32px;
 }
 
 .objktImageHolder {
     box-sizing: border-box;
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
-    padding-right: 24px;
 }
 
 .objktImage {
@@ -99,12 +99,10 @@
 
 .objktMetaRow {
     box-sizing: border-box;
-    border-left: 1px solid #E5E5E5;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     min-height: 36px;
-    padding-left: 24px;
 }
 
 .objktPriceText {
@@ -117,6 +115,17 @@
 }
 
 @media screen and (min-width: 600px) {
+    .objktImageHolder {
+        width: 50%;
+        padding-right: 24px;
+        padding-bottom: 24px;
+    }
+
+    .objktMetaRow {
+        min-height: 36px;
+        padding-left: 24px;
+    }
+
     .walletInput {
         max-width: 320px;
     }
