@@ -7,6 +7,9 @@ export const ToolsContext = createContext({
     batchSwap: async() => {},
     batchCancel: async() => {},
     batchTransfer: async() => {},
+    collect: async() => {},
+    swap: async() => {},
+    cancel: async() => {},
     xtzTransfer: async() => {}
 });
 
@@ -157,6 +160,86 @@ const ToolsProvider = ({children}) => {
         return true;
     };
 
+    const swap = async({amount, creator, id, royalties, xtz}) => {
+        try {
+            const objkts = await Tezos.wallet.at(contracts.objkts);
+            const marketplace = await Tezos.wallet.at(contracts.v2);
+
+            const list = [
+                {
+                    kind: OpKind.TRANSACTION,
+                    ...objkts.methods.update_operators([
+                        {
+                            add_operator: {
+                                operator: contracts.v2,
+                                token_id: parseInt(id),
+                                owner: auth.address
+                            }
+                        }])
+                        .toTransferParams(
+                            {amount: 0, mutez: true, storageLimit: 100}
+                        )
+                },
+                {
+                    kind: OpKind.TRANSACTION,
+                    ...marketplace.methods.swap(
+                        creator,
+                        parseInt(amount),
+                        parseInt(id),
+                        parseFloat(royalties),
+                        parseFloat(xtz) * 1000000
+                    )
+                        .toTransferParams(
+                            {amount: 0, mutez: true, storageLimit: 270}
+                        )
+                },
+                {
+                    kind: OpKind.TRANSACTION,
+                    ...objkts.methods.update_operators([
+                        {
+                            remove_operator: {
+                                operator: contracts.v2,
+                                token_id: parseFloat(id),
+                                owner: auth.address
+                            }
+                        }])
+                        .toTransferParams(
+                            {amount: 0, mutez: true, storageLimit: 175}
+                        )
+                }
+            ];
+            const batch = await Tezos.wallet.batch(list);
+            const operation = await batch.send();
+            await operation.confirmation(confirmations);
+        } catch(e) {
+            console.log('Error:', e);
+            return false;
+        }
+        return true;
+    };
+
+    const cancel = async(id) => {
+        try {
+            const v2 = await Tezos.wallet.at(contracts.v2);
+            const list = [
+                {
+                    kind: OpKind.TRANSACTION,
+                    ...v2.methods.cancel_swap(id).toTransferParams(
+                        {amount: 0, storageLimit: 150}
+                    )
+                }
+            ]
+
+            const batch = await Tezos.wallet.batch(list);
+            const operation = await batch.send();
+            await operation.confirmation(confirmations);
+        } catch(e) {
+            console.log('Error:', e);
+            return false;
+        }
+        return true;
+    };
+
     const xtzTransfer = async(xtz) => {
         try {
             const operation = await Tezos.wallet
@@ -179,6 +262,8 @@ const ToolsProvider = ({children}) => {
                 batchCancel,
                 batchTransfer,
                 collect,
+                swap,
+                cancel,
                 xtzTransfer
             }}
         >

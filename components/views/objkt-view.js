@@ -16,9 +16,11 @@ import useSWR from 'swr';
 import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
 import serialise from '../../fetchers/serialiser';
 import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
+import SwapForm from '../swap-form';
 
 const ObjktView = ({objktId}) => {
-    const {data} = useSWR([objktFetcherApi, objktId], objktFetcher, {use: [serialise]});
+    const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
+        {use: [serialise]});
     const {walletAddress, objkt, tracks} = data;
 
     const {
@@ -149,10 +151,15 @@ const ObjktView = ({objktId}) => {
                             </div>
                         ) : null}
                         <div className={styles.objktActionsBar}>
-                            <TrackPlayPauseButton className={styles.playPause} tracks={tracks} id={objkt.id} />
+                            <TrackPlayPauseButton
+                                className={styles.playPause}
+                                tracks={tracks}
+                                id={objkt.id}
+                            />
                             {objkt ? <AddToPlaylist track={objkt}/> : null}
                             {objkt ? <LinkButton track={objkt}/> : null}
                         </div>
+                        <SwapForm objkt={objkt}/>
                         <Swaps objktId={objktId}/>
                     </div>
                 </div>

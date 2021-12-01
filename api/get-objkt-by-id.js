@@ -23,6 +23,7 @@ const query = gql`
             creator_id
             artifact_uri
             supply
+            royalties
             token_tags {
                 tag {
                     tag
@@ -32,7 +33,7 @@ const query = gql`
                 name
                 metadata
             }
-            token_holders(where: {holder_id: {_eq: "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"}}) {
+            token_holders {
                 quantity
                 holder_id
             }
