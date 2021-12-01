@@ -1,5 +1,6 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import getLowestObjktPrice from '../utilities/get-lowest-objkt-price';
 
 const query = gql`
     query AudioObjktData($objktId: bigint!) {
@@ -64,7 +65,7 @@ const getObjktById = async(objktId) => {
         mimeType: o.mime,
         displayUri: o.display_uri,
         availability: getAvailability(o) + '/' + o.supply,
-        price: o.swaps.length ? convertPriceToXtz(o.swaps[0].price) + 'xtz' : '',
+        price: getLowestObjktPrice(o.swaps),
         tags: o.token_tags.map(tt => tt.tag.tag),
     }))?.[0] || null;
 };
