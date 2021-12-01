@@ -10,10 +10,20 @@ import Image from 'next/image';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import LinkButton from '../radio-player/buttons/link-button';
 import Link from 'next/link';
+import Swaps from '../swaps';
+import Head from 'next/head';
+import useSWR from 'swr';
+import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
+import serialise from '../../fetchers/serialiser';
+import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
+import SwapForm from '../swap-form';
 
-const ObjktView = ({walletAddress, objkt, tracks}) => {
+const ObjktView = ({objktId}) => {
+    const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
+        {use: [serialise]});
+    const {walletAddress, objkt, tracks} = data;
+
     const {
-        playerState,
         controls,
         isTrackPlaying
     } = useRadio();
@@ -40,12 +50,58 @@ const ObjktView = ({walletAddress, objkt, tracks}) => {
 
     if(!tracks) return <p>Loading...</p>;
 
-    console.log(objkt);
-
     const coverHash = objkt?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
+
+    const byName = objkt.creator?.name
+        ? ` by ${objkt.creator.name}`
+        : ` by ${getTrimmedWallet(walletAddress)}`;
+    const title = objkt
+        ? `Listen to ${objkt.title}${byName} on Hen Radio`
+        : 'Not found';
+    const description = objkt?.description
+        ? `${objkt.description}`
+        : 'An audio objkt with this id could not be found.';
+    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
+    const url = `https://hen.radio/objkt/${objkt.id}`;
+
     return (
         <>
+            <Head>
+                <meta charSet="utf-8"/>
+                <title>{objkt.title + byName} | Hen Radio | NFT Music
+                                              Player</title>
+                <meta name="description" content={description}/>
+                <link rel="canonical" href={`http://hen.radio/${objkt.id}`}/>
+                <meta name="twitter:card" content="summary"/>
+                <meta name="twitter:site" content="@hen_radio"/>
+                <meta name="twitter:creator" content="@hen_radio"/>
+                <meta name="twitter:title" content={title}/>
+                <meta
+                    name="twitter:description"
+                    content={description}
+                />
+                <meta
+                    name="twitter:image"
+                    content={image}
+                />
+                <meta property="og:title" content={title}/>
+                <meta property="og:url" content={url}/>
+                <meta property="og:type" content="gallery"/>
+                <meta
+                    property="og:description"
+                    content={description}
+                />
+                <meta
+                    property="og:image"
+                    content={image}
+                />
+                <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
             <div className={styles.objktContainer}>
                 <div className={styles.objktImageHolder}>
                     <Image
@@ -55,8 +111,8 @@ const ObjktView = ({walletAddress, objkt, tracks}) => {
                         srcSet={objkt?.displayUri
                             ? srcSet
                             : '/images/playlist-default.png'}
-                        width={180}
-                        height={180}
+                        width={600}
+                        height={600}
                         alt=""
                         className={styles.objktImage}
                     />
@@ -88,14 +144,23 @@ const ObjktView = ({walletAddress, objkt, tracks}) => {
                             <div>
                                 <p className={styles.objktPriceText}>Editions: {objkt.availability}</p>
                                 <p className={styles.objktPriceText}>
-                                {objkt.price ? `Price: ${objkt.price}`: null}
+                                    {objkt.price
+                                        ? `Price: ${objkt.price}`
+                                        : null}
                                 </p>
                             </div>
                         ) : null}
                         <div className={styles.objktActionsBar}>
+                            <TrackPlayPauseButton
+                                className={styles.playPause}
+                                tracks={tracks}
+                                id={objkt.id}
+                            />
                             {objkt ? <AddToPlaylist track={objkt}/> : null}
                             {objkt ? <LinkButton track={objkt}/> : null}
                         </div>
+                        <SwapForm objkt={objkt}/>
+                        <Swaps objktId={objktId}/>
                     </div>
                 </div>
             </div>

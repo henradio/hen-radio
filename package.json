@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@taquito/beacon-wallet": "^10.2.1",
+    "@taquito/beacon-wallet": "^11.0.2",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "gql": "^1.1.2",

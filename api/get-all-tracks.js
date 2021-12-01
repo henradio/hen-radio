@@ -29,8 +29,9 @@ const query = gql`
                 metadata
             }
             supply
-            token_holders(where: {holder_id: {_eq: "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"}}) {
+            token_holders {
                 quantity
+                holder_id
             }
             swaps(where: {status: {_eq: "0"}, contract_version: {_neq: "1"}}, order_by: {price: asc}) {
                 price

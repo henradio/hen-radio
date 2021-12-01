@@ -23,8 +23,10 @@ const CurrentPlaylist = ({playlist}) =>
                     By {playlist.curator}
                 </p>
                 <p className={styles.currentPlaylistDescription}>{playlist.description}</p>
-                <LinkButton tracks={playlist.tracks}/>
-                <DeleteButton playlist={playlist}/>
+                <div className={styles.actionBar}>
+                    <LinkButton tracks={playlist.tracks}/>
+                    <DeleteButton playlist={playlist}/>
+                </div>
             </div>
         </div>
     </div>

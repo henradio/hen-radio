@@ -25,7 +25,13 @@
     margin-left: auto;
 }
 
-@media screen and (min-width: 600px) {
+.navBar_buttonLink {
+    padding: 0;
+    border: none;
+    font-size: 16px;
+}
+
+@media screen and (min-width: 800px) {
     .headerBar {
         display: flex;
         justify-content: space-between;

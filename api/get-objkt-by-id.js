@@ -1,5 +1,6 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import getLowestObjktPrice from '../utilities/get-lowest-objkt-price';
 
 const query = gql`
     query AudioObjktData($objktId: bigint!) {
@@ -22,6 +23,7 @@ const query = gql`
             creator_id
             artifact_uri
             supply
+            royalties
             token_tags {
                 tag {
                     tag
@@ -31,11 +33,16 @@ const query = gql`
                 name
                 metadata
             }
-            token_holders(where: {holder_id: {_eq: "KT1HbQepzV1nVGg8QVznG7z4RcHseD5kwqBn"}}) {
+            token_holders {
                 quantity
+                holder_id
             }
             swaps(where: {status: {_eq: "0"}, contract_version: {_neq: "1"}}, order_by: {price: asc}) {
+                id
                 price
+                amount
+                amount_left
+                creator_id
             }
         }
     }
@@ -48,6 +55,7 @@ const getObjktById = async(objktId) => {
         {objktId},
     );
     return response.hic_et_nunc_token?.map(o => ({
+        ...o,
         id: o.id,
         creator: {
             walletAddress: o.creator_id,
@@ -58,7 +66,7 @@ const getObjktById = async(objktId) => {
         mimeType: o.mime,
         displayUri: o.display_uri,
         availability: getAvailability(o) + '/' + o.supply,
-        price: o.swaps.length ? convertPriceToXtz(o.swaps[0].price) + 'xtz' : '',
+        price: getLowestObjktPrice(o.swaps),
         tags: o.token_tags.map(tt => tt.tag.tag),
     }))?.[0] || null;
 };

@@ -1,0 +1,21 @@
+.swapTitle {
+    font-size: 16px;
+}
+
+.formText {
+    font-size: 14px;
+}
+
+.formField {
+    font-size: 14px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.formInput {
+    display: block;
+    width: 100%;
+}

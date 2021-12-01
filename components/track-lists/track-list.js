@@ -1,46 +1,23 @@
 import styles from './styles.module.css';
-import PauseIcon from '../icons/pause-icon';
-import PlayIcon from '../icons/play-icon';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
 import RemoveFromPlaylist from '../add-to-playlist/remove-from-playlist';
-import useRadio from '../../hooks/use-radio';
-import LoadingIcon from '../icons/loading-icon';
 import TrackLinks from './track-links';
+import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
 
 const TrackList = ({
-    tracks,
-    isTrackPlaying,
-    playlist,
-}) => {
-    const {controls, playerState} = useRadio();
-    const handleSelectTrack = controls.selectTrack(tracks);
-
-    const renderPlayPauseButton = (id, i) => {
-        if(playerState.isLoading) return (
-            <span className={`${styles.icon_loading_small} ${styles.playerControlIcon_small}`}>
-                <LoadingIcon/>
-            </span>
-        );
-        return isTrackPlaying(id)
-            ? (
-                <button
-                    className={`${styles.button} ${styles.button_pause_small} ${styles.playerControlIcon_small}`}
-                    onClick={controls.pause}
-                ><PauseIcon/></button>
-            ) : (
-                <button
-                    className={`${styles.button} ${styles.button_play_small} ${styles.playerControlIcon_small}`}
-                    onClick={handleSelectTrack(i)}
-                ><PlayIcon/></button>
-            );
-    };
-
-    return <>
+                       tracks,
+                       playlist
+                   }) =>
+    <>
         {!tracks.length ? <p>No audio tracks available</p> : (
             <div>
                 {tracks.map((t, i) =>
                     <div key={t.id} className={styles.trackRow}>
-                        {renderPlayPauseButton(t.id, i)}
+                        <TrackPlayPauseButton
+                            id={t.id}
+                            index={i}
+                            tracks={tracks}
+                        />
                         {
                             playlist?.curator === 'Mine'
                                 ? <RemoveFromPlaylist
@@ -56,14 +33,16 @@ const TrackList = ({
                         />
                         <div className={styles.priceData}>
                             <p className={styles.priceText}>{t.availability}</p>
-                            {t.price ? (<p className={styles.priceText}>{t.price}</p>) : null}
+                            {t.price
+                                ? (
+                                    <p className={styles.priceText}>{t.price}</p>)
+                                : null}
                         </div>
-                    </div>,
+                    </div>
                 )}
             </div>
         )}
-    </>;
-}
+    </>
 ;
 
 export default TrackList;

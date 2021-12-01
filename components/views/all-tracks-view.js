@@ -5,18 +5,14 @@ import {audio} from '../../constants';
 import SearchBar from '../track-lists/search-bar';
 import useTrack from '../../hooks/use-track';
 import useSWR from 'swr';
-import allTracksFetcher, {allTracksApi} from '../../fetchers/all-tracks-fetcher';
 import serialise from '../../fetchers/serialiser';
 import usePlaylist from '../../hooks/use-playlist';
 
-const AllTracksView = ({page = 1, search = null}) => {
-    const {data} = useSWR([allTracksApi, page, search], allTracksFetcher, {use: [serialise]});
+const AllTracksView = ({swrKey, fetcher}) => {
+    const {data} = useSWR(swrKey, fetcher, {use: [serialise]});
     const {tracks, objkt} = data;
     const {setTracks} = usePlaylist();
-    const {
-        controls,
-        isTrackPlaying
-    } = useRadio();
+    const {controls} = useRadio();
 
     const {trackState} = useTrack();
 
@@ -42,10 +38,7 @@ const AllTracksView = ({page = 1, search = null}) => {
     return (
         <>
             <SearchBar/>
-            <TrackList
-                tracks={tracks}
-                isTrackPlaying={isTrackPlaying}
-            />
+            <TrackList tracks={tracks}/>
         </>
     );
 };

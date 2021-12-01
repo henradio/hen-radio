@@ -20,6 +20,9 @@ const Layout = ({params, children}) => {
                     <span className={styles.navBar_link}>
                         <Link href={'/'}>Feed</Link>
                     </span>
+                    {auth && <span className={styles.navBar_link}>
+                        <Link href={`/tz/${auth.address}`}>Profile</Link>
+                    </span>}
                     <span className={styles.navBar_link}>
                         <Link href={'/playlists'}>Playlists</Link>
                     </span>
@@ -33,12 +36,16 @@ const Layout = ({params, children}) => {
                         <Link href={'/mint'}>Mint</Link>
                     </span>}
                     <span className={styles.navBar_link}>
-                        <Link href="/">
-                            {auth
-                                ? <a onClick={unsync}>Unsync ({getTrimmedWallet(
-                                    auth.address)})</a>
-                                : <a onClick={sync}>Sync</a>}
-                        </Link>
+                        {auth
+                            ? <button
+                                className={styles.navBar_buttonLink}
+                                onClick={unsync}
+                            >Unsync ({getTrimmedWallet(
+                                auth.address)})</button>
+                            : <button
+                                className={styles.navBar_buttonLink}
+                                onClick={sync}
+                            >Sync</button>}
                         <br/>
                     </span>
                 </div>
