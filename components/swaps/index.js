@@ -24,7 +24,7 @@ const Swaps = ({objktId}) => {
             if(isSuccessful) {
                 setTimeout(() => {
                     mutate(JSON.stringify([objktFetcherApi, objktId]));
-                }, 1000);
+                }, 2500);
             }
         } catch(e) {
             setMessage('Failed');
@@ -32,7 +32,7 @@ const Swaps = ({objktId}) => {
         }
         setTimeout(() => {
             setMessage(null);
-        }, 3000);
+        }, 3200);
     };
 
     const handleCancel = (id) => async() => {
@@ -43,7 +43,7 @@ const Swaps = ({objktId}) => {
             if(isSuccessful) {
                 setTimeout(() => {
                     mutate(JSON.stringify([objktFetcherApi, objktId]));
-                }, 1000);
+                }, 2500);
             }
         } catch(e) {
             setMessage('Failed');
@@ -51,7 +51,7 @@ const Swaps = ({objktId}) => {
         }
         setTimeout(() => {
             setMessage(null);
-        }, 3000);
+        }, 3200);
     };
 
     return (

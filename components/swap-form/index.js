@@ -36,7 +36,7 @@ const SwapForm = ({objkt}) => {
             if(isSuccessful) {
                 setTimeout(() => {
                     mutate(JSON.stringify([objktFetcherApi, objkt.id.toString()]));
-                }, 1000);
+                }, 2500);
             }
         } catch(e) {
             setMessage('Failed');
@@ -44,7 +44,7 @@ const SwapForm = ({objkt}) => {
         }
         setTimeout(() => {
             setMessage(null);
-        }, 3000);
+        }, 3200);
     };
 
     return (
