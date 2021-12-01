@@ -57,35 +57,6 @@ const Swaps = ({objktId}) => {
         }, 2000);
     };
 
-    // const handleDecrement = (swapId) => async () => {
-    //     const swaps = objkt.swaps.reduce((arr, s) => {
-    //         const newS = {...s};
-    //         if(newS.id === swapId) {
-    //             newS.amount_left = newS.amount_left - 1;
-    //         }
-    //         if(newS.amount_left <= 0) return arr;
-    //         return arr.concat(newS);
-    //     }, []);
-    //     const availability = updateAvailability(objkt.availability);
-    //     const price = getLowestObjktPrice(swaps);
-    //     await mutate(JSON.stringify([objktFetcherApi, objktId]), {
-    //         objkt: {
-    //             ...objkt,
-    //             availability,
-    //             price,
-    //             swaps
-    //         },
-    //         tracks: tracks.map(t => {
-    //             if(t.id === objkt.id) {
-    //                 t.availability = availability;
-    //                 t.price = price
-    //             }
-    //             return t
-    //         }),
-    //         ...rest
-    //     }, false);
-    // };
-
     return (
         <div className={styles.swapsContainer}>
             {objkt?.swaps?.length ? (
@@ -106,11 +77,6 @@ const Swaps = ({objktId}) => {
                                     >Collect
                                     </button>
                                 </p>}
-                                {/*<button*/}
-                                {/*    onClick={handleDecrement(swap.id,*/}
-                                {/*        swap.price)}*/}
-                                {/*>Decrement*/}
-                                {/*</button>*/}
                             </li>
                         ))}
                     </ul>
