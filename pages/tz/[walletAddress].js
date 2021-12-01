@@ -6,6 +6,7 @@ import WalletTrackList from '../../components/track-lists/wallet-track-list';
 import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 import {useRouter} from 'next/router';
 import {getBlockedTracks, getBlockedWallets} from '../../api/get-blocked-lists';
+import getTzProfileClaims from '../../api/get-tzprofile-claims';
 
 export const getServerSideProps = async({params}) => {
     const {walletAddress} = params;
@@ -20,7 +21,8 @@ export const getServerSideProps = async({params}) => {
     const tracks = [...tracksCreated, ...tracksOwned].filter(
         t => !blockedTracks.data.includes(t));
     const creator = walletAddress;
-
+    const tzProfile = await getTzProfileClaims(walletAddress);
+    console.log('tz', tzProfile);
     return {
         props: {creator, tracks, wallets}
     };

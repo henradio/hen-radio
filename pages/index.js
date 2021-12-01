@@ -6,16 +6,18 @@ import Pagination from '../components/pagination';
 
 export const getServerSideProps = async() => {
     const data = await allTracksFetcher();
+    const swrKey = JSON.stringify([allTracksApi, 1, null]);
     return {
         props: {
+            swrKey,
             fallback: {
-                [JSON.stringify([allTracksApi, 1, null])]: data
+                [swrKey]: data
             }
         }
     };
 };
 
-const AllTracksPage = ({fallback}) => {
+const AllTracksPage = ({fallback, swrKey}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player, all tracks';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
@@ -62,7 +64,7 @@ const AllTracksPage = ({fallback}) => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <AllTracksView/>
+            <AllTracksView swrKey={swrKey} fetcher={allTracksFetcher}/>
             <Pagination page={1} search={null}/>
         </SWRConfig>
     );

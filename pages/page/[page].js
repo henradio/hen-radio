@@ -9,19 +9,20 @@ export const getServerSideProps = async({params, query}) => {
     const search = query?.search || null;
 
     const data = await allTracksFetcher(allTracksApi, page, search);
-
+    const swrKey = JSON.stringify([allTracksApi, page, search]);
     return {
         props: {
             page,
             search,
+            swrKey,
             fallback: {
-                [JSON.stringify([allTracksApi, page, search])]: data
+                [swrKey]: data
             }
         }
     };
 };
 
-const Page = ({page, search, fallback}) => {
+const Page = ({page, search, swrKey, fallback}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player, all tracks';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
@@ -66,7 +67,7 @@ const Page = ({page, search, fallback}) => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <AllTracksView page={page} search={search}/>
+            <AllTracksView swrKey={swrKey} fetcher={allTracksFetcher}/>
             <Pagination page={page} search={search}/>
         </SWRConfig>
     );
