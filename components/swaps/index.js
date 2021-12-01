@@ -6,12 +6,6 @@ import styles from './styles.module.css';
 import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
 import useSWR, {mutate} from 'swr';
 import serialise from '../../fetchers/serialiser';
-import getLowestObjktPrice from '../../utilities/get-lowest-objkt-price';
-
-const updateAvailability = availability => {
-    const [amount, total] = availability.split('/');
-    return `${amount - 1}/${total}`;
-};
 
 const Swaps = ({objktId}) => {
     const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
@@ -28,32 +22,9 @@ const Swaps = ({objktId}) => {
             const isSuccessful = await collect(swapId, xtzAmount);
             setMessage(isSuccessful ? 'Purchase Successful' : 'Failed');
             if(isSuccessful) {
-                // const swaps = objkt.swaps.reduce((arr, s) => {
-                //     const newS = {...s};
-                //     if(newS.id === swapId) {
-                //         newS.amount_left = newS.amount_left - 1;
-                //     }
-                //     if(newS.amount_left <= 0) return arr;
-                //     return arr.concat(newS);
-                // }, []);
-                // const availability = updateAvailability(objkt.availability);
-                // const price = getLowestObjktPrice(swaps);
-                // await mutate(JSON.stringify([objktFetcherApi, objktId]), {
-                //     objkt: {
-                //         ...objkt,
-                //         swaps,
-                //         availability,
-                //         price
-                //     },
-                //     tracks: tracks.map(t => {
-                //         if(t.id === objkt.id) {
-                //             t.availability = availability;
-                //             t.price = price;
-                //         }
-                //         return t;
-                //     }),
-                //     ...rest
-                // }, false);
+                setTimeout(() => {
+                    mutate(JSON.stringify([objktFetcherApi, objktId]));
+                }, 1000);
             }
         } catch(e) {
             setMessage('Failed');
@@ -61,7 +32,6 @@ const Swaps = ({objktId}) => {
         }
         setTimeout(() => {
             setMessage(null);
-            mutate(JSON.stringify([objktFetcherApi, objktId]));
         }, 3000);
     };
 
@@ -71,25 +41,9 @@ const Swaps = ({objktId}) => {
             const isSuccessful = await cancel(id);
             setMessage(isSuccessful ? 'Swap Cancelled' : 'Failed');
             if(isSuccessful) {
-                // const swaps = objkt.swaps.filter((s) => s.id !== id);
-                // const availability = updateAvailability(objkt.availability);
-                // const price = getLowestObjktPrice(swaps);
-                // await mutate(JSON.stringify([objktFetcherApi, objktId]), {
-                //     objkt: {
-                //         ...objkt,
-                //         swaps,
-                //         availability,
-                //         price
-                //     },
-                //     tracks: tracks.map(t => {
-                //         if(t.id === objkt.id) {
-                //             t.availability = availability;
-                //             t.price = price;
-                //         }
-                //         return t;
-                //     }),
-                //     ...rest
-                // }, false);
+                setTimeout(() => {
+                    mutate(JSON.stringify([objktFetcherApi, objktId]));
+                }, 1000);
             }
         } catch(e) {
             setMessage('Failed');
@@ -97,7 +51,6 @@ const Swaps = ({objktId}) => {
         }
         setTimeout(() => {
             setMessage(null);
-            mutate(JSON.stringify([objktFetcherApi, objktId]));
         }, 3000);
     };
 
