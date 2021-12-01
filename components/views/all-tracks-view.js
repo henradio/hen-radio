@@ -13,10 +13,7 @@ const AllTracksView = ({page = 1, search = null}) => {
     const {data} = useSWR([allTracksApi, page, search], allTracksFetcher, {use: [serialise]});
     const {tracks, objkt} = data;
     const {setTracks} = usePlaylist();
-    const {
-        controls,
-        isTrackPlaying
-    } = useRadio();
+    const {controls} = useRadio();
 
     const {trackState} = useTrack();
 
@@ -42,10 +39,7 @@ const AllTracksView = ({page = 1, search = null}) => {
     return (
         <>
             <SearchBar/>
-            <TrackList
-                tracks={tracks}
-                isTrackPlaying={isTrackPlaying}
-            />
+            <TrackList tracks={tracks}/>
         </>
     );
 };

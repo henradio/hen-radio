@@ -15,6 +15,7 @@ import Head from 'next/head';
 import useSWR from 'swr';
 import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
 import serialise from '../../fetchers/serialiser';
+import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
 
 const ObjktView = ({objktId}) => {
     const {data} = useSWR([objktFetcherApi, objktId], objktFetcher, {use: [serialise]});
@@ -148,6 +149,7 @@ const ObjktView = ({objktId}) => {
                             </div>
                         ) : null}
                         <div className={styles.objktActionsBar}>
+                            <TrackPlayPauseButton className={styles.playPause} tracks={tracks} id={objkt.id} />
                             {objkt ? <AddToPlaylist track={objkt}/> : null}
                             {objkt ? <LinkButton track={objkt}/> : null}
                         </div>

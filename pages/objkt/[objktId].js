@@ -10,8 +10,6 @@ export const getServerSideProps = async({params}) => {
         objktId
     );
 
-    console.log(data);
-
     if(blockedObjkts.data.includes(objktId)) {
         return {
             notFound: true
