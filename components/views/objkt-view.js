@@ -109,8 +109,8 @@ const ObjktView = ({objktId}) => {
                         srcSet={objkt?.displayUri
                             ? srcSet
                             : '/images/playlist-default.png'}
-                        width={180}
-                        height={180}
+                        width={600}
+                        height={600}
                         alt=""
                         className={styles.objktImage}
                     />
@@ -153,10 +153,10 @@ const ObjktView = ({objktId}) => {
                             {objkt ? <AddToPlaylist track={objkt}/> : null}
                             {objkt ? <LinkButton track={objkt}/> : null}
                         </div>
+                        <Swaps objktId={objktId}/>
                     </div>
                 </div>
             </div>
-            <Swaps objktId={objktId}/>
             <h2 className={styles.subTitle}>All tracks by {getTrimmedWallet(
                 walletAddress)} {trackState.currentTrack?.creator?.name ||
             ''}</h2>

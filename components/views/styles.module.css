@@ -86,24 +86,25 @@
 }
 
 .objktImageHolder {
-    width: 180px;
-    height: 180px;
+    box-sizing: border-box;
+    width: 50%;
     margin-bottom: 0;
+    padding-right: 24px;
 }
 
 .objktImage {
-    max-width: 180px;
-    max-height: 180px;
+    max-width: 600px;
+    max-height: 600px;
 }
 
 .objktMetaRow {
+    box-sizing: border-box;
+    border-left: 1px solid #E5E5E5;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 4px 0 0 0;
     min-height: 36px;
-    margin-bottom: 8px;
-    margin-left: 24px;
+    padding-left: 24px;
 }
 
 .objktPriceText {
