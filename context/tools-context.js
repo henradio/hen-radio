@@ -20,7 +20,7 @@ const contracts = {
     objkts: 'KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton'
 };
 
-const confirmations = 3;
+const confirmations = 2;
 
 const ToolsProvider = ({children}) => {
     const {Tezos, auth} = useTezos();
