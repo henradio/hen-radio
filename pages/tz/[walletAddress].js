@@ -7,6 +7,10 @@ import getObjktsOwnedBy from '../../api/get-objkts-owned-by';
 import {useRouter} from 'next/router';
 import {getBlockedTracks, getBlockedWallets} from '../../api/get-blocked-lists';
 import getTzProfileClaims from '../../api/get-tzprofile-claims';
+import getProfile from '../../api/get-profile';
+import Image from 'next/image';
+import Profile from '../../components/profile';
+import {getIpfsUrl} from '../../utilities/general';
 
 export const getServerSideProps = async({params}) => {
     const {walletAddress} = params;
@@ -18,21 +22,30 @@ export const getServerSideProps = async({params}) => {
     if(blockedWallets.data.includes(walletAddress)) {
         return {
             notFound: true
-        }
+        };
     }
     const wallets = allWallets.filter(w => !blockedWallets.data.includes(w));
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
     const tracksOwned = await getObjktsOwnedBy(walletAddress);
-    const tracks = [...tracksCreated, ...tracksOwned].filter(t => !blockedTracks.data.includes(t));
+    const tracks = [...tracksCreated, ...tracksOwned].filter(
+        t => !blockedTracks.data.includes(t));
     const creator = walletAddress;
     const tzProfile = await getTzProfileClaims(walletAddress);
+    const profile = await getProfile(walletAddress);
     console.log('tz', tzProfile);
+    console.log('p', profile);
     return {
-        props: {creator, tracks, wallets}
+        props: {
+            creator,
+            tracks,
+            wallets,
+            profile,
+            tzProfile
+        }
     };
 };
 
-const Tz = ({creator, tracks, wallets}) => {
+const Tz = ({creator, tracks, wallets, profile, tzProfile}) => {
     const {isFallback} = useRouter();
 
     if(isFallback) {
@@ -45,17 +58,21 @@ const Tz = ({creator, tracks, wallets}) => {
         return <p>Loading...</p>;
     }
 
-    const title = 'Listen to Hen Radio';
-    const description = 'Hic et Nunc audio NFT audio player and playlists';
-    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
-    const url = 'https://hen.radio/tz';
+    const title = profile?.name
+        ? `Listen to ${profile?.name} on Hen Radio`
+        : 'Listen to Hen Radio';
+    const description = 'Hen Radio artist profile for Hic et Nunc audio NFTs';
+    const image = profile?.metadata?.identicon
+        ? getIpfsUrl(profile?.metadata?.identicon)
+        : 'https://hen.radio/images/hen-radio-logo-social.png';
+    const url = `https://hen.radio/tz/${creator}`;
 
     return <>
         <Head>
             <meta charSet="utf-8"/>
-            <title>Wallets | Hen Radio</title>
+            <title>{profile?.name || 'Artist Profile'} | Hen Radio</title>
             <meta name="description" content={description}/>
-            <link rel="canonical" href={`http://hen.radio/tz`}/>
+            <link rel="canonical" href={url}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>
             <meta name="twitter:creator" content="@hen_radio"/>
@@ -85,6 +102,7 @@ const Tz = ({creator, tracks, wallets}) => {
                 content="initial-scale=1.0, width=device-width"
             />
         </Head>
+        <Profile tzProfile={tzProfile} profile={profile}/>
         <WalletTrackList tracks={tracks} walletAddress={creator} objkt={null}/>
         <WalletView wallets={wallets}/>
     </>;

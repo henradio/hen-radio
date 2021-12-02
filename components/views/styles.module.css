@@ -16,7 +16,6 @@
     border: 1px solid #E5E5E5;
 }
 
-
 .button_getObjktData {
     padding: 4px 3px;
 }
@@ -124,6 +123,7 @@
     .objktMetaRow {
         min-height: 36px;
         padding-left: 24px;
+        border-left: 1px solid #E5E5E5;
     }
 
     .walletInput {
