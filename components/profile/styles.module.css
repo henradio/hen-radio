@@ -1,0 +1,19 @@
+.profileContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.imageHolder {
+    padding-right: 36px;
+}
+
+.title {
+    font-size: 16px;
+    margin: 0;
+}
+
+.text {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+}

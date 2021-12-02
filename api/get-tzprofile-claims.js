@@ -16,7 +16,7 @@ function getClaim(claimStr) {
                 type: 'twitter',
                 link: claim.credentialSubject.sameAs,
                 username: claim.evidence.handle,
-                issuedOn: new Date(claim.issuanceDate),
+                issuedOn: claim.issuanceDate,
             }
         case 'BasicProfile':
             return {
@@ -25,15 +25,14 @@ function getClaim(claimStr) {
                 alias: claim.credentialSubject.alias,
                 logo: claim.credentialSubject.logo,
                 description: claim.credentialSubject.description,
-                issuedOn: new Date(claim.issuanceDate),
+                issuedOn: claim.issuanceDate,
             }
         default:
-            const data ={
+            return {
                 type: claim.type[1],
                 ...claim.credentialSubject,
-                issuedOn: new Date(claim.issuanceDate),
+                issuedOn: claim.issuanceDate,
             }
-            return data
     }
 }
 
@@ -45,11 +44,16 @@ const getTzProfileClaims = async(address) => {
     );
     if(!response?.tzprofiles_by_pk?.valid_claims) return null;
     const validClaims = response?.tzprofiles_by_pk.valid_claims;
-    return validClaims.reduce((arr, vc) => {
+    return validClaims.reduce((obj, vc) => {
         const claimStr = vc?.[1];
-        if(!claimStr) return arr;
-        return arr.concat([getClaim(claimStr)]);
-    }, []);
+        if(!claimStr) return obj;
+        const claim = getClaim(claimStr);
+        if(claim.type in obj && +new Date(claim.issuedOn) < +new Date(obj[claim.type].issuedOn)) {
+            return obj;
+        }
+        obj[claim.type] = claim;
+        return obj;
+    }, {});
 };
 
 export default getTzProfileClaims
