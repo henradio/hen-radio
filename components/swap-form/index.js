@@ -70,6 +70,7 @@ const SwapForm = ({objkt}) => {
                             name="xtz"
                             type="number"
                             min={0}
+                            step="any"
                         />
                     </p>
                     <p className={styles.formField}>
