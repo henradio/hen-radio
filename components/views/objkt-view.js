@@ -164,9 +164,11 @@ const ObjktView = ({objktId}) => {
                     </div>
                 </div>
             </div>
-            <h2 className={styles.subTitle}>All tracks by {getTrimmedWallet(
-                walletAddress)} {trackState.currentTrack?.creator?.name ||
-            ''}</h2>
+            <h2 className={styles.subTitle}>
+                All tracks by {getTrimmedWallet(walletAddress)}
+                {' '}
+                {objkt.creator?.name || ''}
+            </h2>
             <TrackList
                 tracks={tracks}
                 isTrackPlaying={isTrackPlaying}
