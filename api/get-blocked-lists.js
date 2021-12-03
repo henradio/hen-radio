@@ -6,7 +6,8 @@ const localWalletBlockList = [
 ];
 
 const localTrackBlockList = [
-
+    569091,
+    569105
 ];
 
 export const getBlockedTracks = async() => {
@@ -23,8 +24,3 @@ export const getBlockedWallets = async() => {
 
 export const getBans = () => axios.get(BLOCKLIST_BAN);
 
-export const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
-    allTracks.filter(t => (
-        !blockedWallets.includes(t.creator_id) &&
-        !blockedObjkts.includes(t.id)
-    ));

@@ -5,12 +5,12 @@ import {SWRConfig} from 'swr';
 
 export const getServerSideProps = async({params}) => {
     const {objktId} = params;
-    const {blockedObjkts, ...data} = await objktFetcher(
+    const {blockedObjkts, blockedWallets, objkt, ...rest} = await objktFetcher(
         objktFetcherApi,
         objktId
     );
 
-    if(blockedObjkts.includes(objktId)) {
+    if(blockedObjkts.includes(Number(objktId)) || blockedWallets.includes(objkt.creator.walletAddress)) {
         return {
             notFound: true
         };
@@ -20,7 +20,7 @@ export const getServerSideProps = async({params}) => {
         props: {
             objktId,
             fallback: {
-                [JSON.stringify([objktFetcherApi, objktId])]: data
+                [JSON.stringify([objktFetcherApi, objktId])]: {objkt, ...rest}
             }
         }
     };

@@ -1,16 +1,35 @@
-import {getBlockedTracks} from '../api/get-blocked-lists';
+import {getBlockedTracks, getBlockedWallets} from '../api/get-blocked-lists';
 import getObjktById from '../api/get-objkt-by-id';
 import getObjktsCreatedBy from '../api/get-objkts-created-by';
+import filterBannedTracks from '../utilities/filter-banned-tracks';
 
 export const objktFetcherApi = '/api/objkt';
 
 const objktFetcher = async(url, objktId) => {
-    const blockedObjkts = await getBlockedTracks();
-    const objkt = await getObjktById(objktId);
-    let tracks = [];
-    if(objkt) tracks = await getObjktsCreatedBy(objkt.creator.walletAddress);
+    const [objkt, blockedObjkts, blockedWallets] = await Promise.all([
+        getObjktById(objktId),
+        getBlockedTracks(),
+        getBlockedWallets()
+    ]);
 
-    return {blockedObjkts, objkt, tracks, walletAddress: objkt.creator.walletAddress};
+    let tracks = [];
+
+    if(objkt) {
+        const allTracks = await getObjktsCreatedBy(objkt.creator.walletAddress);
+        tracks = filterBannedTracks(
+            allTracks,
+            blockedWallets,
+            blockedObjkts
+        );
+    }
+
+    return {
+        blockedObjkts,
+        blockedWallets,
+        objkt,
+        tracks,
+        walletAddress: objkt.creator.walletAddress
+    };
 };
 
-export default objktFetcher
+export default objktFetcher;
