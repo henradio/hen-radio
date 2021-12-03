@@ -19,21 +19,19 @@ export const getServerSideProps = async({params}) => {
         getBlockedWallets(),
         getBlockedTracks()
     ]);
-    if(blockedWallets.data.includes(walletAddress)) {
+    if(blockedWallets.includes(walletAddress)) {
         return {
             notFound: true
         };
     }
-    const wallets = allWallets.filter(w => !blockedWallets.data.includes(w));
+    const wallets = allWallets.filter(w => !blockedWallets.includes(w));
     const tracksCreated = await getObjktsCreatedBy(walletAddress);
     const tracksOwned = await getObjktsOwnedBy(walletAddress);
-    const tracks = [...tracksCreated, ...tracksOwned].filter(
-        t => !blockedTracks.data.includes(t));
+    const tracks = [...tracksCreated, ...tracksOwned]
+        .filter(t => !blockedTracks.includes(t));
     const creator = walletAddress;
     const tzProfile = await getTzProfileClaims(walletAddress);
     const profile = await getProfile(walletAddress);
-    console.log('tz', tzProfile);
-    console.log('p', profile);
     return {
         props: {
             creator,

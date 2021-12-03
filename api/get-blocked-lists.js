@@ -1,12 +1,30 @@
 import axios from 'axios';
 import {BLOCKLIST_BAN, BLOCKLIST_OBJKT, BLOCKLIST_WALLET} from '../constants';
 
-export const getBlockedTracks = () => axios.get(BLOCKLIST_OBJKT)
-export const getBlockedWallets = () => axios.get(BLOCKLIST_WALLET)
-export const getBans = () => axios.get(BLOCKLIST_BAN)
+const localWalletBlockList = [
+    'tz1MsvbKeYFg2mpJtCAPGYPn9rdnANTcTEMQ'
+];
+
+const localTrackBlockList = [
+
+];
+
+export const getBlockedTracks = async() => {
+    const response = await axios.get(BLOCKLIST_OBJKT);
+    if(!response) return null;
+    return localTrackBlockList.concat(response.data);
+};
+
+export const getBlockedWallets = async() => {
+    const response = await axios.get(BLOCKLIST_WALLET);
+    if(!response) return null;
+    return localWalletBlockList.concat(response.data);
+};
+
+export const getBans = () => axios.get(BLOCKLIST_BAN);
 
 export const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
     allTracks.filter(t => (
-        !blockedWallets.data.includes(t.creator_id) &&
-        !blockedObjkts.data.includes(t.id)
+        !blockedWallets.includes(t.creator_id) &&
+        !blockedObjkts.includes(t.id)
     ));

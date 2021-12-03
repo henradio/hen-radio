@@ -1,8 +1,8 @@
 const filterBannedTracks = (allTracks, blockedWallets, blockedObjkts) =>
     allTracks.filter(t => {
         return (
-            !blockedWallets.data.includes(t.creator.walletAddress) &&
-            !blockedObjkts.data.includes(t.id)
+            !blockedWallets.includes(t.creator.walletAddress) &&
+            !blockedObjkts.includes(t.id)
         );
     });
 

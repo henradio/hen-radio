@@ -8,7 +8,7 @@ export const getStaticProps = async() => {
         getWalletsWithAudio(),
         getBlockedWallets()
     ]);
-    const wallets = allWallets.filter(w => !blockedWallets.data.includes(w));
+    const wallets = allWallets.filter(w => !blockedWallets.includes(w));
     return {
         props: {wallets},
         revalidate: 300

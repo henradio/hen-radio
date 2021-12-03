@@ -28,7 +28,6 @@ const getProfile = async(address) => {
         {address}
     );
 
-    console.log(response);
     if(!response?.hic_et_nunc_token_holder?.[0]?.holder) return null;
     const data = response.hic_et_nunc_token_holder[0].holder;
     if(data.metadata_file){
