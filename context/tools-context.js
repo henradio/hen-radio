@@ -143,6 +143,8 @@ const ToolsProvider = ({children}) => {
     };
 
     const collect = async(swapId, xtzAmount) => {
+        console.log('swapId', swapId);
+        console.log('amount', xtzAmount);
         try {
             const v2 = await Tezos.wallet.at(contracts.v2);
             const operation = await v2.methods
