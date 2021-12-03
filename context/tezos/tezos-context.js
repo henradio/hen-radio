@@ -2,11 +2,11 @@ import { createContext, useEffect, useState } from 'react';
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
 
-const Tezos = new TezosToolkit('https://mainnet.api.tez.ie');
+const Tezos = new TezosToolkit('https://mainnet.smartpy.io');
 
 const network = {
     type: 'mainnet',
-    rpcUrl: 'https://mainnet.api.tez.ie'
+    rpcUrl: 'https://mainnet.smartpy.io'
 };
 
 let wallet
