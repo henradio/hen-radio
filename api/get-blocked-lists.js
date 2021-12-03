@@ -2,7 +2,8 @@ import axios from 'axios';
 import {BLOCKLIST_BAN, BLOCKLIST_OBJKT, BLOCKLIST_WALLET} from '../constants';
 
 const localWalletBlockList = [
-    'tz1MsvbKeYFg2mpJtCAPGYPn9rdnANTcTEMQ'
+    'tz1MsvbKeYFg2mpJtCAPGYPn9rdnANTcTEMQ',
+    'tz1aZjMDWKbS2D4LfJFfG1CqLvvXTQzwQiBQ'
 ];
 
 const localTrackBlockList = [
