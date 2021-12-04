@@ -70,7 +70,7 @@ const Faq = () =>
                        Hen.radio?</strong></p>
             <p>A.</p>
             <ul>
-                <li>You can find us on Discord: <a href="https://discord.gg/3zAx6Rsh"><strong>hen-radio</strong></a></li>
+                <li>You can find us on Discord: <a href="https://discord.gg/APCqQ3M5"><strong>hen-radio</strong></a></li>
                 <li>Twitter: <a href="https://twitter.com/hen_radio"><strong>@hen_radio</strong></a>
                 </li>
                 <li>Github: <a href="https://github.com/henradio/hen-radio"><strong>hen-radio</strong></a>
