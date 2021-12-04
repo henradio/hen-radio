@@ -16,6 +16,8 @@ const Faq = () =>
             <p>A. Sync your wallet using
                the <strong>sync</strong> button on the top right
                corner. A <strong>Mint</strong> button will then appear.
+               Find more details on how to mint <a href="https://github.com/henradio/hen-radio/wiki/How-to#how-to-mint">
+                    <u>here</u></a>.
             </p>
             <p><strong>Q. Is everything here also work on Hic et Nunc?</strong>
             </p>
