@@ -3,12 +3,16 @@ import {BLOCKLIST_BAN, BLOCKLIST_OBJKT, BLOCKLIST_WALLET} from '../constants';
 
 const localWalletBlockList = [
     'tz1MsvbKeYFg2mpJtCAPGYPn9rdnANTcTEMQ',
-    'tz1aZjMDWKbS2D4LfJFfG1CqLvvXTQzwQiBQ'
+    'tz1aZjMDWKbS2D4LfJFfG1CqLvvXTQzwQiBQ',
+    'tz1T4aXc5yNNyBhMRdUtDwzLmsTdjnmsb6Zn',
+    'tz1YHVXBpx4WzsbaYhv5VThj1ojcEhVYw1Md'
 ];
 
 const localTrackBlockList = [
     569091,
-    569105
+    569105,
+    570519,
+    570664
 ];
 
 export const getBlockedTracks = async() => {

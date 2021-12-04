@@ -25,7 +25,6 @@ const allTracksFetcher = async(url = allTracksApi, page = 1, search = '') => {
         blockedWallets,
         blockedObjkts
     );
-
     return {tracks, page, search, total, limit};
 };
 
