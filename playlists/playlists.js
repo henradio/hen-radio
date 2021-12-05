@@ -1,5 +1,17 @@
 export const playlists = [
     {
+        name: 'MindVomit FM',
+        curator: 'Mindvomit',
+        description: "An art Collective based in Atlanta",
+        img: '/images/mindvomit.jpg',
+        slug: 'mindvomit',
+        tracks: [
+            {"id":559593,"creator":{"walletAddress":"tz1Qnn1wT4DFRiQKwRzWe3ZpCYUVEj4EvYcw","name":"mindvomit","metadata":{"identicon":"ipfs://QmeyFijU2RMgRf7iGJdshbjM3YgTpiJGjRmfnpBL7SCSRA","description":"multimedia collective in atlanta founded by @jameecornelia"}},"title":"Autumn View by Jamee Cornelia","src":"https://dweb.link/ipfs/QmUWnSQGYEiboXpEhSMUY5RXuayupuECam9FiVUySFDQMp","mimeType":"audio/wav","displayUri":"ipfs://QmV1dcpciccvTEUfSQQ9GkQ3xVwJ3Z6mSPmKpuLF4Qa9Sc","tags":[]},
+            {"id":564713,"creator":{"walletAddress":"tz1Qnn1wT4DFRiQKwRzWe3ZpCYUVEj4EvYcw","name":"mindvomit","metadata":{"identicon":"ipfs://QmeyFijU2RMgRf7iGJdshbjM3YgTpiJGjRmfnpBL7SCSRA","description":"multimedia collective in atlanta founded by @jameecornelia"}},"title":"dis bitch talk to much by jimmy.","src":"https://cloudflare-ipfs.com/ipfs/QmbbCwQFyDjb7UgAPfXhNR3GH3T3ocwNRkequCDC9GYoyJ","mimeType":"audio/wav","displayUri":"ipfs://Qmc11KbfH6d5Jhwos3LpgYvGhutT5VY1ksvvdiD2nc6yw6","tags":[]},
+            {"id":564856,"creator":{"walletAddress":"tz1Qnn1wT4DFRiQKwRzWe3ZpCYUVEj4EvYcw","name":"mindvomit","metadata":{"identicon":"ipfs://QmeyFijU2RMgRf7iGJdshbjM3YgTpiJGjRmfnpBL7SCSRA","description":"multimedia collective in atlanta founded by @jameecornelia"}},"title":"Summer in Britannia","src":"https://infura-ipfs.io/ipfs/QmNQJhAUXDuX47YZDq8864B8w7V1YYw2fEgEDQBonodcsf","mimeType":"audio/wav","displayUri":"ipfs://QmQGLcoB2hVfVWAKWUqKcs5cQEL3UUddTbbGn4MLBruzxa","tags":[]}
+        ]
+    },
+        {
         name: 'Lucy',
         curator: 'tuneofworms - Brazilian audiovisual artist.',
         description: "Generative music developed in MaxLive for @tuneofworms.",
