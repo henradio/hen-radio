@@ -23,7 +23,8 @@ const localTrackBlockList = [
     572464,
     572320,
     572371,
-    572583
+    572583,
+    573573
 ];
 
 export const getBlockedTracks = async() => {
