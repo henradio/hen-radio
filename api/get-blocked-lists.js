@@ -10,7 +10,8 @@ const localWalletBlockList = [
     'tz1fRL3YzHHwN3Q1nqP1WYwCJTE1GsjbQ38Z',
     'tz1WD52Q8yh27CvitdP8C6Qwo2PVGfTGqURv',
     'tz1c5eQZjKiqmwCnjnunm31LnuC1tSyqjixs',
-    'tz1YYH6mXC859p15T5UgrJ5Yrabu6v7TfFKu'
+    'tz1YYH6mXC859p15T5UgrJ5Yrabu6v7TfFKu',
+    'tz1ayFghjDU1k6NJGC32zCQot2hHgPC4kv1A'
 ];
 
 const localTrackBlockList = [
