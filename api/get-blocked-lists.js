@@ -13,7 +13,8 @@ const localWalletBlockList = [
     'tz1YYH6mXC859p15T5UgrJ5Yrabu6v7TfFKu',
     'tz1ayFghjDU1k6NJGC32zCQot2hHgPC4kv1A',
     'tz1RxeTKTXJFz3g91w8r3C7HF6uKmuMdbwWQ',
-    'tz1hbv7JSRA1GkE5jFcKyXdz1YVeznzxDDZ4'
+    'tz1hbv7JSRA1GkE5jFcKyXdz1YVeznzxDDZ4',
+    'tz1h3EPkjaYRVW8gUgWtMk66G7xze8BeBaA6'
 ];
 
 const localTrackBlockList = [
@@ -27,7 +28,8 @@ const localTrackBlockList = [
     572320,
     572371,
     572583,
-    573573
+    573573,
+    581113
 ];
 
 export const getBlockedTracks = async() => {
