@@ -2,7 +2,7 @@ export const playlists = [
     {
         name: "Sound Track",
         curator: '@pepi_music',
-        description: "Soundtrack is a @pepi_music and @onda_sismica project. Positive vibes in nftmusic! Sounds and images to the rhythm of life",
+        description: "Soundtrack is a @pepi_music and @onda_sismica project. Positive vibes in nftmusic! Sounds and images to the rhythm of life.",
         img: '/images/pepi.jpg',
         slug: 'pepi',
         tracks: [
