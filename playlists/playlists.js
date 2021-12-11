@@ -1,5 +1,17 @@
 export const playlists = [
     {
+        name: "Sound Track",
+        curator: '@pepi_music',
+        description: "Soundtrack is a @pepi_music and @onda_sismica project. Positive vibes in nftmusic! Sounds and images to the rhythm of life",
+        img: '/images/pepi.jpg',
+        slug: 'pepi',
+        tracks: [
+            {"id":569471,"creator":{"walletAddress":"tz1iBH9GM3gZgQk8VbaCiD569gxzfgHNzjM5","name":"soundtrack","metadata":{"identicon":"ipfs://QmYP1XGFrP8E6WSKkxcsfYc54q4XJHyhv5J64UBEf9DkJ5","description":"@pepi_music and @onda_sismica project"}},"title":"Sick and Zara ","src":"https://ipfs.io/ipfs/QmQG6SMXEsdD3gjWvZ5tVunkwEYBr2uhz3JZ1dU3awKvwe","mimeType":"audio/mpeg","displayUri":"ipfs://QmVwYruqKuL5sJNNaibUrRBG6RvzVVju6ANF4iYu7qhWvN","tags":[]},
+            {"id":569507,"creator":{"walletAddress":"tz1iBH9GM3gZgQk8VbaCiD569gxzfgHNzjM5","name":"soundtrack","metadata":{"identicon":"ipfs://QmYP1XGFrP8E6WSKkxcsfYc54q4XJHyhv5J64UBEf9DkJ5","description":"@pepi_music and @onda_sismica project"}},"title":"Sweat Dynamyth","src":"https://ipfs.io/ipfs/QmTaUCDUctrP9rDc3gVixT7htaPQ8ZGa6yQLjQsms5cNUu","mimeType":"audio/mpeg","displayUri":"ipfs://QmSQRBSRLPXaputqU3KA6nmivMfrU5xBN41XR9VQ5v7P33","tags":[]},
+            {"id":569518,"creator":{"walletAddress":"tz1iBH9GM3gZgQk8VbaCiD569gxzfgHNzjM5","name":"soundtrack","metadata":{"identicon":"ipfs://QmYP1XGFrP8E6WSKkxcsfYc54q4XJHyhv5J64UBEf9DkJ5","description":"@pepi_music and @onda_sismica project"}},"title":"Afrika","src":"https://ipfs.io/ipfs/QmdYM58UAQkxVu6Ng1zT2TEnc9hWZ9a48qLbKpCBCZmpTG","mimeType":"audio/mpeg","displayUri":"ipfs://QmXMX8D3DmUmLtTdU2Ev2xhMMyw61ReWsSmT1ZgDSKxuKE","tags":[]}    
+        ]
+    },
+    {
         name: "The Mole's King Tomb",
         curator: '@EternaGnose',
         description: "The Mole King's Tomb is sc0r3boi's first album. Inspired by game soundtracks, sc0r3boi brings that nostalgic sound with heavy influence of the music of games like Stardew Valley, Runescape and Minecraft.",
