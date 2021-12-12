@@ -9,6 +9,13 @@ const MyApp = ({Component, pageProps}) => {
         const router = useRouter();
 
         useEffect(() => {
+            const storedDarkMode = window.localStorage.getItem('darkMode');
+            if(storedDarkMode === 'true') {
+                document.body.classList.add('darkMode');
+            }
+        }, []);
+
+        useEffect(() => {
             const handleStart = (url) => {
                 NProgress.start();
             };
