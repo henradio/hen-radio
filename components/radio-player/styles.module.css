@@ -305,13 +305,13 @@ input[type=range].radioRange:focus::-ms-fill-upper {
 }
 
 .trackRow_link {
-    color: var(--black);
+    color: var(--text);
     text-decoration: none;
     font-weight: 700;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
-    color: var(--black);
+    color: var(--text);
     text-decoration: underline;
 }
 
