@@ -12,16 +12,27 @@ import Image from 'next/image';
 import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
 import Link from 'next/link';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 function DarkModeButton() {
     const [darkMode, setDarkMode] = useState(false);
 
+    useEffect(() => {
+        const storedDarkMode = window.localStorage.getItem('darkMode');
+        console.log('storedDarkMode', storedDarkMode);
+        if(storedDarkMode === 'true') {
+            document.body.classList.add('darkMode');
+            setDarkMode(true);
+        }
+    }, [])
+
     function handleDarkModeToggle() {
         if(!darkMode) {
             document.body.classList.add('darkMode');
+            window?.localStorage.setItem('darkMode', "true");
         } else {
             document.body.classList.remove('darkMode');
+            window?.localStorage.setItem('darkMode', 'false');
         }
         setDarkMode(!darkMode);
     }
