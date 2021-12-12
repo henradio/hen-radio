@@ -3,22 +3,46 @@ import PlayPauseButton from './buttons/play-pause-button';
 import MuteButton from './buttons/mute-button';
 import useRadio from '../../hooks/use-radio';
 import usePlaylist from '../../hooks/use-playlist';
-import { getIpfsUrl, getTrimmedWallet } from '../../utilities/general';
+import {getIpfsUrl, getTrimmedWallet} from '../../utilities/general';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
-import { ipfsUrls } from '../../constants';
+import {ipfsUrls} from '../../constants';
 import PrevButton from './buttons/prev-button';
 import NextButton from './buttons/next-button';
 import Image from 'next/image';
 import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
 import Link from 'next/link';
+import {useState} from 'react';
+
+function DarkModeButton() {
+    const [darkMode, setDarkMode] = useState(false);
+
+    function handleDarkModeToggle() {
+        if(!darkMode) {
+            document.body.classList.add('darkMode');
+        } else {
+            document.body.classList.remove('darkMode');
+        }
+        setDarkMode(!darkMode);
+    }
+
+    return (
+        <div className={styles.darkModeButtonHolder}>
+            <button
+                onClick={handleDarkModeToggle}
+                id={'darkModeButton'}
+                title={'Toggle dark mode'}
+            >{darkMode ? '✧' : '✦'}</button>
+        </div>
+    );
+}
 
 const Player = () => {
     const {tracks} = usePlaylist();
     const {
         audioError,
         playerState,
-        controls,
+        controls
     } = useRadio();
     const {trackState} = useTrack();
     const track = trackState?.currentTrack;
@@ -66,7 +90,8 @@ const Player = () => {
                                 <span>by&nbsp;
                                     <Link href={`/tz/${track.creator.walletAddress}`}>
                                         <a>
-                                            {getTrimmedWallet(track.creator.walletAddress)} {track.creator.name}
+                                            {getTrimmedWallet(
+                                                track.creator.walletAddress)} {track.creator.name}
                                         </a>
                                     </Link>
                                 </span>
@@ -76,8 +101,11 @@ const Player = () => {
             </div>
             {track?.availability ? <div className={styles.priceData}>
                 <p className={styles.priceText}>Editions: {track.availability}</p>
-                {track.price ? (<p className={styles.priceText}>Price: {track.price}</p>) : null}
+                {track.price
+                    ? (<p className={styles.priceText}>Price: {track.price}</p>)
+                    : null}
             </div> : null}
+            <DarkModeButton/>
         </div>
     );
 };
@@ -95,7 +123,9 @@ const RadioPlayer = () => {
                     src={track?.displayUri
                         ? getIpfsUrl(track.displayUri)
                         : '/images/playlist-default.png'}
-                    srcSet={track?.displayUri ? srcSet : 'images/playlist-default.png'}
+                    srcSet={track?.displayUri
+                        ? srcSet
+                        : 'images/playlist-default.png'}
                     width={180}
                     height={180}
                     alt=""

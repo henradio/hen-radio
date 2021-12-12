@@ -11,7 +11,7 @@
 
 .createPlaylist_input {
     padding: 6px 4px;
-    border: 1px solid #E5E5E5;
+    border: 1px solid var(--border);
     margin-bottom: 0;
 }
 
@@ -53,6 +53,7 @@
     margin-top: 6px;
     word-break: break-all;
     hyphens: auto;
+    color: var(--text);
 }
 
 .searchInput {
@@ -60,7 +61,7 @@
     width: 100%;
     margin-bottom: 8px;
     padding: 6px 4px;
-    border: 1px solid #E5E5E5;
+    border: 1px solid var(--border);
 }
 
 .filteredPlaylists {
@@ -97,7 +98,7 @@
     width: 100%;
     margin: 0 0 8px 0;
     padding: 0 0 8px 0;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
     align-items: center;
 }
 
@@ -107,12 +108,12 @@
 }
 
 .trackRow_link {
-    color: #000;
+    color: var(--text);
     text-decoration: none;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
-    color: #000;
+    color: var(--text);
     text-decoration: underline;
 }
 

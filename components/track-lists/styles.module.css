@@ -2,7 +2,7 @@
     display: flex;
     margin: 0 0 8px 0;
     padding: 0 0 8px 0;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
     align-items: center;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .trackRow_link {
-    color: #000;
+    color: var(--text);
     text-decoration: none;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
-    color: #000;
+    color: var(--text);
     text-decoration: underline;
 }
 
@@ -69,7 +69,7 @@
     display: flex;
     padding-bottom: 8px;
     margin-bottom: 8px;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
 }
 
 .filterButton {
@@ -112,7 +112,7 @@
 }
 
 .tagsContainer {
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
     margin-bottom: 16px;
 }
 
@@ -131,7 +131,7 @@
 
 .searchField {
     padding: 6px 4px;
-    border: 1px solid #E5E5E5;
+    border: 1px solid var(--border);
     width: 100%;
 }
 
@@ -149,7 +149,7 @@
 
     .searchField {
         padding: 6px 4px;
-        border: 1px solid #E5E5E5;
+        border: 1px solid var(--border);
         min-width: 400px;
         width: 33%;
     }

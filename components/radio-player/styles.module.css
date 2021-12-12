@@ -7,7 +7,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: #fff;
+    background-color: var(--white);
     padding: 16px 40px;
     z-index: 1;
     box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.1);
@@ -91,7 +91,7 @@
 }
 
 .playerIconHolder svg {
-    fill: #000000;
+    fill: currentColor;
 }
 
 .button_link {
@@ -203,7 +203,7 @@ input[type=range].radioRange:focus {
 }
 
 input[type=range].radioRange::-webkit-slider-runnable-track {
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 1px;
     width: 100%;
@@ -215,7 +215,7 @@ input[type=range].radioRange::-webkit-slider-thumb {
     margin-top: -10.5px;
     width: 5px;
     height: 23px;
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 2px;
     cursor: pointer;
@@ -224,11 +224,11 @@ input[type=range].radioRange::-webkit-slider-thumb {
 }
 
 input[type=range].radioRange:focus::-webkit-slider-runnable-track {
-    background: #000000;
+    background: var(--black);
 }
 
 input[type=range].radioRange::-moz-range-track {
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 1px;
     width: 100%;
@@ -239,7 +239,7 @@ input[type=range].radioRange::-moz-range-track {
 input[type=range].radioRange::-moz-range-thumb {
     width: 5px;
     height: 23px;
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 2px;
     cursor: pointer;
@@ -257,13 +257,13 @@ input[type=range].radioRange::-ms-track {
 }
 
 input[type=range].radioRange::-ms-fill-lower {
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 2px;
 }
 
 input[type=range].radioRange::-ms-fill-upper {
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 2px;
 }
@@ -271,7 +271,7 @@ input[type=range].radioRange::-ms-fill-upper {
 input[type=range].radioRange::-ms-thumb {
     width: 5px;
     height: 23px;
-    background: #000000;
+    background: var(--black);
     border: 0;
     border-radius: 2px;
     cursor: pointer;
@@ -280,11 +280,11 @@ input[type=range].radioRange::-ms-thumb {
 }
 
 input[type=range].radioRange:focus::-ms-fill-lower {
-    background: #000000;
+    background: var(--black);
 }
 
 input[type=range].radioRange:focus::-ms-fill-upper {
-    background: #000000;
+    background: var(--black);
 }
 
 @supports (-ms-ime-align:auto) {
@@ -305,13 +305,13 @@ input[type=range].radioRange:focus::-ms-fill-upper {
 }
 
 .trackRow_link {
-    color: #000;
+    color: var(--black);
     text-decoration: none;
     font-weight: 700;
 }
 
 .trackRow_link:active, .trackRow_link:focus, .trackRow_link:visited {
-    color: #000;
+    color: var(--black);
     text-decoration: underline;
 }
 
@@ -329,6 +329,10 @@ input[type=range].radioRange:focus::-ms-fill-upper {
     margin-right: 16px;
     display: flex;
     align-items: center;
+}
+
+.darkModeButtonHolder {
+    margin-left: auto;
 }
 
 @media screen and (min-width: 600px) {
