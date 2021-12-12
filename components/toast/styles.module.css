@@ -5,7 +5,7 @@
     width: 300px;
     padding: 24px;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 .toastText {

@@ -1,3 +1,16 @@
+:root {
+  --black: #111115;
+  --white: #faf7f6;
+  --lighter-grey: #dcdce8;
+  --light-grey: #b1b1b9;
+  --dark-grey: #5b5b60;
+  --darker-grey: #27272a;
+  --text: var(--black);
+  --border: var(--light-grey);
+  --button-background: var(--white);
+  --button-border: var(--black);
+}
+
 @font-face {
   font-family: "BallingerMono";
   src: url("/fonts/WOFF2/BallingerMono-Bold.woff2") format("woff2"),
@@ -27,6 +40,21 @@ html, body {
   margin: 0;
   font-family: "BallingerMono", "Courier New", Courier, monospace;
   font-weight: 400;
+  color: var(--text);
+  background-color: var(--white);
+}
+
+.darkMode {
+  --black: #faf7f6;
+  --white: #111115;
+  --lighter-grey: #dcdce8;
+  --light-grey: #b1b1b9;
+  --dark-grey: #5b5b60;
+  --darker-grey: #27272a;
+  --text: var(--lighter-grey);
+  --border: var(--dark-grey);
+  --button-background: var(--white);
+  --button-border: var(--black);
 }
 
 button, input, textarea {
@@ -35,28 +63,29 @@ button, input, textarea {
 }
 
 button {
-  background-color: #fff;
+  background-color: var(--button-background);
   border-top: 0;
   border-left: 0;
-  border-right: 2px #000000 solid;
-  border-bottom: 2px #000000 solid;
+  border-right: 2px var(--button-border) solid;
+  border-bottom: 2px var(--button-border) solid;
   padding: 1px 4px;
   cursor: pointer;
+  color: var(--text);
 }
 
 input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea {
   padding: 6px 4px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid var(--border);
   margin-bottom: 0;
 }
 
 a {
-  color: #000;
+  color: var(--text);
   text-decoration: none;
 }
 
 a:hover, a:visited, a:active {
-  color: #000;
+  color: var(--text);
   text-decoration: underline;
 }
 
@@ -70,7 +99,7 @@ h1, h2, h3, h4, h5, h6, strong, b {
 }
 
 #nprogress .bar {
-  background: #000;
+  background: var(--black);
 
   position: fixed;
   z-index: 1031;
@@ -88,9 +117,8 @@ h1, h2, h3, h4, h5, h6, strong, b {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #000, 0 0 5px #000;
+  box-shadow: 0 0 10px var(--black), 0 0 5px var(--black);
   opacity: 1;
-
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
@@ -111,8 +139,8 @@ h1, h2, h3, h4, h5, h6, strong, b {
   box-sizing: border-box;
 
   border: solid 2px transparent;
-  border-top-color: #000;
-  border-left-color: #000;
+  border-top-color: var(--black);
+  border-left-color: var(--black);
   border-radius: 50%;
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;

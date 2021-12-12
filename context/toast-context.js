@@ -11,7 +11,7 @@ const styles = {
         width: '240px',
         padding: '24px',
         boxShadow: '3px 3px 12px rgba(0, 0, 0, 0.4)',
-        backgroundColor: '#ffffff'
+        backgroundColor: 'var(--white)'
     },
     toastText: {
         margin: '0 0 16px'

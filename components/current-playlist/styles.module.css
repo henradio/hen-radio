@@ -6,6 +6,7 @@
 .currentPlaylistText {
     font-size: 18px;
     margin: 0;
+    color: var(--text);
 }
 
 .currentPlaylistArtist {

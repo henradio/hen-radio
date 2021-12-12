@@ -12,5 +12,5 @@
     font-size: 14px;
     padding-bottom: 8px;
     margin-bottom: 8px;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
 }

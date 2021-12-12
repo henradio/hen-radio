@@ -8,7 +8,7 @@
     left: 0;
     top: 100%;
     width: 240px;
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 12px 6px;
     border-radius: 2px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -20,11 +20,12 @@
     min-height: 24px;
     padding: 8px 0;
     border: none;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--border);
 }
 
 .addToPlaylist_addToggle {
     font-size: 14px;
+    color: var(--text);
 }
 
 .addToPlaylist_button:hover {
