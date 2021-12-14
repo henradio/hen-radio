@@ -13,6 +13,7 @@ import LinkButton from './buttons/link-button';
 import useTrack from '../../hooks/use-track';
 import Link from 'next/link';
 import {useEffect, useState} from 'react';
+import useStation from '../../hooks/use-station';
 
 function DarkModeButton() {
     const [darkMode, setDarkMode] = useState(false);
@@ -53,6 +54,8 @@ const Player = () => {
     } = useRadio();
     const {trackState} = useTrack();
     const track = trackState?.currentTrack;
+    const {stationQuery} = useStation();
+
     return (
         <div className={styles.controlsLayout}>
             <div className={styles.playerBar}>
@@ -88,14 +91,14 @@ const Player = () => {
                                     #{track.id}
                                 </a>
                                 <br/>
-                                <Link href={`/objkt/${track.id}`}>
+                                <Link href={{pathname:`/objkt/${track.id}`, query: stationQuery}}>
                                     <a className={styles.trackRow_link}>
                                         <strong>{track.title}</strong>
                                     </a>
                                 </Link>
                                 <br/>
                                 <span>by&nbsp;
-                                    <Link href={`/tz/${track.creator.walletAddress}`}>
+                                    <Link href={{pathname:`/tz/${track.creator.walletAddress}`, query: stationQuery}}>
                                         <a>
                                             {getTrimmedWallet(
                                                 track.creator.walletAddress)} {track.creator.name}

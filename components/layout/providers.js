@@ -10,29 +10,32 @@ import MintProvider from '../../context/tezos/mint-context';
 import CompressProvider from '../../context/audio-compression-context';
 import ToastProvider from '../../context/toast-context';
 import ToolsProvider from '../../context/tools-context';
+import StationProvider from '../../context/station-context';
 
 const Providers = ({children}) =>
     <CompressProvider>
         <ToastProvider>
             <TezosProvider>
                 <ToolsProvider>
-                    <MintProvider>
-                        <TrackProvider>
-                            <RadioProvider>
-                                <UserPlaylistProvider>
-                                    <PlaylistProvider>
-                                        <Layout>
-                                            <div className={styles.radioPlayerBar}>
-                                                <RadioPlayer/>
-                                            </div>
-                                            {children}
-                                        </Layout>
-                                    </PlaylistProvider>
-                                </UserPlaylistProvider>
-                            </RadioProvider>
-                        </TrackProvider>
-                    </MintProvider>
-                </ToolsProvider>
+                    <StationProvider>
+                        <MintProvider>
+                            <TrackProvider>
+                                <RadioProvider>
+                                    <UserPlaylistProvider>
+                                        <PlaylistProvider>
+                                          <Layout>
+                                              <div className={styles.radioPlayerBar}>
+                                                  <RadioPlayer/>
+                                              </div>
+                                             {children}
+                                             </Layout>
+                                        </PlaylistProvider>
+                                    </UserPlaylistProvider>
+                                 </RadioProvider>
+                             </TrackProvider>
+                         </MintProvider>
+                        </StationProvider>
+                    </ToolsProvider>
             </TezosProvider>
         </ToastProvider>
     </CompressProvider>

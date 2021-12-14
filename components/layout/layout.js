@@ -7,17 +7,11 @@ import useTezos from '../../hooks/use-tezos';
 import View from './view';
 import {getTrimmedWallet} from '../../utilities/general';
 import {useRouter} from "next/router";
-
+import useStation from '../../hooks/use-station';
 
 const Layout = ({params, children}) => {
     const {auth, sync, unsync} = useTezos();
-    const {query} = useRouter();
-    const station = query.station;
-    const stationQuery = station && `station=${station}`;
- 
-    useEffect(() => {
-        station && document.body.classList.add(station);
-    }, [station]);
+    const {stationQuery} = useStation();
 
     return (
         <View params={params}>
