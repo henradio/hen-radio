@@ -134,7 +134,7 @@ const ObjktView = ({objktId}) => {
                             <br/>
                             <span>
                                 by&nbsp;
-                                <Link href={`/tz/${objkt.creator.walletAddress}`}>
+                                <Link href={{pathname:`/tz/${objkt.creator.walletAddress}`, query:stationQuery}}>
                                     <a>
                                         {getTrimmedWallet(
                                             objkt.creator.walletAddress)} {objkt.creator.name}
