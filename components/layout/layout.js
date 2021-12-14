@@ -14,10 +14,10 @@ const Layout = ({params, children}) => {
     const {query} = useRouter();
     const station = query.station;
     const stationQuery = station && `station=${station}`;
-
+ 
     useEffect(() => {
         station && document.body.classList.add(station);
-    }, []);
+    }, [station]);
 
     return (
         <View params={params}>
