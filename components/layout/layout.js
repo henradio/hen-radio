@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import Link from 'next/link';
 import styles from './styles.module.css';
 import Logo from '../logo/logo';
@@ -5,36 +6,45 @@ import Footer from '../footer/footer';
 import useTezos from '../../hooks/use-tezos';
 import View from './view';
 import {getTrimmedWallet} from '../../utilities/general';
+import {useRouter} from "next/router";
+
 
 const Layout = ({params, children}) => {
     const {auth, sync, unsync} = useTezos();
+    const {query} = useRouter();
+    const station = query.station;
+    const stationQuery = station && `station=${station}`;
+
+    useEffect(() => {
+        station && document.body.classList.add(station);
+    }, []);
 
     return (
         <View params={params}>
             <div className={styles.headerBar}>
-                <Link href={'/'}>
+                <Link href={{pathname: '/', query: stationQuery}}>
                     <a>
                         <Logo/>
                     </a>
                 </Link>
                 <div className={styles.navBar}>
                     <span className={styles.navBar_link}>
-                        <Link href={'/'}>Feed</Link>
+                        <Link href={{pathname:`/`, query: stationQuery}}>Feed</Link>
                     </span>
                     {auth && <span className={styles.navBar_link}>
-                        <Link href={`/tz/${auth.address}`}>Profile</Link>
+                        <Link href={{pathname:`/tz/${auth.address}`, query: stationQuery}}>Profile</Link>
                     </span>}
                     <span className={styles.navBar_link}>
-                        <Link href={'/playlists'}>Playlists</Link>
+                        <Link href={{pathname:'/playlists', query: stationQuery}}>Playlists</Link>
                     </span>
                     <span className={styles.navBar_link}>
-                        <Link href={'/tz'}>By Wallet</Link>
+                        <Link href={{pathname:'/tz', query: stationQuery}}>By Wallet</Link>
                     </span>
                     <span className={styles.navBar_link}>
-                        <Link href={'/faq'}>FAQ</Link>
+                        <Link href={{pathname:'/faq', query: stationQuery}}>FAQ</Link>
                     </span>
                     {auth && <span className={styles.navBar_link}>
-                        <Link href={'/mint'}>Mint</Link>
+                        <Link href={{pathname:'/mint', query: stationQuery}}>Mint</Link>
                     </span>}
                     <span className={styles.navBar_link}>
                         {auth
