@@ -7,10 +7,16 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: var(--white);
+    background-color: var(--player-background-color);
     padding: 16px 40px;
     z-index: 1;
     box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.darkMode .radioPlayerContainer {
+    backdrop-filter: blur(12px);
+    backface-visibility: hidden;
 }
 
 .currentPlaylistImageHolder {
