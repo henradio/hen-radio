@@ -6,7 +6,9 @@ import NProgress from 'nprogress';
 function SearchBar() {
     const router = useRouter();
     const [isSearching, setIsSearching] = useState(false);
+    const stationQuery=router.query.station;
     let timeout;
+    
     const handleSearch = event => {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
@@ -15,7 +17,8 @@ function SearchBar() {
                 pathname: '/page/[page]',
                 query: {
                     page: 1,
-                    search: event.target.value
+                    search: event.target.value,
+                    ...(stationQuery && {station: stationQuery}),
                 }
             });
         }, 1000);
