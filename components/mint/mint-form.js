@@ -35,20 +35,20 @@ const validationSchema = yup.object().shape({
     thumbnail: yup.mixed().required()
 });
 
-const initialValues = {
-    title: '',
-    description: '',
-    tags: '',
-    amount: '',
-    royalties: '',
-    audio: '',
-    cover: '',
-    thumbnail: ''
-};
-
 const bytesToMb = bytes => bytes / 1_000_000;
 
-const MintForm = ({handleSubmit}) => {
+const MintForm = ({handleSubmit, mintPayload}) => {
+    
+    const initialValues = { 
+        title: mintPayload?.title|| '',
+        description: mintPayload?.description || '',
+        tags: mintPayload?.tags || '',
+        amount: mintPayload?.amount || '',
+        royalties: mintPayload?.royalties || '',
+        audio: mintPayload?.audio || '',
+        cover: mintPayload?.cover || '',
+        thumbnail: mintPayload?.thumbnail || '',
+    };
 
     const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
         (event) => {
@@ -79,8 +79,8 @@ const MintForm = ({handleSubmit}) => {
             }
 
             formik.setFieldValue(name, fileObj);
-        };
-
+        };  
+          
     return (
         <div className={styles.column}>
             <Formik
