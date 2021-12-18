@@ -4,7 +4,7 @@ const Faq = () =>
     <>
         <h1>FAQ</h1>
         <div className={styles.faqItems}>
-            <p><strong>Q. What is Hen.radio?</strong></p>
+            <p className={styles.faqQuestion}><strong>Q. What is Hen.radio?</strong></p>
             <p>A. Hen.radio is an NFT Music Player and community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism. </p>
                 
             <p>It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
@@ -28,27 +28,27 @@ const Faq = () =>
                 See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing">
                     <u><strong>here</strong></u></a>.
             </p>
-            <p><strong>Q. How does the minting work on hen radio?</strong></p>
+            <p className={styles.faqQuestion}><strong>Q. How does the minting work on hen radio?</strong></p>
             <p>A. Sync your wallet using
                 the <strong>sync</strong> button on the top right
                 corner. A <strong>Mint</strong> button will then appear.
                 Find more details on how to mint <a href="https://github.com/henradio/hen-radio/wiki/How-to#how-to-mint">
                     <u><strong>here</strong></u></a>.
             </p>
-            <p><strong>Q. Does everything here also work on Hic et Nunc?</strong>
+            <p className={styles.faqQuestion}><strong>Q. Does everything here also work on Hic et Nunc?</strong>
             </p>
             <p>A. Yes, everything on hen.radio will also be available on
                 the main Hic et Nunc site. Mints, collects and swaps are all made on the Hic et Nunc contracts.</p>
-            <p><strong>Q. Is there an app?</strong></p>
+            <p className={styles.faqQuestion}><strong>Q. Is there an app?</strong></p>
             <p>A. Not at the moment. It is optimised for viewing in the
                 mobile browser, but no app yet.</p>
-            <p><strong>Q. Why don&apos;t you support video or html
+            <p className={styles.faqQuestion}><strong>Q. Why don&apos;t you support video or html
                 music?</strong></p>
             <p>A. Currently technical restrictions are making it
                 difficult to differenciate music HTML from other HTML
                 objkt. For video, the is different than the handling of
                 audio, so it is also difficult to implement.</p>
-            <p><strong>Q. How do I create a playlist?</strong></p>
+            <p className={styles.faqQuestion}><strong>Q. How do I create a playlist?</strong></p>
             <p>A1. To create a local playlist (only visible to you):</p>
             <ol>
                 <li>Go to &quot;Playlists&quot; in the top right menu
@@ -84,7 +84,7 @@ const Faq = () =>
             </ol>
             <p>Playlists are a work in progress, please be patient, we
                 will do our best to include all submissions.</p>
-            <p><strong>Q. How can I contribute? How do we contact
+            <p className={styles.faqQuestion}><strong>Q. How can I contribute? How do we contact
                 Hen.radio?</strong></p>
             <p>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, or find our social details below.
             </p>
