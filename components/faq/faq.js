@@ -5,9 +5,10 @@ const Faq = () =>
         <h1>FAQ</h1>
         <div className={styles.faqItems}>
             <p><strong>Q. What is Hen.radio?</strong></p>
-            <p>A. Hen.radio is an NFT Music Player and community. It
-                has been created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021.
-                <p>In the initial working Group was&nbsp;
+            <p>A. Hen.radio is an NFT Music Player and community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism. </p>
+                
+            <p>It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
+                by the initial working group:&nbsp;
                     <strong>
                         <a href='https://twitter.com/lauzaki'>@lauzaki</a>
                         ,{' '}
@@ -24,11 +25,6 @@ const Faq = () =>
                         <a href='https://twitter.com/jclayton'>@jclayton</a>
                         ,{' '}
                         <a href='https://twitter.com/v5mt_tv'>@v5mt</a></strong><br />
-                    Check our Discord for lastest updates.
-                </p>
-                Hen.radio makes it easier to discover, listen to and
-                reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism and community.
-                <br />
                 See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing">
                     <u><strong>here</strong></u></a>.
             </p>
@@ -39,10 +35,10 @@ const Faq = () =>
                 Find more details on how to mint <a href="https://github.com/henradio/hen-radio/wiki/How-to#how-to-mint">
                     <u><strong>here</strong></u></a>.
             </p>
-            <p><strong>Q. Is everything here also work on Hic et Nunc?</strong>
+            <p><strong>Q. Does everything here also work on Hic et Nunc?</strong>
             </p>
             <p>A. Yes, everything on hen.radio will also be available on
-                the main Hic et Nunc site</p>
+                the main Hic et Nunc site. Mints, collects and swaps are all made on the Hic et Nunc contracts.</p>
             <p><strong>Q. Is there an app?</strong></p>
             <p>A. Not at the moment. It is optimised for viewing in the
                 mobile browser, but no app yet.</p>
@@ -90,8 +86,7 @@ const Faq = () =>
                 will do our best to include all submissions.</p>
             <p><strong>Q. How can I contribute? How do we contact
                 Hen.radio?</strong></p>
-            <p>A.
-                The best place to engage with us is through the Discord, see contacts below.
+            <p>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, or find our social details below.
             </p>
         </div>
     </>;
