@@ -1,3 +1,4 @@
-.faqItem {
-    margin-bottom: 16px;
+.faqItems {
+    padding-bottom: 30px;
+    border-bottom: 1px solid grey;
 }
