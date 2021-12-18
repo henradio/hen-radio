@@ -1,6 +1,6 @@
 :root {
   --black: #141418;
-  --blackAlpha: rgba(20, 20, 24, 0.75);
+  --blackAlpha: rgba(20, 20, 24);
   --white: #faf7f6;
   --logo: var(--black);
   --lighter-grey: #dcdce8;

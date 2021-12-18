@@ -1,11 +1,15 @@
 .faqItems {
-    padding-bottom: 30px;
-    border-bottom: 1px solid grey;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
 }
 
 .faqQuestion {
     padding-top: 30px;
     margin-top: 30px;
-    margin-bottom: -10px;
-    border-top: 1px solid rgb(211, 211, 211);
+    margin-bottom: 5px;
+    border-top: 1px solid var(--border);
+}
+
+.faqAnswer {
+    margin-top: 0px;
 }
