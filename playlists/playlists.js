@@ -1,5 +1,19 @@
 export const playlists = [
     {
+        name: "i <3 ny",
+        curator: '@ccffdead',
+        description: "'We can kick it, just be cool..'; an EP by ccffdead.",
+        img: '/images/ccffdead.jpg',
+        slug: 'ccffdead',
+        tracks: [
+            {"id":591127,"creator":{"walletAddress":"tz1LuWZ5g85Vzc5WUE8USnCjKH8UdKc4kkGe","name":"ccffdead","metadata":{"identicon":"ipfs://QmPgPd32DLDLSQUxxxdkZ2FR8ma95CKrgmCUWEpHEhyXJU","description":""}},"title":"OFF-White Ghost (RIP VIRGIL ABLOH)","src":"https://ipfs.io/ipfs/QmXB8uNZSCwYLcAwNNSqLRoBtGectnTimszF3pxcfYEv4M","mimeType":"audio/wav","displayUri":"ipfs://QmTSjGZMBiiGVfnv7WfHmm7Pdsfda5yBofrT1L7n5Y6AgY","tags":[]},
+            {"id":591145,"creator":{"walletAddress":"tz1LuWZ5g85Vzc5WUE8USnCjKH8UdKc4kkGe","name":"ccffdead","metadata":{"identicon":"ipfs://QmPgPd32DLDLSQUxxxdkZ2FR8ma95CKrgmCUWEpHEhyXJU","description":""}},"title":"BB; to-do list (feat. Hyundai Princess)","src":"https://dweb.link/ipfs/QmNqZPxoXvCwN4vt5ApGw9nvCHVtHeHxabUmQ25cA7YYcr","mimeType":"audio/wav","displayUri":"ipfs://QmVaK2tnix47Se32GEkybYCRqz59t1eAutNo1zbh96iJL2","tags":[]},
+            {"id":591167,"creator":{"walletAddress":"tz1LuWZ5g85Vzc5WUE8USnCjKH8UdKc4kkGe","name":"ccffdead","metadata":{"identicon":"ipfs://QmPgPd32DLDLSQUxxxdkZ2FR8ma95CKrgmCUWEpHEhyXJU","description":""}},"title":"Typing...","src":"https://ipfs.io/ipfs/QmaDRQ5fZY1rDcVkXNzcxhT8CMnjFrY1HBFmfXTNSi45zA","mimeType":"audio/wav","displayUri":"ipfs://QmbQ4PVbN3njavbN7X5tvSrRY4bK38VXgVyVebQKXEjfbZ","tags":[]},
+            {"id":591191,"creator":{"walletAddress":"tz1LuWZ5g85Vzc5WUE8USnCjKH8UdKc4kkGe","name":"ccffdead","metadata":{"identicon":"ipfs://QmPgPd32DLDLSQUxxxdkZ2FR8ma95CKrgmCUWEpHEhyXJU","description":""}},"title":"Whippet Queen","src":"https://ipfs.io/ipfs/QmV8VHv45QrngFCbdhmhrt4T3Yqvf8FgHkQDdYmwaaEoC8","mimeType":"audio/wav","displayUri":"ipfs://QmT8euCNSbwVTnFP4Mm94LSHNmjK2dHrUMeVdH7BNnvUAP","tags":[]},
+            {"id":591198,"creator":{"walletAddress":"tz1LuWZ5g85Vzc5WUE8USnCjKH8UdKc4kkGe","name":"ccffdead","metadata":{"identicon":"ipfs://QmPgPd32DLDLSQUxxxdkZ2FR8ma95CKrgmCUWEpHEhyXJU","description":""}},"title":"i <3 ny","src":"https://infura-ipfs.io/ipfs/QmV8DEGBHWimUDHmf7XZnVkjr4Rj9mtrnLYDhBTEcLsbPG","mimeType":"audio/wav","displayUri":"ipfs://QmPdQc4QfNakyf98xbnqeqbMtUFyE4J6uPpsoD64L3niFq","tags":[]}
+    ]
+    },
+    {
         name: "Sound Track",
         curator: '@pepi_music',
         description: "Soundtrack is a @pepi_music and @onda_sismica project. Positive vibes in nftmusic! Sounds and images to the rhythm of life.",
