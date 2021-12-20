@@ -5,26 +5,26 @@ const Faq = () =>
         <h1>FAQ</h1>
         <div className={styles.faqItems}>
             <p className={styles.faqQuestion}><strong>Q. What is Hen.radio?</strong></p>
-            <p className={styles.faqAnswer}>A. Hen.radio is an NFT Music Player and community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism. </p>
-                
-            <p>It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
+            <p className={styles.faqAnswer}>A. Hen.radio is an NFT Music Player and community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism.
+                <br />
+                It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
                 by the initial working group:&nbsp;
-                    <strong>
-                        <a href='https://twitter.com/lauzaki'>@lauzaki</a>
-                        ,{' '}
-                        <a href='https://twitter.com/andreasrau_eu'>@andreasrau_eu</a>
-                        ,{' '}
-                        <a href='https://twitter.com/uvdsc'>@uvdsc</a>
-                        ,{' '}
-                        <a href='https://twitter.com/__orderandchaos'>@__orderandchaos</a>
-                        ,{' '}
-                        <a href='https://twitter.com/webidente'>@webidente</a>
-                        ,{' '}
-                        <a href='https://twitter.com/BabyCommando_'>@BabyCommando_</a>
-                        ,{' '}
-                        <a href='https://twitter.com/jclayton'>@jclayton</a>
-                        ,{' '}
-                        <a href='https://twitter.com/v5mt_tv'>@v5mt</a></strong><br />
+                <strong>
+                    <a href='https://twitter.com/lauzaki'>@lauzaki</a>
+                    ,{' '}
+                    <a href='https://twitter.com/andreasrau_eu'>@andreasrau_eu</a>
+                    ,{' '}
+                    <a href='https://twitter.com/uvdsc'>@uvdsc</a>
+                    ,{' '}
+                    <a href='https://twitter.com/__orderandchaos'>@__orderandchaos</a>
+                    ,{' '}
+                    <a href='https://twitter.com/webidente'>@webidente</a>
+                    ,{' '}
+                    <a href='https://twitter.com/BabyCommando_'>@BabyCommando_</a>
+                    ,{' '}
+                    <a href='https://twitter.com/jclayton'>@jclayton</a>
+                    ,{' '}
+                    <a href='https://twitter.com/v5mt_tv'>@v5mt</a></strong><br />
                 See our presentation <a href="https://docs.google.com/presentation/d/1t7zirrVZ0wHu0Fx6HJeGZzsDzS0s5n4TEwT9QdC-by4/edit?usp=sharing">
                     <u><strong>here</strong></u></a>.
             </p>
@@ -67,7 +67,7 @@ const Faq = () =>
                 </li>
             </ol>
             <p>A2. To create a playlist with a cover image and visible
-                to everybody you can message our twitter account
+                to all.(for files less than 6Mb, or having been minted on hen.radio): DM our twitter account
                 @hen_radio with:</p>
             <ol>
                 <li>The link to the playlist (see above, eg:
@@ -82,7 +82,7 @@ const Faq = () =>
                 <li>Cover image in jpeg format</li>
             </ol>
             <p>Playlists are a work in progress, please be patient, we
-                will do our best to include all submissions.</p>
+                will do our best to include all submissions. If we are not yet following you on Twitter, come and say hi in Discord.</p>
             <p className={styles.faqQuestion}><strong>Q. How can I contribute? How do we contact
                 Hen.radio?</strong></p>
             <p className={styles.faqAnswer}>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, or find our social details below.
