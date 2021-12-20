@@ -7,26 +7,30 @@ import styles from './styles.module.css';
 const Minter = () => {
     const {handleMint} = useMint();
     const [mintPayload, setMintPayload] = useState();
-    const [isMinting, setIsMinting] = useState(false)
+    const [isMinting, setIsMinting] = useState(false);
+    const [isForm, setIsForm] = useState(true);
 
     const handleSubmit = (values) => {
         setIsMinting(false)
         setMintPayload(values);
+        setIsForm(false);
     };
 
     const triggerMint = () => {
         setIsMinting(true)
         handleMint(mintPayload);
     };
+    const handleBack = () => setIsForm(true);
 
-    const handleBack = () => setMintPayload(null);
     return (
         <>
             <h1 className={styles.mainTitle}>Mint</h1>
             <div className={styles.container}>
-            {!mintPayload
-                ? <MintForm handleSubmit={handleSubmit}/>
-                : <Preview
+               {isForm ? <MintForm handleSubmit={handleSubmit}
+                    mintPayload={mintPayload}
+                /> :
+                <Preview
+                    hidden={isForm}
                     mintPayload={mintPayload}
                     handleBack={handleBack}
                     triggerMint={triggerMint}
