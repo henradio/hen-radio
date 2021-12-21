@@ -23,7 +23,7 @@ const ObjktView = ({objktId}) => {
     const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
         {use: [serialise]});
     const {walletAddress, objkt, tracks} = data;
-
+    const {stationQuery} = useStation();
     const {
         controls,
         isTrackPlaying
@@ -65,7 +65,7 @@ const ObjktView = ({objktId}) => {
         : 'An audio objkt with this id could not be found.';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
     const url = `https://hen.radio/objkt/${objkt.id}`;
-    const {stationQuery} = useStation();
+    
     
     return (
         <>
