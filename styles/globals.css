@@ -1,5 +1,6 @@
 :root {
   --black: #141418;
+  --blackAlpha: rgba(20, 20, 24);
   --white: #faf7f6;
   --logo: var(--black);
   --lighter-grey: #dcdce8;
@@ -10,6 +11,7 @@
   --border: var(--light-grey);
   --button-background: var(--white);
   --button-border: var(--black);
+  --player-background-color: var(--white)
 }
 
 @font-face {
@@ -63,6 +65,7 @@ html, body {
   --border: var(--dark-grey);
   --button-background: var(--white);
   --button-border: var(--black);
+  --player-background-color: var(--blackAlpha)
 }
 
 button, input, textarea {
@@ -71,7 +74,7 @@ button, input, textarea {
 }
 
 button {
-  background-color: var(--button-background);
+  background-color: transparent;
   border-top: 0;
   border-left: 0;
   border-right: 2px var(--button-border) solid;
