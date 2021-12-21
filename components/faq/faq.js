@@ -67,7 +67,7 @@ const Faq = () =>
                 </li>
             </ol>
             <p>A2. To create a playlist with a cover image and visible
-                to all.(for files less than 6Mb, or having been minted on hen.radio): DM our twitter account
+                to all.<strong>(Only for files less than 6Mb, or having been minted on hen.radio)</strong>: DM our twitter account
                 @hen_radio with:</p>
             <ol>
                 <li>The link to the playlist (see above, eg:
