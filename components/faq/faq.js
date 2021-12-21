@@ -5,7 +5,7 @@ const Faq = () =>
         <h1>FAQ</h1>
         <div className={styles.faqItems}>
             <p className={styles.faqQuestion}><strong>Q. What is Hen.radio?</strong></p>
-            <p className={styles.faqAnswer}>A. Hen.radio is an NFT Music Player and community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism.
+            <p className={styles.faqAnswer}>A. Hen.radio is an NFT Music Player and a community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism.
                 <br />
                 It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
                 by the initial working group:&nbsp;
