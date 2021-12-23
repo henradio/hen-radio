@@ -1,5 +1,18 @@
 export const playlists = [
     {
+        name: "Step Closer - EP",
+        curator: '@requisit_fa',
+        description: "by Requisit released July 9, 2021 cover art by Diego Becerra @diegovbecerra",
+        img: '/images/requisit.jpg',
+        slug: '@requisit_fa',
+        tracks: [
+            {"id":594241,"creator":{"walletAddress":"tz1gVwKcULk78tUyyhpVNc8raCGGcUNTxpat","name":"requisit","metadata":{}},"title":"Play","src":"https://ipfs.io/ipfs/QmdfpVznoUsLeHimd3RspcocaM3KGiAcw49BQ5BDUozTKZ","mimeType":"audio/wav","displayUri":"ipfs://QmYBKxDe1Y61N26WnKS6b5Nd4zZokzuefTCVhXX46zEC3J","tags":[]},
+            {"id":594246,"creator":{"walletAddress":"tz1gVwKcULk78tUyyhpVNc8raCGGcUNTxpat","name":"requisit","metadata":{}},"title":"One Rule","src":"https://ipfs.io/ipfs/QmSeSfANhDXceuGSbN8ZFTmDJoxb1BcGPJx2GQm6suJNdc","mimeType":"audio/wav","displayUri":"ipfs://QmYBKxDe1Y61N26WnKS6b5Nd4zZokzuefTCVhXX46zEC3J","tags":[]},
+            {"id":594248,"creator":{"walletAddress":"tz1gVwKcULk78tUyyhpVNc8raCGGcUNTxpat","name":"requisit","metadata":{}},"title":"You Would Be Missed, Pt. 2","src":"https://ipfs.io/ipfs/QmVLhikhtUDAVyA4bRmzrKmmFCsFn5nB1YezjPr4LEzbyg","mimeType":"audio/wav","displayUri":"ipfs://QmYBKxDe1Y61N26WnKS6b5Nd4zZokzuefTCVhXX46zEC3J","tags":[]},
+            {"id":594252,"creator":{"walletAddress":"tz1gVwKcULk78tUyyhpVNc8raCGGcUNTxpat","name":"requisit","metadata":{}},"title":"You Would Be Missed, Pt. 3","src":"https://ipfs.io/ipfs/QmYkzLgWnoDjwua6Ao3M8UHWCdrDDq4pn4mW6chKYkBN5X","mimeType":"audio/wav","displayUri":"ipfs://QmYBKxDe1Y61N26WnKS6b5Nd4zZokzuefTCVhXX46zEC3J","tags":[]}
+        ]
+    },
+    {
         name: "Buffing The Crystal Clear",
         curator: '@ccffdead',
         description: "Welcome to Buffing The Crystal Clear, ccffdead's debut album.",
