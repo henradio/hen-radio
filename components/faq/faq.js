@@ -38,6 +38,9 @@ const Faq = () =>
             </p>
             <p className={styles.faqAnswer}>A. Yes, everything on hen.radio will also be available on
                 the main Hic et Nunc site. Mints, collects and swaps are all made on the Hic et Nunc contracts.</p>
+            <p className={styles.faqQuestion}><strong>Q. if I mint on @objktcom, will it appear on hen.radio ?</strong>
+            </p>
+            <p className={styles.faqAnswer}>A. Only music minted on the Hen contract will appear on hen.radio. Collections in @objktcom have their own contract, and will not appear on hen.radio</p>
             <p className={styles.faqQuestion}><strong>Q. Is there an app?</strong></p>
             <p className={styles.faqAnswer}>A. Not at the moment. It is optimised for viewing in the
                 mobile browser, but no app yet.</p>
