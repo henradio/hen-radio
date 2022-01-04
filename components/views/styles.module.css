@@ -87,13 +87,7 @@
 
 .objktImageHolder {
     box-sizing: border-box;
-    width: 100%;
     margin-bottom: 0;
-}
-
-.objktImage {
-    max-width: 600px;
-    max-height: 600px;
 }
 
 .objktMetaRow {
