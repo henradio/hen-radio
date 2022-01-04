@@ -111,10 +111,12 @@ const ObjktView = ({objktId}) => {
                         srcSet={objkt?.displayUri
                             ? srcSet
                             : '/images/playlist-default.png'}
-                        width={600}
-                        height={600}
+                        width="100%" 
+                        height="100%" 
+                        layout="responsive" 
+                        objectFit="contain"
                         alt=""
-                        className={styles.objktImage}
+
                     />
                 </div>
                 <div className={styles.objktMetaRow}>
