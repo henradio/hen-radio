@@ -38,7 +38,7 @@ const Faq = () =>
             </p>
             <p className={styles.faqAnswer}>A. Yes, everything on hen.radio will also be available on
                 the main Hic et Nunc site. Mints, collects and swaps are all made on the Hic et Nunc contracts.</p>
-            <p className={styles.faqQuestion}><strong>Q. if I mint on @objktcom, will it appear on hen.radio ?</strong>
+            <p className={styles.faqQuestion}><strong>Q. If I mint on @objktcom, will it appear on hen.radio ?</strong>
             </p>
             <p className={styles.faqAnswer}>A. Only music minted on the Hen contract will appear on hen.radio. Collections in @objktcom have their own contract, and will not appear on hen.radio</p>
             <p className={styles.faqQuestion}><strong>Q. Is there an app?</strong></p>
@@ -88,7 +88,7 @@ const Faq = () =>
                 will do our best to include all submissions. If we are not yet following you on Twitter, come and say hi in Discord.</p>
             <p className={styles.faqQuestion}><strong>Q. How can I contribute? How do we contact
                 Hen.radio?</strong></p>
-            <p className={styles.faqAnswer}>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, or find our social details below.
+            <p className={styles.faqAnswer}>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, find our social details below.
             </p>
         </div>
     </>;
