@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import useCompress from '../../hooks/use-audio-compression';
+import useUpload from '../../hooks/use-file-upload';
 import useTezos from '../../hooks/use-tezos';
 import {IPFS_DEFAULT_THUMBNAIL_URI} from '../../constants';
 import useToast from '../../hooks/use-toast';
@@ -13,14 +13,15 @@ const ipfs = create(infuraUrl);
 
 const MintProvider = ({children}) => {
     const {auth, sync, Tezos} = useTezos();
-    const {handleCompress} = useCompress();
+    const {handleUpload} = useUpload();
     const {setMessage} = useToast();
     const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
         const p = payload;
-        setMessage('Creating compressed audio file…');
-        const compressedAudio = await handleCompress(p);
+        setMessage('1/5 uploading files…');
+        const compressedAudio = await handleUpload(p);
+        /*
         console.log(compressedAudio);
         setMessage('Uploading to IPFS…');
         const compressedAudioUri = await addToIpfs(compressedAudio.data);
@@ -70,6 +71,7 @@ const MintProvider = ({children}) => {
         setTimeout(() => {
             setMessage(null);
         }, 2000)
+        */
     };
 
     const addToIpfs = async(file) => {

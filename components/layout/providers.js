@@ -7,12 +7,12 @@ import styles from './styles.module.css';
 import RadioPlayer from '../radio-player/radio-player';
 import TrackProvider from '../../context/track-context';
 import MintProvider from '../../context/tezos/mint-context';
-import CompressProvider from '../../context/audio-compression-context';
+import UploadProvider from '../../context/file-upload-context';
 import ToastProvider from '../../context/toast-context';
 import ToolsProvider from '../../context/tools-context';
 
 const Providers = ({children}) =>
-    <CompressProvider>
+    <UploadProvider>
         <ToastProvider>
             <TezosProvider>
                 <ToolsProvider>
@@ -35,7 +35,7 @@ const Providers = ({children}) =>
                 </ToolsProvider>
             </TezosProvider>
         </ToastProvider>
-    </CompressProvider>
+    </UploadProvider>
 ;
 
 export default Providers;
