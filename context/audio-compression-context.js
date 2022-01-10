@@ -18,7 +18,7 @@ const CompressProvider = ({children}) => {
             presignedUrls
         );
         console.log('filePath is', filePath);
-        return await callCompression(filePath, getUrl);
+        return //await callCompression(filePath, getUrl);
     }
 
     async function getPresignedUrls(fileType) {
@@ -86,7 +86,7 @@ const CompressProvider = ({children}) => {
             formData.append(k, v);
         });
         formData.append('file', rawAudio); // The file has be the last element
-
+        console.log(formData)
         const response = await axios.post(presignedPostUrl.url, formData, {
             headers: {'Content-Type': 'multipart/form-data'}
         }).catch(err => {console.log(err);});
