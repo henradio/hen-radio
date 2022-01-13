@@ -20,14 +20,12 @@ const MintProvider = ({children}) => {
     const handleMint = async(payload) => {
         const p = payload;
         setMessage('1/5 uploading files…');
-        const compressedAudio = await handleUpload(p);
-        /*
-        console.log(compressedAudio);
-        setMessage('Uploading to IPFS…');
-        const compressedAudioUri = await addToIpfs(compressedAudio.data);
-        const artifactUri = await addToIpfs(p.audio);
-        const displayUri = await addToIpfs(p.cover);
-        const coverThumbUri = await addToIpfs(p.thumbnail);
+        const hashes = await handleUpload(p);
+  
+        const artifactUri = hashes[0];
+        const displayUri = hashes[1];
+        const coverThumbUri = hashes[2];
+        const compressedAudioUri = hashes[3] ? hashes[3] : hashes[0];
 
         console.log(compressedAudioUri);
         console.log(artifactUri);
@@ -60,6 +58,7 @@ const MintProvider = ({children}) => {
             })
         );
         console.log(metadata);
+              /*
         const nftCid = await addToIpfs(metadata);
         console.log(nftCid);
         console.log(p);

@@ -12,28 +12,36 @@ const UploadProvider = ({ children }) => {
         const coverFile = payload.cover;
         const thumbFile = payload.thumbnail;
         const files = [audioFile, coverFile, thumbFile];
-        const filePaths = await uploadFiles(files);
-        console.log(filePaths)
+        const S3files = await uploadFiles(files);
+        console.log(S3files)
         if (audioFile.size > 6000000) {
-            await callCompression(filePaths[0])
+            await callCompression(S3files[0]);
+            S3files.push("out/filePaths[0]")
         }
-        //TODO callUploadToIpfs
-        return //;
+        const hashes = callUploadToIpfs(S3files);
+        return hashes;
     }
 
     const uploadFiles = async (files) => {
-        let fileUrls = [];
+        let fileS3uris = [];
         for (var a in files) {
             const file = files[a];
             const presignedUrl = await getPresignedUrls(file.type);
-            const filePath = await uploadToS3(
+            const fileS3uri = await uploadToS3(
                 file.type,
                 file,
                 presignedUrl
             );
-            fileUrls.push(filePath);
+            fileS3uris.push(fileS3uri);
         }
-        return fileUrls;
+        return fileS3uris;
+    }
+
+    const callUploadToIpfs = async (filesNames) => {
+        const fileHashes = await axios.get(
+            `${AWS_API_BASE_URL}/uploadToIpfs`
+        );
+        return fileHashes;
     }
 
     const getPresignedUrls = async (fileType) => {
