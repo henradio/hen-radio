@@ -12,13 +12,13 @@ const UploadProvider = ({ children }) => {
         const coverFile = payload.cover;
         const thumbFile = payload.thumbnail;
         const files = [audioFile, coverFile, thumbFile];
-        const S3files = await uploadFiles(files);
-        console.log(S3files)
+        const S3fileNames = await uploadFiles(files);
         if (audioFile.size > 6000000) {
-            await callCompression(S3files[0]);
-            S3files.push("out/filePaths[0]")
+            await callCompression(S3fileNames[0]);
+            S3files.push("compressed/" + S3fileNames[0])
         }
-        const hashes = callUploadToIpfs(S3files);
+        const hashes = callUploadToIpfs(S3fileNames);
+        console.log(hashes)
         return hashes;
     }
 
@@ -38,8 +38,15 @@ const UploadProvider = ({ children }) => {
     }
 
     const callUploadToIpfs = async (filesNames) => {
-        const fileHashes = await axios.get(
-            `${AWS_API_BASE_URL}/uploadToIpfs`
+        console.log(filesNames)
+        console.log(filesNames[3])
+        const fileHashes = await axios.post(
+            `${AWS_API_BASE_URL}/uploadToIpfs`, {
+                  rawAudio: filesNames[0],
+                  cover: filesNames[1],
+                  thumb: filesNames[2],
+                  compressed: filesNames[3]
+              }
         );
         return fileHashes;
     }
@@ -67,6 +74,7 @@ const UploadProvider = ({ children }) => {
                 if (event.data === 'COMPLETE') {
                     ///
                     console.log('Compression and ipfs done');
+                    resolve();
                     /* try {
                          const response = await axios({
                              url: getUrl,
