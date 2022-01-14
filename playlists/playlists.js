@@ -1,5 +1,20 @@
 export const playlists = [
     {
+        name: "The Odd Drop",
+        curator: 'lbmachado',
+        description: "Seasonal curation of NFT music & art!",
+        img: '/images/lbmachado1.jpg',
+        slug: 'lbmachado1',
+        tracks: [
+            {"id":627044,"creator":{"walletAddress":"tz1YwX834m3fdRYDgvKFM38J24PjqDY6BQpM","name":"hybrid","metadata":{"identicon":"","description":""}},"title":"Walking In The Hills","src":"https://ipfs.io/ipfs/QmQWa7GujqfHbWitpGBKQqtSX4qQWsSu7VePvyHZ6s2Vvq","mimeType":"audio/mpeg","displayUri":"ipfs://QmUKDm9y7M6AJxk71HWGqiv2z9iurScbtgNci5QTEJF6oD","tags":[]},
+            {"id":472403,"creator":{"walletAddress":"tz1i2tQZSMop7dR3u3qnag8DBg5qBBM7qQxW","name":"os_metasambas","metadata":{}},"title":"onda esquisita/ weird vibes","src":"https://ipfs.io/ipfs/QmQAUvdPvkBKau7t1VF659EZFTfPY1DGDDm6aG2PGHTPgk","mimeType":"audio/wav","displayUri":"ipfs://QmWKevXstw9K2Be2GvuFc6MaCUUoGAdctCf15nbxpZ1Y64","tags":[]},
+            {"id":629226,"creator":{"walletAddress":"tz2GcPcbHpnmTgYxfkBT2TxGv5YQMKfptPca","name":"dibaxu","metadata":{"identicon":"ipfs://QmcmighU83nt7X5pwBS7EmvpN2CXQAHtHM5MnRgqtWEiTV","description":"music, composer, producer "}},"title":"SONG FOR @discontentisimo","src":"https://ipfs.io/ipfs/QmbFz2DyEkNyWjhC1VnHKDjQV46VbQwj5SFhjHJNbfcJae","mimeType":"audio/wav","displayUri":"ipfs://QmU7RyZQL8Xvs2UmLnuYzKuNNdDgBCyMNT6sDgRtNxEtp1","tags":[]},
+            {"id":589730,"creator":{"walletAddress":"tz1QE1C4rraq4tqwcLEkafv6UQ3Myr9qykkg","name":"davifonseca.tez","metadata":{"identicon":"ipfs://QmcnWpB56icdfdozt9bGmcNAZyhvbEBuBQVtHJPZjj7ptk","description":"Brazilian composer, songwriter, arranger, pianist and singer."}},"title":"Três Barras - Solo Performance","src":"https://ipfs.io/ipfs/QmQLd4BDfYqgodGSciJpXZmQdTh5iNTeEAH2QLTZdSKmZ5","mimeType":"audio/mpeg","displayUri":"ipfs://QmZ33UX9u9BFZhRooctaMeqWKciuBtX1i8VizxWvmPqDEW","tags":[]},
+            {"id":624734,"creator":{"walletAddress":"KT1F6CMqWZyYcujPg9LnLGjcWijpQW4wv7Sv","name":"gqwhy","metadata":{}},"title":"23 Ode to Tezos NFT Single - GQWHY","src":"https://ipfs.io/ipfs/QmfWWvDnpgEsa3JwPesGSmZ9txe3JhbVHTBNXNGRxL78fM","mimeType":"audio/mpeg","displayUri":"ipfs://QmUhh72PuAZUPa7m3x4NHGuVAiLkbvaLteUYKdexL2p8ib","tags":[]},
+            {"id":624694,"creator":{"walletAddress":"tz1VuqcskuhTXGyN3rH4waSa61X9F5AzrdKv","name":"tolan","metadata":{"identicon":"","description":""}},"title":"Shampoo","src":"https://ipfs.io/ipfs/QmRhEnP9M35g8Q99NPwWm2ndPZr8EkS3WsQszePRZ52bjs","mimeType":"audio/wav","displayUri":"ipfs://QmZJe6B2dW3HYJt6LfktoiFPJRTCjueaFYVcMGikLv2gbh","tags":[]}
+        ]
+    },
+    {
         name: "Step Closer - EP",
         curator: '@requisit_fa',
         description: "by Requisit released July 9, 2021 cover art by Diego Becerra @diegovbecerra",
