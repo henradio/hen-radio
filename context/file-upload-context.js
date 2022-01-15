@@ -40,13 +40,17 @@ const UploadProvider = ({ children }) => {
     const callUploadToIpfs = async (filesNames) => {
         console.log(filesNames)
         console.log(filesNames[3])
+        if (filesNames[3] === undefined) filesNames[3] = false;
+        const payload = {
+            'rawAudio': filesNames[0],
+            'cover': filesNames[1],
+            'thumb': filesNames[2],
+            'compressed': filesNames[3]
+        }
+
+        console.log(payload)
         const fileHashes = await axios.post(
-            `${AWS_API_BASE_URL}/uploadToIpfs`, {
-                  rawAudio: filesNames[0],
-                  cover: filesNames[1],
-                  thumb: filesNames[2],
-                  compressed: filesNames[3]
-              }
+            `${AWS_API_BASE_URL}/uploadToIpfs`, payload
         );
         return fileHashes;
     }
