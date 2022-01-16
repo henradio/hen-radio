@@ -4,48 +4,50 @@ import axios from 'axios';
 
 export const UploadContext = createContext();
 
+const {create} = require('ipfs-http-client');
+const infuraUrl = 'https://ipfs.infura.io:5001';
+const ipfs = create(infuraUrl);
+
 const UploadProvider = ({ children }) => {
     const handleUpload = async (payload) => {
         console.log('handle upload');
         console.log(payload);
-        const audioFile = payload.audio;
-        const coverFile = payload.cover;
-        const thumbFile = payload.thumbnail;
-        const files = [audioFile, coverFile, thumbFile];
-        const S3fileNames = await uploadFiles(files);
-        if (audioFile.size > 6000000) {
-            await callCompression(S3fileNames[0]);
-            S3files.push("compressed/" + S3fileNames[0])
+        const S3AudioFileName = await uploadFile(payload.audio);
+        let hasCompressed = false;
+        if (payload.audio.size > 6000000) {
+            await callCompression(S3AudioFileName);
+            hasCompressed = true;
         }
-        const hashes = callUploadToIpfs(S3fileNames);
+        const audioHashes = await ipfsViaLambda(S3AudioFileName, hasCompressed);
+        const displayUri = await addToIpfs(payload.cover);
+        const coverThumbUri = await addToIpfs(payload.thumbnail);
+        const hashes = [audioHashes, displayUri, coverThumbUri]
         console.log(hashes)
         return hashes;
     }
 
-    const uploadFiles = async (files) => {
-        let fileS3uris = [];
-        for (var a in files) {
-            const file = files[a];
+    const addToIpfs = async(file) => {
+        const hash = await ipfs.add(file);
+        return `ipfs://${hash.path}`;
+    };
+
+    const uploadFile = async (file) => {
+
             const presignedUrl = await getPresignedUrls(file.type);
             const fileS3uri = await uploadToS3(
                 file.type,
                 file,
                 presignedUrl
             );
-            fileS3uris.push(fileS3uri);
-        }
-        return fileS3uris;
+
+        return fileS3uri;
     }
 
-    const callUploadToIpfs = async (filesNames) => {
-        console.log(filesNames)
-        console.log(filesNames[3])
-        if (filesNames[3] === undefined) filesNames[3] = false;
+    const ipfsViaLambda = async (filesName, isCompressed) => {
+        console.log(filesName)
         const payload = {
             'rawAudio': filesNames[0],
-            'cover': filesNames[1],
-            'thumb': filesNames[2],
-            'compressed': filesNames[3]
+            'compressedAudio': 'compressed/'+filesNames[0]
         }
 
         console.log(payload)

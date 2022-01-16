@@ -1,15 +1,9 @@
 import {createContext, useState} from 'react';
 import useUpload from '../../hooks/use-file-upload';
 import useTezos from '../../hooks/use-tezos';
-import {IPFS_DEFAULT_THUMBNAIL_URI} from '../../constants';
 import useToast from '../../hooks/use-toast';
 
-const {create} = require('ipfs-http-client');
-
 export const MintContext = createContext();
-
-const infuraUrl = 'https://ipfs.infura.io:5001';
-const ipfs = create(infuraUrl);
 
 const MintProvider = ({children}) => {
     const {auth, sync, Tezos} = useTezos();
@@ -43,14 +37,13 @@ const MintProvider = ({children}) => {
                 symbol: 'OBJKT',
                 artifactUri,
                 displayUri,
-                thumbnailUri: IPFS_DEFAULT_THUMBNAIL_URI,
+                thumbnailUri: coverThumbUri,
                 creators: [auth.address],
                 formats: [
                     {
                         uri: artifactUri,
                         mimeType: p.audio.type,
-                        compressedAudioUri,
-                        coverThumbUri
+                        compressedAudioUri
                     }],
                 decimals: 0,
                 isBooleanAmount: false,
