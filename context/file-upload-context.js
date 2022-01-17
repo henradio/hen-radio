@@ -12,18 +12,25 @@ const UploadProvider = ({ children }) => {
     const handleUpload = async (payload) => {
         console.log('handle upload');
         console.log(payload);
-        const S3AudioFileName = await uploadFile(payload.audio);
-        let hasCompressed = false;
-        if (payload.audio.size > 6000000) {
+        let audioUri;
+        let compressedAudioUri
+
+        if (payload.audio.size < 6000000) {
+            audioUri = await addToIpfs(payload.audio);
+            compressedAudioUri = audioUri;
+        } else {
+            const S3AudioFileName = await uploadFile(payload.audio);
             await callCompression(S3AudioFileName);
-            hasCompressed = true;
+            //Todo, something like that
+            [audioUri,compressedAudioUri] = await ipfsViaLambda(S3AudioFileName);
         }
-        const audioHashes = await ipfsViaLambda(S3AudioFileName, hasCompressed);
+
+        
         const displayUri = await addToIpfs(payload.cover);
         const coverThumbUri = await addToIpfs(payload.thumbnail);
-        const hashes = [audioHashes, displayUri, coverThumbUri]
-        console.log(hashes)
-        return hashes;
+        const uris = [audioUri, compressedAudioUri, displayUri, coverThumbUri]
+        console.log(uris)
+        return uris;
     }
 
     const addToIpfs = async(file) => {
