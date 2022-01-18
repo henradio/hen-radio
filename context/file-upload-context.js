@@ -13,18 +13,17 @@ const UploadProvider = ({ children }) => {
         console.log('handle upload');
         console.log(payload);
         let audioUri;
-        let compressedAudioUri
+        let compressedAudioUri;
+        let compressResult;
 
         if (payload.audio.size < 6000000) {
             audioUri = await addToIpfs(payload.audio);
             compressedAudioUri = audioUri;
         } else {
             const S3AudioFileName = await uploadFile(payload.audio);
-            await callCompression(S3AudioFileName);
-            //Todo, something like that
-            [audioUri,compressedAudioUri] = await ipfsViaLambda(S3AudioFileName);
+            [compressResult, audioUri] = await Promise.all(callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName));
+            compressedAudioUri = await BE2Ipfs('compressed/' + S3AudioFileName);
         }
-
         
         const displayUri = await addToIpfs(payload.cover);
         const coverThumbUri = await addToIpfs(payload.thumbnail);
@@ -50,18 +49,11 @@ const UploadProvider = ({ children }) => {
         return fileS3uri;
     }
 
-    const ipfsViaLambda = async (filesName, isCompressed) => {
-        console.log(filesName)
-        const payload = {
-            'rawAudio': filesNames[0],
-            'compressedAudio': 'compressed/'+filesNames[0]
-        }
-
-        console.log(payload)
-        const fileHashes = await axios.post(
-            `${AWS_API_BASE_URL}/uploadToIpfs`, payload
+    const BE2Ipfs = async (filesName) => {
+        const { data: hash } = await axios.get(
+            `${AWS_API_BASE_URL}/uploadToIpfs?fileName=${filesName}`
         );
-        return fileHashes;
+        return hash;
     }
 
     const getPresignedUrls = async (fileType) => {
