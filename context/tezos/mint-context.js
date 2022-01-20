@@ -19,7 +19,7 @@ const MintProvider = ({children}) => {
         const artifactUri = hashes[0];
         const displayUri = hashes[1];
         const coverThumbUri = hashes[2];
-        const compressedAudioUri = hashes[3] ? hashes[3] : hashes[0];
+        const compressedAudioUri = hashes[3];
 
         console.log(compressedAudioUri);
         console.log(artifactUri);
@@ -29,28 +29,30 @@ const MintProvider = ({children}) => {
         console.log(auth);
         console.log(auth.address);
 
-        const metadata = Buffer.from(
-            JSON.stringify({
-                name: p.title,
-                description: p.description,
-                tags: p.tags.replace(/\s/g, '').split(','),
-                symbol: 'OBJKT',
-                artifactUri,
-                displayUri,
-                thumbnailUri: coverThumbUri,
-                creators: [auth.address],
-                formats: [
-                    {
-                        uri: artifactUri,
-                        mimeType: p.audio.type,
-                        compressedAudioUri
-                    }],
-                decimals: 0,
-                isBooleanAmount: false,
-                shouldPreferSymbol: false
-            })
-        );
-        console.log(metadata);
+        const metadataJson = JSON.stringify({
+            name: p.title,
+            description: p.description,
+            tags: p.tags.replace(/\s/g, '').split(','),
+            symbol: 'OBJKT',
+            artifactUri,
+            displayUri,
+            thumbnailUri: coverThumbUri,
+            creators: [auth.address],
+            formats: [
+                {
+                    uri: artifactUri,
+                    mimeType: p.audio.type,
+                    compressedAudioUri
+                }],
+            decimals: 0,
+            isBooleanAmount: false,
+            shouldPreferSymbol: false
+        });
+
+        console.log(metadataJson);
+
+        const metadata = Buffer.from(metadataJson);
+
               /*
         const nftCid = await addToIpfs(metadata);
         console.log(nftCid);

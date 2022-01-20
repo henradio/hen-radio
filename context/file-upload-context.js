@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const UploadContext = createContext();
 
-const {create} = require('ipfs-http-client');
+const { create } = require('ipfs-http-client');
 const infuraUrl = 'https://ipfs.infura.io:5001';
 const ipfs = create(infuraUrl);
 
@@ -16,15 +16,17 @@ const UploadProvider = ({ children }) => {
         let compressedAudioUri;
         let compressResult;
 
-        if (payload.audio.size < 6000000) {
+        //       if (payload.audio.size < 6000000) {
+        if (false) {
             audioUri = await addToIpfs(payload.audio);
             compressedAudioUri = audioUri;
         } else {
             const S3AudioFileName = await uploadFile(payload.audio);
-            [compressResult, audioUri] = await Promise.all(callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName));
+            [compressResult, audioUri] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
+            console.log([compressResult, audioUri])
             compressedAudioUri = await BE2Ipfs('compressed/' + S3AudioFileName);
         }
-        
+
         const displayUri = await addToIpfs(payload.cover);
         const coverThumbUri = await addToIpfs(payload.thumbnail);
         const uris = [audioUri, compressedAudioUri, displayUri, coverThumbUri]
@@ -32,26 +34,26 @@ const UploadProvider = ({ children }) => {
         return uris;
     }
 
-    const addToIpfs = async(file) => {
+    const addToIpfs = async (file) => {
         const hash = await ipfs.add(file);
         return `ipfs://${hash.path}`;
     };
 
     const uploadFile = async (file) => {
 
-            const presignedUrl = await getPresignedUrls(file.type);
-            const fileS3uri = await uploadToS3(
-                file.type,
-                file,
-                presignedUrl
-            );
+        const presignedUrl = await getPresignedUrls(file.type);
+        const fileS3uri = await uploadToS3(
+            file.type,
+            file,
+            presignedUrl
+        );
 
         return fileS3uri;
     }
 
     const BE2Ipfs = async (filesName) => {
         const { data: hash } = await axios.get(
-            `${AWS_API_BASE_URL}/uploadToIpfs?fileName=${filesName}`
+            `${AWS_API_BASE_URL}/uploadToIpfs?S3file=${filesName}`
         );
         return hash;
     }
