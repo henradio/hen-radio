@@ -15,6 +15,8 @@ const UploadProvider = ({ children }) => {
         let audioUri;
         let compressedAudioUri;
         let compressResult;
+        let audioUriObj;
+        let compressedAudioUriObj;
 
         //       if (payload.audio.size < 6000000) {
         if (false) {
@@ -22,9 +24,12 @@ const UploadProvider = ({ children }) => {
             compressedAudioUri = audioUri;
         } else {
             const S3AudioFileName = await uploadFile(payload.audio);
-            [compressResult, audioUri] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
-            console.log([compressResult, audioUri])
-            compressedAudioUri = await BE2Ipfs('compressed/' + S3AudioFileName);
+           [compressResult, audioUriObj] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
+
+           console.log([compressResult, audioUriObj]);
+           audioUri = audioUriObj.audio.path;
+           compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName);
+           compressedAudioUri = compressedAudioUriObj.audio.path;
         }
 
         const displayUri = await addToIpfs(payload.cover);
