@@ -28,7 +28,7 @@ const UploadProvider = ({ children }) => {
 
            console.log([compressResult, audioUriObj]);
            audioUri = audioUriObj.audio.path;
-           compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName);
+           compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName +'.mp3');
            compressedAudioUri = compressedAudioUriObj.audio.path;
         }
 
@@ -85,7 +85,7 @@ const UploadProvider = ({ children }) => {
                     `[message] Data received from server: ${event.data}`);
                 if (event.data === 'COMPLETE') {
                     ///
-                    console.log('Compression and ipfs done');
+                    console.log('Compression done');
                     resolve();
                     /* try {
                          const response = await axios({
