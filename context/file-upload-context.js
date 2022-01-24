@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { AWS_API_BASE_URL, AWS_WEBSOCKET_URL } from '../constants';
 import axios from 'axios';
+import useToast from '../hooks/use-toast';
 
 export const UploadContext = createContext();
 
@@ -9,6 +10,7 @@ const infuraUrl = 'https://ipfs.infura.io:5001';
 const ipfs = create(infuraUrl);
 
 const UploadProvider = ({ children }) => {
+    const {setMessage} = useToast();
     const handleUpload = async (payload) => {
         console.log('handle upload');
         console.log(payload);
@@ -17,22 +19,24 @@ const UploadProvider = ({ children }) => {
         let compressResult;
         let audioUriObj;
         let compressedAudioUriObj;
-
-        //       if (payload.audio.size < 6000000) {
-        if (false) {
+        setMessage('1/7 uploading files…');
+        if (payload.audio.size < 6000000) {
             audioUri = await addToIpfs(payload.audio);
             compressedAudioUri = audioUri;
         } else {
             const S3AudioFileName = await uploadFile(payload.audio);
+            setMessage('2/7 compressing audio files…');
            [compressResult, audioUriObj] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
 
            console.log([compressResult, audioUriObj]);
-           audioUri = audioUriObj.audio.path;
+           audioUri = 'ipfs://' + audioUriObj.audio.path;
+           setMessage('3/7 audio files to ipfs…');
            compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName +'.mp3');
-           compressedAudioUri = compressedAudioUriObj.audio.path;
+           compressedAudioUri = 'ipfs://' + compressedAudioUriObj.audio.path;
         }
-
+        setMessage('4/7 cover image to ipfs…');
         const displayUri = await addToIpfs(payload.cover);
+        setMessage('5/7 thumbnail to ipfs…');
         const coverThumbUri = await addToIpfs(payload.thumbnail);
         const uris = [audioUri, compressedAudioUri, displayUri, coverThumbUri]
         console.log(uris)
@@ -84,20 +88,8 @@ const UploadProvider = ({ children }) => {
                 console.log(
                     `[message] Data received from server: ${event.data}`);
                 if (event.data === 'COMPLETE') {
-                    ///
                     console.log('Compression done');
                     resolve();
-                    /* try {
-                         const response = await axios({
-                             url: getUrl,
-                             method: 'GET',
-                             responseType: 'blob'
-                         });
-                         resolve(response);
-                     } catch(e) {
-                         console.log(e);
-                         reject(null);
-                     }*/
                 }
             };
             socket.onclose = function (event) {

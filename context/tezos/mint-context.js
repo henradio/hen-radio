@@ -13,18 +13,21 @@ const MintProvider = ({children}) => {
 
     const handleMint = async(payload) => {
         const p = payload;
-        setMessage('1/5 uploading files…');
         const hashes = await handleUpload(p);
   
         const artifactUri = hashes[0];
-        const displayUri = hashes[1];
-        const coverThumbUri = hashes[2];
-        const compressedAudioUri = hashes[3];
+        const compressedAudioUri = hashes[1];
+        const displayUri = hashes[2];
+        const coverThumbUri = hashes[3];
 
-        console.log(compressedAudioUri);
+
         console.log(artifactUri);
+        console.log(compressedAudioUri);
         console.log(displayUri);
         console.log(coverThumbUri);
+ 
+
+
         console.log('---------auth-------');        
         console.log(auth);
         console.log(auth.address);
@@ -52,20 +55,19 @@ const MintProvider = ({children}) => {
         console.log(metadataJson);
 
         const metadata = Buffer.from(metadataJson);
-
-              /*
+        setMessage('6/7 uploading metadata');
         const nftCid = await addToIpfs(metadata);
         console.log(nftCid);
         console.log(p);
         console.log(p.amount);
         console.log(p.royalties);
-        setMessage('Minting…');
+        setMessage('7/7 minting');
         const isSuccessful = await mint(auth.address, p.amount, nftCid.substr(7), p.royalties);
         setMessage(isSuccessful ? 'Completed' : 'Failed to mint');
         setTimeout(() => {
             setMessage(null);
         }, 2000)
-        */
+
     };
 
     const addToIpfs = async(file) => {
