@@ -10,7 +10,7 @@ const infuraUrl = 'https://ipfs.infura.io:5001';
 const ipfs = create(infuraUrl);
 
 const UploadProvider = ({ children }) => {
-    const {setMessage} = useToast();
+    const { setMessage } = useToast();
     const handleUpload = async (payload) => {
         console.log('handle upload');
         console.log(payload);
@@ -26,13 +26,13 @@ const UploadProvider = ({ children }) => {
         } else {
             const S3AudioFileName = await uploadFile(payload.audio);
             setMessage('2/7 compressing audio files…');
-           [compressResult, audioUriObj] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
+            [compressResult, audioUriObj] = await Promise.all([callCompression(S3AudioFileName), BE2Ipfs(S3AudioFileName)]);
 
-           console.log([compressResult, audioUriObj]);
-           audioUri = 'ipfs://' + audioUriObj.audio.path;
-           setMessage('3/7 audio files to ipfs…');
-           compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName +'.mp3');
-           compressedAudioUri = 'ipfs://' + compressedAudioUriObj.audio.path;
+            console.log([compressResult, audioUriObj]);
+            audioUri = 'ipfs://' + audioUriObj.audio.path;
+            setMessage('3/7 audio files to ipfs…');
+            compressedAudioUriObj = await BE2Ipfs('compressed/' + S3AudioFileName + '.mp3');
+            compressedAudioUri = 'ipfs://' + compressedAudioUriObj.audio.path;
         }
         setMessage('4/7 cover image to ipfs…');
         const displayUri = await addToIpfs(payload.cover);
@@ -133,7 +133,8 @@ const UploadProvider = ({ children }) => {
     return (
         <UploadContext.Provider
             value={{
-                handleUpload
+                handleUpload,
+                addToIpfs
             }}
         >
             {children}

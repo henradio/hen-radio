@@ -7,7 +7,7 @@ export const MintContext = createContext();
 
 const MintProvider = ({children}) => {
     const {auth, sync, Tezos} = useTezos();
-    const {handleUpload} = useUpload();
+    const {handleUpload, addToIpfs} = useUpload();
     const {setMessage} = useToast();
     const [operationHash, setOperationHash] = useState(null);
 
@@ -68,11 +68,6 @@ const MintProvider = ({children}) => {
             setMessage(null);
         }, 2000)
 
-    };
-
-    const addToIpfs = async(file) => {
-        const hash = await ipfs.add(file);
-        return `ipfs://${hash.path}`;
     };
 
     const mint = async(tz, amount, cid, royalties) => {

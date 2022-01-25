@@ -11,9 +11,9 @@ import UploadProvider from '../../context/file-upload-context';
 import ToastProvider from '../../context/toast-context';
 import ToolsProvider from '../../context/tools-context';
 
-const Providers = ({children}) =>
-    <UploadProvider>
-        <ToastProvider>
+const Providers = ({ children }) =>
+    <ToastProvider>
+        <UploadProvider>
             <TezosProvider>
                 <ToolsProvider>
                     <MintProvider>
@@ -23,7 +23,7 @@ const Providers = ({children}) =>
                                     <PlaylistProvider>
                                         <Layout>
                                             <div className={styles.radioPlayerBar}>
-                                                <RadioPlayer/>
+                                                <RadioPlayer />
                                             </div>
                                             {children}
                                         </Layout>
@@ -34,8 +34,8 @@ const Providers = ({children}) =>
                     </MintProvider>
                 </ToolsProvider>
             </TezosProvider>
-        </ToastProvider>
-    </UploadProvider>
-;
+        </UploadProvider>
+    </ToastProvider>
+    ;
 
 export default Providers;
