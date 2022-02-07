@@ -1,5 +1,24 @@
 export const playlists = [
     {
+        name: "Secret Data",
+        curator: '@secretdatabase',
+        description: "Underground Hip-Hop made by SECRET DATA",
+        img: '/images/secretdata.jpg',
+        slug: 'secretdata1',
+        tracks: [
+            {"id":641530,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Awakening - Cover Collab x BA$H","src":"https://ipfs.io/ipfs/QmXbw8C2Pc8WphrrkQ2PM1WaD3u3EbnpeqX9tohu71zgnr","mimeType":"audio/mpeg","displayUri":"ipfs://QmU83kczSgp2QX17aeZXeUbK3pygSsvcaudfUSwPsoW2mz","tags":[]},
+            {"id":637728,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Last Chance","src":"https://ipfs.io/ipfs/QmSvyQ8AC9Uritj8vnfDBWRtydc4Ds2w6PMhRE9HjkSGuS","mimeType":"audio/mpeg","displayUri":"ipfs://QmUjS3r6foDq4Xsg3WLSJBgHTs99gJsyQDNBfXFk4SctXn","tags":[]},
+            {"id":583041,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Wider Window Poetry x SECRET DATA","src":"https://ipfs.io/ipfs/QmQJCdYrR1Zbbze7B5QfbmWiiTqiaV34WXbFSQSXntV2ok","mimeType":"audio/mpeg","displayUri":"ipfs://Qmd8hgCJGMHZ9oesstSuAiJkvXhajzgaHr8dDe3VnKxEER","tags":[]},
+            {"id":582940,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Eternal Warfare","src":"https://ipfs.io/ipfs/QmRQm3E2jv3WcVAKErphsPwyEv9di2wg6gVd2rX1Fbboyj","mimeType":"audio/mpeg","displayUri":"ipfs://QmXjDQMmUzi7Fg5vWh5UyNnJmGDJ3T1dCd5VxvE4KvFY8o","tags":[]},
+            {"id":581172,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"R.I.P","src":"https://ipfs.io/ipfs/QmcAXBwbAJD1W2tcRgujp7QLuds5KE7xJ6pKEE2mcTNK9t","mimeType":"audio/mpeg","displayUri":"ipfs://QmS14d3oKQ3SfC9FEnWitBJwdrp2xhaWvcdXTHwg3cBvXi","tags":[]},
+            {"id":563368,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Lost & Found","src":"https://ipfs.io/ipfs/QmWihFap3Rh1fg9rxENwbmaf1cMEhR7dQTX6jof9w1J36w","mimeType":"audio/mpeg","displayUri":"ipfs://QmWrPKGitH6oJBffvDRh2bJNpAzw2TjvDx4HwAaWhUmxKT","tags":[]},
+            {"id":555051,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Show me the way","src":"https://ipfs.io/ipfs/QmNpCbmcysyHxVjj2wbGXWdpjNqNrmprw29gxGV28prsnb","mimeType":"audio/mpeg","displayUri":"ipfs://QmdGEgrU7jP5Nq2yAv98DbVQT3neWfv6NUzaL8hjBL52cW","tags":[]},
+            {"id":530801,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Champagne Soul ","src":"https://ipfs.io/ipfs/QmTjFMif7pmQDZdNbKsrGtbvAh5JnRkuxbtBwvXcyDffZa","mimeType":"audio/mpeg","displayUri":"ipfs://QmU2qGDQkGGqeJ2W6btkTpTiwcAjMMA1NMTnGgQPQnjiH3","tags":[]},
+            {"id":521027,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Beginning of a Start","src":"https://ipfs.io/ipfs/QmYjuevZxVuWBFGmwDxU3bADthHupxMrRAehzarex1ZMct","mimeType":"audio/mpeg","displayUri":"ipfs://QmZKDyeQpmTzDr9HbTp2DCyuq54x5cYnBSGvir5VMNHhLn","tags":[]},
+            {"id":513919,"creator":{"walletAddress":"tz2MxjL7SLCvEVmUtASGpa3tjNwnKfJXYaBu","name":"secretdata","metadata":{"identicon":"ipfs://QmewBTL9CV2PUpMRLSJZnJLNvp4FJJfTz3GmUxeamZdccE","description":"1/1 NFT Art & Underground HipHop"}},"title":"Good Vibes - Music #1 of 27","src":"https://ipfs.io/ipfs/QmfPz5T9TxP9MbPb6JBbiUMBzQk7NMPA667xwvWB5ufsUb","mimeType":"audio/mpeg","displayUri":"ipfs://QmZgFu1hcH5SLrRvUNPf8hXcAAXLsYH9WzWVyDnnASjxzT","tags":[]}
+    ]
+    },
+    {
         name: "The Odd Drop",
         curator: 'lbmachado',
         description: "Seasonal curation of NFT music & art!",
