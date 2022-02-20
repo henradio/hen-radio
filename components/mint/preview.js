@@ -26,8 +26,8 @@ const Preview = ({mintPayload, handleBack, triggerMint, isMinting}) => {
                 <div className={styles.infoText}>{title}</div>
                 <h2 className={styles.infoTitle}>Description</h2>
                 <div className={styles.infoText}>{description}</div>
-                <h2 className={styles.license}>License</h2>
-                <div className={styles.licenseTitle}>{license}</div>
+                <h2 className={styles.licenseTitle}>License</h2>
+                <div className={styles.license}>{license}</div>
             </div>
             {!isMinting && <button
                 className={styles.formButton}

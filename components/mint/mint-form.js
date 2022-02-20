@@ -266,7 +266,7 @@ const MintForm = ({handleSubmit, mintPayload}) => {
                                 className={styles.label}
                                 htmlFor={'license'}
                             >Custome license</label>
-                            <p className={styles.license}>Optional: Select the license you want on <a href="https://chooser-beta.creativecommons.org/"><u>creativecommons.org</u></a> and paste it below. By minting on the Hen contract, you de facto authorise your music to be played on Hen.radio and other Hen mirrors.<strong>Note: For the time being, this license will only be visible on Hen.radio.</strong></p>
+                            <p className={styles.license}><strong>Optional: </strong>Select the license you want on <a href="https://chooser-beta.creativecommons.org/"><u>creativecommons.org</u></a> and paste it below. By minting on the Hen contract, you de facto authorise your music to be played on Hen.radio and other Hen mirrors.<strong>Note: For the time being, this license will only be visible on Hen.radio.</strong></p>
                             <Field
                                 className={styles.input}
                                 id="license"

@@ -66,9 +66,10 @@
 
 .license {
     font-size: 10px;
+    margin-top: 0px;
 }
 
 .licenseTitle {
     font-size: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
