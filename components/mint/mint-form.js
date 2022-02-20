@@ -31,7 +31,8 @@ const validationSchema = yup.object().shape({
         .max(MAX_ROYALTIES),
     audio: yup.mixed().required(),
     cover: yup.mixed().required(),
-    thumbnail: yup.mixed().required()
+    thumbnail: yup.mixed().required(),
+    license: yup.string()
 });
 
 const bytesToMb = bytes => bytes / 1_000_000;
@@ -47,6 +48,7 @@ const MintForm = ({handleSubmit, mintPayload}) => {
         audio: mintPayload?.audio || '',
         cover: mintPayload?.cover || '',
         thumbnail: mintPayload?.thumbnail || '',
+        license: mintPayload?.license || '',
     };
 
     const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
@@ -259,12 +261,33 @@ const MintForm = ({handleSubmit, mintPayload}) => {
                                 className={styles.errorMessage}
                                 name="thumbnail"
                             />
+                        </div> <div className={styles.formField}>
+                            <label
+                                className={styles.label}
+                                htmlFor={'license'}
+                            >Custome license</label>
+                            <p className={styles.license}>Optional: Select the license you want on <a href="https://chooser-beta.creativecommons.org/"><u>creativecommons.org</u></a> and paste it below. By minting on the Hen contract, you de facto authorise your music to be played on Hen.radio and other Hen mirrors.<strong>Note: For the time being, this license will only be visible on Hen.radio.</strong></p>
+                            <Field
+                                className={styles.input}
+                                id="license"
+                                name="license"
+                                component="textarea"
+                            />
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="license"
+                            />
                         </div>
                         <button
                             className={styles.formButton}
                             type="submit"
                         >Preview
                         </button>
+                        <p className={styles.smallPrint}
+                        >Copyminting is minting other artists work without their consent.
+                            <br/>This will result in an immediate and irrevocable ban.
+                            <br/>Report copyminting on our or Hen's Discord.</p>
                     </Form>
                 }
             </Formik>

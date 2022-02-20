@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 const Preview = ({mintPayload, handleBack, triggerMint, isMinting}) => {
-    const {title, description, cover, audio, royalties} = mintPayload;
+    const {title, description, cover, audio, royalties, license} = mintPayload;
     
     return (
         <div className={styles.column}>
@@ -26,6 +26,8 @@ const Preview = ({mintPayload, handleBack, triggerMint, isMinting}) => {
                 <div className={styles.infoText}>{title}</div>
                 <h2 className={styles.infoTitle}>Description</h2>
                 <div className={styles.infoText}>{description}</div>
+                <h2 className={styles.license}>License</h2>
+                <div className={styles.licenseTitle}>{license}</div>
             </div>
             {!isMinting && <button
                 className={styles.formButton}

@@ -18,6 +18,7 @@ const MintProvider = ({children}) => {
     const [operationHash, setOperationHash] = useState(null);
 
     const handleMint = async(payload) => {
+        console.log(payload)
         const p = payload;
         setMessage('Creating compressed audio file…');
         const compressedAudio = await handleCompress(p);
@@ -27,14 +28,6 @@ const MintProvider = ({children}) => {
         const artifactUri = await addToIpfs(p.audio);
         const displayUri = await addToIpfs(p.cover);
         const coverThumbUri = await addToIpfs(p.thumbnail);
-
-        console.log(compressedAudioUri);
-        console.log(artifactUri);
-        console.log(displayUri);
-        console.log(coverThumbUri);
-        console.log('---------auth-------');        
-        console.log(auth);
-        console.log(auth.address);
 
         const metadata = Buffer.from(
             JSON.stringify({
@@ -51,7 +44,8 @@ const MintProvider = ({children}) => {
                         uri: artifactUri,
                         mimeType: p.audio.type,
                         compressedAudioUri,
-                        coverThumbUri
+                        coverThumbUri,
+                        license: p.license
                     }],
                 decimals: 0,
                 isBooleanAmount: false,
