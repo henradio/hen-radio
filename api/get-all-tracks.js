@@ -4,7 +4,7 @@ import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/gen
 const query = gql`
     query GetAllTracks($offset: Int!, $limit: Int!) {
         hic_et_nunc_token(where: {
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/x-wav", "audio/mpeg"]},
             token_holders: {quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}}
         }, order_by: {id: desc}, limit: $limit, offset: $offset) {

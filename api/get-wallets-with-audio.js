@@ -3,7 +3,7 @@ import { gql, request } from 'graphql-request';
 const query = gql`
     query AudioObjktData {
         hic_et_nunc_token(where: {
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/x-wav", "audio/mpeg"]},
             token_holders: {
                 quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}

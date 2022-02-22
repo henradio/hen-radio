@@ -23,7 +23,7 @@ const query = gql`
     query AudioObjktData($objktIds: [bigint!]) {
         hic_et_nunc_token(where: {
             id: {_in: $objktIds},
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/x-wav", "audio/mpeg"]},
             token_holders: {
                 quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}

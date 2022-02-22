@@ -8,7 +8,7 @@ const query = gql`
                 {title: {_ilike: $search}},
                 {token_tags: {tag: {tag: {_ilike: $search}}}}
             ]
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/x-wav", "audio/mpeg"]},
             token_holders: {
                 quantity: {_gt: "0"},
                 holder_id: {_neq: "tz1burnburnburnburnburnburnburjAYjjX"}
