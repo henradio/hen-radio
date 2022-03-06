@@ -5,7 +5,7 @@ import getLowestObjktPrice from '../utilities/get-lowest-objkt-price';
 const query = gql`
     query AudioObjktData($objktId: bigint!) {
         hic_et_nunc_token(where: {
-            mime: {_in: ["audio/ogg", "audio/wav", "audio/mpeg"]},
+            mime: {_in: ["audio/ogg", "audio/wav", "audio/x-wav", "audio/mpeg"]},
             token_holders: {
                 quantity: {_gt: "0"},
                 holder_id: {

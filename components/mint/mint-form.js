@@ -11,7 +11,8 @@ const MAX_THUMB_SIZE_BYTES = 1_000_000;
 const ALLOWED_AUDIO_TYPES = [
     'audio/wav',
     'audio/ogg',
-    'audio/mpeg'
+    'audio/mpeg',
+    "audio/x-wav"
 ];
 const ALLOWED_IMAGE_TYPES = [
     'image/png',
