@@ -17,12 +17,13 @@ import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
 import serialise from '../../fetchers/serialiser';
 import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
 import SwapForm from '../swap-form';
+import useStation from '../../hooks/use-station';
 
 const ObjktView = ({objktId}) => {
     const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
         {use: [serialise]});
     const {walletAddress, objkt, tracks} = data;
-
+    const {stationQuery} = useStation();
     const {
         controls,
         isTrackPlaying
@@ -64,7 +65,8 @@ const ObjktView = ({objktId}) => {
         : 'An audio objkt with this id could not be found.';
     const image = 'https://hen.radio/images/hen-radio-logo-social.png';
     const url = `https://hen.radio/objkt/${objkt.id}`;
-
+    
+    
     return (
         <>
             <Head>
@@ -126,7 +128,7 @@ const ObjktView = ({objktId}) => {
                                 #{objkt.id}
                             </a>
                             <br/>
-                            <Link href={`/objkt/${objkt.id}`}>
+                            <Link href={{pathname:`/objkt/${objkt.id}`, query: stationQuery}}>
                                 <a>
                                     <strong>{objkt.title}</strong>
                                 </a>
@@ -134,7 +136,7 @@ const ObjktView = ({objktId}) => {
                             <br/>
                             <span>
                                 by&nbsp;
-                                <Link href={`/tz/${objkt.creator.walletAddress}`}>
+                                <Link href={{pathname:`/tz/${objkt.creator.walletAddress}`, query:stationQuery}}>
                                     <a>
                                         {getTrimmedWallet(
                                             objkt.creator.walletAddress)} {objkt.creator.name}

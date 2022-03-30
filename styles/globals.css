@@ -47,6 +47,17 @@ html, body {
   background-color: var(--white);
 }
 
+.miami {
+  --black: var(--black);
+  --white:#72e072;
+  --logo: var(--black);
+  --text: var(--black);
+  --border: var(--dark-grey);
+  --button-background: #72e072;
+  --button-border: var(--black);
+  --player-background-color: var(--white)
+}
+
 .darkMode {
   --black: var(--light-grey);
   --white: #111115;

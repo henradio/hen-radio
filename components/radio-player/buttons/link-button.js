@@ -1,12 +1,13 @@
 import styles from '../styles.module.css';
 import LinkIcon from '../../icons/link-icon';
 import { useState } from 'react';
+import useStation from '../../../hooks/use-station';
 
 const LinkButton = ({track}) => {
     const [showMessage, setShowMessage] = useState(false);
-
+    const {stationQuery} = useStation();
     const handleCopyShareLink = async() => {
-        await navigator.clipboard.writeText(`https://hen.radio/objkt/${track.id}`);
+        await navigator.clipboard.writeText(`https://hen.radio/objkt/${track.id+stationQuery}`);
         setShowMessage(true);
         setTimeout(() => {
             setShowMessage(false);
