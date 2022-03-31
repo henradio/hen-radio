@@ -32,6 +32,11 @@
     color: var(--text);
 }
 
+.mainContainer {
+    border-bottom: 1px solid;
+    padding-bottom: 7px;
+}
+
 @media screen and (min-width: 800px) {
     .headerBar {
         display: flex;

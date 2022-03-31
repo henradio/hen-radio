@@ -5,6 +5,7 @@ import usePlaylist from '../../hooks/use-playlist';
 import {audio, ipfsUrls} from '../../constants';
 import styles from './styles.module.css';
 import {getIpfsUrl, getTrimmedWallet} from '../../utilities/general';
+import {getObjktLicense} from '../../utilities/get-objkt-license';
 import useTrack from '../../hooks/use-track';
 import Image from 'next/image';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
@@ -141,6 +142,7 @@ const ObjktView = ({objktId}) => {
                                     </a>
                                 </Link>
                             </span>
+                            
                         </p>
                         {objkt?.availability ? (
                             <div>

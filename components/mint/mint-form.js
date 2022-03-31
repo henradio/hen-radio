@@ -308,7 +308,7 @@ const MintForm = ({ handleSubmit, mintPayload }) => {
                             <label
                                 className={styles.label}
                                 htmlFor={'license'}
-                            >License</label>
+                            >Select a license</label>
                             <select
                                 className={styles.dropdown}
                                 onChange={handleDropdownChange(formik)}
@@ -323,7 +323,7 @@ const MintForm = ({ handleSubmit, mintPayload }) => {
                                 <option value="CC0">CCO (Public Domain)</option>
                             </select>
                             <div>
-                                {formik.values.licenseUrl && <a href={formik.values.licenseUrl} target="_blank"><u>{formik.values.license}</u></a>}
+                                {formik.values.licenseUrl && <a href={formik.values.licenseUrl} target="_blank" rel="noopener noreferrer"><u>{formik.values.license}</u></a>}
                             </div>
                             <ErrorMessage
                                 component="span"
@@ -339,7 +339,7 @@ const MintForm = ({ handleSubmit, mintPayload }) => {
                         <p className={styles.smallPrint}
                         >Copyminting is minting other artists work without their consent.
                             <br />This will result in an immediate and irrevocable ban.
-                            <br />Report copyminting on our or Hen's Discord.</p>
+                            <br />Report copyminting on Hen <a href='https://discord.gg/kmWpbQxjat'><u>Discord</u></a>.</p>
                     </Form>
                 }
             </Formik>

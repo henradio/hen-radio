@@ -39,13 +39,14 @@ const MintProvider = ({children}) => {
                 displayUri,
                 thumbnailUri: IPFS_DEFAULT_THUMBNAIL_URI,
                 creators: [auth.address],
+                rights: p.license,
+                rightUri: p.licenseUrl,
                 formats: [
                     {
                         uri: artifactUri,
                         mimeType: p.audio.type,
                         compressedAudioUri,
-                        coverThumbUri,
-                        license: p.license
+                        coverThumbUri
                     }],
                 decimals: 0,
                 isBooleanAmount: false,

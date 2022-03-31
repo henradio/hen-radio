@@ -41,6 +41,7 @@
 
 .formButton {
     padding: 4px 8px;
+    margin-top: 30px;
 }
 
 .info {
@@ -62,4 +63,22 @@
     height: auto;
     display: block;
     margin-bottom: 16px;
+}
+
+.dropdown {
+    margin-bottom: 10px;
+}
+
+.smallPrint {
+    font-size:x-small;
+}
+
+.licensePreview {
+    font-size: small;
+    margin-bottom: 0;
+}
+
+.licenseUrlPreview {
+    font-size: small;
+    text-decoration: underline;
 }
