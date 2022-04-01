@@ -1,11 +1,11 @@
 import TrackList from '../track-lists/track-list';
 import useRadio from '../../hooks/use-radio';
-import {useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import usePlaylist from '../../hooks/use-playlist';
-import {audio, ipfsUrls} from '../../constants';
+import { audio, ipfsUrls } from '../../constants';
 import styles from './styles.module.css';
-import {getIpfsUrl, getTrimmedWallet} from '../../utilities/general';
-import {getObjktLicense} from '../../utilities/get-objkt-license';
+import { getIpfsUrl, getTrimmedWallet } from '../../utilities/general';
+import getObjktLicense from '../../api/get-objkt-license';
 import useTrack from '../../hooks/use-track';
 import Image from 'next/image';
 import AddToPlaylist from '../add-to-playlist/add-to-playlist';
@@ -14,34 +14,47 @@ import Link from 'next/link';
 import Swaps from '../swaps';
 import Head from 'next/head';
 import useSWR from 'swr';
-import objktFetcher, {objktFetcherApi} from '../../fetchers/objkt-fetcher';
+import objktFetcher, { objktFetcherApi } from '../../fetchers/objkt-fetcher';
 import serialise from '../../fetchers/serialiser';
 import TrackPlayPauseButton from '../radio-player/track-play-pause-button';
 import SwapForm from '../swap-form';
 
-const ObjktView = ({objktId}) => {
-    const {data} = useSWR([objktFetcherApi, objktId], objktFetcher,
-        {use: [serialise]});
-    const {walletAddress, objkt, tracks} = data;
+const ObjktView = ({ objktId }) => {
+    const { data } = useSWR([objktFetcherApi, objktId], objktFetcher,
+        { use: [serialise] });
+    const { walletAddress, objkt, tracks } = data;
 
     const {
         controls,
         isTrackPlaying
     } = useRadio();
 
-    const {setTracks} = usePlaylist();
-    const {trackState} = useTrack();
+    const { setTracks } = usePlaylist();
+    const { trackState } = useTrack();
+    const [rights, setRights] = useState({});
 
-    if(audio) {
+    if (audio) {
         audio.onended = () => {
-            if(!tracks.length) return;
+            if (!tracks.length) return;
             controls.next(tracks)();
         };
     }
 
     useEffect(() => {
+        let r;
+        const getRights = async () => {
+            r = await getObjktLicense(objktId); 
+            setRights(r);
+        }
+        getRights();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
+
+
+    useEffect(() => {
         setTracks(tracks);
-        if(trackState.currentTrack === null) {
+        if (trackState.currentTrack === null) {
             const foundIndex = tracks.findIndex(t => t.id === Number(objkt.id));
             controls.initialiseTrack(tracks)(
                 foundIndex !== -1 ? foundIndex : 0)();
@@ -49,7 +62,7 @@ const ObjktView = ({objktId}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tracks]);
 
-    if(!tracks) return <p>Loading...</p>;
+    if (!tracks) return <p>Loading...</p>;
 
     const coverHash = objkt?.displayUri?.slice(7) || '';
     const srcSet = ipfsUrls.map((url) => `${url}/${coverHash}`).join(', ');
@@ -69,15 +82,15 @@ const ObjktView = ({objktId}) => {
     return (
         <>
             <Head>
-                <meta charSet="utf-8"/>
+                <meta charSet="utf-8" />
                 <title>{objkt.title + byName} | Hen Radio | NFT Music
-                                              Player</title>
-                <meta name="description" content={description}/>
-                <link rel="canonical" href={`http://hen.radio/${objkt.id}`}/>
-                <meta name="twitter:card" content="summary"/>
-                <meta name="twitter:site" content="@hen_radio"/>
-                <meta name="twitter:creator" content="@hen_radio"/>
-                <meta name="twitter:title" content={title}/>
+                    Player</title>
+                <meta name="description" content={description} />
+                <link rel="canonical" href={`http://hen.radio/${objkt.id}`} />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@hen_radio" />
+                <meta name="twitter:creator" content="@hen_radio" />
+                <meta name="twitter:title" content={title} />
                 <meta
                     name="twitter:description"
                     content={description}
@@ -86,9 +99,9 @@ const ObjktView = ({objktId}) => {
                     name="twitter:image"
                     content={image}
                 />
-                <meta property="og:title" content={title}/>
-                <meta property="og:url" content={url}/>
-                <meta property="og:type" content="gallery"/>
+                <meta property="og:title" content={title} />
+                <meta property="og:url" content={url} />
+                <meta property="og:type" content="gallery" />
                 <meta
                     property="og:description"
                     content={description}
@@ -97,7 +110,7 @@ const ObjktView = ({objktId}) => {
                     property="og:image"
                     content={image}
                 />
-                <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+                <meta httpEquiv="x-ua-compatible" content="ie=edge" />
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
@@ -112,9 +125,9 @@ const ObjktView = ({objktId}) => {
                         srcSet={objkt?.displayUri
                             ? srcSet
                             : '/images/playlist-default.png'}
-                        width="100%" 
-                        height="100%" 
-                        layout="responsive" 
+                        width="100%"
+                        height="100%"
+                        layout="responsive"
                         objectFit="contain"
                         alt=""
 
@@ -126,13 +139,13 @@ const ObjktView = ({objktId}) => {
                             <a href={`https://hicetnunc.art/objkt/${objkt.id}`}>
                                 #{objkt.id}
                             </a>
-                            <br/>
+                            <br />
                             <Link href={`/objkt/${objkt.id}`}>
                                 <a>
                                     <strong>{objkt.title}</strong>
                                 </a>
                             </Link>
-                            <br/>
+                            <br />
                             <span>
                                 by&nbsp;
                                 <Link href={`/tz/${objkt.creator.walletAddress}`}>
@@ -142,7 +155,7 @@ const ObjktView = ({objktId}) => {
                                     </a>
                                 </Link>
                             </span>
-                            
+
                         </p>
                         {objkt?.availability ? (
                             <div>
@@ -154,17 +167,20 @@ const ObjktView = ({objktId}) => {
                                 </p>
                             </div>
                         ) : null}
+                        <p className={styles.licenseLabel}>License&nbsp;
+                        <a className={styles.licenseUri} href={rights.uri}>{rights.name}</a>
+                        </p>
                         <div className={styles.objktActionsBar}>
                             <TrackPlayPauseButton
                                 className={styles.playPause}
                                 tracks={tracks}
                                 id={objkt.id}
                             />
-                            {objkt ? <AddToPlaylist track={objkt}/> : null}
-                            {objkt ? <LinkButton track={objkt}/> : null}
+                            {objkt ? <AddToPlaylist track={objkt} /> : null}
+                            {objkt ? <LinkButton track={objkt} /> : null}
                         </div>
-                        <SwapForm objkt={objkt}/>
-                        <Swaps objktId={objktId}/>
+                        <SwapForm objkt={objkt} />
+                        <Swaps objktId={objktId} />
                     </div>
                 </div>
             </div>

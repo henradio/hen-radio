@@ -107,6 +107,18 @@
     margin-right: 10px;
 }
 
+.licenseLabel{
+    font-size: x-small;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.licenseUri{
+    font-size: x-small;
+    padding-bottom: 20px;
+    font-weight: 400;
+}
+
 @media screen and (min-width: 600px) {
     .objktImageHolder {
         width: 50%;
