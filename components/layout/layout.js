@@ -54,7 +54,7 @@ const Layout = ({params, children}) => {
                     </span>
                 </div>
             </div>
-            <div>
+            <div className={styles.mainContainer}>
                 {children}
             </div>
             <Footer/>

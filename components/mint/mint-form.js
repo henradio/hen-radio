@@ -1,4 +1,4 @@
-import {ErrorMessage, Field, Form, Formik} from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import styles from './styles.module.css';
 
@@ -32,15 +32,51 @@ const validationSchema = yup.object().shape({
         .max(MAX_ROYALTIES),
     audio: yup.mixed().required(),
     cover: yup.mixed().required(),
-    thumbnail: yup.mixed().required()
+    thumbnail: yup.mixed().required(),
+    license: yup.string(),
+    licenseUrl: yup.string(),
 });
 
 const bytesToMb = bytes => bytes / 1_000_000;
 
-const MintForm = ({handleSubmit, mintPayload}) => {
-    
-    const initialValues = { 
-        title: mintPayload?.title|| '',
+const licenses = {
+    NO: {
+        title: 'No license / All rights reserved'
+    },
+    CCBY: {
+        title: 'Attribution 4.0 International',
+        url: "https://creativecommons.org/licenses/by/4.0/"
+    },
+    CCBYND: {
+        title: 'Attribution-NoDerivatives 4.0 International',
+        url: "http://creativecommons.org/licenses/by-nd/4.0/"
+    },
+    CCBYSA: {
+        title: 'Attribution-ShareAlike 4.0 International',
+        url: "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    CCBYNC: {
+        title: 'Attribution-NonCommercial 4.0 International',
+        url: "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    CCBYNCND: {
+        title: 'Attribution-NonCommercial-NoDerivatives 4.0 International',
+        url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    CCBYNCSA: {
+        title: 'Attribution-NonCommercial-ShareAlike 4.0 International',
+        url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    CC0: {
+        title: 'Public Domain Dedication',
+        url: "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+}
+
+const MintForm = ({ handleSubmit, mintPayload }) => {
+
+    const initialValues = {
+        title: mintPayload?.title || '',
         description: mintPayload?.description || '',
         tags: mintPayload?.tags || '',
         amount: mintPayload?.amount || '',
@@ -48,21 +84,29 @@ const MintForm = ({handleSubmit, mintPayload}) => {
         audio: mintPayload?.audio || '',
         cover: mintPayload?.cover || '',
         thumbnail: mintPayload?.thumbnail || '',
+        license: mintPayload?.license || '',
+        licenseUrl: mintPayload?.licenseUrl || '',
+    };
+
+    const handleDropdownChange = (formik) => (event) => {
+        let key = event.target.value;
+        formik.setFieldValue('license', licenses[key].title);
+        formik.setFieldValue('licenseUrl', licenses[key].url);
     };
 
     const handleFileChange = (name, allowedTypes, maxBytes, formik) =>
         (event) => {
-            formik.setTouched({[name]: true}, false);
+            formik.setTouched({ [name]: true }, false);
 
             const fileObj = event.target.files && event.target.files[0];
-            if(!fileObj) {
+            if (!fileObj) {
                 const error = 'Missing file';
                 formik.setFieldError(name, error);
                 event.target.value = '';
                 return;
             }
 
-            if(!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
+            if (!fileObj.type || !(allowedTypes.includes(fileObj.type))) {
                 const mimetypes = allowedTypes.join(', ');
                 const error = `You can only upload files with ${mimetypes} mimetypes`;
                 formik.setFieldError(name, error);
@@ -70,7 +114,7 @@ const MintForm = ({handleSubmit, mintPayload}) => {
                 return;
             }
 
-            if(fileObj.size > maxBytes) {
+            if (fileObj.size > maxBytes) {
                 const fileSize = bytesToMb(fileObj.size).toFixed(2);
                 const error = `File is too large, file size is ${fileSize}MB, maximum allowed size - 1MB.`;
                 formik.setFieldError(name, error);
@@ -79,8 +123,8 @@ const MintForm = ({handleSubmit, mintPayload}) => {
             }
 
             formik.setFieldValue(name, fileObj);
-        };  
-          
+        };
+
     return (
         <div className={styles.column}>
             <Formik
@@ -260,12 +304,42 @@ const MintForm = ({handleSubmit, mintPayload}) => {
                                 className={styles.errorMessage}
                                 name="thumbnail"
                             />
+                        </div> <div className={styles.formField}>
+                            <label
+                                className={styles.label}
+                                htmlFor={'license'}
+                            >Select a license</label>
+                            <select
+                                className={styles.dropdown}
+                                onChange={handleDropdownChange(formik)}
+                            >
+                                <option value="NO">No License / All Rights Reserved</option>
+                                <option value="CCBY">CC BY</option>
+                                <option value="CCBYND">CC BY-ND</option>
+                                <option value="CCBYSA">CC BY-SA</option>
+                                <option value="CCBYNC">CC BY-NC</option>
+                                <option value="CCBYNCND">CC BY-NC-ND</option>
+                                <option value="CCBYNCSA">CC BY-NC-SA</option>
+                                <option value="CC0">CCO (Public Domain)</option>
+                            </select>
+                            <div>
+                                {formik.values.licenseUrl && <a href={formik.values.licenseUrl} target="_blank" rel="noopener noreferrer"><u>{formik.values.license}</u></a>}
+                            </div>
+                            <ErrorMessage
+                                component="span"
+                                className={styles.errorMessage}
+                                name="license"
+                            />
                         </div>
                         <button
                             className={styles.formButton}
                             type="submit"
                         >Preview
                         </button>
+                        <p className={styles.smallPrint}
+                        >Copyminting is minting other artists work without their consent.
+                            <br />This will result in an immediate and irrevocable ban.
+                            <br />Report copyminting on Hen <a href='https://discord.gg/kmWpbQxjat'><u>Discord</u></a>.</p>
                     </Form>
                 }
             </Formik>
