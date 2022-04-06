@@ -1,4 +1,5 @@
 import {gql, request} from 'graphql-request';
+import { indexerUrl } from '../constants';
 
 const query = gql`
     query SearchAllTracksCount($search: String!) {
@@ -22,7 +23,7 @@ const query = gql`
 `;
 
 const searchAllTracksCount = async(search) => {
-    const resp = await request('https://api.hicdex.com/v1/graphql', query, {search: `%${search}%`});
+    const resp = await request(indexerUrl, query, {search: `%${search}%`});
     return resp?.hic_et_nunc_token_aggregate.aggregate.count;
 };
 

@@ -1,5 +1,6 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import { indexerUrl } from '../constants';
 
 const query = gql`
     query AudioObjktData($ownerId: String!) {
@@ -42,7 +43,7 @@ const query = gql`
 
 const getObjktsOwnedBy = async(walletId) => {
     const response = await request(
-        'https://api.hicdex.com/v1/graphql',
+        indexerUrl,
         query,
         {ownerId: walletId},
     );

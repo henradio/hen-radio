@@ -1,6 +1,7 @@
 import { request } from 'graphql-request';
 import axios from 'axios';
 import { getIpfsUrl } from '../utilities/general';
+import { indexerUrl } from '../constants';
 
 const { gql } = require('graphql-request');
 const query = gql`
@@ -15,7 +16,7 @@ query MetaData($id: bigint!) {
 
 const getObjktLicense = async (id) => {
     const response = await request(
-        'https://api.hicdex.com/v1/graphql',
+        indexerUrl,
         query,
         { id }
     );

@@ -1,4 +1,5 @@
 import { gql, request } from 'graphql-request';
+import { indexerUrl } from '../constants';
 
 const query = gql`
     query GetAllTrackIds {
@@ -15,7 +16,7 @@ const query = gql`
 `;
 
 const getAllTrackIds = async() => {
-    const response = await request('https://api.hicdex.com/v1/graphql', query);
+    const response = await request(indexerUrl, query);
     return response?.hic_et_nunc_token.map(({id}) => id.toString()) || [];
 };
 

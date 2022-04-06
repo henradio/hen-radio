@@ -1,6 +1,7 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
 import getLowestObjktPrice from '../utilities/get-lowest-objkt-price';
+import { indexerUrl } from '../constants';
 
 const query = gql`
     query AudioObjktData($objktId: bigint!) {
@@ -50,7 +51,7 @@ const query = gql`
 
 const getObjktById = async(objktId) => {
     const response = await request(
-        'https://api.hicdex.com/v1/graphql',
+        indexerUrl,
         query,
         {objktId},
     );

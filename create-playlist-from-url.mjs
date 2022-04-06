@@ -1,4 +1,5 @@
 import { gql, request } from 'graphql-request';
+import { indexerUrl } from '../constants';
 
 const url = 'https://hen.radio/playlists/197596,196064,193262,190830,178113,189702,162790'
 
@@ -56,7 +57,7 @@ const query = gql`
 `;
 
 const getTracksByObjktIds = async(objktIds) => {
-    const response = await request('https://api.hicdex.com/v1/graphql', query, {objktIds});
+    const response = await request(indexerUrl, query, {objktIds});
     const trackList = response
         ?.hic_et_nunc_token
         ?.map(o => ({

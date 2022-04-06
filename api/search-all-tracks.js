@@ -1,4 +1,5 @@
 import {gql, request} from 'graphql-request';
+import { indexerUrl } from '../constants';
 import {
     convertPriceToXtz,
     getAvailability,
@@ -54,7 +55,7 @@ const query = gql`
 const searchAllTracks = async(page = 1, limit = 250, search) => {
     const offset = Math.max((page - 1) * limit, 0);
     const resp = await request(
-        'https://api.hicdex.com/v1/graphql',
+        indexerUrl,
         query,
         {offset, limit, search: `%${search}%`}
     );
