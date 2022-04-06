@@ -1,6 +1,7 @@
 import {request} from 'graphql-request';
 import axios from 'axios';
 import {getIpfsUrl} from '../utilities/general';
+import { indexerUrl } from '../constants';
 
 const {gql} = require('graphql-request');
 const query = gql`
@@ -23,7 +24,7 @@ const query = gql`
 
 const getProfile = async(address) => {
     const response = await request(
-        'https://api.hicdex.com/v1/graphql',
+        indexerUrl,
         query,
         {address}
     );

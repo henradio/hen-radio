@@ -1,5 +1,6 @@
 import { gql, request } from 'graphql-request';
 import { convertPriceToXtz, getAvailability, getIpfsUrl } from '../utilities/general';
+import { indexerUrl } from '../constants';
 
 const query = gql`
     query AudioObjktData($objktIds: [bigint!]) {
@@ -39,7 +40,7 @@ const query = gql`
 `;
 
 const getTracksByObjktIds = async(objktIds) => {
-    const response = await request('https://api.hicdex.com/v1/graphql', query, {objktIds});
+    const response = await request(indexerUrl, query, {objktIds});
     const trackList = response
         ?.hic_et_nunc_token
         ?.map(o => ({
