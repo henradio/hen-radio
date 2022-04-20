@@ -1,7 +1,8 @@
 export const tzktApi = 'https://api.tzkt.io/v1/accounts';
 export const ipfsUrls = ['https://ipfs.io/ipfs'];
-//export const indexerUrl = 'https://api.hicdex.com/v1/graphql';
-export const indexerUrl = 'https://hdapi.teztools.io/v1/graphql';
+export const indexerUrl = 'https://api.hicdex.com/v1/graphql';
+//export const indexerUrl = 'https://hdapi.teztools.io/v1/graphql';
+
 
 export const AWS_API_BASE_URL = process.env.NEXT_PUBLIC_AWS_API_BASE_URL
 export const AWS_WEBSOCKET_URL = process.env.NEXT_PUBLIC_AWS_WEBSOCKET_URL
