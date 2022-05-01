@@ -1,8 +1,8 @@
 export const playlists = [
     {
-        name: "Secret Data",
-        curator: '@secretdatabase',
-        description: "Underground Hip-Hop made by SECRET DATA",
+        name: "Samyuell Mongkhounsavath",
+        curator: '@mongkhounsavath',
+        description: "Underground Hip-Hop made by Samyuell Mongkhounsavath",
         img: '/images/secretdata.jpg',
         slug: 'secretdata1',
         tracks: [
