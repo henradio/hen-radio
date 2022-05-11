@@ -1,5 +1,18 @@
 export const playlists = [
     {
+        name: "Project 5am",
+        curator: '@project5am',
+        description: "5am",
+        img: '/images/project5am.jpg',
+        slug: 'project5am',
+        tracks: [
+            {"id":605934,"creator":{"walletAddress":"tz2GstV7iyh5vuWPmMwNsgmv3cFJvjgoz1To","name":"project5am","metadata":{"identicon":"ipfs://Qmf5ozRETugcnYF5d1k3pVLZYpYptj8yaQC2YdP5wEhZ6x","description":"Psychonautic Artist  🅾🅽 🅰 🆂🅴🆀🆄🅴🅽🅲🅴 🅾🅵 🅴🆅🅴🅽🆃🆂 🆁🅴🆅🅸🅻🅸🅽🅶 🆂🅾🅼🅴   🆃🅷🅸🅽🅶    @Project5am  Flux without Pause Surf/ace"}},"title":"Jan 1st - On A Day Like This ","src":"https://ipfs.io/ipfs/QmSHwxDrqbzK8DPddMkGp5Y61NACDLmPbpJk15T64LDJAL","mimeType":"audio/mpeg","displayUri":"ipfs://QmeuB6B7o2SL8VgKraEDPKKm1DFQL1xvwJiaWCeiuFaEeV","tags":[]},
+            {"id":605971,"creator":{"walletAddress":"tz2GstV7iyh5vuWPmMwNsgmv3cFJvjgoz1To","name":"project5am","metadata":{"identicon":"ipfs://Qmf5ozRETugcnYF5d1k3pVLZYpYptj8yaQC2YdP5wEhZ6x","description":"Psychonautic Artist  🅾🅽 🅰 🆂🅴🆀🆄🅴🅽🅲🅴 🅾🅵 🅴🆅🅴🅽🆃🆂 🆁🅴🆅🅸🅻🅸🅽🅶 🆂🅾🅼🅴   🆃🅷🅸🅽🅶    @Project5am  Flux without Pause Surf/ace"}},"title":"Footsteps In The Dark, Bring Home The Light","src":"https://ipfs.io/ipfs/QmY5EXJmugQArNGqb7HQ7cgacJfBMS5Huybj3h4ATNh8nk","mimeType":"audio/mpeg","displayUri":"ipfs://QmbSgWdERHVwgYjLsovXqifm6GDsKmGNodFcvgoaEqe9v3","tags":[]},
+            {"id":609437,"creator":{"walletAddress":"tz2GstV7iyh5vuWPmMwNsgmv3cFJvjgoz1To","name":"project5am","metadata":{"identicon":"ipfs://Qmf5ozRETugcnYF5d1k3pVLZYpYptj8yaQC2YdP5wEhZ6x","description":"Psychonautic Artist  🅾🅽 🅰 🆂🅴🆀🆄🅴🅽🅲🅴 🅾🅵 🅴🆅🅴🅽🆃🆂 🆁🅴🆅🅸🅻🅸🅽🅶 🆂🅾🅼🅴   🆃🅷🅸🅽🅶    @Project5am  Flux without Pause Surf/ace"}},"title":"Semantic Satiation","src":"https://ipfs.io/ipfs/Qmdy4HqEQa52ai8VYnowcwssQ4sFaaCXTjqZrssf9UrDgZ","mimeType":"audio/mpeg","displayUri":"ipfs://QmcdtuU4cyBS1ttnwhXmstyU1ek8Qx6Rxd6viDvaPaT3io","tags":[]},
+            {"id":621780,"creator":{"walletAddress":"tz2GstV7iyh5vuWPmMwNsgmv3cFJvjgoz1To","name":"project5am","metadata":{"identicon":"ipfs://Qmf5ozRETugcnYF5d1k3pVLZYpYptj8yaQC2YdP5wEhZ6x","description":"Psychonautic Artist  🅾🅽 🅰 🆂🅴🆀🆄🅴🅽🅲🅴 🅾🅵 🅴🆅🅴🅽🆃🆂 🆁🅴🆅🅸🅻🅸🅽🅶 🆂🅾🅼🅴   🆃🅷🅸🅽🅶    @Project5am  Flux without Pause Surf/ace"}},"title":"The Stars Are Beautiful","src":"https://ipfs.io/ipfs/QmPYf9p6T3Drm6k35vThYRX3C12gZJewsLk4csrhRPHuy8","mimeType":"audio/mpeg","displayUri":"ipfs://QmPoSQ5i6T9yvNwZjFhQUwbo6KvRjhEyjSQUrmMEoJpAR8","tags":[]},
+            {"id":591813,"creator":{"walletAddress":"tz2GstV7iyh5vuWPmMwNsgmv3cFJvjgoz1To","name":"project5am","metadata":{"identicon":"ipfs://Qmf5ozRETugcnYF5d1k3pVLZYpYptj8yaQC2YdP5wEhZ6x","description":"Psychonautic Artist  🅾🅽 🅰 🆂🅴🆀🆄🅴🅽🅲🅴 🅾🅵 🅴🆅🅴🅽🆃🆂 🆁🅴🆅🅸🅻🅸🅽🅶 🆂🅾🅼🅴   🆃🅷🅸🅽🅶    @Project5am  Flux without Pause Surf/ace"}},"title":"Like A God","src":"https://ipfs.io/ipfs/QmR53uwNKQAG87XsRpNvWeNPjQ53qdBwXccuRLBNPxqHYb","mimeType":"audio/mpeg","displayUri":"ipfs://QmSpZLD7NBExnWBecKY6N84Nh5VNoX9zvxcYLZ25SseYjV","tags":[]}]
+    },
+    {
         name: "Samyuell Mongkhounsavath",
         curator: '@mongkhounsavath',
         description: "Underground Hip-Hop made by Samyuell Mongkhounsavath",
