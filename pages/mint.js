@@ -3,16 +3,16 @@ import Minter from '../components/mint/minter';
 
 const Mint = () => {
         const title = 'Hen Radio Minter';
-        const description = 'Mint audio NFTs at hen.radio';
-        const image = 'https://hen.radio/images/hen-radio-logo-social.png';
-        const url = 'https://hen.radio';
+        const description = 'Mint audio NFTs at www.henradio.xyz';
+        const image = 'https://www.henradio.xyz/images/hen-radio-logo-social.png';
+        const url = 'https://www.henradio.xyz';
 
         return <>
             <Head>
                 <meta charSet="utf-8"/>
                 <title>Hen Radio | Mint</title>
                 <meta name="description" content={description}/>
-                <link rel="canonical" href={`http://hen.radio/mint`}/>
+                <link rel="canonical" href={`http://www.henradio.xyz/mint`}/>
                 <meta name="twitter:card" content="summary"/>
                 <meta name="twitter:site" content="@hen_radio"/>
                 <meta name="twitter:creator" content="@hen_radio"/>

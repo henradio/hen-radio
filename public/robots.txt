@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hen.radio
+Host: https://www.henradio.xyz
 
 # Sitemaps
-Sitemap: https://hen.radio/sitemap.xml
+Sitemap: https://www.henradio.xyz/sitemap.xml

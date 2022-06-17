@@ -21,8 +21,8 @@ export const getServerSideProps = async({params}) => {
 const PlaylistsPage = ({fallback, swrKey, objktIdStr}) => {
     const title = 'Listen to Hen Radio';
     const description = 'Hic et Nunc NFT audio player and playlists';
-    const url = 'https://hen.radio/playlists';
-    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
+    const url = 'https://www.henradio.xyz/playlists';
+    const image = 'https://www.henradio.xyz/images/hen-radio-logo-social.png';
     return (
         <SWRConfig
             value={{
@@ -38,7 +38,7 @@ const PlaylistsPage = ({fallback, swrKey, objktIdStr}) => {
                 <meta name="description" content={description}/>
                 <link
                     rel="canonical"
-                    href={`http://hen.radio/playlists/${objktIdStr}`}
+                    href={`http://www.henradio.xyz/playlists/${objktIdStr}`}
                 />
                 <meta name="twitter:card" content="summary"/>
                 <meta name="twitter:site" content="@hen_radio"/>

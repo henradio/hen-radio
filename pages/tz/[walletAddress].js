@@ -62,8 +62,8 @@ const Tz = ({creator, tracks, wallets, profile, tzProfile}) => {
     const description = 'Hen Radio artist profile for Hic et Nunc audio NFTs';
     const image = profile?.metadata?.identicon
         ? getIpfsUrl(profile?.metadata?.identicon)
-        : 'https://hen.radio/images/hen-radio-logo-social.png';
-    const url = `https://hen.radio/tz/${creator}`;
+        : 'https://www.henradio.xyz/images/hen-radio-logo-social.png';
+    const url = `https://www.henradio.xyz/tz/${creator}`;
 
     return <>
         <Head>
