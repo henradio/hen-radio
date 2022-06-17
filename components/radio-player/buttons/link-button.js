@@ -6,7 +6,7 @@ const LinkButton = ({track}) => {
     const [showMessage, setShowMessage] = useState(false);
 
     const handleCopyShareLink = async() => {
-        await navigator.clipboard.writeText(`https://hen.radio/objkt/${track.id}`);
+        await navigator.clipboard.writeText(`https://www.henradio.xyz/objkt/${track.id}`);
         setShowMessage(true);
         setTimeout(() => {
             setShowMessage(false);

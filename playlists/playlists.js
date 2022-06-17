@@ -241,9 +241,9 @@ export const playlists = [
             { "id": 472403, "creator": { "walletAddress": "tz1i2tQZSMop7dR3u3qnag8DBg5qBBM7qQxW", "name": "os_metasambas", "metadata": {} }, "title": "onda esquisita/ weird vibes", "src": "https://cloudflare-ipfs.com/ipfs/QmQAUvdPvkBKau7t1VF659EZFTfPY1DGDDm6aG2PGHTPgk", "mimeType": "audio/wav", "displayUri": "ipfs://QmWKevXstw9K2Be2GvuFc6MaCUUoGAdctCf15nbxpZ1Y64", "tags": [] }]
     },
     {
-        name: 'Hen.Radio Halloween',
+        name: 'www.henradio.xyz Halloween',
         curator: '@hen_radio',
-        description: 'Halloween 2021 Hen.radio playlist',
+        description: 'Halloween 2021 www.henradio.xyz playlist',
         img: '/images/Halloween2021_Playlist_Cover_256.gif',
         slug: 'hen_radio_halloween2021',
         tracks: [

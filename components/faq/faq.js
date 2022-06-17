@@ -4,8 +4,8 @@ const Faq = () =>
     <>
         <h1>FAQ</h1>
         <div className={styles.faqItems}>
-            <p className={styles.faqQuestion}><strong>Q. What is Hen.radio?</strong></p>
-            <p className={styles.faqAnswer}>A. Hen.radio is an NFT Music Player and a community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism.
+            <p className={styles.faqQuestion}><strong>Q. What is henradio.xyz?</strong></p>
+            <p className={styles.faqAnswer}>A. henradio.xyz is an NFT Music Player and a community. Our goal is to make it easier to discover, listen to and reward NFT music artists, in the Hen spirit of inclusivity, diversity, multiculturalism.
                 <br />
                 It was created during the first <a href="https://medium.com/@timongty/hic-et-nunc-community-led-growth-through-the-hicathon-5181d8f310e4"><strong>Hicathon</strong></a> in May 2021,
                 by the initial working group:&nbsp;
@@ -41,11 +41,11 @@ const Faq = () =>
             </p>
             <p className={styles.faqQuestion}><strong>Q. Does everything here also work on Hic et Nunc?</strong>
             </p>
-            <p className={styles.faqAnswer}>A. Yes, everything on hen.radio will also be available on
+            <p className={styles.faqAnswer}>A. Yes, everything on henradio.xyz will also be available on
                 the main Hic et Nunc site. Mints, collects and swaps are all made on the Hic et Nunc contracts.</p>
-            <p className={styles.faqQuestion}><strong>Q. If I mint on @objktcom, will it appear on hen.radio ?</strong>
+            <p className={styles.faqQuestion}><strong>Q. If I mint on @objktcom, will it appear on henradio.xyz ?</strong>
             </p>
-            <p className={styles.faqAnswer}>A. Only music minted on the Hen contract will appear on hen.radio. Collections in @objktcom have their own contract, and will not appear on hen.radio</p>
+            <p className={styles.faqAnswer}>A. Only music minted on the Hen contract will appear on henradio.xyz. Collections in @objktcom have their own contract, and will not appear on henradio.xyz</p>
             <p className={styles.faqQuestion}><strong>Q. Is there an app?</strong></p>
             <p className={styles.faqAnswer}>A. Not at the moment. It is optimised for viewing in the
                 mobile browser, but no app yet.</p>
@@ -71,16 +71,16 @@ const Faq = () =>
                     playlist. You can share
                     this link via Twitter or email. For example:
                     {' '}
-                    <a href="https://hen.radio/playlists/178891,11305,10159,8228">https://hen.radio/playlists/178891,11305,10159,8228</a>
+                    <a href="https://henradio.xyz/playlists/178891,11305,10159,8228">https://henradio.xyz/playlists/178891,11305,10159,8228</a>
                 </li>
             </ol>
             <p>A2. To create a playlist with a cover image and visible
-                to all.<strong>(Only for files less than 6Mb, or having been minted on hen.radio)</strong>: DM our twitter account
+                to all.<strong>(Only for files less than 6Mb, or having been minted on henradio.xyz)</strong>: DM our twitter account
                 @hen_radio with:</p>
             <ol>
                 <li>The link to the playlist (see above, eg:
                     {' '}
-                    <a href="https://hen.radio/playlists/178891,11305,10159,8228">https://hen.radio/playlists/178891,11305,10159,8228</a>
+                    <a href="https://www.henradio.xyz/playlists/178891,11305,10159,8228">https://www.henradio.xyz/playlists/178891,11305,10159,8228</a>
                     )
                 </li>
                 <li>Title of the playlist</li>
@@ -92,7 +92,7 @@ const Faq = () =>
             <p>Playlists are a work in progress, please be patient, we
                 will do our best to include all submissions. If we are not yet following you on Twitter, come and say hi in Discord.</p>
             <p className={styles.faqQuestion}><strong>Q. How can I contribute? How do we contact
-                Hen.radio?</strong></p>
+                henradio.xyz?</strong></p>
             <p className={styles.faqAnswer}>A. The best place to engage with us is through the <a href='https://discord.gg/gj7U6r96aF'>Discord</a>, find our social details below.
             </p>
         </div>

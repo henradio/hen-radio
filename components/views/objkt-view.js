@@ -76,8 +76,8 @@ const ObjktView = ({ objktId }) => {
     const description = objkt?.description
         ? `${objkt.description}`
         : 'An audio objkt with this id could not be found.';
-    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
-    const url = `https://hen.radio/objkt/${objkt.id}`;
+    const image = 'https://www.henradio.xyz/images/hen-radio-logo-social.png';
+    const url = `https://www.henradio.xyz/objkt/${objkt.id}`;
 
     return (
         <>
@@ -86,7 +86,7 @@ const ObjktView = ({ objktId }) => {
                 <title>{objkt.title + byName} | Hen Radio | NFT Music
                     Player</title>
                 <meta name="description" content={description} />
-                <link rel="canonical" href={`http://hen.radio/${objkt.id}`} />
+                <link rel="canonical" href={`http://www.henradio.xyz/${objkt.id}`} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@hen_radio" />
                 <meta name="twitter:creator" content="@hen_radio" />

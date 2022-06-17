@@ -18,15 +18,15 @@ export const getStaticProps = async() => {
 const Tz = ({wallets}) => {
     const title = 'Hen Radio';
     const description = 'Find Hic et Nunc audio NFT audio player, search by wallet address';
-    const image = 'https://hen.radio/images/hen-radio-logo-social.png';
-    const url = 'https://hen.radio/tz';
+    const image = 'https://www.henradio.xyz/images/hen-radio-logo-social.png';
+    const url = 'https://www.henradio.xyz/tz';
 
     return <>
         <Head>
             <meta charSet="utf-8"/>
             <title>Wallets | Hen Radio | NFT Music Player</title>
             <meta name="description" content={description}/>
-            <link rel="canonical" href={`http://hen.radio/tz`}/>
+            <link rel="canonical" href={`http://www.henradio.xyz/tz`}/>
             <meta name="twitter:card" content="summary"/>
             <meta name="twitter:site" content="@hen_radio"/>
             <meta name="twitter:creator" content="@hen_radio"/>
